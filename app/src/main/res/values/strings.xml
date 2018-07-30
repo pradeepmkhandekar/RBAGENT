@@ -1,0 +1,103 @@
+<resources>
+    <string name="app_name">RBA</string>
+    <string name="copyright_content">Powered by Rupeeboss</string>
+    <string name="title_activity_login">Login</string>
+
+    <string name="openDrawer">Open navigation drawer</string>
+    <string name="closeDrawer">Close navigation drawer</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="title_activity_home_loan">Home Loan</string>
+    <string name="newregistration"><u>Create New Account</u></string>
+    <!--<string name="forgot_password"><u>Forgot Password?</u></string>-->
+    <string name="title_forgot_pwd"><u>Forgot Password?</u></string>
+
+    <array name="IncomeSource">
+        <item>Salaried</item>
+        <item>Self-Employed</item>
+    </array>
+    <array name="RelationType">
+        <item>Spouse</item>
+        <item>Wife</item>
+        <item>Father</item>
+        <item>Son</item>
+
+    </array>
+
+    <string name="no_files_login">No. Of Files Login</string>
+    <string name="no_files_sact">No. Of Files Sanctioned</string>
+    <string name="no_files_dis">No. Of Files Disbursed</string>
+
+    <string name="unsec_dis_amnt">Unsecured Disbursed Amount</string>
+    <string name="sec_dis_amnt">Secured Disbursed Amount</string>
+    <string name="tot_amnt_pay">Total Amount Of Payout</string>
+    <string name="contact_number"> 8108181887 </string>
+
+    <string name="text_Immediate"> Immediate Income</string>
+    <string name="text_Monthly">Monthly Income</string>
+    <string name="text_Inviting">Inviting Customer</string>
+
+
+    <string name="Ok">Ok</string>
+    <string name="net_connection">Check your internet connection</string>
+    <string name="title_activity_quote">Quotes</string>
+    <string name="title_activity_personal_loan">Personal Loan</string>
+    <string name="title_activity_LAP_loan">LAP Loan</string>
+    <string name="title_activity_apply_loan">Apply for Loan </string>
+    <string name="title_activity_quote_info">Quote Infomation</string>
+    <string name="title_activity_rb_dialer_pad">Dialer</string>
+    <string name="title_activity_rb_add_lead">Add Lead</string>
+    <string name="title_activity_feed_back">Feed Back</string>
+    <string name="title_activity_share_message">Share Links</string>
+    <string name="title_activity_more_info">Home Loan</string>
+    <string name="title_activity_personal_loan_quote">Personal Loan Quotes</string>
+    <string name="title_activity_personal_loan_apply">Personal Loan Apply</string>
+    <string name="title_activity_plquote_info">PL Quote Info</string>
+    <string name="title_activity_balance_transfer">Balance Transfer</string>
+    <string name="title_activity_lead_sms">"Sms Lead "</string>
+    <string name="title_activity_my_lead">MY LEADS</string>
+
+    <string name="title_activity_balance_transfer_type">Balance Transfer</string>
+    <string name="title_activity_credit_card_apply">Credit Card</string>
+    <string name="title_activity_lapquote">LAP Quote</string>
+    <string name="title_activity_car_loan">Car Loan</string>
+    <string name="title_activity_buisiness">My Business</string>
+    <string name="title_activity_working_capital">Working Capital</string>
+    <string name="title_activity_working_capital_balance_trans">Working Capital</string>
+    <string name="title_activity_generalInsurance">General Insurance</string>
+    <string name="title_activity_business_loan">Business Loan</string>
+    <string name="title_activity_comm_purchase">Commercial Purchase</string>
+    <string name="title_activity_emi_menu">Calculators</string>
+    <string name="title_activity_emi_calc">EMI Calculator</string>
+    <string name="title_activity_document_web_view">Document</string>
+    <string name="title_activity_working_capital_calculator">Working Capital Calculator</string>
+    <string name="title_activity_home_emicalc">Home EMI Calculator</string>
+    <string name="title_activity_personal_emicalc">Personal EMI Calculator</string>
+    <string name="title_activity_contact_to_manager">Contact Manager</string>
+
+    <string name="title_activity_contact_us">Contact Us</string>
+    <string name="title_activity_home_emicalc_popup">EMI Calculator</string>
+    <string name="title_activity_buisness_pop_up">Buisness Loan Calculator</string>
+    <string name="title_activity_buisness_loan_cal">Business Loan Calculator</string>
+    <string name="title_activity_general_insurance_type">General Insurance</string>
+    <string name="title_activity_repository_web_view">Repository</string>
+    <string name="title_activity_personal_loan_menu">Personal Loan</string>
+    <string name="title_activity_iiflplwebview">IIFLPLActivityWebview</string>
+    <string name="title_activity_iiflwebview">IIFL PERSONAL LOAN</string>
+    <string name="title_activity_change_password">Change Password</string>
+    <string name="title_activity_business_loan_menu">Business Loan</string>
+    <string name="title_activity_business_loan_webview">Business Loan</string>
+    <string name="title_activity_my_list">"My List "</string>
+    <string name="title_activity_my_list_pop_up">MyListPopUpActivity</string>
+    <string name="title_activity_document_upload">Document Upload</string>
+    <string name="title_activity_my_lead_details">"My Lead "</string>
+    <string name="title_activity_group_list">My List</string>
+    <string name="title_activity_income_simulator">Income Simulator</string>
+    <string name="title_activity_bl">Business Loan</string>
+    <string name="title_activity_blquote">Business Loan Quotes</string>
+    <string name="title_activity_short_term_personal_loan">Short Term Personal Loan</string>
+    <string name="title_activity_posloan">POS Loan</string>
+    <string name="title_activity_home_loan_menu">Home Loan</string>
+    <string name="title_activity_common_webview">RBA</string>
+
+</resources>

@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="5dp"
+
+
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/txtDispalayMinCostProp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:text="5 lac"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+
+            <TextView
+                android:id="@+id/txtDispalayMaxCostProp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="2 cr"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+
+        </RelativeLayout>
+
+
+        <SeekBar
+            android:id="@+id/sbCostOfProp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="5000"
+            android:progress="1"
+            android:thumbTintMode="multiply"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Loan Required"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+        <EditText
+            android:id="@+id/etCostOfProp"
+            style="@style/styleEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:digits="0123456789"
+            android:ems="10"
+            android:inputType="phone"
+            android:maxLength="9" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+
+
+            android:paddingTop="5dp">
+
+            <TextView
+                android:id="@+id/txtDispalayMinTenureYear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:text="1 Yr"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+
+            <TextView
+                android:id="@+id/txtDispalayMaxTenureYear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="5 Yr"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+
+        </RelativeLayout>
+
+
+        <SeekBar
+            android:id="@+id/sbTenure"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:max="5"
+            android:progress="1" />
+
+
+        <TextView
+            android:id="@+id/textView2e"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Tenure in years"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+        <EditText
+            android:id="@+id/etTenureInYear"
+            style="@style/styleEditText"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:digits="0123456789"
+            android:ems="10"
+            android:inputType="phone"
+            android:maxLength="2" />
+
+
+        <TextView
+            android:id="@+id/textView2s"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name Of Applicant"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+        <EditText
+            android:id="@+id/etNameOfApplicant"
+            style="@style/styleEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:ems="10" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Gender"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <RadioGroup
+                android:id="@+id/rgGender"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:checkedButton="@+id/rbimgMale"
+                android:gravity="left|center_vertical"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rbimgMale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/male" />
+
+                <RadioButton
+                    android:id="@+id/rbimgFemale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/female" />
+            </RadioGroup>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="DOB"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+        <EditText
+            android:id="@+id/et_DOB"
+            style="@style/styleEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:ems="10"
+            android:focusable="false" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Source of Income"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+        <Spinner
+            android:id="@+id/sbSalary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/spinner_bg" />
+
+
+        <LinearLayout
+            android:id="@+id/llSalaried"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+
+
+                android:paddingTop="5dp">
+
+                <TextView
+                    android:id="@+id/txtDispalayMinIncome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="25 k"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+
+                <TextView
+                    android:id="@+id/txtDispalayMaxIncome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="25 lac"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+
+            </RelativeLayout>
+
+            <SeekBar
+                android:id="@+id/sbMonthlyInc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="250"
+                android:progress="25"
+                android:thumbTintMode="multiply" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Monthly Income"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+            <EditText
+                android:id="@+id/etMonthlyInc"
+                style="@style/styleEditText"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:digits="0123456789"
+                android:ems="10"
+                android:inputType="phone"
+                android:maxLength="7" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llSelfEmployeed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="5dp">
+
+                <TextView
+                    android:id="@+id/txtDispayMinTurnOver"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="10 lac"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+
+                <TextView
+                    android:id="@+id/txtDispalayMaxTurnOver"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="100 cr"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+
+            </RelativeLayout>
+
+            <SeekBar
+                android:id="@+id/sbTurnOver"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="10000"
+                android:progress="10"
+                android:thumbTintMode="multiply" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Turnover/Top Line"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+            <EditText
+                android:id="@+id/etTurnOver"
+                style="@style/styleEditText"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:ems="10"
+                android:inputType="phone"
+                android:maxLength="10" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView104"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="EMI,If Any"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+        <EditText
+            android:id="@+id/etEMI"
+            style="@style/styleEditText"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:ems="10"
+            android:inputType="phone" />
+
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/lightGrey" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/lightGrey" />
+
+</LinearLayout>

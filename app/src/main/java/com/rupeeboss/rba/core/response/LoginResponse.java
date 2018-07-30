@@ -1,0 +1,23 @@
+package com.rupeeboss.rba.core.response;
+
+import com.rupeeboss.rba.core.APIResponse;
+import com.rupeeboss.rba.core.model.LoginEntity;
+
+public class LoginResponse extends APIResponse {
+
+
+    /**
+     * result : {"Assignee":[{"assigneeId":"190","assigneeName":"Rakesh Azad Yadav"},{"assigneeId":"113","assigneeName":"Santosh Galande"},{"assigneeId":"52","assigneeName":"Suresh Gupta"}],"BreakDtls":[{"breakKey":1,"breakType":"In Time","time":60},{"breakKey":2,"breakType":"Tea Break","time":600},{"breakKey":3,"breakType":"Lunch","time":1800},{"breakKey":4,"breakType":"Meeting","time":3600},{"breakKey":5,"breakType":"Out Time","time":60},{"breakKey":1002,"breakType":"Meeting At AC mkt","time":1300}],"Message":null,"Products":[{"prodId":1,"prodName":"USED CAR Loan"},{"prodId":2,"prodName":"LAP BT"},{"prodId":3,"prodName":"LRD"},{"prodId":4,"prodName":"Car Loan"},{"prodId":5,"prodName":"Home Loan BT"},{"prodId":6,"prodName":"MERCHANT BUSINESS"},{"prodId":7,"prodName":"LAP"},{"prodId":8,"prodName":"Car Refinance"},{"prodId":9,"prodName":"Personal Loan"},{"prodId":10,"prodName":"Credit Card"},{"prodId":11,"prodName":"WORKING CAPITAL"},{"prodId":12,"prodName":"Home Loan"},{"prodId":13,"prodName":"Business Loan"},{"prodId":1003,"prodName":"Commercial Purchase"},{"prodId":1002,"prodName":"Term Loan"},{"prodId":1004,"prodName":"INSURANCE"},{"prodId":1005,"prodName":"Loan Against Share"},{"prodId":1006,"prodName":"SF"},{"prodId":1007,"prodName":"NIL"},{"prodId":1008,"prodName":"NIL"},{"prodId":1009,"prodName":"MACHINERY LOAN"},{"prodId":1010,"prodName":"LAP-TOP UP"}],"brokerId":4,"brokerName":"Nilesh Madhukar Desale","empCode":"RB40000085","status":[{"statusId":1,"statusName":"Different City"},{"statusId":43,"statusName":"New"},{"statusId":3,"statusName":"Not Contactable"},{"statusId":5,"statusName":"Future Requirement"},{"statusId":6,"statusName":"Visited But Not Interested"},{"statusId":7,"statusName":"Application Form Pending"},{"statusId":8,"statusName":"Property Doc Pending"},{"statusId":9,"statusName":"Login"},{"statusId":10,"statusName":"Meeting Done and To Pick Doc"},{"statusId":12,"statusName":"Pre Login"},{"statusId":13,"statusName":"Disbursed"},{"statusId":15,"statusName":"Disconnecting Call"},{"statusId":16,"statusName":"Switched Off"},{"statusId":17,"statusName":"Cheque Pending"},{"statusId":18,"statusName":"Not Eligible Income"},{"statusId":19,"statusName":"Meeting Done and Customer Will Tell"},{"statusId":20,"statusName":"Call Again"},{"statusId":21,"statusName":"Partial Doc Picked"},{"statusId":22,"statusName":"not called"},{"statusId":23,"statusName":"Follow Meeting"},{"statusId":24,"statusName":"Not Interested"},{"statusId":44,"statusName":"DND-Dont Call Again"},{"statusId":26,"statusName":"Property Not Identified"},{"statusId":27,"statusName":"Not Eligible Property"},{"statusId":28,"statusName":"Login Reject"},{"statusId":29,"statusName":"Meeting Scheduled"},{"statusId":30,"statusName":"Appointment Cancelled"},{"statusId":31,"statusName":"Already Taken"},{"statusId":33,"statusName":"Ringing"},{"statusId":34,"statusName":"Enquiry Not Made"},{"statusId":35,"statusName":"Just Enquiry"},{"statusId":36,"statusName":"Pre Disbursal Stage"},{"statusId":37,"statusName":"Meeting Done and Meet Again"},{"statusId":38,"statusName":"Sanctioned"},{"statusId":39,"statusName":"Wrong Number"},{"statusId":40,"statusName":"Low Loan Amount"},{"statusId":41,"statusName":"Refer to Bank"},{"statusId":42,"statusName":"Follow Mail Sent"},{"statusId":45,"statusName":"Number Not Exist"},{"statusId":46,"statusName":"Lead "},{"statusId":52,"statusName":"Field Visit"},{"statusId":53,"statusName":"Docs Picked Up"},{"statusId":64,"statusName":"not reachable"},{"statusId":55,"statusName":"Appointment Done Not Eligible"},{"statusId":56,"statusName":"Document Picked Not Eligible"},{"statusId":57,"statusName":"Language Barrier"},{"statusId":58,"statusName":"PSU Bank "},{"statusId":59,"statusName":"not intrested"},{"statusId":60,"statusName":"Clash"},{"statusId":61,"statusName":"Follow Up"},{"statusId":65,"statusName":"number does not exist"},{"statusId":63,"statusName":"RBA Leads"},{"statusId":66,"statusName":"Sanctioned but Not Interested"},{"statusId":67,"statusName":"call"},{"statusId":48,"statusName":"Demo Given"},{"statusId":49,"statusName":"Duplicate"}],"uName":"Suresh Gupta","versionCode":"1"}
+     */
+
+    private LoginEntity result;
+
+    public LoginEntity getResult() {
+        return result;
+    }
+
+    public void setResult(LoginEntity result) {
+        this.result = result;
+    }
+
+}

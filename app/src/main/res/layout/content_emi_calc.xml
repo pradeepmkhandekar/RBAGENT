@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/content_feed_back"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:weightSum="100"
+    tools:context="com.rupeeboss.rba.EmiCalculator.EmiCalcActivity"
+    tools:showIn="@layout/activity_emi_calc">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_marginBottom="5dp"
+    android:layout_weight="100"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Loan Amount"
+                android:textColor="@color/white" />
+
+            <EditText
+                android:id="@+id/et_LoanAmount"
+                style="@style/JEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="10"
+                android:inputType="number"/>
+
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Rate Of Interest"
+                android:textColor="@color/white" />
+
+            <EditText
+                android:id="@+id/et_rateofinterest"
+                style="@style/JEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal">
+
+            </EditText>
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Loan Tenure (in Months)"
+                android:textColor="@color/white" />
+
+            <EditText
+                android:id="@+id/et_loantensure"
+                style="@style/JEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLength="3"
+                android:hint="value in months"
+                >
+
+            </EditText>
+
+        </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btn_submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:background="@drawable/bg3"
+                    android:text="Submit"
+                    android:textColor="@android:color/white" />
+                <LinearLayout
+                    android:id="@+id/layoutresult"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:paddingTop="10dp"
+                    android:gravity="center_horizontal"
+
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:text="Loan Details"
+                        android:textStyle="bold"
+                        android:textSize="24sp"
+                        android:paddingBottom="10dp"
+                        android:textColor="@color/white" />
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="Loan EMI :"
+                    android:textColor="@color/white" />
+                    <TextView
+                        android:id="@+id/textViewloanemi"
+                        android:layout_width="match_parent"
+                        android:gravity="center_horizontal"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textStyle="bold"
+                        android:textSize="24sp"
+                        android:textColor="#c2da6b" />
+
+                <TextView
+                    android:id="@+id/textView33"
+                    android:layout_width="match_parent"
+                    android:paddingTop="10dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="Total Payable Interest :"
+                    android:textColor="@color/white" />
+
+                    <TextView
+                        android:id="@+id/tvtotalpayint"
+                        android:layout_width="match_parent"
+                        android:gravity="center_horizontal"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textStyle="bold"
+                        android:textSize="24sp"
+                        android:textColor="#00b9b9" />
+
+                <TextView
+                    android:id="@+id/textView77"
+                    android:layout_width="match_parent"
+                    android:gravity="center_horizontal"
+                    android:paddingTop="10dp"
+                    android:layout_height="wrap_content"
+                    android:text="Total Payment(Principal + Int) :"
+                    android:textColor="@color/white" />
+
+                    <TextView
+                        android:id="@+id/tvtotalpayment"
+                        android:layout_width="match_parent"
+                        android:gravity="center_horizontal"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textStyle="bold"
+
+                        android:textSize="24sp"
+                        android:textColor="#4a9acf" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
+
+
+
+</LinearLayout>

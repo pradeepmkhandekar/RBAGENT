@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.rupeeboss.rba.webviews.generalInsurance.GeneralInsuranceType"
+    tools:showIn="@layout/activity_general_insurance_type">
+
+    <TextView
+        android:id="@+id/tvHomeLoan"
+        style="@style/JEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:drawableLeft="@drawable/ic_car"
+        android:drawablePadding="10dp"
+        android:text="Car Insurance"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/tvPersonalLoan"
+        style="@style/JEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:drawableLeft="@drawable/ic_heart"
+        android:drawablePadding="10dp"
+        android:text="Health Insurance"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/tvLAP"
+        style="@style/JEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:drawableLeft="@drawable/icplan"
+        android:drawablePadding="10dp"
+        android:text="Travel Insurance"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/txtWorkingCapital"
+        style="@style/JEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:drawableLeft="@drawable/ic_umb"
+        android:drawablePadding="10dp"
+        android:text="Term Insurance"
+        android:textColor="@color/white" />
+</LinearLayout>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/layout_call"
+    android:orientation="horizontal"
+    android:layout_margin="5dp"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:weightSum="3">
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/pic"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/contact"
+        android:layout_gravity="center_vertical"
+        app:civ_border_width="1dp"
+        app:civ_border_color="#D2C7C0"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="2.6"
+        android:layout_margin="5dp"
+        android:paddingLeft="10dp"
+        android:layout_gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/contact_text_color"
+            android:id="@+id/name"
+            android:text="User name"
+            android:textSize="18dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/no"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/contact_text_color"
+            android:text="Phone no."
+            android:textSize="18dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_weight="0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|center"
+        android:gravity="center"
+        android:visibility="visible"
+        android:paddingRight="10dp"
+        android:orientation="horizontal">
+
+
+
+        <ImageView
+      android:layout_width="40dp"
+      android:layout_height="40dp"
+      android:id="@+id/pic1"
+      android:src="@drawable/callingicon" />
+
+    </LinearLayout>
+
+</LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.4dp"
+        android:background="@color/contact_divider_color" />
+
+</LinearLayout>

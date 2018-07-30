@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1a83d6</color>
+    <color name="colorPrimaryDark">#28a0ff</color>
+    <color name="colorAccent">#28a0ff</color>
+    <color name="darkBlue">#1565c0</color>
+
+    <color name="bg">#eeeeee</color>
+    <color name="background_color">#dadada</color>
+    <color name="green">#00796B</color>
+    <color name="white_transparent">#80ffffff</color>
+
+    <color name="contact_text_color">#876F5D</color>
+    <color name="contact_divider_color">#DEDEDE</color>
+    <color name="white">#ffffff</color>
+
+    <color name="application_primary_text_color">#616161</color>
+    <color name="application_secondary_text_color">#9E9E9E</color>
+
+    <color name="darkGrey">#757575</color>
+    <color name="lightGrey">#E0E0E0</color>
+    <color name="button_background">#FA774D</color>
+    <color name="buttonBackground">#EE5E35</color>
+    <!--32547D-->
+
+    <color name="back_button_color">#5a5a5a</color>
+
+    <color name="alphabet_index_color">#CDCDCD</color>
+
+    <color name="transparent_white">@android:color/transparent</color>
+
+    <color name="search_gray">#bcbcbc</color>
+    <color name="filter_bar_title">#8d8b8b</color>
+    <color name="filter_bar_title_selected">#5a5a5a</color>
+    <color name="account_black">#212121</color>
+    <color name="text_color_light">#5e5e5e</color>
+    <color name="gray">#D6D6D6</color>
+    <!-- notification text color -->
+    <color name="notification_gray_date">#a4a4a4</color>
+
+    <color name="button_gray">#cbcbcb</color>
+
+    <color name="login_background">#fff8f3</color>
+    <color name="text_edit_color">#868686</color>
+
+
+    <color name="black">#5a5a5a</color>
+    <color name="alpha_white">#26ffffff</color>
+    <color name="nav_blue">#287FAA</color>
+    <color name="grey_form_header">#828282</color>
+    <color name="red_nav">#D3332B</color>
+    <color name="red_button">#E62B21</color>
+    <color name="total_color">#5d7B9D</color>
+    <color name="pink">#ff4081</color>
+
+    <color name="red_descent">#de6d75</color>
+
+    <color name="tab_layout">#374152</color>
+
+    <color name="green_descent">#42ceb2</color>
+    <color name="green1_descent">#45c6ba</color>
+
+    <color name="red_new">#e31e24</color>
+    <color name="red_new_alpha">#f72121</color>
+
+</resources>

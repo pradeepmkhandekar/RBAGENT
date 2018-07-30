@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1042863171119",
+    "project_id": "centering-crow-164210"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1042863171119:android:7cc75ec06c5504ab",
+        "android_client_info": {
+          "package_name": "com.rupeeboss.rba"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1042863171119-df55e2jfgidr5prdmhen14l0m7jl6gev.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "1042863171119-09r8ss6fldolsbo37hfkqfabr29ljdda.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rupeeboss.rba",
+            "certificate_hash": "91bb6e8d4da9a52a8760c5d40e902aebf0f9247e"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpcpm4sd-qV-bGOQae5wHRSPdHYXY39-4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

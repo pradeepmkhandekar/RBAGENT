@@ -1,0 +1,16 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.rupeeboss.rba.personalloan.PersonalQuotesFragment">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerPersQuotes"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg"
+        android:scrollbarStyle="insideOverlay" />
+
+
+</LinearLayout>

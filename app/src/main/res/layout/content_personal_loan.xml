@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_personal_loan"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="100"
+    tools:context="com.rupeeboss.rba.personalloan.PersonalLoanActivity">
+
+    <!-- <TextView
+         android:id="@+id/textView12"
+         android:layout_width="match_parent"
+
+         android:layout_height="0dp"
+         android:layout_weight="10"
+         android:background="#4255bd"
+         android:gravity="center_vertical|center_horizontal"
+         android:text="PERSONAL LOAN INFORMATION"
+         android:textColor="@android:color/white" />-->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="90"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <!--Applicant Detail-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtApplicantDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg3"
+                    android:padding="15dp"
+                    android:textColor="@color/white"
+                    android:text=" Application Details"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+                <include
+                    android:id="@+id/llApplicantDetail"
+                    layout="@layout/layout_personal_appl_detail" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:gravity="bottom">
+
+        <Button
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:id="@+id/btnGetQuote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/red_button"
+            android:drawableRight="@drawable/forward_arrow"
+            android:text="GET BEST QUOTES "
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:textColor="@android:color/white"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</LinearLayout>

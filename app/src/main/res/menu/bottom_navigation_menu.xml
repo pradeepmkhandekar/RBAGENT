@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_Immediate"
+        android:enabled="true"
+        android:icon="@drawable/immediate_income"
+        android:title="@string/text_Immediate"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_Monthly"
+        android:enabled="true"
+        android:icon="@drawable/monthly_income"
+        android:title="@string/text_Monthly"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_Inviting"
+        android:enabled="true"
+        android:icon="@drawable/invite_friends"
+        android:title="@string/text_Inviting"
+        app:showAsAction="ifRoom" />
+
+
+</menu>

@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/lightGrey" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/textView2s"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="How can we help you?"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+        <Spinner
+            android:id="@+id/spNewLoan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/spinner_bg" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="5dp"
+
+
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/txtDispalayMinCostProp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:text="5 lac"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+
+            <TextView
+                android:id="@+id/txtDispalayMaxCostProp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="50 cr"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+
+        </RelativeLayout>
+
+
+        <SeekBar
+            android:id="@+id/sbCostOfProp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="5000"
+            android:progress="5"
+            android:thumbTintMode="multiply"
+            android:visibility="gone" />
+
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Cost of Property"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+        <EditText
+            android:id="@+id/etCostOfProp"
+            style="@style/styleEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:digits="0123456789"
+            android:ems="10"
+            android:inputType="phone"
+            android:maxLength="9" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Max. Loan Amount Allowed"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+        <TextView
+            android:id="@+id/txtMaxLoanAmntAllow"
+            style="@style/styleEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:ems="10"
+            android:inputType="none" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+
+
+            android:paddingTop="5dp">
+
+            <TextView
+                android:id="@+id/txtDispalayMinTenureYear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:text="1 Yr"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+
+            <TextView
+                android:id="@+id/txtDispalayMaxTenureYear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="30 Yr"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+
+        </RelativeLayout>
+
+        <!--<com.crystal.crystalrangeseekbar.widgets.CrystalSeekbar-->
+        <!--android:id="@+id/sbTenure"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--app:bar_color="#F7BB88"-->
+        <!--app:bar_highlight_color="#E07416"-->
+        <!--app:left_thumb_color="#E07416"-->
+        <!--app:left_thumb_color_pressed="#99633A"-->
+        <!--app:max_value="30"-->
+        <!--app:min_value="1"-->
+        <!--app:steps="1" />-->
+
+        <SeekBar
+            android:id="@+id/sbTenure"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="100"
+            android:progress="0"
+            android:thumbTintMode="multiply" />
+
+        <TextView
+            android:id="@+id/textView2e"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Tenure in years"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+        <EditText
+            android:id="@+id/etTenureInYear"
+            style="@style/styleEditText"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:digits="0123456789"
+            android:ems="10"
+            android:inputType="phone"
+            android:maxLength="2" />
+
+        <TextView
+            android:id="@+id/textView1d"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Preferred City"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+            android:visibility="gone" />
+
+        <Spinner
+            android:id="@+id/spPreferedCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/spinner_bg"
+            android:visibility="gone" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="ENTER CITY"
+            android:padding="5dp">
+
+            <AutoCompleteTextView
+
+                android:id="@+id/acCity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </android.support.design.widget.TextInputLayout>
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/lightGrey" />
+
+</LinearLayout>
+

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_home_loan"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="100"
+    tools:context="com.rupeeboss.rba.homeloan.HomeLoanActivity"
+    tools:showIn="@layout/activity_homeloan">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="90"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <!--Property information-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtPropertyInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/grey_form_header"
+                    android:drawableRight="@drawable/down_arrow_bas_screen"
+                    android:padding="15dp"
+                    android:text=" Property Information"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/white" />
+
+
+                <include
+
+                    android:id="@+id/llPropertyInfo"
+                    layout="@layout/layout_property_info" />
+
+
+            </LinearLayout>
+
+            <!--Applicant Detail-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtApplicantDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/grey_form_header"
+                    android:drawableRight="@drawable/down_arrow_bas_screen"
+                    android:padding="15dp"
+                    android:text=" Application Details"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/white" />
+
+
+                <include
+                    android:id="@+id/llApplicantDetail"
+                    layout="@layout/layout_applicant_details" />
+
+
+            </LinearLayout>
+
+            <!--Co-Applicant details-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtCoApplicantDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/grey_form_header"
+                    android:drawableRight="@drawable/down_arrow_bas_screen"
+                    android:padding="15dp"
+                    android:text=" Co-Application Details"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/white" />
+
+
+                <include
+                    android:id="@+id/llCoApplicantDetail"
+                    layout="@layout/layout_co_appdetail" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:gravity="bottom">
+
+        <Button
+            android:id="@+id/btnGetQuote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:background="@color/red_button"
+            android:drawableRight="@drawable/forward_arrow"
+            android:text="GET BEST QUOTES "
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:textColor="@android:color/white" />
+
+        <!--
+                  <ImageView
+                      android:layout_marginRight="10dp"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:src="@drawable/right_arrow_bas_screen"
+                      android:id="@+id/imageButton"
+                      android:layout_alignParentTop="true"
+                      android:layout_alignBottom="@+id/button"
+                      android:layout_alignParentRight="true"
+                      android:layout_alignParentEnd="true" />
+        -->
+
+    </RelativeLayout>
+
+
+</LinearLayout>

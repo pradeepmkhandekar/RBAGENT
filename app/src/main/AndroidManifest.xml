@@ -1,0 +1,782 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.rupeeboss.rba">
+
+    <uses-permission android:name="android.permission.CAPTURE_AUDIO_OUTPUT" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    <uses-permission android:name="android.permission.WRITE_CALL_LOG" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.STORAGE" />
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+    <!-- <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="DATABASE"
+            android:value="rba.db" />
+        <meta-data
+            android:name="VERSION"
+            android:value="1" />
+        <meta-data
+            android:name="QUERY_LOG"
+            android:value="true" />
+        <meta-data
+            android:name="DOMAIN_PACKAGE_NAME"
+            android:value="com.rupeeboss.rba" />
+
+        <!--
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+        -->
+
+        <activity
+            android:name=".splashscreen.SplashScreenActivity"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".login.LoginActivity"
+            android:label="@string/title_activity_login"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".home.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".creditcard.CreditCardActivity"
+            android:label="Credit Card"
+            android:parentActivityName=".home.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".home.MainActivity" />
+        </activity>
+        <activity
+            android:name=".calling.CallingActivity"
+            android:label="Calling"
+            android:parentActivityName=".home.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".home.MainActivity" />
+        </activity>
+        <activity
+            android:name=".loan.LoanMenuActivity"
+            android:label="Loan"
+            android:parentActivityName=".home.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".home.MainActivity" />
+        </activity>
+        <activity
+            android:name=".homeloan.HomeLoanActivity"
+            android:label="@string/title_activity_home_loan"
+            android:parentActivityName=".loan.LoanActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".loan.LoanActivity" />
+        </activity>
+        <activity
+            android:name=".loan.LoanActivity"
+            android:label="Home Loan"
+            android:parentActivityName=".homeloan.activity_home_loan_menu"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".loan.LoanMenuActivity" />
+        </activity>
+        <activity
+            android:name=".quotes.QuoteActivity"
+            android:label="@string/title_activity_quote"
+            android:launchMode="singleTop"
+            android:parentActivityName=".homeloan.HomeLoanActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".homeloan.HomeLoanActivity" />
+        </activity>
+        <activity
+            android:name=".webviews.homeloan.HomeLoanApplyActivity"
+            android:label="@string/title_activity_apply_loan"
+            android:parentActivityName=".quotes.QuoteActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".quotes.QuoteActivity" />
+        </activity>
+        <activity
+            android:name=".quotes.QuoteInfoActivity"
+            android:label="@string/title_activity_quote_info"
+            android:parentActivityName=".quotes.QuoteActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".quotes.QuoteActivity" />
+        </activity>
+        <activity
+            android:name=".rbdialerpad.RbDialerPadActivity"
+            android:label="@string/title_activity_rb_dialer_pad"
+            android:parentActivityName=".home.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".home.MainActivity" />
+        </activity>
+        <activity
+            android:name=".rbaddlead.RbAddLeadActivity"
+            android:label="@string/title_activity_rb_add_lead"
+            android:parentActivityName=".rbdialerpad.RbDialerPadActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".rbdialerpad.RbDialerPadActivity" />
+        </activity>
+        <activity
+            android:name=".rbfeedback.FeedBackActivity"
+            android:label="@string/title_activity_feed_back"
+            android:parentActivityName=".rbdialerpad.RbDialerPadActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".rbdialerpad.RbDialerPadActivity" />
+        </activity>
+        <activity
+            android:name=".sharemessage.ShareMessageActivity"
+            android:label="@string/title_activity_share_message"
+            android:parentActivityName=".home.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".home.MainActivity" />
+        </activity>
+        <activity
+            android:name=".webviewinfo.MoreInfoActivity"
+            android:label="@string/title_activity_more_info"
+            android:parentActivityName=".loan.LoanActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".loan.LoanActivity" />
+        </activity>
+        <activity
+            android:name=".personalloan.PersonalLoanActivity"
+            android:label="@string/title_activity_personal_loan"
+            android:parentActivityName=".personalloan.LoanPersonalActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".personalloan.LoanPersonalActivity"
+            android:label="@string/title_activity_personal_loan"
+            android:parentActivityName=".personalloan.PersonalLoanMenuActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".calling.followup.FollowUpActivity"
+            android:label="Follow Up"
+            android:parentActivityName=".calling.CallingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="calling.CallingActivity" />
+        </activity>
+        <activity
+            android:name=".calling.followup.FollowUpHistoryActivity"
+            android:parentActivityName=".calling.followup.FollowUpActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".calling.followup.FollowUpActivity" />
+        </activity>
+        <activity
+            android:name=".calling.history.HistoryActivity"
+            android:parentActivityName=".calling.CallingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".contact.ContactActivity"
+            android:parentActivityName=".home.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".calling.CallingActivity" />
+        </activity>
+        <activity
+            android:name=".login.NewRegistration"
+            android:label="New Registration"
+            android:parentActivityName=".login.LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".login.LoginActivity" />
+        </activity>
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="ff50cb469899caa478ce1ed3dfae87725fbc2fc8" />
+
+        <receiver
+            android:name=".referrar.InstallReferrerReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".personalloan.PersonalLoanQuoteActivity"
+            android:label="@string/title_activity_personal_loan_quote"
+            android:launchMode="singleTop"
+            android:parentActivityName=".personalloan.PersonalLoanActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.personalloan.PersonalLoanActivity" />
+        </activity>
+        <activity
+            android:name=".webviews.persoanlloan.PersonalLoanApplyActivity"
+            android:label="@string/title_activity_personal_loan_apply"
+            android:parentActivityName=".personalloan.PersonalLoanQuoteActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.personalloan.PersonalLoanQuoteActivity" />
+        </activity>
+        <activity
+            android:name=".personalloan.PLQuoteInfoActivity"
+            android:label="@string/title_activity_plquote_info"
+            android:parentActivityName=".personalloan.PersonalLoanQuoteActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.personalloan.PersonalLoanQuoteActivity" />
+        </activity>
+        <activity
+            android:name=".forgetpwd.ForgotPasswordActivity"
+            android:label="Forgot Password"
+            android:parentActivityName=".login.LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".login.LoginActivity" />
+        </activity>
+        <activity
+            android:name=".webviews.balancetransfer.BalanceTransferActivity"
+            android:label="@string/title_activity_balance_transfer"
+            android:parentActivityName=".home.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.home.MainActivity" />
+        </activity>
+        <activity
+            android:name=".sharemessage.LeadSmsActivity"
+            android:label="@string/title_activity_lead_sms"
+            android:parentActivityName=".sharemessage.ShareMessageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.sharemessage.ShareMessageActivity" />
+        </activity>
+        <activity
+            android:name=".mylead.MyLeadActivity"
+            android:label="@string/title_activity_my_lead"
+            android:parentActivityName=".mylist.GroupListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".mylist.GroupListActivity" />
+        </activity>
+        <activity
+            android:name=".LAP.Loan_LAPActivity"
+            android:label="LAP"
+            android:parentActivityName=".loan.LoanMenuActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".loan.LoanMenuActivity" />
+        </activity>
+        <activity
+            android:name=".LAP.LAP_LoanActivity"
+            android:label="@string/title_activity_LAP_loan"
+            android:parentActivityName=".LAP.Loan_LAPActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".webviews.balancetransfer.BalanceTransferType"
+            android:label="@string/title_activity_balance_transfer_type"
+            android:parentActivityName=".home.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.home.MainActivity" />
+        </activity>
+        <activity
+            android:name=".webviews.creditcard.CreditCardApplyActivity"
+            android:label="@string/title_activity_credit_card_apply"
+            android:parentActivityName=".home.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.home.MainActivity" />
+        </activity>
+        <activity
+            android:name=".LAP.LAPQuoteActivity"
+            android:label="@string/title_activity_lapquote"
+            android:launchMode="singleTop"
+            android:parentActivityName=".LAP.LAP_LoanActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".LAP.LAP_LoanActivity" />
+        </activity>
+        <activity
+            android:name=".webviews.LAP.LAPLoanApplyActivity"
+            android:label="@string/title_activity_apply_loan"
+            android:parentActivityName=".LAP.LAPQuoteActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".LAP.LAPQuoteActivity" />
+        </activity>
+        <activity
+            android:name=".webviews.CarLoan.CarLoanActivity"
+            android:label="@string/title_activity_car_loan"
+            android:parentActivityName=".loan.LoanMenuActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".loan.LoanMenuActivity" />
+        </activity>
+        <activity
+            android:name=".mybuisness.BuisinessActivity"
+            android:label="@string/title_activity_buisiness"
+            android:parentActivityName=".home.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".home.MainActivity" />
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name=".webviews.workingCapital.WorkingCapitalActivity"
+            android:label="@string/title_activity_working_capital"
+            android:parentActivityName=".loan.LoanMenuActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".loan.LoanMenuActivity" />
+        </activity>
+        <activity
+            android:name=".webviews.workingCapital.WorkingCapitalBalanceTrans"
+            android:label="@string/title_activity_working_capital_balance_trans"
+            android:parentActivityName=".home.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".home.MainActivity" />
+        </activity>
+        <activity
+            android:name=".webviews.generalInsurance.GeneralInsuranceActivity"
+            android:label="@string/title_activity_generalInsurance"
+            android:parentActivityName=".webviews.generalInsurance.GeneralInsuranceType"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.home.MainActivity" />
+        </activity>
+        <activity
+            android:name=".webviews.businessLoan.businessLoanActivity"
+            android:label="@string/title_activity_business_loan"
+            android:parentActivityName=".loan.LoanMenuActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".loan.LoanMenuActivity" />
+        </activity>
+        <activity
+            android:name=".webviews.commPurchase.CommPurchaseActivity"
+            android:label="@string/title_activity_comm_purchase"
+            android:parentActivityName=".loan.LoanMenuActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".loan.LoanMenuActivity" />
+        </activity>
+        <activity
+            android:name=".EmiCalculator.EmiMenuActivity"
+            android:label="@string/title_activity_emi_menu"
+            android:parentActivityName=".home.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".home.MainActivity" />
+        </activity>
+        <activity
+            android:name=".EmiCalculator.EmiCalcActivity"
+            android:label="@string/title_activity_emi_calc"
+            android:parentActivityName=".EmiCalculator.EmiMenuActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".EmiCalculator.EmiMenuActivity" />
+        </activity>
+        <activity
+            android:name=".webviews.document.DocumentWebViewActivity"
+            android:label="@string/title_activity_document_web_view"
+            android:launchMode="singleTask"
+            android:parentActivityName=".home.MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.home.MainActivity" />
+        </activity>
+        <activity
+            android:name=".EmiCalculator.HomeEMICalcActivity"
+            android:label="@string/title_activity_home_emicalc"
+            android:parentActivityName=".EmiCalculator.EmiMenuActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".EmiCalculator.EmiMenuActivity" />
+        </activity>
+        <activity
+            android:name=".EmiCalculator.PersonalEMICalcActivity"
+            android:label="@string/title_activity_personal_emicalc"
+            android:parentActivityName=".EmiCalculator.EmiMenuActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".EmiCalculator.EmiMenuActivity" />
+        </activity>
+        <activity
+            android:name=".contactToManager.ContactToManager"
+            android:label="@string/title_activity_contact_to_manager"
+            android:parentActivityName=".home.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.home.MainActivity" />
+        </activity>
+        <activity
+            android:name=".contactus.ContactUsActivity"
+            android:label="@string/title_activity_contact_us"
+            android:parentActivityName=".home.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.home.MainActivity" />
+        </activity>
+        <activity
+            android:name=".EmiCalculator.HomeEMICalcPOPUP"
+            android:label="@string/title_activity_home_emicalc_popup"
+            android:theme="@style/CustomTheme" />
+        <activity
+            android:name=".mybuisness.BuisnessPopUpActivity"
+            android:label="@string/title_activity_buisness_pop_up"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomTheme" />
+        <activity
+            android:name=".EmiCalculator.workcapital.WorkingCapitalCalculatorActivity"
+            android:label="@string/title_activity_working_capital_calculator"
+            android:parentActivityName=".EmiCalculator.EmiMenuActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.EmiCalculator.EmiMenuActivity" />
+        </activity>
+        <activity
+            android:name=".EmiCalculator.businessloan.BusinessLoanCalActivity"
+            android:label="@string/title_activity_buisness_loan_cal"
+            android:parentActivityName=".EmiCalculator.EmiMenuActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".EmiCalculator.businessloan.BuisnessCalcPOPUP"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomTheme" />
+        <activity
+            android:name=".webviews.generalInsurance.GeneralInsuranceType"
+            android:label="@string/title_activity_general_insurance_type"
+            android:parentActivityName=".home.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.home.MainActivity" />
+        </activity>
+        <activity
+            android:name=".repository.RepositoryWebViewActivity"
+            android:label="@string/title_activity_repository_web_view"
+            android:parentActivityName=".home.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.home.MainActivity" />
+        </activity>
+        <activity
+            android:name=".DocumentUpload.DocumentUpload"
+            android:label="@string/title_activity_document_upload"
+            android:parentActivityName=".home.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.home.MainActivity" />
+        </activity>
+        <activity
+            android:name=".personalloan.PersonalLoanMenuActivity"
+            android:label="@string/title_activity_personal_loan_menu"
+            android:parentActivityName=".loan.LoanActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".loan.LoanActivity" />
+        </activity>
+        <activity
+            android:name=".personalloan.IIFLWebviewActivity"
+            android:label="@string/title_activity_iiflwebview"
+            android:parentActivityName=".personalloan.PersonalLoanMenuActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.personalloan.PersonalLoanMenuActivity" />
+        </activity>
+        <activity
+            android:name=".changepassword.ChangePasswordActivity"
+            android:label="@string/title_activity_change_password"
+            android:parentActivityName=".home.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.home.MainActivity" />
+        </activity>
+        <activity
+            android:name=".businessloan.BusinessLoanMenuActivity"
+            android:label="@string/title_activity_business_loan_menu"
+            android:parentActivityName=".loan.LoanMenuActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.loan.LoanMenuActivity" />
+        </activity>
+        <activity
+            android:name=".businessloan.BusinessLoanWebviewActivity"
+            android:label="@string/title_activity_business_loan_webview"
+            android:parentActivityName=".businessloan.BusinessLoanMenuActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.businessloan.BusinessLoanMenuActivity" />
+        </activity>
+        <activity
+            android:name=".mylist.MyListActivity"
+            android:label="@string/title_activity_my_list"
+            android:parentActivityName=".home.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.home.MainActivity" />
+        </activity>
+        <activity
+            android:name=".mylist.ExpandActivity"
+            android:label="@string/title_activity_my_list"
+            android:parentActivityName=".home.MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.home.MainActivity" />
+        </activity>
+        <activity
+            android:name=".mylist.MyLeadDetailActivity"
+            android:label="My Lead"
+            android:parentActivityName=".home.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.home.MainActivity" />
+        </activity>
+        <activity
+            android:name=".mylist.MyListPopUpActivity"
+            android:label="@string/title_activity_my_list_pop_up"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomTheme" />
+        <activity
+            android:name=".mylead.MyLeadDetailsActivity"
+            android:label="@string/title_activity_my_lead_details"
+            android:parentActivityName=".home.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.home.MainActivity" />
+        </activity>
+        <activity
+            android:name=".mylist.GroupListActivity"
+            android:label="@string/title_activity_group_list"
+            android:parentActivityName=".home.MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.home.MainActivity" />
+        </activity>
+        <activity
+            android:name=".incomeSimulator.IncomeSimulatorActivity"
+            android:label="@string/title_activity_income_simulator"
+            android:parentActivityName=".home.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.home.MainActivity" />
+        </activity>
+        <activity
+            android:name=".businessloan.BLActivity"
+            android:label="@string/title_activity_bl"
+            android:parentActivityName=".businessloan.BusinessLoanMenuActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.businessloan.BusinessLoanMenuActivity" />
+        </activity>
+        <activity
+            android:name=".businessloan.BLQuoteActivity"
+            android:label="@string/title_activity_blquote"
+            android:parentActivityName=".businessloan.BLActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.businessloan.BLActivity" />
+        </activity>
+        <activity
+            android:name=".webviews.ShortTermPersonalLoan.ShortTermPersonalLoanActivity"
+            android:label="@string/title_activity_short_term_personal_loan"
+            android:parentActivityName=".loan.LoanMenuActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".loan.LoanMenuActivity" />
+        </activity>
+        <activity
+            android:name=".webviews.posloan.posloanActivity"
+            android:label="@string/title_activity_posloan"
+            android:parentActivityName=".loan.LoanMenuActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".loan.LoanMenuActivity" />
+        </activity>
+        <activity
+            android:name=".homeloan.activity_home_loan_menu"
+            android:label="@string/title_activity_home_loan_menu"
+            android:parentActivityName=".loan.LoanActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".loan.LoanActivity" />
+        </activity>
+        <activity
+            android:name=".webviews.commonwebview.CommonWebviewActivity"
+            android:label="@string/title_activity_common_webview"
+            android:parentActivityName=".home.MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.home.MainActivity" />
+        </activity>
+    </application>
+
+</manifest>
