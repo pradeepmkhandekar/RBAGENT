@@ -359,9 +359,15 @@ public class MainActivity extends BaseActivity implements IResponseSubcriber, Vi
                         CURRENT_TAG = TAG_REPOSITORY;
                         break;
                     case R.id.nav_yes_bank_bot:
+                        String url;
+                        if (loginFacade.getUser().getBrokerId() == 0) {
+                            url = "https://yesbankbot.buildquickbots.com/chat/rupeeboss/staff/?userid=" + loginFacade.getUser().getEmpCode() + "&usertype=RBA&vkey=b34f02e9-8f1c";
+                        } else {
+                            url = "https://yesbankbot.buildquickbots.com/chat/rupeeboss/staff/?userid=" + loginFacade.getUser().getBrokerId() + "&usertype=RBA&vkey=b34f02e9-8f1c";
+                        }
 
-                        String url = "https://yesbankbot.buildquickbots.com/chat/rupeeboss_uat/staff/?userid=" + loginFacade.getUser().getBrokerId() +
-                                "&usertype=RBA&vkey=8da76ddb-49cb-4c84-b14e-b72d951e2495";
+                        /*String url = "https://yesbankbot.buildquickbots.com/chat/rupeeboss_uat/staff/?userid=" + loginFacade.getUser().getEmpCode() +
+                                "&usertype=RBA&vkey=8da76ddb-49cb-4c84-b14e-b72d951e2495";*/
                         startActivity(new Intent(MainActivity.this, CommonWebviewActivity.class)
                                 .putExtra("URL", url)
                                 .putExtra("NAME", "YES BANK BOT")
