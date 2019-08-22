@@ -190,27 +190,27 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
                 startActivity(new Intent(getActivity(), CallingActivity.class));
                 break;
             case R.id.ivContact:
-                if (ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.WRITE_CALL_LOG)
-                        + ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE)
-                        + ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_PHONE_STATE)
-                        + ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.RECORD_AUDIO)
-                        + ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                        + ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
-                        + ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_CONTACTS)
-                        != PackageManager.PERMISSION_GRANTED) {
-                    //  requestPermissions(new String[] {android.Manifest.permission.READ_CONTACTS}, Utility.MY_PERMISSIONS_REQUEST_READ_CONTACTS);
-                    requestPermissions(new String[]{android.Manifest.permission.WRITE_CALL_LOG,
-                            android.Manifest.permission.CALL_PHONE,
-                            android.Manifest.permission.READ_PHONE_STATE,
-                            android.Manifest.permission.RECORD_AUDIO,
-                            android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                            android.Manifest.permission.ACCESS_FINE_LOCATION,
-                            android.Manifest.permission.READ_CONTACTS,
-                    }, Utility.REQUEST_CODE_ASK_PERMISSIONS_ALL);
-                } else {
+//                if (ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.WRITE_CALL_LOG)
+//                        + ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE)
+//                        + ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_PHONE_STATE)
+//                        + ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.RECORD_AUDIO)
+//                        + ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE)
+//                        + ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
+//                        + ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_CONTACTS)
+//                        != PackageManager.PERMISSION_GRANTED) {
+//                    //  requestPermissions(new String[] {android.Manifest.permission.READ_CONTACTS}, Utility.MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+//                    requestPermissions(new String[]{android.Manifest.permission.WRITE_CALL_LOG,
+//                            android.Manifest.permission.CALL_PHONE,
+//                            android.Manifest.permission.READ_PHONE_STATE,
+//                            android.Manifest.permission.RECORD_AUDIO,
+//                            android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+//                            android.Manifest.permission.ACCESS_FINE_LOCATION,
+//                            android.Manifest.permission.READ_CONTACTS,
+//                    }, Utility.REQUEST_CODE_ASK_PERMISSIONS_ALL);
+//                } else {
 
                     startActivity(new Intent(getActivity(), ContactActivity.class));
-                }
+               // }
 
                 break;
             case R.id.ivRepository:

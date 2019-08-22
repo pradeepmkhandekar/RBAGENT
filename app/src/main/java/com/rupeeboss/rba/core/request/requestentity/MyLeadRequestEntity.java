@@ -15,6 +15,9 @@ public class MyLeadRequestEntity {
     private int pgNo;
     private String brokerId;
 
+
+    private String remark;
+
     public String getCode() {
         return code;
     }
@@ -38,4 +41,13 @@ public class MyLeadRequestEntity {
     public void setBrokerId(String brokerId) {
         this.brokerId = brokerId;
     }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
 }

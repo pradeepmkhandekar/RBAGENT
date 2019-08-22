@@ -22,7 +22,7 @@ public class LoginRequestBuilder extends WCFRetroRequestBuilder {
 
     public interface LoginNetworkService {
 
-        @POST("/LoginDtls.svc/XMLService/getUsrLoginDetailsForRBA")
+        @POST("/LoginDtls.svc/XMLService/getUsrLoginDetailsForRBANew")
         Call<LoginResponse> login(@Body HashMap<String, String> bodyParameter);
 
         @POST("/LoginDtls.svc/XMLService/upldEmpProfilePic")

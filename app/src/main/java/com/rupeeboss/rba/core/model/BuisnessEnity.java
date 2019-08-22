@@ -9,6 +9,7 @@ public  class BuisnessEnity implements Parcelable  {
         custName = in.readString();
         loanAmount = in.readDouble();
         product = in.readString();
+        bank = in.readString();
     }
 
     public static final Creator<BuisnessEnity> CREATOR = new Creator<BuisnessEnity>() {
@@ -47,6 +48,15 @@ public  class BuisnessEnity implements Parcelable  {
         this.product = product;
     }
 
+    public String getBank() {
+        return bank;
+    }
+
+    public void setBank(String bank) {
+        this.bank = bank;
+    }
+
+
     /**
              * custName : sumit lead
              * loanAmount : 9000000
@@ -58,6 +68,8 @@ public  class BuisnessEnity implements Parcelable  {
             private String product;
 
 
+    private String bank;
+
     @Override
     public int describeContents() {
         return 0;
@@ -68,5 +80,6 @@ public  class BuisnessEnity implements Parcelable  {
         dest.writeString(custName);
         dest.writeDouble(loanAmount);
         dest.writeString(product);
+        dest.writeString(bank);
     }
 }

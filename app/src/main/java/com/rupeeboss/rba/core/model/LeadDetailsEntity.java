@@ -38,6 +38,7 @@ public class LeadDetailsEntity implements Parcelable {
     private String ProdType;
     private String loanAmnt;
 
+    private String remark;
     public String getCustName() {
         return custName;
     }
@@ -84,6 +85,14 @@ public class LeadDetailsEntity implements Parcelable {
 
     public void setLoanAmnt(String loanAmnt) {
         this.loanAmnt = loanAmnt;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
     @Override

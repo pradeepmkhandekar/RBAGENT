@@ -53,14 +53,14 @@ public class RbDialerPadActivity extends BaseActivity implements View.OnClickLis
     ImageView btnCall, btnDelete;
     String mbNumber;
 
-    String[] perms = {"android.permission.WRITE_CALL_LOG",
-            "android.permission.CALL_PHONE",
-            "android.permission.READ_PHONE_STATE",
-            "android.permission.RECORD_AUDIO",
-            "android.permission.WRITE_EXTERNAL_STORAGE",
-            "android.permission.ACCESS_FINE_LOCATION",
-            "android.permission.READ_CONTACTS",
-    }; //"android.permission.ACCESS_COARSE_LOCATION",
+//    String[] perms = {"android.permission.WRITE_CALL_LOG",
+//            "android.permission.CALL_PHONE",
+//            "android.permission.READ_PHONE_STATE",
+//            "android.permission.RECORD_AUDIO",
+//            "android.permission.WRITE_EXTERNAL_STORAGE",
+//            "android.permission.ACCESS_FINE_LOCATION",
+//            "android.permission.READ_CONTACTS",
+//    }; //"android.permission.ACCESS_COARSE_LOCATION",
 
     final private int REQUEST_CODE_ASK_PERMISSIONS = 1111;
 
@@ -165,14 +165,14 @@ public class RbDialerPadActivity extends BaseActivity implements View.OnClickLis
                 onDeletePressed();
                 break;
             case R.id.btnCall:
-                if (!checkPermission()) {
-                    requestPermission();
-                } else {
+//                if (!checkPermission()) {
+//                    requestPermission();
+//                } else {
                     if (etPhoneNumber.getText().length() != 0) {
                         mbNumber = etPhoneNumber.getText().toString();
                         dialCall(etPhoneNumber.getText().toString());
                     }
-                }
+//                }
                 break;
 
             case R.id.etPhoneNumber:
@@ -296,7 +296,7 @@ public class RbDialerPadActivity extends BaseActivity implements View.OnClickLis
             }
         };
         telephonyManager.listen(callStateListener, PhoneStateListener.LISTEN_CALL_STATE);
-        Intent intent = new Intent(Intent.ACTION_CALL);
+        Intent intent = new Intent(Intent.ACTION_DIAL);
         intent.setData(Uri.parse("tel:" + mbNumber));
         startActivity(intent);
     }
@@ -320,73 +320,73 @@ public class RbDialerPadActivity extends BaseActivity implements View.OnClickLis
     }
 
 
-    private boolean checkPermission() {
+   // private boolean checkPermission() {
 
-        int writeLogResult = ContextCompat.checkSelfPermission(getApplicationContext(), perms[0]);
-        int callPhomeResult = ContextCompat.checkSelfPermission(getApplicationContext(), perms[1]);
-        int readPhonestate = ContextCompat.checkSelfPermission(getApplicationContext(), perms[2]);
-        int recordAudio = ContextCompat.checkSelfPermission(getApplicationContext(), perms[3]);
-        int writeExternal = ContextCompat.checkSelfPermission(getApplicationContext(), perms[4]);
-        int fineLocation = ContextCompat.checkSelfPermission(getApplicationContext(), perms[5]);
-        int readContact = ContextCompat.checkSelfPermission(getApplicationContext(), perms[6]);
+//        int writeLogResult = ContextCompat.checkSelfPermission(getApplicationContext(), perms[0]);
+//        int callPhomeResult = ContextCompat.checkSelfPermission(getApplicationContext(), perms[1]);
+//        int readPhonestate = ContextCompat.checkSelfPermission(getApplicationContext(), perms[2]);
+//        int recordAudio = ContextCompat.checkSelfPermission(getApplicationContext(), perms[3]);
+//        int writeExternal = ContextCompat.checkSelfPermission(getApplicationContext(), perms[4]);
+//        int fineLocation = ContextCompat.checkSelfPermission(getApplicationContext(), perms[5]);
+//        int readContact = ContextCompat.checkSelfPermission(getApplicationContext(), perms[6]);
+//
+//        return writeLogResult == PackageManager.PERMISSION_GRANTED
+//                && callPhomeResult == PackageManager.PERMISSION_GRANTED
+//                && readPhonestate == PackageManager.PERMISSION_GRANTED
+//                && recordAudio == PackageManager.PERMISSION_GRANTED
+//                && writeExternal == PackageManager.PERMISSION_GRANTED
+//                //&& coarseLocation == PackageManager.PERMISSION_GRANTED
+//                && fineLocation == PackageManager.PERMISSION_GRANTED
+//                && readContact == PackageManager.PERMISSION_GRANTED;
+  //  }
 
-        return writeLogResult == PackageManager.PERMISSION_GRANTED
-                && callPhomeResult == PackageManager.PERMISSION_GRANTED
-                && readPhonestate == PackageManager.PERMISSION_GRANTED
-                && recordAudio == PackageManager.PERMISSION_GRANTED
-                && writeExternal == PackageManager.PERMISSION_GRANTED
-                //&& coarseLocation == PackageManager.PERMISSION_GRANTED
-                && fineLocation == PackageManager.PERMISSION_GRANTED
-                && readContact == PackageManager.PERMISSION_GRANTED;
-    }
+//    private void requestPermission() {
+//       // ActivityCompat.requestPermissions(this, perms, REQUEST_CODE_ASK_PERMISSIONS);
+//    }
 
-    private void requestPermission() {
-        ActivityCompat.requestPermissions(this, perms, REQUEST_CODE_ASK_PERMISSIONS);
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        Log.d("RbDialerPadActivity", "onRequestPermissionsResult");
-        switch (requestCode) {
-            case REQUEST_CODE_ASK_PERMISSIONS:
-                if (grantResults.length > 0) {
-
-                    boolean writeLog = grantResults[0] == PackageManager.PERMISSION_GRANTED;
-                    boolean callPhone = grantResults[1] == PackageManager.PERMISSION_GRANTED;
-                    boolean phoneState = grantResults[2] == PackageManager.PERMISSION_GRANTED;
-                    boolean recordAudio = grantResults[3] == PackageManager.PERMISSION_GRANTED;
-                    boolean writeExternal = grantResults[4] == PackageManager.PERMISSION_GRANTED;
-
-                    boolean accessFine = grantResults[5] == PackageManager.PERMISSION_GRANTED;
-                    boolean readContact = grantResults[6] == PackageManager.PERMISSION_GRANTED;
-
-
-                    if (writeLog && callPhone && phoneState && recordAudio && writeExternal && accessFine && readContact) {
-
-                        if (etPhoneNumber.getText().length() != 0) {
-                            mbNumber = etPhoneNumber.getText().toString();
-                            dialCall(etPhoneNumber.getText().toString());
-                        }
-                    } else {
-
-                        //Permission Denied, You cannot access location data and camera
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-
-                            showMessageOKCancel("You need to grant all permissions", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    finish();
-                                }
-                            });
-
-                        }
-
-                    }
-                }
-                break;
-        }
-    }
-
+// @Override
+//    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+//        Log.d("RbDialerPadActivity", "onRequestPermissionsResult");
+//        switch (requestCode) {
+//            case REQUEST_CODE_ASK_PERMISSIONS:
+//                if (grantResults.length > 0) {
+//
+//                    boolean writeLog = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+//                    boolean callPhone = grantResults[1] == PackageManager.PERMISSION_GRANTED;
+//                    boolean phoneState = grantResults[2] == PackageManager.PERMISSION_GRANTED;
+//                    boolean recordAudio = grantResults[3] == PackageManager.PERMISSION_GRANTED;
+//                    boolean writeExternal = grantResults[4] == PackageManager.PERMISSION_GRANTED;
+//
+//                    boolean accessFine = grantResults[5] == PackageManager.PERMISSION_GRANTED;
+//                    boolean readContact = grantResults[6] == PackageManager.PERMISSION_GRANTED;
+//
+//
+//                    if (writeLog && callPhone && phoneState && recordAudio && writeExternal && accessFine && readContact) {
+//
+//                        if (etPhoneNumber.getText().length() != 0) {
+//                            mbNumber = etPhoneNumber.getText().toString();
+//                            dialCall(etPhoneNumber.getText().toString());
+//                        }
+//                    } else {
+//
+//                        //Permission Denied, You cannot access location data and camera
+//                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//
+//                            showMessageOKCancel("You need to grant all permissions", new DialogInterface.OnClickListener() {
+//                                @Override
+//                                public void onClick(DialogInterface dialogInterface, int i) {
+//                                    finish();
+//                                }
+//                            });
+//
+//                        }
+//
+//                    }
+//                }
+//                break;
+//        }
+//    }
+//
 
     private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
         new AlertDialog.Builder(RbDialerPadActivity.this)

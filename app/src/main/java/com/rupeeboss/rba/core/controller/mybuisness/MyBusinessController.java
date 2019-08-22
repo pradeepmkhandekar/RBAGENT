@@ -40,6 +40,7 @@ public class MyBusinessController implements  IMyBusinessController {
         bodyparameter.put("empCode", empCode);
         bodyparameter.put("type", type);
         bodyparameter.put("brokerId", brokerId);
+        bodyparameter.put("bank", "bank");
 
         businessNetworkService.myBuisness(bodyparameter).enqueue(new Callback<MyBusinessResponse>() {
             @Override

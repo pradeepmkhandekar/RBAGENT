@@ -261,6 +261,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
             android:layout_weight="1"
+            android:visibility="gone"
             android:background="@color/red_new_alpha"
             android:gravity="center_horizontal|center_vertical"
             android:orientation="vertical">

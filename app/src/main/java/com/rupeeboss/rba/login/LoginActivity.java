@@ -41,16 +41,13 @@ public class LoginActivity extends BaseActivity implements IResponseSubcriber, V
     TextView txtnewRegistration;
     TextView txtForgotPwd;
 
-    String[] perms = {"android.permission.WRITE_CALL_LOG",
-            "android.permission.CALL_PHONE",
+    String[] perms = {
+            "android.permission.CAMERA",
             "android.permission.READ_PHONE_STATE",
             "android.permission.RECORD_AUDIO",
             "android.permission.WRITE_EXTERNAL_STORAGE",
-            "android.permission.ACCESS_FINE_LOCATION",
-            "android.permission.READ_CONTACTS",
-            "android.permission.SEND_SMS",
-            "android.permission.READ_SMS",
-            "android.permission.RECEIVE_SMS"}; //"android.permission.ACCESS_COARSE_LOCATION",
+            "android.permission.ACCESS_FINE_LOCATION"
+         }; //"android.permission.ACCESS_COARSE_LOCATION",
 
 
     @Override
@@ -206,67 +203,28 @@ public class LoginActivity extends BaseActivity implements IResponseSubcriber, V
 
     private boolean checkPermission() {
 
-        int writeLogResult = ContextCompat.checkSelfPermission(getApplicationContext(), perms[0]);
-        int callPhomeResult = ContextCompat.checkSelfPermission(getApplicationContext(), perms[1]);
-        int readPhonestate = ContextCompat.checkSelfPermission(getApplicationContext(), perms[2]);
-        int recordAudio = ContextCompat.checkSelfPermission(getApplicationContext(), perms[3]);
-        int writeExternal = ContextCompat.checkSelfPermission(getApplicationContext(), perms[4]);
-        int fineLocation = ContextCompat.checkSelfPermission(getApplicationContext(), perms[5]);
-        int readContact = ContextCompat.checkSelfPermission(getApplicationContext(), perms[6]);
-        int sendSms = ContextCompat.checkSelfPermission(getApplicationContext(), perms[7]);
-        int readSms = ContextCompat.checkSelfPermission(getApplicationContext(), perms[8]);
-        int receiveSms = ContextCompat.checkSelfPermission(getApplicationContext(), perms[8]);
+        int accessCamera = ContextCompat.checkSelfPermission(getApplicationContext(), perms[0]);
 
+        int readPhonestate = ContextCompat.checkSelfPermission(getApplicationContext(), perms[1]);
+        int recordAudio = ContextCompat.checkSelfPermission(getApplicationContext(), perms[2]);
+        int writeExternal = ContextCompat.checkSelfPermission(getApplicationContext(), perms[3]);
+        int fineLocation = ContextCompat.checkSelfPermission(getApplicationContext(), perms[4]);
         //int fineLocation = ContextCompat.checkSelfPermission(getApplicationContext(), perms[7]);
-        return writeLogResult == PackageManager.PERMISSION_GRANTED
-                && callPhomeResult == PackageManager.PERMISSION_GRANTED
+        return accessCamera == PackageManager.PERMISSION_GRANTED
+
                 && readPhonestate == PackageManager.PERMISSION_GRANTED
                 && recordAudio == PackageManager.PERMISSION_GRANTED
                 && writeExternal == PackageManager.PERMISSION_GRANTED
-                //&& coarseLocation == PackageManager.PERMISSION_GRANTED
-                && fineLocation == PackageManager.PERMISSION_GRANTED
-                && readContact == PackageManager.PERMISSION_GRANTED
-                && sendSms == PackageManager.PERMISSION_GRANTED
-                && readSms == PackageManager.PERMISSION_GRANTED
-                && receiveSms == PackageManager.PERMISSION_GRANTED
-                ;
+
+                && fineLocation == PackageManager.PERMISSION_GRANTED;
+
+
     }
 
     private void requestPermission() {
         ActivityCompat.requestPermissions(this, perms, Utility.REQUEST_CODE_ASK_PERMISSIONS_Login);
     }
 
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-//        Log.d("LoginActivity", "onRequestPermissionsResult");
-//        switch (requestCode) {
-//            case Utility.REQUEST_CODE_ASK_PERMISSIONS_Login:
-//                if (grantResults.length > 0) {
-//
-//                    boolean writeLog = grantResults[0] == PackageManager.PERMISSION_GRANTED;
-//                    boolean callPhone = grantResults[1] == PackageManager.PERMISSION_GRANTED;
-//                    boolean phoneState = grantResults[2] == PackageManager.PERMISSION_GRANTED;
-//                    boolean recordAudio = grantResults[3] == PackageManager.PERMISSION_GRANTED;
-//                    boolean writeExternal = grantResults[4] == PackageManager.PERMISSION_GRANTED;
-//                    // boolean accessCoarse = grantResults[6] == PackageManager.PERMISSION_GRANTED;
-//                    boolean accessFine = grantResults[6] == PackageManager.PERMISSION_GRANTED;
-//                    boolean readContact = grantResults[7] == PackageManager.PERMISSION_GRANTED;
-//                    boolean sendSms = grantResults[8] == PackageManager.PERMISSION_GRANTED;
-//                    boolean readSms = grantResults[9] == PackageManager.PERMISSION_GRANTED;
-//
-//                    if (writeLog && callPhone && phoneState && recordAudio && writeExternal && accessFine && readContact && sendSms && readSms) {
-//
-//                        btnLogin.findFocus();
-//                    } else {
-//
-//                        btnLogin.findFocus();
-//
-//                    }
-//                }
-//                break;
-//        }
-//    }
-//
 
 
 }

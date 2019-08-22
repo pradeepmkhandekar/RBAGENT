@@ -27,13 +27,14 @@ public class BuisnessPopUpAdapter  extends RecyclerView.Adapter<BuisnessPopUpAda
     }
 
     public class BuisnessPopUPItem extends RecyclerView.ViewHolder{
-        public TextView txtCustName,  txtAmount,  txtProduct;
+        public TextView txtCustName,  txtAmount,  txtProduct,txtbank;
 
         public BuisnessPopUPItem(View itemView) {
             super(itemView);
             txtCustName = (TextView)itemView.findViewById(R.id.txtCustName);
             txtAmount = (TextView)itemView.findViewById(R.id.txtAmount);
             txtProduct = (TextView)itemView.findViewById(R.id.txtProduct);
+            txtbank= (TextView)itemView.findViewById(R.id.txtbank);
         }
     }
 
@@ -51,6 +52,7 @@ public class BuisnessPopUpAdapter  extends RecyclerView.Adapter<BuisnessPopUpAda
         holder.txtCustName.setText(buisnessEnity.getCustName());
         holder.txtAmount.setText(""+ buisnessEnity.getLoanAmount());
         holder.txtProduct.setText(buisnessEnity.getProduct());
+        holder.txtbank.setText(buisnessEnity.getBank());
     }
 
 

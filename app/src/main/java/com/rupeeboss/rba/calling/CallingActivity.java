@@ -479,7 +479,7 @@ public class CallingActivity extends BaseActivity implements View.OnClickListene
             }
         };
         telephonyManager.listen(callStateListener, PhoneStateListener.LISTEN_CALL_STATE);
-        Intent intent = new Intent(Intent.ACTION_CALL);
+        Intent intent = new Intent(Intent.ACTION_DIAL);
         intent.setData(Uri.parse("tel:" + mbNumber));
         startActivity(intent);
     }

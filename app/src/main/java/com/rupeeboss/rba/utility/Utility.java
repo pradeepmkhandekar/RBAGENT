@@ -83,16 +83,16 @@ public class Utility {
     final static public int REQUEST_CODE_ASK_PERMISSIONS_ALL = 125;
     public static final int REQUEST_CODE_ASK_PERMISSIONS_Login= 126;
 
-    public static String[] perms = {"android.permission.WRITE_CALL_LOG",
+    /*public static String[] perms = {"android.permission.WRITE_CALL_LOG",
             "android.permission.CALL_PHONE",
             "android.permission.READ_PHONE_STATE",
-            "android.permission.RECORD_AUDIO",
+            "android.permission.RECORD_AUDIO",F
             "android.permission.WRITE_EXTERNAL_STORAGE",
             "android.permission.ACCESS_FINE_LOCATION",
             "android.permission.READ_CONTACTS",
             "android.permission.SEND_SMS",
             "android.permission.READ_SMS"}; //"android.permission.ACCESS_COARSE_LOCATION",
-
+*/
     public static String getCurrentMobileDateTime() {
         SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy_HHmmss");
         String currentDateandTime = sdf.format(new Date());

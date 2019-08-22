@@ -31,7 +31,7 @@ public class MyLeadAdapter extends RecyclerView.Adapter<MyLeadAdapter.MyViewHold
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView txtName, txtMobileNo, txtStatus, txtLoanAmnt,txtProdType ,txtAssignee;
+        public TextView txtName, txtMobileNo, txtStatus, txtLoanAmnt,txtProdType ,txtAssignee,txtRemark;
         ImageView btncallImage;
         LinearLayout llsmsItem, linearLayout1;
 
@@ -42,6 +42,7 @@ public class MyLeadAdapter extends RecyclerView.Adapter<MyLeadAdapter.MyViewHold
             txtMobileNo = (TextView) itemView.findViewById(R.id.txtMobileNo);
             txtStatus = (TextView) itemView.findViewById(R.id.txtStatus);
             txtAssignee = (TextView) itemView.findViewById(R.id.txtAssignee);
+            txtRemark = (TextView) itemView.findViewById(R.id.txtRemark);
 
             txtLoanAmnt = (TextView) itemView.findViewById(R.id.txtLoanAmnt);
             txtProdType = (TextView) itemView.findViewById(R.id.txtProdType);
@@ -73,6 +74,7 @@ public class MyLeadAdapter extends RecyclerView.Adapter<MyLeadAdapter.MyViewHold
         holder.txtProdType.setText(leadDetailsEntity.getProdType());
         holder.txtLoanAmnt.setText(leadDetailsEntity.getLoanAmnt());
         holder.txtAssignee.setText(leadDetailsEntity.getAssigneeName());
+        holder.txtRemark.setText(leadDetailsEntity.getRemark());
         holder.btncallImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
