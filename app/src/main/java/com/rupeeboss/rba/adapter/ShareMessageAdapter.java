@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.content.pm.LabeledIntent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +15,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.rupeeboss.rba.R;
-import com.rupeeboss.rba.core.facade.LoginFacade;
-import com.rupeeboss.rba.core.model.LoginEntity;
 import com.rupeeboss.rba.core.model.LstShareMessageEntity;
 import com.rupeeboss.rba.sharemessage.LeadSmsActivity;
 

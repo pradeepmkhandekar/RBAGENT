@@ -2,18 +2,15 @@ package com.rupeeboss.rba.webviews.ShortTermPersonalLoan;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.view.View;
-import android.webkit.WebView;
 import android.widget.LinearLayout;
 
 import com.rupeeboss.rba.BaseActivity;
 import com.rupeeboss.rba.R;
 import com.rupeeboss.rba.personalloan.IIFLWebviewActivity;
-import com.rupeeboss.rba.personalloan.LoanPersonalActivity;
 
 public class ShortTermPersonalLoanActivity extends BaseActivity implements View.OnClickListener {
     LinearLayout llearly, llsenseLoan;

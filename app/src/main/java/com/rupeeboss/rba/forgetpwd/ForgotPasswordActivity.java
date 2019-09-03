@@ -1,10 +1,9 @@
 package com.rupeeboss.rba.forgetpwd;
 
-import android.content.Intent;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
+import com.google.android.material.snackbar.Snackbar;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,10 +14,7 @@ import com.rupeeboss.rba.R;
 import com.rupeeboss.rba.core.APIResponse;
 import com.rupeeboss.rba.core.IResponseSubcriber;
 import com.rupeeboss.rba.core.controller.authenticate.Authentication;
-import com.rupeeboss.rba.core.facade.LoginFacade;
 import com.rupeeboss.rba.core.response.ForgotPasswordResponse;
-import com.rupeeboss.rba.core.response.LoginResponse;
-import com.rupeeboss.rba.home.MainActivity;
 import com.rupeeboss.rba.utility.Constants;
 
 public class ForgotPasswordActivity extends BaseActivity implements  IResponseSubcriber,  View.OnClickListener {

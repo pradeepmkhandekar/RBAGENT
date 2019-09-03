@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:weightSum="100"
+    tools:context="com.rupeeboss.rba.dashboard.DashboardFragment">
+
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="13"
+        android:gravity="center_horizontal|center_vertical"
+        android:background="@color/dashboard_color3"
+        android:orientation="horizontal">
+        <TextView
+            android:drawableTop="@drawable/contact_us"
+            android:gravity="center_horizontal|center_vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/ivcontact_us"
+            android:text="Contact Us"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+            android:textColor="@color/dashboard_fontcolor3" />
+
+        <TextView
+            android:drawableTop="@drawable/my_business"
+            android:id="@+id/ivmy_business"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="My Business"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+            android:textColor="@color/dashboard_fontcolor3" />
+
+        <TextView
+            android:drawableTop="@drawable/inbox"
+            android:id="@+id/ivinbox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="Inbox"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+            android:textColor="@color/dashboard_fontcolor3" />
+
+        <TextView
+
+            android:drawableTop="@drawable/loan_on_chat"
+            android:id="@+id/ivloan_on_chat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="Loan On Chat"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+            android:textColor="@color/dashboard_fontcolor3" />
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:layout_weight="48"
+        android:background="@color/dashboard_color1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:drawableTop="@drawable/msme"
+                android:gravity="center_horizontal|center_vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/ivmsme"
+                android:text="MSME"
+                android:textAppearance="@style/TextViewStyle.VerySmall"
+                android:textColor="@color/dashboard_fontcolor3" />
+
+
+            <TextView
+                android:drawableTop="@drawable/credit_card"
+                android:gravity="center_horizontal|center_vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/ivcredit_card"
+                android:text="Credit Card"
+                android:textAppearance="@style/TextViewStyle.VerySmall"
+                android:textColor="@color/dashboard_fontcolor3" />
+
+
+
+            <TextView
+                android:drawableTop="@drawable/personal_loan"
+                android:gravity="center_horizontal|center_vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/ivpersonal_loan"
+                android:text="Personal Loan"
+                android:textAppearance="@style/TextViewStyle.VerySmall"
+                android:textColor="@color/dashboard_fontcolor3" />
+
+            <TextView
+                android:drawableTop="@drawable/home_loan"
+                android:gravity="center_horizontal|center_vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/ivhome_loan"
+                android:text="Home Loan"
+                android:textAppearance="@style/TextViewStyle.VerySmall"
+                android:textColor="@color/dashboard_fontcolor3" />
+
+        </LinearLayout>
+
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:drawableTop="@drawable/loan_against_property"
+                android:gravity="center_horizontal|center_vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/ivloan_against_property"
+                android:text="Loan Against\nProperty"
+
+                android:textAppearance="@style/TextViewStyle.VerySmall"
+                android:textColor="@color/dashboard_fontcolor3" />
+
+
+            <TextView
+                android:drawableTop="@drawable/balance_transfer"
+                android:gravity="center_horizontal|center_vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/ivbalance_transfer"
+                android:text="Balance Transfer"
+                android:lines="1"
+                android:ellipsize="end"
+                android:textAppearance="@style/TextViewStyle.VerySmall"
+                android:textColor="@color/dashboard_fontcolor3" />
+
+
+
+            <TextView
+                android:drawableTop="@drawable/car_loan"
+                android:gravity="center_horizontal|center_vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/ivcar_loan"
+                android:text="Car Loan"
+                android:textAppearance="@style/TextViewStyle.VerySmall"
+                android:textColor="@color/dashboard_fontcolor3" />
+
+            <TextView
+                android:drawableTop="@drawable/rectify_product"
+                android:gravity="center_horizontal|center_vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/ivrectify_productss"
+                android:text="Rectify Product"
+                android:lines="1"
+                android:ellipsize="end"
+                android:textAppearance="@style/TextViewStyle.VerySmall"
+                android:textColor="@color/dashboard_fontcolor3" />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:drawableTop="@drawable/working_capital"
+                android:gravity="center_horizontal|center_vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/ivworking_capital"
+                android:text="Working Capital"
+                android:lines="1"
+                android:ellipsize="end"
+                android:textAppearance="@style/TextViewStyle.VerySmall"
+                android:textColor="@color/dashboard_fontcolor3" />
+
+
+            <TextView
+                android:drawableTop="@drawable/cash_loan"
+                android:gravity="center_horizontal|center_vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/ivcash_loan"
+                android:text="Cash Loan"
+                android:textAppearance="@style/TextViewStyle.VerySmall"
+                android:textColor="@color/dashboard_fontcolor3" />
+
+
+
+            <TextView
+                android:drawableTop="@drawable/insurance"
+                android:gravity="center_horizontal|center_vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/ivinsurance"
+                android:text="Insurance"
+                android:textAppearance="@style/TextViewStyle.VerySmall"
+                android:textColor="@color/dashboard_fontcolor3" />
+
+            <TextView
+                android:drawableTop="@drawable/commercial_purchase"
+                android:gravity="center_horizontal|center_vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/ivcommercial_purchase"
+                android:text="Commercial\nPurchase"
+
+                android:textAppearance="@style/TextViewStyle.VerySmall"
+                android:textColor="@color/dashboard_fontcolor3" />
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+    <ss.com.bannerslider.views.BannerSlider
+        android:id="@+id/banner_slider1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="20"
+        app:animateIndicators="true"
+        app:defaultBanner="1"
+        app:defaultIndicators="circle"
+        app:interval="5000"
+        app:loopSlides="true" />
+    <LinearLayout
+        android:id="@+id/explorerba"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:background="@color/dashboard_color1"
+        android:gravity="center"
+
+        android:orientation="horizontal">
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="7dp"
+            android:layout_marginTop="7dp"
+            android:gravity="center"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="70dp"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/txtexplorerba"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:ellipsize="marquee"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:freezesText="true"
+                android:gravity="center_vertical|center_horizontal"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:text="EXPLORE RBA  PROGRAM"
+                android:background="@color/explorer_red"
+                android:textColor="@color/white"
+                android:visibility="visible" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/llFooter"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:gravity="center_horizontal|center_vertical"
+        android:layout_weight="12"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:drawableTop="@drawable/home_loan"
+            android:gravity="center_horizontal|center_vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/ivhome"
+            android:text="Home"
+            android:lines="1"
+            android:ellipsize="end"
+            android:textAppearance="@style/TextViewStyle.VerySmall"
+            android:textColor="@color/dashboard_fontcolor3" />
+
+
+        <TextView
+            android:drawableTop="@drawable/income_simulator"
+            android:gravity="center_horizontal|center_vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/ivincome_simulator"
+            android:text="Income \nSimulator"
+            android:textAppearance="@style/TextViewStyle.VerySmall"
+            android:textColor="@color/dashboard_fontcolor3" />
+
+
+
+        <TextView
+            android:drawableTop="@drawable/scan"
+            android:gravity="center_horizontal|center_vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/ivScan"
+            android:text="Scan"
+            android:textAppearance="@style/TextViewStyle.VerySmall"
+            android:textColor="@color/dashboard_fontcolor3" />
+
+        <TextView
+            android:drawableTop="@drawable/generate_leads"
+            android:gravity="center_horizontal|center_vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/ivgenerate_leads"
+            android:text="Generate \nLeads"
+
+            android:textAppearance="@style/TextViewStyle.VerySmall"
+            android:textColor="@color/dashboard_fontcolor3" />
+
+        <TextView
+            android:drawableTop="@drawable/profile"
+            android:gravity="center_horizontal|center_vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/ivprofile"
+            android:text="Profile"
+            android:lines="1"
+            android:ellipsize="end"
+            android:textAppearance="@style/TextViewStyle.VerySmall"
+            android:textColor="@color/dashboard_fontcolor3" />
+
+    </LinearLayout>
+</LinearLayout>

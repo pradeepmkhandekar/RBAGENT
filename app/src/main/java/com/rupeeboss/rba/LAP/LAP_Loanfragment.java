@@ -1,36 +1,19 @@
 package com.rupeeboss.rba.LAP;
 
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+
+import androidx.fragment.app.Fragment;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.rupeeboss.rba.BaseFragment;
 import com.rupeeboss.rba.R;
-import com.rupeeboss.rba.core.APIResponse;
-import com.rupeeboss.rba.core.IResponseSubcriber;
-import com.rupeeboss.rba.core.controller.quote.QuoteController;
-import com.rupeeboss.rba.core.facade.LoginFacade;
 import com.rupeeboss.rba.core.model.ApplicationDisplayEntity;
-import com.rupeeboss.rba.core.response.QuoteDisplayResponse;
-import com.rupeeboss.rba.homeloan.HomeLoanActivity;
 import com.rupeeboss.rba.loan.ApplicationAdapter;
-import com.rupeeboss.rba.loan.ApplicationFragment;
-import com.rupeeboss.rba.loan.LoanTabsPagerAdapter;
 import com.rupeeboss.rba.utility.DividerItemDecoration;
 
 import java.util.List;

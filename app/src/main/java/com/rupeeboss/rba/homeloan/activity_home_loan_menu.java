@@ -2,10 +2,9 @@ package com.rupeeboss.rba.homeloan;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -13,7 +12,6 @@ import com.rupeeboss.rba.BaseActivity;
 import com.rupeeboss.rba.R;
 import com.rupeeboss.rba.loan.LoanActivity;
 import com.rupeeboss.rba.personalloan.IIFLWebviewActivity;
-import com.rupeeboss.rba.personalloan.LoanPersonalActivity;
 
 public class activity_home_loan_menu extends BaseActivity implements View.OnClickListener {
 

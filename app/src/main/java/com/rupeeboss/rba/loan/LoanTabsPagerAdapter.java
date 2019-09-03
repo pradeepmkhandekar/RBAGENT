@@ -1,18 +1,16 @@
 package com.rupeeboss.rba.loan;
 
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.rupeeboss.rba.core.model.ApplicationDisplayEntity;
 import com.rupeeboss.rba.core.model.QuoteDisplayEntity;
 import com.rupeeboss.rba.core.response.QuoteDisplayResponse;
-import com.rupeeboss.rba.dashboard.DashboardFragment;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class LoanTabsPagerAdapter extends FragmentPagerAdapter {
 

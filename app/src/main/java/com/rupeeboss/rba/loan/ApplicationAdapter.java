@@ -2,8 +2,8 @@ package com.rupeeboss.rba.loan;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +20,6 @@ import com.rupeeboss.rba.core.model.ApplicationDisplayEntity;
 import com.rupeeboss.rba.core.model.CustomerApplicationEntity;
 import com.rupeeboss.rba.core.response.EditApplicationResponse;
 import com.rupeeboss.rba.homeloan.HomeLoanActivity;
-import com.rupeeboss.rba.personalloan.PersonalLoanActivity;
 import com.rupeeboss.rba.utility.Constants;
 import com.rupeeboss.rba.webviewinfo.MoreInfoActivity;
 

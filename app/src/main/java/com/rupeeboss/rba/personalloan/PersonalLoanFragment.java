@@ -1,25 +1,17 @@
 package com.rupeeboss.rba.personalloan;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
+import com.google.android.material.tabs.TabLayout;
+import androidx.viewpager.widget.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.rupeeboss.rba.BaseFragment;
 import com.rupeeboss.rba.R;
 import com.rupeeboss.rba.core.APIResponse;
 import com.rupeeboss.rba.core.IResponseSubcriber;
-import com.rupeeboss.rba.core.controller.personalloan.PersonalLoanController;
-import com.rupeeboss.rba.core.facade.LoginFacade;
-import com.rupeeboss.rba.core.response.QuoteDisplayResponse;
 import com.rupeeboss.rba.loan.LoanTabsPagerAdapter;
 
 /**

@@ -1,30 +1,25 @@
 package com.rupeeboss.rba.incomeSimulator.fragment;
 
 
-import android.content.Context;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.core.content.ContextCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.rupeeboss.rba.BaseFragment;
 import com.rupeeboss.rba.R;
-import com.rupeeboss.rba.incomeSimulator.IncomeSimulatorActivity;
 import com.rupeeboss.rba.utility.Constants;
 
 /**

@@ -1,7 +1,7 @@
 package com.rupeeboss.rba.quotes;
 
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 import android.widget.ImageView;
 import android.widget.TextView;
 

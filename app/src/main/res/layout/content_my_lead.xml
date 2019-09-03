@@ -8,12 +8,12 @@
     tools:context="com.rupeeboss.rba.mylead.MyLeadActivity"
     tools:showIn="@layout/activity_my_lead">
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/myLeadRecycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/btnSubmit">
 
-    </android.support.v7.widget.RecyclerView>
+    </androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>

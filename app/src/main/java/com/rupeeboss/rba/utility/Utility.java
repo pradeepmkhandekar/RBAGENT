@@ -13,15 +13,14 @@ import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.app.AlertDialog;
 import android.util.Base64;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 import com.rupeeboss.rba.core.model.AssigneeEntity;
-import com.rupeeboss.rba.core.model.BreakDtlsEntity;
 import com.rupeeboss.rba.core.model.ProductsEntity;
 import com.rupeeboss.rba.core.model.StatusEntity;
 
@@ -29,7 +28,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;

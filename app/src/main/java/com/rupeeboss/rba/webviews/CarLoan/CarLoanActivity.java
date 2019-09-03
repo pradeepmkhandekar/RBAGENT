@@ -1,17 +1,14 @@
 package com.rupeeboss.rba.webviews.CarLoan;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import com.rupeeboss.rba.R;
-import com.rupeeboss.rba.core.facade.LoginFacade;
 import com.rupeeboss.rba.webviews.homeloan.MyWebViewClient;
 
 public class CarLoanActivity extends AppCompatActivity {

@@ -1,25 +1,19 @@
 package com.rupeeboss.rba.EmiCalculator;
 
-import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -30,32 +24,21 @@ import com.rupeeboss.rba.R;
 import com.rupeeboss.rba.core.APIResponse;
 import com.rupeeboss.rba.core.IResponseSubcriber;
 import com.rupeeboss.rba.core.controller.Emicalculator.EmiHomeCalculatorController;
-import com.rupeeboss.rba.core.controller.homeloan.HomeLoanController;
-import com.rupeeboss.rba.core.facade.CityFacade;
 import com.rupeeboss.rba.core.facade.HomeLoanRequestfacade;
-import com.rupeeboss.rba.core.facade.LoginFacade;
-import com.rupeeboss.rba.core.facade.ProductFacade;
 import com.rupeeboss.rba.core.facade.PropertyFacade;
 
 
 import com.rupeeboss.rba.core.model.EmiHomeCalcuatorEntity;
 import com.rupeeboss.rba.core.model.PropertyEntity;
-import com.rupeeboss.rba.core.model.QuoteEntity;
 import com.rupeeboss.rba.core.request.requestentity.HomeEmiCalRequest;
 import com.rupeeboss.rba.core.request.requestentity.HomeLoanRequest;
 import com.rupeeboss.rba.core.response.EmiHomeCalcResponse;
 
-import com.rupeeboss.rba.homeloan.ApplicantEntity;
-
-import com.rupeeboss.rba.quotes.QuoteActivity;
-import com.rupeeboss.rba.utility.Constants;
-import com.rupeeboss.rba.utility.DateTimePicker;
 import com.rupeeboss.rba.utility.Utility;
 
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class HomeEMICalcActivity extends BaseActivity implements View.OnClickListener,IResponseSubcriber,SeekBar.OnSeekBarChangeListener,TextWatcher {
 

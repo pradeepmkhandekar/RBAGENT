@@ -2,15 +2,14 @@ package com.rupeeboss.rba.incomeSimulator;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.NonNull;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.appcompat.widget.Toolbar;
 
 import android.view.MenuItem;
 import android.view.View;
@@ -23,8 +22,6 @@ import com.rupeeboss.rba.incomeSimulator.fragment.ImmediateFragment;
 import com.rupeeboss.rba.incomeSimulator.fragment.IncomeSimulatorFragment;
 import com.rupeeboss.rba.incomeSimulator.fragment.InvitingFragment;
 import com.rupeeboss.rba.incomeSimulator.fragment.MonthlyFragment;
-
-import java.util.Locale;
 
 import static com.rupeeboss.rba.R.id.action_Immediate;
 import static com.rupeeboss.rba.R.id.action_Inviting;
@@ -203,7 +200,7 @@ public class IncomeSimulatorActivity extends BaseActivity implements View.OnClic
     private void validateTotal(int type) {
 
         try {
-            android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(IncomeSimulatorActivity.this);
+            androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(IncomeSimulatorActivity.this);
             builder.setTitle("Warning...");
 
             if (type == 0) {
@@ -221,7 +218,7 @@ public class IncomeSimulatorActivity extends BaseActivity implements View.OnClic
                     });
 
 
-            final android.support.v7.app.AlertDialog dialog = builder.create();
+            final androidx.appcompat.app.AlertDialog dialog = builder.create();
             dialog.setCancelable(false);
             dialog.setCanceledOnTouchOutside(false);
             dialog.show();

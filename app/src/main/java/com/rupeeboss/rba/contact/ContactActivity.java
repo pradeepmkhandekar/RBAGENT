@@ -1,12 +1,9 @@
 package com.rupeeboss.rba.contact;
 
 import android.app.SearchManager;
-import android.content.ContentResolver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.media.MediaRecorder;
@@ -16,11 +13,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.provider.MediaStore;
-import android.support.design.widget.Snackbar;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
-import android.support.v7.widget.Toolbar;
+import com.google.android.material.snackbar.Snackbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.util.Log;
@@ -30,7 +27,6 @@ import android.view.MenuItem;
 import android.view.View;
 
 import android.widget.FrameLayout;
-import android.widget.Toast;
 
 import com.rupeeboss.rba.BaseActivity;
 import com.rupeeboss.rba.R;
@@ -47,7 +43,6 @@ import com.rupeeboss.rba.utility.Utility;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class ContactActivity extends BaseActivity implements IResponseSubcriber {

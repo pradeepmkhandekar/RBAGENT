@@ -1,14 +1,13 @@
 package com.rupeeboss.rba.changepassword;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.design.widget.TextInputEditText;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+
+import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.textfield.TextInputEditText;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.rupeeboss.rba.BaseActivity;
@@ -18,9 +17,6 @@ import com.rupeeboss.rba.core.IResponseSubcriber;
 import com.rupeeboss.rba.core.controller.authenticate.Authentication;
 import com.rupeeboss.rba.core.facade.LoginFacade;
 import com.rupeeboss.rba.core.response.ChangePasseordResponse;
-import com.rupeeboss.rba.home.MainActivity;
-import com.rupeeboss.rba.rbaddlead.RbAddLeadActivity;
-import com.rupeeboss.rba.utility.Utility;
 
 public class ChangePasswordActivity extends BaseActivity implements IResponseSubcriber, View.OnClickListener {
 

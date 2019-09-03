@@ -4,7 +4,7 @@ import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -214,7 +214,7 @@ public class BusinessLoanCalActivity extends BaseActivity implements View.OnClic
     private void showDialogLoan(String amnt) {
 
         try {
-            android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(BusinessLoanCalActivity.this, R.style.MyAlertDialogStyle);
+            androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(BusinessLoanCalActivity.this, R.style.MyAlertDialogStyle);
             builder.setTitle("Business Loan Calculator");
 
             builder.setMessage("Loan Eligibility Is : " + amnt + "");
@@ -229,7 +229,7 @@ public class BusinessLoanCalActivity extends BaseActivity implements View.OnClic
                         }
                     });
 
-            final android.support.v7.app.AlertDialog dialog = builder.create();
+            final androidx.appcompat.app.AlertDialog dialog = builder.create();
             dialog.setCancelable(false);
             dialog.setCanceledOnTouchOutside(false);
             dialog.show();

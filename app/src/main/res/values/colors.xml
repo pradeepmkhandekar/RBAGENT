@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#1a83d6</color>
-    <color name="colorPrimaryDark">#28a0ff</color>
-    <color name="colorAccent">#28a0ff</color>
+    <color name="colorPrimary">#DDDDDD</color>
+    <color name="colorPrimaryDark">#696969</color>
+    <color name="colorAccent">#efefef</color>
     <color name="darkBlue">#1565c0</color>
+    <color name="windowBackground">#696969</color>
 
     <color name="bg">#eeeeee</color>
-    <color name="background_color">#dadada</color>
+    <color name="background_color">#e4e2e3</color>
     <color name="green">#00796B</color>
     <color name="white_transparent">#80ffffff</color>
 
@@ -62,5 +63,13 @@
 
     <color name="red_new">#e31e24</color>
     <color name="red_new_alpha">#f72121</color>
+
+    <color name="explorer_red">#e3010f</color>
+    <color name="dashboard_color">#e3e3e3</color>
+    <color name="dashboard_color1">#e6e6e6</color>
+    <color name="dashboard_color3">#b2b2b2</color>
+    <color name="dashboard_fontcolor3">#1f3871</color>
+    <color name="secondary_text_color">#9ba0a6</color>
+    <color name="description_text">#929292</color>
 
 </resources>

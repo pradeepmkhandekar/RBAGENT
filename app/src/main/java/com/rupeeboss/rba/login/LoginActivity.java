@@ -1,20 +1,18 @@
 package com.rupeeboss.rba.login;
 
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.constraint.ConstraintLayout;
-import android.support.design.widget.TextInputEditText;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import com.google.android.material.textfield.TextInputEditText;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,13 +32,13 @@ import com.rupeeboss.rba.utility.Utility;
 public class LoginActivity extends BaseActivity implements IResponseSubcriber, View.OnClickListener {
     int localAppVersionCode, serverAppVersion;
     TextInputEditText etpanno, etPassword;
-    ImageView btnLogin;
+
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     String deviceId;
     TextView txtnewRegistration;
     TextView txtForgotPwd;
-
+    Button btnLogin;
     String[] perms = {
             "android.permission.CAMERA",
             "android.permission.READ_PHONE_STATE",
@@ -65,7 +63,7 @@ public class LoginActivity extends BaseActivity implements IResponseSubcriber, V
     private void initialize_widgets() {
         etpanno = (TextInputEditText) findViewById(R.id.etpanno);
         etPassword = (TextInputEditText) findViewById(R.id.etPassword);
-        btnLogin = (ImageView) findViewById(R.id.btnLogin);
+        btnLogin = (Button) findViewById(R.id.btnLogin);
         txtForgotPwd = (TextView) findViewById(R.id.txtforgotPwd);
 
         if (!checkPermission()) {

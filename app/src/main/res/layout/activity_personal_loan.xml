@@ -9,14 +9,14 @@
     tools:context="com.rupeeboss.rba.personalloan.PersonalLoanQuoteActivity">
 
 
-    <android.support.design.widget.AppBarLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:elevation="0dp">
 
-        <android.support.v7.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
@@ -24,7 +24,7 @@
             app:layout_scrollFlags="enterAlways|snap"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-    </android.support.design.widget.AppBarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <include layout="@layout/content_personal_loan" />
 

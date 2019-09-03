@@ -1,36 +1,26 @@
 package com.rupeeboss.rba.contactToManager;
 
-import android.Manifest;
-
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+
+import com.google.android.material.snackbar.Snackbar;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.FragmentManager;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.rupeeboss.rba.BaseActivity;
-import com.rupeeboss.rba.EmiCalculator.EmiCalcActivity;
 import com.rupeeboss.rba.R;
 import com.rupeeboss.rba.core.APIResponse;
 import com.rupeeboss.rba.core.IResponseSubcriber;
-import com.rupeeboss.rba.core.controller.Emicalculator.EmicalculatorController;
 import com.rupeeboss.rba.core.controller.contactmanager.ContactMangController;
 import com.rupeeboss.rba.core.facade.LoginFacade;
 import com.rupeeboss.rba.core.model.ContactMangEntity;
 import com.rupeeboss.rba.core.response.ContactToMangerResponse;
-import com.rupeeboss.rba.core.response.EmiCalculatorResponse;
 import com.rupeeboss.rba.fragment.SendMailDialogFragment;
 import com.rupeeboss.rba.utility.Utility;
 

@@ -2,15 +2,13 @@ package com.rupeeboss.rba.webviews.balancetransfer;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
 import com.rupeeboss.rba.BaseActivity;
 import com.rupeeboss.rba.R;
 import com.rupeeboss.rba.core.facade.LoginFacade;
-import com.rupeeboss.rba.loan.LoanMenuActivity;
-import com.rupeeboss.rba.webviews.workingCapital.WorkingCapitalActivity;
 import com.rupeeboss.rba.webviews.workingCapital.WorkingCapitalBalanceTrans;
 
 public class BalanceTransferType extends BaseActivity implements View.OnClickListener {

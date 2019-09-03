@@ -1,21 +1,16 @@
 package com.rupeeboss.rba.webviews.creditcard;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Base64;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import android.util.Log;
-import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import com.rupeeboss.rba.BaseActivity;
 import com.rupeeboss.rba.R;
-import com.rupeeboss.rba.core.facade.LoginFacade;
-import com.rupeeboss.rba.core.model.LoginEntity;
-import com.rupeeboss.rba.core.model.PersonalQuoteEntity;
 import com.rupeeboss.rba.webviews.homeloan.MyWebViewClient;
 
 public class CreditCardApplyActivity extends BaseActivity {

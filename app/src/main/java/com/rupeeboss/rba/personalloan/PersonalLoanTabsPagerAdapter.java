@@ -1,17 +1,13 @@
 package com.rupeeboss.rba.personalloan;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.rupeeboss.rba.core.model.ApplicationDisplayEntity;
 import com.rupeeboss.rba.core.model.PersonalApplicationDisplayEntity;
 import com.rupeeboss.rba.core.model.PersonalQuoteDisplayEntity;
-import com.rupeeboss.rba.core.model.QuoteDisplayEntity;
 import com.rupeeboss.rba.core.response.PersonalQuoteAppDispalyResponse;
-import com.rupeeboss.rba.core.response.QuoteDisplayResponse;
-import com.rupeeboss.rba.loan.ApplicationFragment;
 import com.rupeeboss.rba.loan.QuotesFragment;
 
 import java.util.ArrayList;

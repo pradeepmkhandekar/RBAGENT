@@ -10,9 +10,11 @@ import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 import java.util.HashMap;
 
-import retrofit.Callback;
-import retrofit.Response;
-import retrofit.Retrofit;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+
 
 /**
  * Created by Rajeev Ranjan on 27/10/2016.
@@ -28,42 +30,36 @@ public class BreakDetails implements IBreakDetails {
     }
 
     @Override
-    public void sendBreakDetails(String empCode, String breakId, String time, final IResponseSubcriber iResponseSubcribe) {
+    public void sendBreakDetails(String empCode, String breakId, String time, final IResponseSubcriber iResponseSubcriber) {
         HashMap<String, String> bodyParameter = new HashMap<String, String>();
         bodyParameter.put("empCode", empCode);
         bodyParameter.put("breakId", breakId);
         bodyParameter.put("time", time);
         breakDetailsNetworkService.sendFeedback(bodyParameter).enqueue(new Callback<BreakDetailsResponse>() {
+
             @Override
-            public void onResponse(Response<BreakDetailsResponse> response, Retrofit retrofit) {
-                if (response.isSuccess()) {
-                    if (iResponseSubcribe != null) {
-                        if (response.body().getStatusId() == 0) {
-                            try {
-                                iResponseSubcribe.OnSuccess(response.body(), response.message());
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        } else {
-                            iResponseSubcribe.OnFailure(new RuntimeException(response.body().getMessage()));
-                        }
-                    }
-                } else {
-                    iResponseSubcribe.OnFailure(new RuntimeException("Server down,Try after sometime..."));
+            public void onResponse(Call<BreakDetailsResponse> call, Response<BreakDetailsResponse> response) {
+                try {
+
+                    iResponseSubcriber.OnSuccess(response.body(), response.body().getMessage());
+
+
+                } catch (Exception e) {
+                    iResponseSubcriber.OnFailure(new RuntimeException(e.getMessage()));
                 }
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<BreakDetailsResponse> call, Throwable t) {
 
                 if (t instanceof ConnectException) {
-                    iResponseSubcribe.OnFailure(t);
+                    iResponseSubcriber.OnFailure(t);
                 } else if (t instanceof SocketTimeoutException) {
-                    iResponseSubcribe.OnFailure(new RuntimeException("Check your internet connection"));
+                    iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
                 } else if (t instanceof UnknownHostException) {
-                    iResponseSubcribe.OnFailure(new RuntimeException("Check your internet connection"));
+                    iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
                 }else {
-                    iResponseSubcribe.OnFailure(new RuntimeException(t.getMessage()));
+                    iResponseSubcriber.OnFailure(new RuntimeException(t.getMessage()));
                 }
             }
         });

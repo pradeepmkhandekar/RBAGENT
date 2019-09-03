@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:focusable="true"
+        android:layout_marginBottom="100dp"
         android:focusableInTouchMode="true"
         android:gravity="center_horizontal|center_vertical"
         android:orientation="vertical">
@@ -21,21 +22,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="15dp"
+
             android:scaleType="center"
-            android:src="@drawable/login_icon" />
+            android:src="@drawable/rba_logo" />
 
-        <!--<EditText-->
-        <!--android:id="@+id/etpanno"-->
-        <!--style="@style/JEditText"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginLeft="20dp"-->
-        <!--android:layout_marginRight="20dp"-->
-        <!--android:hint="Pan Number"-->
-        <!--android:textColor="@android:color/white"-->
-        <!--android:textColorHint="@color/hint_color" />-->
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/input_layout_PAN"
             android:layout_width="match_parent"
             android:layout_height="80dp"
@@ -43,7 +35,7 @@
             android:gravity="bottom"
             app:hintTextAppearance="@style/Base.TextAppearance.AppCompat.Medium">
 
-            <android.support.design.widget.TextInputEditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etpanno"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -56,27 +48,17 @@
                 android:hint="Pan Number"
                 android:maxLines="1"
                 android:padding="15dp"
+                android:text="aiepc1258n"
                 android:textColorHint="@color/white"
 
                 />
 
 
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <!--<EditText-->
-        <!--android:id="@+id/etPassword"-->
-        <!--style="@style/JEditText"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginLeft="20dp"-->
-        <!--android:layout_marginRight="20dp"-->
-        <!--android:layout_marginTop="16dp"-->
-        <!--android:hint="Password"-->
-        <!--android:inputType="textPassword"-->
-        <!--android:textColor="@android:color/white"-->
-        <!--android:textColorHint="@color/hint_color" />-->
 
-        <android.support.design.widget.TextInputLayout
+
+        <com.google.android.material.textfield.TextInputLayout
 
             android:id="@+id/input_layout_PWD"
             android:layout_width="match_parent"
@@ -88,7 +70,7 @@
             app:passwordToggleEnabled="true"
             app:passwordToggleTint="@color/total_color">
 
-            <android.support.design.widget.TextInputEditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -102,19 +84,33 @@
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:padding="15dp"
+                android:text="Rb0ss"
                 android:textColorHint="@color/white" />
 
 
-        </android.support.design.widget.TextInputLayout>
-
-        <ImageView
-            android:id="@+id/btnLogin"
-            android:layout_width="180dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+        </com.google.android.material.textfield.TextInputLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
             android:layout_marginTop="16dp"
-            android:background="@drawable/login_button_design" />
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+
+                android:background="@drawable/loginshape"
+                android:text="Login"
+
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/txtforgotPwd"
@@ -123,7 +119,7 @@
             android:layout_marginTop="16dp"
             android:gravity="center"
             android:text="@string/title_forgot_pwd"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/txtnewRegistration"
@@ -132,7 +128,7 @@
             android:layout_marginTop="16dp"
             android:gravity="center"
             android:text="@string/newregistration"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/black" />
         <!-- <Button
              android:id="@+id/btnLogin"
              android:layout_width="match_parent"

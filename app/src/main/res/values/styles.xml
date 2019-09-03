@@ -6,7 +6,7 @@
         <item name="colorPrimary">@android:color/transparent</item>
         <item name="colorPrimaryDark">@android:color/transparent</item>
         <item name="colorAccent">@color/application_primary_text_color</item>
-        <item name="android:windowBackground">@drawable/newbg</item>
+        <item name="android:windowBackground">@color/windowBackground</item>
         <item name="android:textColor">@color/darkGrey</item>
         <item name="android:textColorSecondary">@color/application_secondary_text_color</item>
         <item name="android:textColorPrimary">@color/application_primary_text_color</item>
@@ -87,5 +87,17 @@
         <item name="android:scrollbarSize">5dp</item>
         <item name="android:scrollbarFadeDuration">2000</item>
         <item name="android:scrollbarDefaultDelayBeforeFade">1000</item>
+    </style>
+
+    <style name="TextViewStyle" parent="android:style/Widget.TextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/secondary_text_color</item>
+    </style>
+    <style name="TextViewStyle.VerySmall" parent="TextViewStyle">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/description_text</item>
     </style>
 </resources>

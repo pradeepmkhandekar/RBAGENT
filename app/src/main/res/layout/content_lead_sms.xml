@@ -9,13 +9,13 @@
     tools:context="com.rupeeboss.rba.sharemessage.LeadSmsActivity"
     tools:showIn="@layout/activity_lead_sms">
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/leadSmsRecycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/btnSubmit">
 
-    </android.support.v7.widget.RecyclerView>
+    </androidx.recyclerview.widget.RecyclerView>
 
     <Button
         android:id="@+id/btnSubmit"

@@ -10,7 +10,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,9 +28,6 @@ import com.rupeeboss.rba.core.IResponseSubcriber;
 import com.rupeeboss.rba.core.controller.Emicalculator.EmicalculatorController;
 import com.rupeeboss.rba.core.request.requestentity.BuisnessLoanCalRequest;
 import com.rupeeboss.rba.core.response.BLQuoteResponse;
-import com.rupeeboss.rba.quotes.QuoteActivity;
-import com.rupeeboss.rba.rbaddlead.RbAddLeadActivity;
-import com.rupeeboss.rba.utility.Constants;
 import com.rupeeboss.rba.utility.DateTimePicker;
 import com.rupeeboss.rba.utility.Utility;
 
