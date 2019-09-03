@@ -4,15 +4,17 @@ package com.rupeeboss.rba.core.controller.history;
 import com.rupeeboss.rba.core.IResponseSubcriber;
 import com.rupeeboss.rba.core.request.requestbuilder.HistroyRequestBuilder;
 import com.rupeeboss.rba.core.response.HistoryResponse;
+import com.rupeeboss.rba.core.response.MyBusinessResponse;
 
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 import java.util.HashMap;
 
-import retrofit.Callback;
-import retrofit.Response;
-import retrofit.Retrofit;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by Nilesh Birhade on 19-10-2016.
@@ -38,43 +40,53 @@ public class History implements IHistory {
 
 
     @Override
-    public void getHistory(String mobileNumber, final IResponseSubcriber iResponseSubcribe) {
+    public void getHistory(String mobileNumber, final IResponseSubcriber iResponseSubcriber) {
 
         HashMap<String, String> bodyparameter = new HashMap<String, String>();
         bodyparameter.put("code", mobileNumber);
 
         histroyNetworkService.getCallingHistory(bodyparameter).enqueue(new Callback<HistoryResponse>() {
             @Override
-            public void onResponse(Response<HistoryResponse> response, Retrofit retrofit) {
-                if (response.isSuccess()) {
-                    if (iResponseSubcribe != null) {
+            public void onResponse(Call<HistoryResponse> call, Response<HistoryResponse> response) {
+
+                try {
+                    if (response.body() != null) {
+
+
                         if (response.body().getStatusId() == 0) {
-                            try {
-                                iResponseSubcribe.OnSuccess(response.body(), response.message());
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
+                            iResponseSubcriber.OnSuccess(response.body(), response.body().getMessage());
+
+
                         } else {
-                            iResponseSubcribe.OnFailure(new RuntimeException(response.body().getMessage()));
+                            iResponseSubcriber.OnFailure(new RuntimeException(response.body().getMessage()));
                         }
+                    } else {
+                        //failure
+                        iResponseSubcriber.OnFailure(new RuntimeException("Enable to reach server, Try again later"));
                     }
-                } else {
-                    iResponseSubcribe.OnFailure(new RuntimeException("Server down,Try after sometime..."));
+
+                } catch (InterruptedException e) {
+                    iResponseSubcriber.OnFailure(new RuntimeException(e.getMessage()));
                 }
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<HistoryResponse> call, Throwable t) {
+
                 if (t instanceof ConnectException) {
-                    iResponseSubcribe.OnFailure(t);
+                    iResponseSubcriber.OnFailure(t);
                 } else if (t instanceof SocketTimeoutException) {
-                    iResponseSubcribe.OnFailure(new RuntimeException("Check your internet connection"));
+                    iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
                 } else if (t instanceof UnknownHostException) {
-                    iResponseSubcribe.OnFailure(new RuntimeException("Check your internet connection"));
-                }else {
-                    iResponseSubcribe.OnFailure(new RuntimeException(t.getMessage()));
+                    iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
+                } else {
+                    iResponseSubcriber.OnFailure(new RuntimeException(t.getMessage()));
                 }
             }
         });
+
+
     }
+
+
 }

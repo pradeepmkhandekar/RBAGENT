@@ -6,14 +6,17 @@ import com.rupeeboss.rba.core.IResponseSubcriber;
 import com.rupeeboss.rba.core.model.AudioEntity;
 import com.rupeeboss.rba.core.request.requestbuilder.AudioRequestBuilder;
 import com.rupeeboss.rba.core.response.AudioRecordResponse;
+import com.rupeeboss.rba.core.response.MyBusinessResponse;
 
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 import java.util.HashMap;
 
-import retrofit.Callback;
-import retrofit.Retrofit;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 /**
  * Created by IN-RB on 02-02-2017.
@@ -40,15 +43,24 @@ public class AudioController implements IAudio {
         bodyParameter.put("localdb_id", "" + audioEntity.getId());
         bodyParameter.put("lead_id",""+audioEntity.getLead_id());
 
-
         audioNetworkService.uploadAudioRecord(bodyParameter).enqueue(new Callback<AudioRecordResponse>() {
             @Override
-            public void onResponse(retrofit.Response<AudioRecordResponse> response, Retrofit retrofit) {
+            public void onResponse(Call<AudioRecordResponse> call, Response<AudioRecordResponse> response) {
+
                 try {
-                    if (response.body().getStatus_Id() == 0) {
-                        iResponseSubcriber.OnSuccess(response.body(), response.body().getMsg());
+                    if (response.body() != null) {
+
+
+                        if (response.body().getStatus_Id() == 0) {
+                            iResponseSubcriber.OnSuccess(response.body(), response.body().getMsg());
+
+
+                        } else {
+                            iResponseSubcriber.OnFailure(new RuntimeException(response.body().getMsg()));
+                        }
                     } else {
-                        iResponseSubcriber.OnFailure(new RuntimeException(response.body().getMsg()));
+                        //failure
+                        iResponseSubcriber.OnFailure(new RuntimeException("Enable to reach server, Try again later"));
                     }
 
                 } catch (InterruptedException e) {
@@ -57,7 +69,8 @@ public class AudioController implements IAudio {
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<AudioRecordResponse> call, Throwable t) {
+
                 if (t instanceof ConnectException) {
                     iResponseSubcriber.OnFailure(t);
                 } else if (t instanceof SocketTimeoutException) {
@@ -69,6 +82,8 @@ public class AudioController implements IAudio {
                 }
             }
         });
+
+
 
     
     }

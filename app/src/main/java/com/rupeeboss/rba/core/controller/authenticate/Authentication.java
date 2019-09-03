@@ -9,15 +9,17 @@ import com.rupeeboss.rba.core.request.requestbuilder.AuthenticationRequestBuilde
 import com.rupeeboss.rba.core.response.AppVersionResponse;
 import com.rupeeboss.rba.core.response.ChangePasseordResponse;
 import com.rupeeboss.rba.core.response.ForgotPasswordResponse;
+import com.rupeeboss.rba.core.response.MyBusinessResponse;
 
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 import java.util.HashMap;
 
-import retrofit.Callback;
-import retrofit.Response;
-import retrofit.Retrofit;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 /**
  * Created by IN-RB on 15-02-2017.
@@ -52,44 +54,44 @@ public class Authentication implements IAuthentication {
 
         authenticationNetworkService.sendForgotPassword(bodyparameter).enqueue(new Callback<ForgotPasswordResponse>() {
             @Override
-            public void onResponse(Response<ForgotPasswordResponse> response, Retrofit retrofit) {
+            public void onResponse(Call<ForgotPasswordResponse> call, Response<ForgotPasswordResponse> response) {
 
-                if (response.isSuccess()) {
-                    if (iResponseSubcriber != null) {
+                try {
+                    if (response.body() != null) {
+
+
                         if (response.body().getStatus_Id() == 0) {
-                            try {
-                                iResponseSubcriber.OnSuccess(response.body(), response.message());
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
+                            iResponseSubcriber.OnSuccess(response.body(), response.body().getMsg());
+
+
                         } else {
                             iResponseSubcriber.OnFailure(new RuntimeException(response.body().getMsg()));
                         }
                     } else {
-                        iResponseSubcriber.OnFailure(new RuntimeException(response.message()));
+                        //failure
+                        iResponseSubcriber.OnFailure(new RuntimeException("Enable to reach server, Try again later"));
                     }
-                } else {
-                    iResponseSubcriber.OnFailure(new RuntimeException("Server down,Try after sometime..."));
-                }
 
+                } catch (InterruptedException e) {
+                    iResponseSubcriber.OnFailure(new RuntimeException(e.getMessage()));
+                }
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<ForgotPasswordResponse> call, Throwable t) {
 
                 if (t instanceof ConnectException) {
                     iResponseSubcriber.OnFailure(t);
                 } else if (t instanceof SocketTimeoutException) {
-                    iResponseSubcriber.OnFailure(new RuntimeException(mContext.getResources().getString(R.string.net_connection)));
+                    iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
                 } else if (t instanceof UnknownHostException) {
-                    iResponseSubcriber.OnFailure(new RuntimeException(mContext.getResources().getString(R.string.net_connection)));
-                } else if (t instanceof JsonParseException) {
-                    iResponseSubcriber.OnFailure(new RuntimeException("Invalid Json"));
+                    iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
                 } else {
-                    iResponseSubcriber.OnFailure(new RuntimeException("Please Try after sometime.."));
+                    iResponseSubcriber.OnFailure(new RuntimeException(t.getMessage()));
                 }
             }
         });
+
     }
 
     @Override
@@ -103,43 +105,45 @@ public class Authentication implements IAuthentication {
 
         authenticationNetworkService.sendChangePassword(bodyparameter).enqueue(new Callback<ChangePasseordResponse>() {
             @Override
-            public void onResponse(Response<ChangePasseordResponse> response, Retrofit retrofit) {
-                if (response.isSuccess()) {
-                    if (iResponseSubcriber != null) {
-                        if (response.body().getStatusId() == 0)
-                        {
-                            try {
-                                iResponseSubcriber.OnSuccess(response.body(), response.message());
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
+            public void onResponse(Call<ChangePasseordResponse> call, Response<ChangePasseordResponse> response) {
+
+                try {
+                    if (response.body() != null) {
+
+
+                        if (response.body().getStatusId() == 0) {
+                            iResponseSubcriber.OnSuccess(response.body(), response.body().getMessage());
+
+
                         } else {
                             iResponseSubcriber.OnFailure(new RuntimeException(response.body().getMessage()));
                         }
                     } else {
-                        iResponseSubcriber.OnFailure(new RuntimeException(response.message()));
+                        //failure
+                        iResponseSubcriber.OnFailure(new RuntimeException("Enable to reach server, Try again later"));
                     }
-                } else {
-                    iResponseSubcriber.OnFailure(new RuntimeException("Server down,Try after sometime..."));
+
+                } catch (InterruptedException e) {
+                    iResponseSubcriber.OnFailure(new RuntimeException(e.getMessage()));
                 }
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<ChangePasseordResponse> call, Throwable t) {
 
                 if (t instanceof ConnectException) {
                     iResponseSubcriber.OnFailure(t);
                 } else if (t instanceof SocketTimeoutException) {
-                    iResponseSubcriber.OnFailure(new RuntimeException(mContext.getResources().getString(R.string.net_connection)));
+                    iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
                 } else if (t instanceof UnknownHostException) {
-                    iResponseSubcriber.OnFailure(new RuntimeException(mContext.getResources().getString(R.string.net_connection)));
-                } else if (t instanceof JsonParseException) {
-                    iResponseSubcriber.OnFailure(new RuntimeException("Invalid Json"));
+                    iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
                 } else {
-                    iResponseSubcriber.OnFailure(new RuntimeException("Please Try after sometime.."));
+                    iResponseSubcriber.OnFailure(new RuntimeException(t.getMessage()));
                 }
             }
         });
+
+
     }
 
     @Override
@@ -152,42 +156,44 @@ public class Authentication implements IAuthentication {
 
         authenticationNetworkService.getApiVersionCode(bodyparameter).enqueue(new Callback<AppVersionResponse>() {
             @Override
-            public void onResponse(Response<AppVersionResponse> response, Retrofit retrofit) {
-                if (response.isSuccess()) {
-                    if (iResponseSubcriber != null) {
-                        if (response.body().getStatusId() == 0)
-                        {
-                            try {
-                                iResponseSubcriber.OnSuccess(response.body(), response.message());
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
+            public void onResponse(Call<AppVersionResponse> call, Response<AppVersionResponse> response) {
+
+                try {
+                    if (response.body() != null) {
+
+
+                        if (response.body().getStatusId() == 0) {
+                            iResponseSubcriber.OnSuccess(response.body(), response.body().getMessage());
+
+
                         } else {
                             iResponseSubcriber.OnFailure(new RuntimeException(response.body().getMessage()));
                         }
                     } else {
-                        iResponseSubcriber.OnFailure(new RuntimeException(response.message()));
+                        //failure
+                        iResponseSubcriber.OnFailure(new RuntimeException("Enable to reach server, Try again later"));
                     }
-                } else {
-                    iResponseSubcriber.OnFailure(new RuntimeException("Server down,Try after sometime..."));
+
+                } catch (InterruptedException e) {
+                    iResponseSubcriber.OnFailure(new RuntimeException(e.getMessage()));
                 }
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<AppVersionResponse> call, Throwable t) {
 
                 if (t instanceof ConnectException) {
                     iResponseSubcriber.OnFailure(t);
                 } else if (t instanceof SocketTimeoutException) {
-                    iResponseSubcriber.OnFailure(new RuntimeException(mContext.getResources().getString(R.string.net_connection)));
+                    iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
                 } else if (t instanceof UnknownHostException) {
-                    iResponseSubcriber.OnFailure(new RuntimeException(mContext.getResources().getString(R.string.net_connection)));
-                } else if (t instanceof JsonParseException) {
-                    iResponseSubcriber.OnFailure(new RuntimeException("Invalid Json"));
+                    iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
                 } else {
-                    iResponseSubcriber.OnFailure(new RuntimeException("Please Try after sometime.."));
+                    iResponseSubcriber.OnFailure(new RuntimeException(t.getMessage()));
                 }
             }
         });
+
+
     }
 }

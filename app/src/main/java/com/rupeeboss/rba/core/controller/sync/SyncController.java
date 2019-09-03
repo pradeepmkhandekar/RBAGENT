@@ -7,12 +7,18 @@ import com.rupeeboss.rba.core.facade.ProductFacade;
 import com.rupeeboss.rba.core.facade.PropertyFacade;
 import com.rupeeboss.rba.core.request.requestbuilder.SyncRequestBuilder;
 import com.rupeeboss.rba.core.response.CityResponse;
+import com.rupeeboss.rba.core.response.LeadResponse;
 import com.rupeeboss.rba.core.response.ProductResponse;
 import com.rupeeboss.rba.core.response.PropertyResponse;
 
-import retrofit.Callback;
-import retrofit.Response;
-import retrofit.Retrofit;
+import java.net.ConnectException;
+import java.net.SocketTimeoutException;
+import java.net.UnknownHostException;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 /**
  * Created by Nilesh Birhade on 23-01-2017.
@@ -33,51 +39,63 @@ public class SyncController implements ISyncController {
 
     @Override
     public void getCity() {
+
         syncNetworkService.getCity().enqueue(new Callback<CityResponse>() {
             @Override
-            public void onResponse(Response<CityResponse> response, Retrofit retrofit) {
+            public void onResponse(Call<CityResponse> call, Response<CityResponse> response) {
+
                 try {
-                    if (response.body().getStatus_Id() == 0) {
-                        // iResponseSubcriber.OnSuccess(response.body(), response.body().getMsg());
-                        new CityFacade(mContext).storeCityList(response.body().getData());
-                    } else {
-                        //   iResponseSubcriber.OnFailure(new RuntimeException(response.body().getMsg()));
+                    if (response.body() != null) {
+
+                        if (response.body().getStatus_Id() == 0) {
+                            new CityFacade(mContext).storeCityList(response.body().getData());
+                        }
                     }
+
                 } catch (Exception e) {
 
                 }
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<CityResponse> call, Throwable t) {
+
 
             }
         });
+
     }
+
+
 
     @Override
     public void getProducts() {
+
         syncNetworkService.getProduct().enqueue(new Callback<ProductResponse>() {
             @Override
-            public void onResponse(Response<ProductResponse> response, Retrofit retrofit) {
+            public void onResponse(Call<ProductResponse> call, Response<ProductResponse> response) {
 
                 try {
-                    if (response.body().getStatus_Id() == 0) {
-                        // iResponseSubcriber.OnSuccess(response.body(), response.body().getMsg());
-                        new ProductFacade(mContext).storeProductList(response.body().getData());
-                    } else {
-                        //  iResponseSubcriber.OnFailure(new RuntimeException(response.body().getMsg()));
+                    if (response.body() != null) {
+
+                        if (response.body().getStatus_Id() == 0) {
+                            new ProductFacade(mContext).storeProductList(response.body().getData());
+                        }
                     }
+
                 } catch (Exception e) {
 
                 }
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<ProductResponse> call, Throwable t) {
+
 
             }
         });
+
+
     }
 
     @Override
@@ -85,23 +103,28 @@ public class SyncController implements ISyncController {
 
         syncNetworkService.getProperty().enqueue(new Callback<PropertyResponse>() {
             @Override
-            public void onResponse(Response<PropertyResponse> response, Retrofit retrofit) {
-                try {
-                    if (response.body().getStatus_Id() == 0) {
-                        new PropertyFacade(mContext).storePropertyList(response.body().getData());
-                    } else {
+            public void onResponse(Call<PropertyResponse> call, Response<PropertyResponse> response) {
 
+                try {
+                    if (response.body() != null) {
+
+                        if (response.body().getStatus_Id() == 0) {
+                            new PropertyFacade(mContext).storePropertyList(response.body().getData());
+                        }
                     }
+
                 } catch (Exception e) {
 
                 }
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<PropertyResponse> call, Throwable t) {
+
 
             }
         });
+
 
     }
 }
