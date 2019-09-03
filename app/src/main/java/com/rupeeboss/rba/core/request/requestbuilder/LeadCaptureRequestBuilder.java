@@ -4,9 +4,10 @@ import com.rupeeboss.rba.core.WCFRetroRequestBuilder;
 import com.rupeeboss.rba.core.model.LeadRequest;
 import com.rupeeboss.rba.core.response.LeadResponse;
 
-import retrofit.Call;
-import retrofit.http.Body;
-import retrofit.http.POST;
+import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.POST;
+
 
 /**
  * Created by IN-RB on 02-02-2017.

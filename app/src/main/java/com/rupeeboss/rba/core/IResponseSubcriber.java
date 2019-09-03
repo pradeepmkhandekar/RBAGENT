@@ -6,7 +6,7 @@ package com.rupeeboss.rba.core;
 
 public interface IResponseSubcriber {
 
-    void OnSuccess(APIResponse response, String message) throws InterruptedException;
+     void OnSuccess(APIResponse response, String message) throws InterruptedException;
 
     void OnFailure(Throwable t);
 }

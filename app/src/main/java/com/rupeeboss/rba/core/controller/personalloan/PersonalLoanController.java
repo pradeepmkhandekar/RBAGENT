@@ -9,6 +9,7 @@ import com.rupeeboss.rba.core.facade.LoginFacade;
 import com.rupeeboss.rba.core.request.requestbuilder.PersonalloanRequestBuilder;
 import com.rupeeboss.rba.core.request.requestentity.PersonalLoanRequest;
 import com.rupeeboss.rba.core.response.GetPersonalLoanResponse;
+import com.rupeeboss.rba.core.response.MyBusinessResponse;
 import com.rupeeboss.rba.core.response.PersonalQuoteAppDispalyResponse;
 
 import java.net.ConnectException;
@@ -16,9 +17,10 @@ import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 import java.util.HashMap;
 
-import retrofit.Callback;
-import retrofit.Response;
-import retrofit.Retrofit;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 /**
  * Created by IN-RB on 10-02-2017.
@@ -36,14 +38,20 @@ public class PersonalLoanController implements IPersonalLoan {
 
     @Override
     public void getPersonalLoan(PersonalLoanRequest personalLoanRequest, final IResponseSubcriber iResponseSubcriber) {
+
         personalloanNetworkService.getPersonalQuotes(personalLoanRequest).enqueue(new Callback<GetPersonalLoanResponse>() {
             @Override
-            public void onResponse(Response<GetPersonalLoanResponse> response, Retrofit retrofit) {
+            public void onResponse(Call<GetPersonalLoanResponse> call, Response<GetPersonalLoanResponse> response) {
+
                 try {
-                    if (response.body().getStatus_Id() == 0) {
-                        iResponseSubcriber.OnSuccess(response.body(), response.body().getMsg());
+
+
+                    if (response.body().getStatus_Id()  == 0) {
+                        iResponseSubcriber.OnSuccess(response.body(), response.body().getMessage());
+
+
                     } else {
-                        iResponseSubcriber.OnFailure(new RuntimeException(response.body().getMsg()));
+                        iResponseSubcriber.OnFailure(new RuntimeException(response.body().getMessage()));
                     }
 
                 } catch (InterruptedException e) {
@@ -52,21 +60,24 @@ public class PersonalLoanController implements IPersonalLoan {
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<GetPersonalLoanResponse> call, Throwable t) {
+
                 if (t instanceof ConnectException) {
                     iResponseSubcriber.OnFailure(t);
                 } else if (t instanceof SocketTimeoutException) {
-                    iResponseSubcriber.OnFailure(new RuntimeException(mContext.getResources().getString(R.string.net_connection)));
+                    iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
                 } else if (t instanceof UnknownHostException) {
-                    iResponseSubcriber.OnFailure(new RuntimeException(mContext.getResources().getString(R.string.net_connection)));
-                } else if (t instanceof JsonParseException) {
-                    iResponseSubcriber.OnFailure(new RuntimeException("Invalid Json"));
+                    iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
                 } else {
-                    iResponseSubcriber.OnFailure(new RuntimeException("Please Try after sometime.."));
+                    iResponseSubcriber.OnFailure(new RuntimeException(t.getMessage()));
                 }
             }
         });
+
+
     }
+
+
 
     @Override
     public void getPersonalQuote(int ProductId, String BrokerID, final IResponseSubcriber iResponseSubcriber) {
@@ -81,36 +92,41 @@ public class PersonalLoanController implements IPersonalLoan {
 
         personalloanNetworkService.getPersonalBrokerQuotes(bodyParameter).enqueue(new Callback<PersonalQuoteAppDispalyResponse>() {
             @Override
-            public void onResponse(Response<PersonalQuoteAppDispalyResponse> response, Retrofit retrofit) {
+            public void onResponse(Call<PersonalQuoteAppDispalyResponse> call, Response<PersonalQuoteAppDispalyResponse> response) {
 
                 try {
-                    if (response.body().getStatus_Id() == 0) {
-                        iResponseSubcriber.OnSuccess(response.body(), response.body().getMsg());
+                    if (response.body().getStatus_Id()  == 0) {
+                        iResponseSubcriber.OnSuccess(response.body(), response.body().getMessage());
+
+
                     } else {
-                        iResponseSubcriber.OnFailure(new RuntimeException(response.body().getMsg()));
+                        iResponseSubcriber.OnFailure(new RuntimeException(response.body().getMessage()));
                     }
+
                 } catch (InterruptedException e) {
                     iResponseSubcriber.OnFailure(new RuntimeException(e.getMessage()));
                 }
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<PersonalQuoteAppDispalyResponse> call, Throwable t) {
 
                 if (t instanceof ConnectException) {
                     iResponseSubcriber.OnFailure(t);
                 } else if (t instanceof SocketTimeoutException) {
-                    iResponseSubcriber.OnFailure(new RuntimeException(mContext.getResources().getString(R.string.net_connection)));
+                    iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
                 } else if (t instanceof UnknownHostException) {
-                    iResponseSubcriber.OnFailure(new RuntimeException(mContext.getResources().getString(R.string.net_connection)));
-                } else if (t instanceof JsonParseException) {
-                    iResponseSubcriber.OnFailure(new RuntimeException("Invalid Json"));
+                    iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
                 } else {
-                    iResponseSubcriber.OnFailure(new RuntimeException("Please Try after sometime.."));
+                    iResponseSubcriber.OnFailure(new RuntimeException(t.getMessage()));
                 }
             }
         });
 
 
     }
+
+
+
+
 }

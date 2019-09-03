@@ -8,9 +8,10 @@ import com.rupeeboss.rba.core.response.MyLeadResponse;
 import com.rupeeboss.rba.core.response.SendSmsMobileResponse;
 import com.rupeeboss.rba.core.response.SmsLeadResponse;
 
-import retrofit.Call;
-import retrofit.http.Body;
-import retrofit.http.POST;
+import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.POST;
+
 
 /**
  * Created by Rajeev Ranjan on 27/02/2017.

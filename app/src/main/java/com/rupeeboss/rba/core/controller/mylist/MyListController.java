@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.rupeeboss.rba.core.IResponseSubcriber;
 import com.rupeeboss.rba.core.request.requestbuilder.MyListRequestBuilder;
+import com.rupeeboss.rba.core.response.MyBusinessResponse;
 import com.rupeeboss.rba.core.response.MyListResponse;
 
 import java.net.ConnectException;
@@ -11,8 +12,10 @@ import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 import java.util.HashMap;
 
-import retrofit.Callback;
-import retrofit.Retrofit;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 /**
  * Created by Rajeev Ranjan on 23/08/2017.
@@ -38,12 +41,15 @@ public class MyListController implements IMyList {
 
         myListNetworkService.getParentList(bodyParameter).enqueue(new Callback<MyListResponse>() {
             @Override
-            public void onResponse(retrofit.Response<MyListResponse> response, Retrofit retrofit) {
+            public void onResponse(Call<MyListResponse> call, Response<MyListResponse> response) {
+
                 try {
-                    if (response.body().getStatusId() == 0) {
-                        iResponseSubcriber.OnSuccess(response.body(), response.body().getMsg());
+                    if (response.body().getStatusId()  == 0) {
+                        iResponseSubcriber.OnSuccess(response.body(), response.body().getMessage());
+
+
                     } else {
-                        iResponseSubcriber.OnFailure(new RuntimeException(response.body().getStatus()));
+                        iResponseSubcriber.OnFailure(new RuntimeException(response.body().getMessage()));
                     }
 
                 } catch (InterruptedException e) {
@@ -52,7 +58,8 @@ public class MyListController implements IMyList {
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<MyListResponse> call, Throwable t) {
+
                 if (t instanceof ConnectException) {
                     iResponseSubcriber.OnFailure(t);
                 } else if (t instanceof SocketTimeoutException) {
@@ -60,10 +67,13 @@ public class MyListController implements IMyList {
                 } else if (t instanceof UnknownHostException) {
                     iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
                 } else {
-                    iResponseSubcriber.OnFailure(new RuntimeException("Server down !! Please try after some time"));
+                    iResponseSubcriber.OnFailure(new RuntimeException(t.getMessage()));
                 }
             }
         });
 
+
     }
+
+
 }

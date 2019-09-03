@@ -15,9 +15,10 @@ import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 import java.util.HashMap;
 
-import retrofit.Callback;
-import retrofit.Response;
-import retrofit.Retrofit;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 public class QuoteController implements IDisplayQuote {
 
@@ -42,10 +43,13 @@ public class QuoteController implements IDisplayQuote {
 
         quoteNetworkService.getDisplayQuotes(bodyParameter).enqueue(new Callback<QuoteDisplayResponse>() {
             @Override
-            public void onResponse(Response<QuoteDisplayResponse> response, Retrofit retrofit) {
+            public void onResponse(Call<QuoteDisplayResponse> call, Response<QuoteDisplayResponse> response) {
+
                 try {
-                    if (response.body().getStatus_Id() == 0) {
+                    if (response.body().getStatus_Id()  == 0) {
                         iResponseSubcriber.OnSuccess(response.body(), response.body().getMsg());
+
+
                     } else {
                         iResponseSubcriber.OnFailure(new RuntimeException(response.body().getMsg()));
                     }
@@ -56,21 +60,23 @@ public class QuoteController implements IDisplayQuote {
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<QuoteDisplayResponse> call, Throwable t) {
+
                 if (t instanceof ConnectException) {
                     iResponseSubcriber.OnFailure(t);
                 } else if (t instanceof SocketTimeoutException) {
-                    iResponseSubcriber.OnFailure(new RuntimeException(mContext.getResources().getString(R.string.net_connection)));
+                    iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
                 } else if (t instanceof UnknownHostException) {
-                    iResponseSubcriber.OnFailure(new RuntimeException(mContext.getResources().getString(R.string.net_connection)));
-                } else if (t instanceof JsonParseException) {
-                    iResponseSubcriber.OnFailure(new RuntimeException("Invalid Json"));
+                    iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
                 } else {
-                    iResponseSubcriber.OnFailure(new RuntimeException("Please Try after sometime.."));
+                    iResponseSubcriber.OnFailure(new RuntimeException(t.getMessage()));
                 }
             }
         });
+
     }
+
+
 
     @Override
     public void sendSelectedQuoteInfo(String quoteId, String bankId, String roiType, String loanEligible, String processingFees) {
@@ -84,8 +90,9 @@ public class QuoteController implements IDisplayQuote {
 
         quoteNetworkService.sendSelectedQuoteToServer(bodyParameter).enqueue(new Callback<QuoteSelectedResponse>() {
             @Override
-            public void onResponse(Response<QuoteSelectedResponse> response, Retrofit retrofit) {
-                /*try {
+            public void onResponse(Call<QuoteSelectedResponse> call, Response<QuoteSelectedResponse> response) {
+
+                  /*try {
                     if (response.body().getStatus_Id() == 0) {
                         iResponseSubcriber.OnSuccess(response.body(), response.body().getMsg());
                     } else {
@@ -98,8 +105,9 @@ public class QuoteController implements IDisplayQuote {
             }
 
             @Override
-            public void onFailure(Throwable t) {
-                /*if (t instanceof ConnectException) {
+            public void onFailure(Call<QuoteSelectedResponse> call, Throwable t) {
+
+                    /*if (t instanceof ConnectException) {
                     iResponseSubcriber.OnFailure(t);
                 } else if (t instanceof SocketTimeoutException) {
                     iResponseSubcriber.OnFailure(new RuntimeException(mContext.getResources().getString(R.string.net_connection)));
@@ -112,5 +120,8 @@ public class QuoteController implements IDisplayQuote {
                 }*/
             }
         });
+
     }
+
+
 }

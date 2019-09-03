@@ -6,6 +6,7 @@ import com.rupeeboss.rba.core.IResponseSubcriber;
 import com.rupeeboss.rba.core.request.requestbuilder.NewRegistrationRequestBuilder;
 import com.rupeeboss.rba.core.request.requestentity.RegisterRequestEntity;
 import com.rupeeboss.rba.core.response.FollowUpResponse;
+import com.rupeeboss.rba.core.response.LeadResponse;
 import com.rupeeboss.rba.core.response.NewRegistrationResponse;
 
 import java.net.ConnectException;
@@ -14,9 +15,10 @@ import java.net.UnknownHostException;
 import java.util.HashMap;
 import java.util.InputMismatchException;
 
-import retrofit.Callback;
-import retrofit.Response;
-import retrofit.Retrofit;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 /**
  * Created by IN-RB on 14-02-2017.
@@ -38,51 +40,41 @@ public class NewRegistrationController  implements INewRegistration{
     @Override
     public void Register(RegisterRequestEntity entity, final IResponseSubcriber iResponseSubcriber) {
 
-//        HashMap<String, String> bodyParameter = new HashMap<String, String>();
-//        bodyParameter.put("first_Name", entity.getFirst_Name());
-//        bodyParameter.put("last_Name",  entity.getLast_Name());
-//        bodyParameter.put("contact_No",  entity.getContact_No());
-//        bodyParameter.put("Email_Id",  entity.getEmail_Id());
-//        bodyParameter.put("UserPassword",  entity.getUserPassword());
-//        bodyParameter.put("PAN_No",  entity.getPAN_No());
-//        bodyParameter.put("City",  entity.getCity());
-//        bodyParameter.put("parentBrokerId",  entity.getParentBrokerId());
-//        bodyParameter.put("parentEmpCode",  entity.getParentEmpCode());
 
         newRegistrationNetworkService.saveNewRegestration(entity).enqueue(new Callback<NewRegistrationResponse>() {
             @Override
-            public void onResponse(Response<NewRegistrationResponse> response, Retrofit retrofit) {
+            public void onResponse(Call<NewRegistrationResponse> call, Response<NewRegistrationResponse> response) {
 
-                if(response.isSuccess()){
-                    if(iResponseSubcriber != null){
-                        if(response.body().getStatus_Id() == 0){
-                            try {
-                                iResponseSubcriber.OnSuccess(response.body(), response.body().getMessage());
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        } else {
-                            iResponseSubcriber.OnFailure(new RuntimeException(response.body().getMessage()));
-                        }
+                try {
+                    if (response.body().getStatus_Id() == 0) {
+                        iResponseSubcriber.OnSuccess(response.body(), response.body().getMessage());
+                    } else {
+                        iResponseSubcriber.OnFailure(new RuntimeException(response.body().getMessage()));
                     }
+
+                } catch (InterruptedException e) {
+                    iResponseSubcriber.OnFailure(new RuntimeException(e.getMessage()));
                 }
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<NewRegistrationResponse> call, Throwable t) {
+
                 if (t instanceof ConnectException) {
                     iResponseSubcriber.OnFailure(t);
                 } else if (t instanceof SocketTimeoutException) {
                     iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
                 } else if (t instanceof UnknownHostException) {
                     iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
-                }else {
+                } else {
                     iResponseSubcriber.OnFailure(new RuntimeException(t.getMessage()));
                 }
             }
         });
 
     }
+
+
 
 
 }

@@ -13,9 +13,10 @@ import java.net.ConnectException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 
-import retrofit.Callback;
-import retrofit.Response;
-import retrofit.Retrofit;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 /**
  * Created by Rajeev Ranjan on 27/02/2017.
@@ -35,122 +36,130 @@ public class SmsLead implements ISmsLead {
     }
 
     @Override
-    public void getLeadSms(SmsLeadRequestEntity smsLeadRequestEntity, final IResponseSubcriber iResponseSubcribe) {
+    public void getLeadSms(SmsLeadRequestEntity smsLeadRequestEntity, final IResponseSubcriber iResponseSubcriber) {
+
         smsLeadNetworkService.getShareMessage(smsLeadRequestEntity).enqueue(new Callback<SmsLeadResponse>() {
             @Override
-            public void onResponse(Response<SmsLeadResponse> response, Retrofit retrofit) {
-                if (response.isSuccess()) {
-                    if (iResponseSubcribe != null) {
-                        if (response.body().getStatusId() == 0) {
-                            try {
-                                iResponseSubcribe.OnSuccess(response.body(), response.message());
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        } else {
-                            iResponseSubcribe.OnFailure(new RuntimeException(response.body().getMessage()));
-                        }
-                    }
-                } else {
-                    iResponseSubcribe.OnFailure(new RuntimeException("Server down,Try after sometime..."));
-                }
+            public void onResponse(Call<SmsLeadResponse> call, Response<SmsLeadResponse> response) {
 
+                try {
+                    if (response.body() != null) {
+
+                        if (response.body().getStatusId() == 0) {
+                            iResponseSubcriber.OnSuccess(response.body(), response.body().getMessage());
+                        } else {
+                            iResponseSubcriber.OnFailure(new RuntimeException(response.body().getMessage()));
+                        }
+                    } else {
+                        //failure
+                        iResponseSubcriber.OnFailure(new RuntimeException("Enable to reach server, Try again later"));
+                    }
+
+                } catch (InterruptedException e) {
+                    iResponseSubcriber.OnFailure(new RuntimeException(e.getMessage()));
+                }
             }
 
             @Override
-            public void onFailure(Throwable t) {
-                if (iResponseSubcribe != null) {
-                    if (t instanceof ConnectException) {
-                        iResponseSubcribe.OnFailure(t);
-                    } else if (t instanceof SocketTimeoutException) {
-                        iResponseSubcribe.OnFailure(new RuntimeException("Check your internet connection"));
-                    } else if (t instanceof UnknownHostException) {
-                        iResponseSubcribe.OnFailure(new RuntimeException("Check your internet connection"));
-                    } else {
-                        iResponseSubcribe.OnFailure(new RuntimeException(t.getMessage()));
-                    }
+            public void onFailure(Call<SmsLeadResponse> call, Throwable t) {
+
+                if (t instanceof ConnectException) {
+                    iResponseSubcriber.OnFailure(t);
+                } else if (t instanceof SocketTimeoutException) {
+                    iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
+                } else if (t instanceof UnknownHostException) {
+                    iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
+                } else {
+                    iResponseSubcriber.OnFailure(new RuntimeException(t.getMessage()));
                 }
             }
         });
+
     }
 
+
     @Override
-    public void sendSmsMobileNoList(SendSmsRequestEntity sendSmsRequestEntity, final IResponseSubcriber iResponseSubcribe) {
+    public void sendSmsMobileNoList(SendSmsRequestEntity sendSmsRequestEntity, final IResponseSubcriber iResponseSubcriber) {
+
+
         smsLeadNetworkService.sendSmsMobile(sendSmsRequestEntity).enqueue(new Callback<SendSmsMobileResponse>() {
             @Override
-            public void onResponse(Response<SendSmsMobileResponse> response, Retrofit retrofit) {
-                if (response.isSuccess()) {
-                    if (iResponseSubcribe != null) {
-                        if (response.body().getStatusId() == 0) {
-                            try {
-                                iResponseSubcribe.OnSuccess(response.body(), response.message());
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        } else {
-                            iResponseSubcribe.OnFailure(new RuntimeException(response.body().getMessage()));
-                        }
-                    }
-                } else {
-                    iResponseSubcribe.OnFailure(new RuntimeException("Server down,Try after sometime..."));
-                }
+            public void onResponse(Call<SendSmsMobileResponse> call, Response<SendSmsMobileResponse> response) {
 
+                try {
+                    if (response.body() != null) {
+
+                        if (response.body().getStatusId() == 0) {
+                            iResponseSubcriber.OnSuccess(response.body(), response.body().getMessage());
+                        } else {
+                            iResponseSubcriber.OnFailure(new RuntimeException(response.body().getMessage()));
+                        }
+                    } else {
+                        //failure
+                        iResponseSubcriber.OnFailure(new RuntimeException("Enable to reach server, Try again later"));
+                    }
+
+                } catch (InterruptedException e) {
+                    iResponseSubcriber.OnFailure(new RuntimeException(e.getMessage()));
+                }
             }
 
             @Override
-            public void onFailure(Throwable t) {
-                if (iResponseSubcribe != null) {
-                    if (t instanceof ConnectException) {
-                        iResponseSubcribe.OnFailure(t);
-                    } else if (t instanceof SocketTimeoutException) {
-                        iResponseSubcribe.OnFailure(new RuntimeException("Check your internet connection"));
-                    } else if (t instanceof UnknownHostException) {
-                        iResponseSubcribe.OnFailure(new RuntimeException("Check your internet connection"));
-                    } else {
-                        iResponseSubcribe.OnFailure(new RuntimeException(t.getMessage()));
-                    }
+            public void onFailure(Call<SendSmsMobileResponse> call, Throwable t) {
+
+                if (t instanceof ConnectException) {
+                    iResponseSubcriber.OnFailure(t);
+                } else if (t instanceof SocketTimeoutException) {
+                    iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
+                } else if (t instanceof UnknownHostException) {
+                    iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
+                } else {
+                    iResponseSubcriber.OnFailure(new RuntimeException(t.getMessage()));
                 }
             }
         });
+
     }
 
     @Override
-    public void getMyLead(MyLeadRequestEntity myLeadrequestEntity, final IResponseSubcriber iResponseSubcribe) {
+    public void getMyLead(MyLeadRequestEntity myLeadrequestEntity, final IResponseSubcriber iResponseSubcriber) {
+
         smsLeadNetworkService.getMyLead(myLeadrequestEntity).enqueue(new Callback<MyLeadResponse>() {
             @Override
-            public void onResponse(Response<MyLeadResponse> response, Retrofit retrofit) {
-                if (response.isSuccess()) {
-                    if (iResponseSubcribe != null) {
-                        if (response.body().getStatusId() == 0) {
-                            try {
-                                iResponseSubcribe.OnSuccess(response.body(), response.message());
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        } else {
-                            iResponseSubcribe.OnFailure(new RuntimeException(response.body().getMessage()));
-                        }
-                    }
-                } else {
-                    iResponseSubcribe.OnFailure(new RuntimeException("Server down,Try after sometime..."));
-                }
+            public void onResponse(Call<MyLeadResponse> call, Response<MyLeadResponse> response) {
 
+                try {
+                    if (response.body() != null) {
+                        if (response.body().getStatusId() == 0) {
+                            iResponseSubcriber.OnSuccess(response.body(), response.body().getMessage());
+                        } else {
+                            iResponseSubcriber.OnFailure(new RuntimeException(response.body().getMessage()));
+                        }
+                    } else {
+                        //failure
+                        iResponseSubcriber.OnFailure(new RuntimeException("Enable to reach server, Try again later"));
+                    }
+
+                } catch (InterruptedException e) {
+                    iResponseSubcriber.OnFailure(new RuntimeException(e.getMessage()));
+                }
             }
 
             @Override
-            public void onFailure(Throwable t) {
-                if (iResponseSubcribe != null) {
-                    if (t instanceof ConnectException) {
-                        iResponseSubcribe.OnFailure(t);
-                    } else if (t instanceof SocketTimeoutException) {
-                        iResponseSubcribe.OnFailure(new RuntimeException("Check your internet connection"));
-                    } else if (t instanceof UnknownHostException) {
-                        iResponseSubcribe.OnFailure(new RuntimeException("Check your internet connection"));
-                    } else {
-                        iResponseSubcribe.OnFailure(new RuntimeException(t.getMessage()));
-                    }
+            public void onFailure(Call<MyLeadResponse> call, Throwable t) {
+
+                if (t instanceof ConnectException) {
+                    iResponseSubcriber.OnFailure(t);
+                } else if (t instanceof SocketTimeoutException) {
+                    iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
+                } else if (t instanceof UnknownHostException) {
+                    iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
+                } else {
+                    iResponseSubcriber.OnFailure(new RuntimeException(t.getMessage()));
                 }
             }
         });
+
+
     }
 }

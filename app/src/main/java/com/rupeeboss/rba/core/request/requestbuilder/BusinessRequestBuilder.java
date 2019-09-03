@@ -9,9 +9,10 @@ import com.rupeeboss.rba.core.response.MyBusinessResponse;
 
 import java.util.HashMap;
 
-import retrofit.Call;
-import retrofit.http.Body;
-import retrofit.http.POST;
+import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.POST;
+
 
 /**
  * Created by IN-RB on 29-06-2017.

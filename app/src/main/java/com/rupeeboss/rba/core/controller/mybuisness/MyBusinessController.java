@@ -7,15 +7,16 @@ import com.rupeeboss.rba.core.facade.LoginFacade;
 import com.rupeeboss.rba.core.request.requestbuilder.BusinessRequestBuilder;
 import com.rupeeboss.rba.core.response.LoginResponse;
 import com.rupeeboss.rba.core.response.MyBusinessResponse;
+import com.rupeeboss.rba.core.response.ProfileResponse;
 
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 import java.util.HashMap;
 
-import retrofit.Callback;
-import retrofit.Response;
-import retrofit.Retrofit;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by IN-RB on 29-06-2017.
@@ -44,40 +45,47 @@ public class MyBusinessController implements  IMyBusinessController {
 
         businessNetworkService.myBuisness(bodyparameter).enqueue(new Callback<MyBusinessResponse>() {
             @Override
-            public void onResponse(Response<MyBusinessResponse> response, Retrofit retrofit) {
-                if (response.isSuccess()) {
-                    if (iResponseSubcriber != null) {
+            public void onResponse(Call<MyBusinessResponse> call, Response<MyBusinessResponse> response) {
+
+                try {
+                    if (response.body() != null) {
+
 
                         if (response.body().getStatusId() == 0) {
-                            try {
+                            iResponseSubcriber.OnSuccess(response.body(), response.body().getMessage());
 
-                                iResponseSubcriber.OnSuccess(response.body(), response.message());
-                            } catch (InterruptedException e) {
-                                iResponseSubcriber.OnFailure(new RuntimeException(response.body().getMessage()));
-                            }
+
                         } else {
                             iResponseSubcriber.OnFailure(new RuntimeException(response.body().getMessage()));
                         }
                     } else {
-                        iResponseSubcriber.OnFailure(new RuntimeException(response.message()));
+                        //failure
+                        iResponseSubcriber.OnFailure(new RuntimeException("Enable to reach server, Try again later"));
                     }
-                } else {
-                    iResponseSubcriber.OnFailure(new RuntimeException("Server down,Try after sometime..."));
+
+                } catch (InterruptedException e) {
+                    iResponseSubcriber.OnFailure(new RuntimeException(e.getMessage()));
                 }
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<MyBusinessResponse> call, Throwable t) {
+
                 if (t instanceof ConnectException) {
                     iResponseSubcriber.OnFailure(t);
                 } else if (t instanceof SocketTimeoutException) {
                     iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
                 } else if (t instanceof UnknownHostException) {
                     iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
-                }else  {
-                    iResponseSubcriber.OnFailure(t);
+                } else {
+                    iResponseSubcriber.OnFailure(new RuntimeException(t.getMessage()));
                 }
             }
         });
+
+
     }
+
+
+
 }
