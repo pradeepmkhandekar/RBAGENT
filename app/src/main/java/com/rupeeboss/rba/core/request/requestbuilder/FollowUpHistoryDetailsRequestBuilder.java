@@ -6,9 +6,10 @@ import com.rupeeboss.rba.core.response.FollowUpHistoryDetailsResponse;
 
 import java.util.HashMap;
 
-import retrofit.Call;
-import retrofit.http.Body;
-import retrofit.http.POST;
+import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.POST;
+
 
 /**
  * Created by Rajeev Ranjan on 27/10/2016.

@@ -4,9 +4,10 @@ import com.rupeeboss.rba.core.RetroRequestBuilder;
 import com.rupeeboss.rba.core.request.requestentity.HomeLoanRequest;
 import com.rupeeboss.rba.core.response.GetQuoteResponse;
 
-import retrofit.Call;
-import retrofit.http.Body;
-import retrofit.http.POST;
+import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.POST;
+
 
 /**
  * Created by Nilesh Birhade on 25-01-2017.

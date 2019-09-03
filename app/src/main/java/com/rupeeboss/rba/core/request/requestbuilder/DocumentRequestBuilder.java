@@ -5,9 +5,10 @@ import com.rupeeboss.rba.core.request.requestentity.UploadDocumentRequest;
 import com.rupeeboss.rba.core.response.DocumentResponse;
 import com.rupeeboss.rba.core.response.UploadDocumentResponse;
 
-import retrofit.Call;
-import retrofit.http.Body;
-import retrofit.http.POST;
+import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.POST;
+
 
 /**
  * Created by Rajeev Ranjan on 15/05/2017.

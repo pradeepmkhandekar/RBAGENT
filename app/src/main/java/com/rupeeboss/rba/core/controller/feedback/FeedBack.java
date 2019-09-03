@@ -3,15 +3,17 @@ package com.rupeeboss.rba.core.controller.feedback;
 import com.rupeeboss.rba.core.IResponseSubcriber;
 import com.rupeeboss.rba.core.request.requestbuilder.FeedBackRequestBuilder;
 import com.rupeeboss.rba.core.response.FeedbackResponse;
+import com.rupeeboss.rba.core.response.MyBusinessResponse;
 
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 import java.util.HashMap;
 
-import retrofit.Callback;
-import retrofit.Response;
-import retrofit.Retrofit;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 /**
  * Created by IN-RB on 02-02-2017.
@@ -43,28 +45,32 @@ public class FeedBack implements IFeedBack {
 
         feedBackNetworkService.sendFeedback(bodyParameter).enqueue(new Callback<FeedbackResponse>() {
             @Override
-            public void onResponse(Response<FeedbackResponse> response, Retrofit retrofit) {
-                if (response.isSuccess()) {
-                    if (iResponseSubcriber != null) {
+            public void onResponse(Call<FeedbackResponse> call, Response<FeedbackResponse> response) {
+
+                try {
+                    if (response.body() != null) {
+
+
                         if (response.body().getStatus_Id() == 0) {
-                            try {
-                                iResponseSubcriber.OnSuccess(response.body(), response.message());
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
+                            iResponseSubcriber.OnSuccess(response.body(), response.body().getMsg());
+
+
                         } else {
                             iResponseSubcriber.OnFailure(new RuntimeException(response.body().getMsg()));
                         }
                     } else {
-                        iResponseSubcriber.OnFailure(new RuntimeException(response.message()));
+                        //failure
+                        iResponseSubcriber.OnFailure(new RuntimeException("Enable to reach server, Try again later"));
                     }
-                } else {
-                    iResponseSubcriber.OnFailure(new RuntimeException("Server down,Try after sometime..."));
+
+                } catch (InterruptedException e) {
+                    iResponseSubcriber.OnFailure(new RuntimeException(e.getMessage()));
                 }
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<FeedbackResponse> call, Throwable t) {
+
                 if (t instanceof ConnectException) {
                     iResponseSubcriber.OnFailure(t);
                 } else if (t instanceof SocketTimeoutException) {
@@ -76,7 +82,11 @@ public class FeedBack implements IFeedBack {
                 }
             }
         });
+
+
     }
+
+
 
     @Override
     public void getFeedback(String mobNo, IResponseSubcriber iResponseSubcriber) {

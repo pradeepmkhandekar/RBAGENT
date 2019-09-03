@@ -5,8 +5,9 @@ import com.rupeeboss.rba.core.response.CityResponse;
 import com.rupeeboss.rba.core.response.ProductResponse;
 import com.rupeeboss.rba.core.response.PropertyResponse;
 
-import retrofit.Call;
-import retrofit.http.POST;
+import retrofit2.Call;
+import retrofit2.http.POST;
+
 
 /**
  * Created by Nilesh Birhade on 23-01-2017.

@@ -78,41 +78,41 @@ public class ContactMangController implements IContactMang {
 
         contactToManagerNetworkService.sendMail(bodyparameter).enqueue(new Callback<SendMailRespose>() {
             @Override
-            public void onResponse(Response<SendMailRespose> response, Retrofit retrofit) {
+            public void onResponse(Call<SendMailRespose> call, Response<SendMailRespose> response) {
+                try {
+                    if (response.body() != null) {
 
-                if (response.isSuccess()) {
-                    if (iResponseSubcriber != null) {
                         if (response.body().getStatus_Id() == 0) {
-                            try {
-                                iResponseSubcriber.OnSuccess(response.body(), response.message());
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
+                            iResponseSubcriber.OnSuccess(response.body(), response.body().getMsg());
                         } else {
                             iResponseSubcriber.OnFailure(new RuntimeException(response.body().getMsg()));
                         }
                     } else {
-                        iResponseSubcriber.OnFailure(new RuntimeException(response.message()));
+                        //failure
+                        iResponseSubcriber.OnFailure(new RuntimeException("Enable to reach server, Try again later"));
                     }
-                } else {
-                    iResponseSubcriber.OnFailure(new RuntimeException("Server down,Try after sometime..."));
+
+                } catch (InterruptedException e) {
+                    iResponseSubcriber.OnFailure(new RuntimeException(e.getMessage()));
                 }
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<SendMailRespose> call, Throwable t) {
                 if (t instanceof ConnectException) {
                     iResponseSubcriber.OnFailure(t);
                 } else if (t instanceof SocketTimeoutException) {
-                    iResponseSubcriber.OnFailure(new RuntimeException(mContext.getResources().getString(R.string.net_connection)));
+                    iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
                 } else if (t instanceof UnknownHostException) {
-                    iResponseSubcriber.OnFailure(new RuntimeException(mContext.getResources().getString(R.string.net_connection)));
-                } else if (t instanceof JsonParseException) {
-                    iResponseSubcriber.OnFailure(new RuntimeException("Invalid Json"));
-                } else {
-                    iResponseSubcriber.OnFailure(new RuntimeException("Please Try after sometime.."));
+                    iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
+                }else {
+                    iResponseSubcriber.OnFailure(new RuntimeException(t.getMessage()));
                 }
             }
         });
+
+
+
+
     }
 }

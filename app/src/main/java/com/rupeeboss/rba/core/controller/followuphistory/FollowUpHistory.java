@@ -4,15 +4,17 @@ package com.rupeeboss.rba.core.controller.followuphistory;
 import com.rupeeboss.rba.core.IResponseSubcriber;
 import com.rupeeboss.rba.core.request.requestbuilder.FollowUpHistoryDetailsRequestBuilder;
 import com.rupeeboss.rba.core.response.FollowUpHistoryDetailsResponse;
+import com.rupeeboss.rba.core.response.MyBusinessResponse;
 
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 import java.util.HashMap;
 
-import retrofit.Callback;
-import retrofit.Response;
-import retrofit.Retrofit;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 /**
  * Created by Rajeev Ranjan on 27/10/2016.
@@ -35,42 +37,51 @@ public class FollowUpHistory implements IFollowUpHistory {
 
 
     @Override
-    public void getFollowUpHistoryDetails(int LeadId, final IResponseSubcriber iResponseSubcribe) {
+    public void getFollowUpHistoryDetails(int LeadId, final IResponseSubcriber iResponseSubcriber) {
         HashMap<String, String> bodyParameter = new HashMap<String, String>();
         bodyParameter.put("LeadId",""+LeadId);
+
         followUpHistoryDetailsNetworkService.getFollowUpHistoryDetails(bodyParameter).enqueue(new Callback<FollowUpHistoryDetailsResponse>() {
             @Override
-            public void onResponse(Response<FollowUpHistoryDetailsResponse> response, Retrofit retrofit) {
-                if (response.isSuccess()) {
-                    if (iResponseSubcribe != null) {
+            public void onResponse(Call<FollowUpHistoryDetailsResponse> call, Response<FollowUpHistoryDetailsResponse> response) {
+
+                try {
+                    if (response.body() != null) {
+
+
                         if (response.body().getStatusId() == 0) {
-                            try {
-                                iResponseSubcribe.OnSuccess(response.body(), response.body().getMessage());
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
+                            iResponseSubcriber.OnSuccess(response.body(), response.body().getMessage());
+
+
                         } else {
-                            iResponseSubcribe.OnFailure(new RuntimeException(response.body().getStatus()));
+                            iResponseSubcriber.OnFailure(new RuntimeException(response.body().getMessage()));
                         }
+                    } else {
+                        //failure
+                        iResponseSubcriber.OnFailure(new RuntimeException("Enable to reach server, Try again later"));
                     }
-                } else {
-                    iResponseSubcribe.OnFailure(new RuntimeException("Server Down Please try after some time !"));
+
+                } catch (InterruptedException e) {
+                    iResponseSubcriber.OnFailure(new RuntimeException(e.getMessage()));
                 }
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<FollowUpHistoryDetailsResponse> call, Throwable t) {
+
                 if (t instanceof ConnectException) {
-                    iResponseSubcribe.OnFailure(t);
+                    iResponseSubcriber.OnFailure(t);
                 } else if (t instanceof SocketTimeoutException) {
-                    iResponseSubcribe.OnFailure(new RuntimeException("Check your internet connection"));
+                    iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
                 } else if (t instanceof UnknownHostException) {
-                    iResponseSubcribe.OnFailure(new RuntimeException("Check your internet connection"));
-                }else {
-                    iResponseSubcribe.OnFailure(new RuntimeException(t.getMessage()));
+                    iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
+                } else {
+                    iResponseSubcriber.OnFailure(new RuntimeException(t.getMessage()));
                 }
             }
         });
 
     }
+
+
 }

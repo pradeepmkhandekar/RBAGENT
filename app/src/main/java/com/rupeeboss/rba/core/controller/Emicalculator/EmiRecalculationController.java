@@ -7,15 +7,16 @@ import com.rupeeboss.rba.R;
 import com.rupeeboss.rba.core.IResponseSubcriber;
 import com.rupeeboss.rba.core.request.requestbuilder.EmiRecalculationRequestBuilder;
 import com.rupeeboss.rba.core.response.EmiRecalculationResponse;
+import com.rupeeboss.rba.core.response.MyBusinessResponse;
 
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 import java.util.HashMap;
 
-import retrofit.Callback;
-import retrofit.Response;
-import retrofit.Retrofit;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by IN-RB on 06-07-2017.
@@ -43,37 +44,45 @@ public class EmiRecalculationController  implements IEmiRecalculation{
             // bodyParameter.put("empcode", new LoginFacade(mContext).getUser().getEmpCode());
             bodyParameter.put("loanterm", loantensure);
             bodyParameter.put("old_loaninterest", old_loaninterest);
-            EmiRecalculationNetworkService.getEmiRecalculationdata(bodyParameter).enqueue(new Callback<EmiRecalculationResponse>() {
-                @Override
-                public void onResponse(Response<EmiRecalculationResponse> response, Retrofit retrofit) {
 
-                    try {
+        EmiRecalculationNetworkService.getEmiRecalculationdata(bodyParameter).enqueue(new Callback<EmiRecalculationResponse>() {
+            @Override
+            public void onResponse(Call<EmiRecalculationResponse> call, Response<EmiRecalculationResponse> response) {
+
+                try {
+                    if (response.body() != null) {
+
+
                         if (response.body().getStatus_Id() == 0) {
                             iResponseSubcriber.OnSuccess(response.body(), response.body().getErr());
                         } else {
                             iResponseSubcriber.OnFailure(new RuntimeException(response.body().getErr()));
                         }
-                    } catch (InterruptedException e) {
-                        iResponseSubcriber.OnFailure(new RuntimeException(e.getMessage()));
-                    }
-                }
-
-                @Override
-                public void onFailure(Throwable t) {
-
-                    if (t instanceof ConnectException) {
-                        iResponseSubcriber.OnFailure(t);
-                    } else if (t instanceof SocketTimeoutException) {
-                        iResponseSubcriber.OnFailure(new RuntimeException(mContext.getResources().getString(R.string.net_connection)));
-                    } else if (t instanceof UnknownHostException) {
-                        iResponseSubcriber.OnFailure(new RuntimeException(mContext.getResources().getString(R.string.net_connection)));
-                    } else if (t instanceof JsonParseException) {
-                        iResponseSubcriber.OnFailure(new RuntimeException("Invalid Json"));
                     } else {
-                        iResponseSubcriber.OnFailure(new RuntimeException("Please Try after sometime.."));
+                        //failure
+                        iResponseSubcriber.OnFailure(new RuntimeException("Enable to reach server, Try again later"));
                     }
+
+                } catch (InterruptedException e) {
+                    iResponseSubcriber.OnFailure(new RuntimeException(e.getMessage()));
                 }
-            });
+            }
+
+            @Override
+            public void onFailure(Call<EmiRecalculationResponse> call, Throwable t) {
+
+                if (t instanceof ConnectException) {
+                    iResponseSubcriber.OnFailure(t);
+                } else if (t instanceof SocketTimeoutException) {
+                    iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
+                } else if (t instanceof UnknownHostException) {
+                    iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
+                } else {
+                    iResponseSubcriber.OnFailure(new RuntimeException(t.getMessage()));
+                }
+            }
+        });
+
 
     }
 }
