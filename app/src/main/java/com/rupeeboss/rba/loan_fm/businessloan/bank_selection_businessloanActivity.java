@@ -39,8 +39,8 @@ public class bank_selection_businessloanActivity extends BaseActivity implements
     citywisebankloanResponse getpersonal_bank_list_response;
     Toolbar toolbar;
     String Cityid = "";
-    DBPersistanceController dbPersistanceController;
-    LoginResponseEntity loginResponseEntity;
+   // DBPersistanceController dbPersistanceController;
+  // LoginResponseEntity loginResponseEntity;
     LinearLayout llmessage;
     Button btnBack;
     EditText etMonthlyInc;
@@ -82,8 +82,8 @@ public class bank_selection_businessloanActivity extends BaseActivity implements
         rvQuotes.setLayoutManager(new LinearLayoutManager(bank_selection_businessloanActivity.this));
         //getBankdetail_personalloan
         Cityid = getIntent().getStringExtra("city_id");
-        dbPersistanceController = new DBPersistanceController(bank_selection_businessloanActivity.this);
-        loginResponseEntity = dbPersistanceController.getUserData();
+     //   dbPersistanceController = new DBPersistanceController(bank_selection_businessloanActivity.this);
+    //    loginResponseEntity = dbPersistanceController.getUserData();
 
         setListener();
         List<LstCitywiseBankLoanEntity> lst = new ArrayList<>();
@@ -301,7 +301,7 @@ public class bank_selection_businessloanActivity extends BaseActivity implements
         String url = "";
         String Bankname = "";
         Bankname = entity.getBank_Name();
-        url= entity.getBank_Form_URL() + "?BrokerId=" + loginResponseEntity.getLoanId()+"&FBAId=" + loginResponseEntity.getFBAId() + "&client_source=finmart&lead_id=";
+        url= entity.getBank_Form_URL() + "?BrokerId=" + "1978"+"&FBAId=" + "1978" + "&client_source=finmart&lead_id=";
 
 
 //        if (entity.getBank_Id().equals("33")) {

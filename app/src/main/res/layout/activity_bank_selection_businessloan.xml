@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context="com.rupeeboss.rba.loan_fm.new_personalloan.bank_selection_personalloanActivity">
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:elevation="0dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimaryDark"
+            app:layout_scrollFlags="enterAlways|snap"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="100"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:orientation="horizontal">
+    <LinearLayout
+        android:id="@+id/llSalaried"
+        android:layout_width="0dp"
+        android:layout_weight="50"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="5dp"
+
+
+        android:gravity="left"
+        android:visibility="visible">
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Select Loan Amount"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+            <EditText
+                android:id="@+id/etMonthlyInc"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:digits="0123456789"
+                android:ems="10"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:inputType="phone"
+                android:maxLength="9" />
+
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="50"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+       >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/txtTenure1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:text="Select Tenure In Years"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="2dp"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/txtPendingDays1"
+                style="@style/TextStyle.TextMedium"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/circular_shape"
+                android:gravity="center"
+                android:text="1"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:textAllCaps="true"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/txtPendingDays2"
+                style="@style/TextStyle.TextMedium"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/circular_shape"
+                android:gravity="center"
+                android:text="2"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:textAllCaps="true"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/txtPendingDays3"
+                style="@style/TextStyle.TextMedium"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/circular_shape"
+                android:gravity="center"
+                android:text="3"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:textAllCaps="true"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvQuotes"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
+    <LinearLayout
+        android:id="@+id/llmessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="16dp"
+
+        android:background="@drawable/grey_border">
+        <TextView
+            android:id="@+id/txtPersonName"
+            style="@style/TextStyle.Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:lines="2"
+            android:text="Your Support Is Appreciated!"
+
+            android:textAppearance="@style/TextStyle.TextMedium"
+            android:textColor="@color/header_dark_text"
+            android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="8dp"
+            android:background="@drawable/loan_rect_border">
+
+            <TextView
+                android:id="@+id/txtPersonName1"
+                style="@style/TextStyle.Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="2dp"
+                android:gravity="center"
+                android:lines="2"
+                android:text="Currently Selected City is not"
+
+                android:textAppearance="@style/TextStyle.TextMedium"
+                android:textColor="@color/header_dark_text"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtPersonName2"
+                style="@style/TextStyle.Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+
+                android:gravity="center"
+                android:lines="1"
+                android:text="serviceable..!!"
+
+                android:textAppearance="@style/TextStyle.TextMedium"
+                android:textColor="@color/red_descent"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtPersonName3"
+                style="@style/TextStyle.Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:lines="1"
+                android:text="We regret the inconvenience"
+
+                android:textAppearance="@style/TextStyle.TextMedium"
+                android:textColor="@color/header_dark_text"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+
+            android:gravity="center"
+            android:src="@drawable/finmart_logo_splash"/>
+
+
+        <Button
+            android:id="@+id/btnBack"
+            style="@style/ButtonStyle.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentBottom="true"
+            android:text="Back" />
+
+    </LinearLayout>
+
+</LinearLayout>

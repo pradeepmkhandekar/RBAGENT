@@ -29,8 +29,8 @@ public class city_selecton_laploan_Activity extends BaseActivity implements View
     AutoCompleteTextView acCity;
     List<String> cityList;
     Button btnNEXT;
-    DBPersistanceController databaseController;
-    LoginResponseEntity loginEntity;
+    //DBPersistanceController databaseController;
+   // LoginResponseEntity loginEntity;
     ArrayList<String> arrayNewLoan, arrayPreferedCity;
 
     ArrayAdapter<String> preferedCityAdapter;
@@ -47,8 +47,8 @@ public class city_selecton_laploan_Activity extends BaseActivity implements View
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        databaseController = new DBPersistanceController(city_selecton_laploan_Activity.this);
-        cityList = databaseController.getLoanCity();
+  //      databaseController = new DBPersistanceController(city_selecton_laploan_Activity.this);
+   //     cityList = databaseController.getLoanCity();
         loanCityFacade = new  LoanCityFacade(this);
         IsCityValid = false;
         acCity = (AutoCompleteTextView)findViewById(R.id.acCity);

@@ -28,8 +28,8 @@ public class NewLAPApplicaionActivity extends BaseActivity implements View.OnCli
     NewLAPLoanApplicationAdapter mAdapter;
 
     Toolbar toolbar;
-    DBPersistanceController dbPersistanceController;
-    LoginResponseEntity loginResponseEntity;
+ //   DBPersistanceController dbPersistanceController;
+ //   LoginResponseEntity loginResponseEntity;
     NewLoanApplicationResponse getpersonal_bank_list_response;
     FloatingActionButton loanAddlist;
     TextView tvAdd;
@@ -53,10 +53,10 @@ public class NewLAPApplicaionActivity extends BaseActivity implements View.OnCli
         rvApplicationList = (RecyclerView)findViewById(R.id.rvApplicationList);
         rvApplicationList.setLayoutManager(new LinearLayoutManager(NewLAPApplicaionActivity.this));
 
-        dbPersistanceController = new DBPersistanceController(NewLAPApplicaionActivity.this);
-        loginResponseEntity = dbPersistanceController.getUserData();
+        //dbPersistanceController = new DBPersistanceController(NewLAPApplicaionActivity.this);
+       // loginResponseEntity = dbPersistanceController.getUserData();
         showDialog();
-        new MainLoanController(NewLAPApplicaionActivity.this).getLoanApplication(0,"LAP",String.valueOf(loginResponseEntity.getFBAId()), NewLAPApplicaionActivity.this);
+        new MainLoanController(NewLAPApplicaionActivity.this).getLoanApplication(0,"LAP",String.valueOf( "1978"), NewLAPApplicaionActivity.this);
 
     }
 
@@ -109,7 +109,7 @@ public class NewLAPApplicaionActivity extends BaseActivity implements View.OnCli
         String url="";
         String Bankname="";
         Bankname = entity.getBankName();
-        url = entity.getBank_URL() + "?BrokerId=" + loginResponseEntity.getLoanId()+"&FBAId=" + loginResponseEntity.getFBAId() + "&client_source=finmart&lead_id="+entity.getLeadId()+"";
+        url = entity.getBank_URL() + "?BrokerId=" + "1978"+"&FBAId=" +  "1978"+ "&client_source=finmart&lead_id="+entity.getLeadId()+"";
 
 //        if(String.valueOf(entity.getBankId()).equals("33")){
 //            Bankname="KOTAK MAHINDRA BANK";

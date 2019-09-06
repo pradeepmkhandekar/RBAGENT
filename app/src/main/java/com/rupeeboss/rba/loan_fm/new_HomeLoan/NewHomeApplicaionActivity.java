@@ -17,7 +17,11 @@ import com.rupeeboss.rba.R;
 import com.rupeeboss.rba.core_loan_fm.APIResponseFM;
 import com.rupeeboss.rba.core_loan_fm.IResponseSubcriberFM;
 import com.rupeeboss.rba.core_loan_fm.controller.mainloan.MainLoanController;
+import com.rupeeboss.rba.core_loan_fm.model.NewLoanApplicationEnity;
 import com.rupeeboss.rba.core_loan_fm.response.NewLoanApplicationResponse;
+import com.rupeeboss.rba.loan_fm.Utility;
+import com.rupeeboss.rba.loan_fm.popup.LeadInfoPopupActivity;
+import com.rupeeboss.rba.webviews.commonwebview.CommonWebviewActivity;
 
 
 public class NewHomeApplicaionActivity extends BaseActivity implements View.OnClickListener, IResponseSubcriberFM {
@@ -26,8 +30,8 @@ public class NewHomeApplicaionActivity extends BaseActivity implements View.OnCl
     NewHomeLoanApplicationAdapter mAdapter;
 
     Toolbar toolbar;
-    DBPersistanceController dbPersistanceController;
-    LoginResponseEntity loginResponseEntity;
+  //  DBPersistanceController dbPersistanceController;
+  //  LoginResponseEntity loginResponseEntity;
     NewLoanApplicationResponse getpersonal_bank_list_response;
     FloatingActionButton loanAddlist;
     TextView tvAdd;
@@ -51,10 +55,10 @@ public class NewHomeApplicaionActivity extends BaseActivity implements View.OnCl
         rvApplicationList = (RecyclerView)findViewById(R.id.rvApplicationList);
         rvApplicationList.setLayoutManager(new LinearLayoutManager(NewHomeApplicaionActivity.this));
 
-        dbPersistanceController = new DBPersistanceController(NewHomeApplicaionActivity.this);
-        loginResponseEntity = dbPersistanceController.getUserData();
+      //  dbPersistanceController = new DBPersistanceController(NewHomeApplicaionActivity.this);
+     //   loginResponseEntity = dbPersistanceController.getUserData();
         showDialog();
-        new MainLoanController(NewHomeApplicaionActivity.this).getLoanApplication(0,"HML",String.valueOf(loginResponseEntity.getFBAId()), NewHomeApplicaionActivity.this);
+        new MainLoanController(NewHomeApplicaionActivity.this).getLoanApplication(0,"HML",String.valueOf("1978"), NewHomeApplicaionActivity.this);
 
     }
 
@@ -109,7 +113,7 @@ public class NewHomeApplicaionActivity extends BaseActivity implements View.OnCl
         String url="";
         String Bankname="";
         Bankname = entity.getBankName();
-        url = entity.getBank_URL() + "?BrokerId=" + loginResponseEntity.getLoanId()+"&FBAId=" + loginResponseEntity.getFBAId() + "&client_source=finmart&lead_id="+entity.getLeadId()+"";
+        url = entity.getBank_URL() + "?BrokerId=" + "1978"+"&FBAId=" + "1978" + "&client_source=finmart&lead_id="+entity.getLeadId()+"";
 
 //        if(String.valueOf(entity.getBankId()).equals("33")){
 //            Bankname="KOTAK MAHINDRA BANK";
@@ -138,7 +142,7 @@ public class NewHomeApplicaionActivity extends BaseActivity implements View.OnCl
 //        }
 
 
-            startActivity(new Intent(this, CommonWebViewActivity.class)
+            startActivity(new Intent(this, CommonWebviewActivity.class)
                     .putExtra("URL", url)
                     .putExtra("NAME", "" + Bankname)
                     .putExtra("TITLE", "" + Bankname));
@@ -149,7 +153,7 @@ public class NewHomeApplicaionActivity extends BaseActivity implements View.OnCl
     {
         Intent intent = new Intent(NewHomeApplicaionActivity.this, LeadInfoPopupActivity.class);
         intent.putExtra("APPLICATION_NUMBER",AppNumb);
-        startActivityForResult(intent,Utility.LEAD_REQUEST_CODE);
+        startActivityForResult(intent, Utility.LEAD_REQUEST_CODE);
     }
 
 }

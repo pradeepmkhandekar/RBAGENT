@@ -29,8 +29,8 @@ public class NewbusinessApplicaionActivity extends BaseActivity implements View.
     NewbusinessLoanApplicationAdapter mAdapter;
 
     Toolbar toolbar;
-    DBPersistanceController dbPersistanceController;
-    LoginResponseEntity loginResponseEntity;
+  //  DBPersistanceController dbPersistanceController;
+ //   LoginResponseEntity loginResponseEntity;
     NewLoanApplicationResponse getpersonal_bank_list_response;
     FloatingActionButton loanAddlist;
     TextView tvAdd;
@@ -54,10 +54,10 @@ public class NewbusinessApplicaionActivity extends BaseActivity implements View.
         rvApplicationList = (RecyclerView)findViewById(R.id.rvApplicationList);
         rvApplicationList.setLayoutManager(new LinearLayoutManager(NewbusinessApplicaionActivity.this));
 
-        dbPersistanceController = new DBPersistanceController(NewbusinessApplicaionActivity.this);
-        loginResponseEntity = dbPersistanceController.getUserData();
+     //   dbPersistanceController = new DBPersistanceController(NewbusinessApplicaionActivity.this);
+     //   loginResponseEntity = dbPersistanceController.getUserData();
         showDialog();
-        new MainLoanController(NewbusinessApplicaionActivity.this).getLoanApplication(0,"BL",String.valueOf(loginResponseEntity.getFBAId()), NewbusinessApplicaionActivity.this);
+        new MainLoanController(NewbusinessApplicaionActivity.this).getLoanApplication(0,"BL",String.valueOf("1978"), NewbusinessApplicaionActivity.this);
 
     }
 
@@ -114,7 +114,7 @@ public class NewbusinessApplicaionActivity extends BaseActivity implements View.
         String url="";
         String Bankname="";
         Bankname = entity.getBankName();
-        url = entity.getBank_URL() + "?BrokerId=" + loginResponseEntity.getLoanId()+"&FBAId=" + loginResponseEntity.getFBAId() + "&client_source=finmart&lead_id="+entity.getLeadId()+"";
+        url = entity.getBank_URL() + "?BrokerId=" + "1978"+"&FBAId=" + "1978" + "&client_source=finmart&lead_id="+entity.getLeadId()+"";
 
 
 //        if(String.valueOf(entity.getBankId()).equals("33")){
