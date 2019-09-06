@@ -66,7 +66,7 @@ tools:context="com.rupeeboss.rba.loan_fm.new_personalloan.NewPersonalApplicaionA
         android:layout_below="@id/llSearch"
         android:scrollbarStyle="insideOverlay" />
 
-    <android.support.design.widget.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/loanAddlist"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
