@@ -5,13 +5,7 @@ import android.content.Context;
 import com.rupeeboss.rba.core_loan_fm.IResponseSubcriberFM;
 import com.rupeeboss.rba.core_loan_fm.requestbuilder.LoanMainRequestBuilder;
 import com.rupeeboss.rba.core_loan_fm.requestentity.BankSaveRequest;
-import com.rupeeboss.rba.core_loan_fm.requestentity.FmBalanceLoanRequest;
-import com.rupeeboss.rba.core_loan_fm.requestentity.FmHomeLoanRequest;
-import com.rupeeboss.rba.core_loan_fm.requestentity.FmPersonalLoanRequest;
 import com.rupeeboss.rba.core_loan_fm.response.BankForNodeResponse;
-import com.rupeeboss.rba.core_loan_fm.response.FmBalanceLoanResponse;
-import com.rupeeboss.rba.core_loan_fm.response.FmHomelLoanResponse;
-import com.rupeeboss.rba.core_loan_fm.response.FmPersonalLoanResponse;
 import com.rupeeboss.rba.core_loan_fm.response.FmSaveQuoteBLResponse;
 import com.rupeeboss.rba.core_loan_fm.response.FmSaveQuoteHomeLoanResponse;
 import com.rupeeboss.rba.core_loan_fm.response.FmSaveQuotePersonalLoanResponse;
@@ -54,111 +48,7 @@ public class MainLoanController implements IMainLoan {
         body.put("count", "" + count);
         body.put("QandAType", "" + QA);
 
-        loanMainNetworkService.getHLQuoteApplication(body).enqueue(new Callback<FmHomelLoanResponse>() {
-            @Override
-            public void onResponse(Call<FmHomelLoanResponse> call, Response<FmHomelLoanResponse> response) {
-                if (response.body() != null) {
-
-                    //callback of data
-                    iResponseSubcriber.OnSuccessFM(response.body(), "");
-
-                } else {
-                    //failure
-                    iResponseSubcriber.OnFailure(new RuntimeException("Enable to reach server, Try again later"));
-                }
-            }
-
-            @Override
-            public void onFailure(Call<FmHomelLoanResponse> call, Throwable t) {
-                if (t instanceof ConnectException) {
-                    iResponseSubcriber.OnFailure(t);
-                } else if (t instanceof SocketTimeoutException) {
-                    iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
-                } else if (t instanceof UnknownHostException) {
-                    iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
-                } else if (t instanceof NumberFormatException) {
-                    iResponseSubcriber.OnFailure(new RuntimeException("Unexpected server response"));
-                } else {
-                    iResponseSubcriber.OnFailure(new RuntimeException(t.getMessage()));
-                }
-            }
-        });
-    }
-
-    @Override
-    public void saveHLQuoteData(FmHomeLoanRequest fmHomeLoanRequest, final IResponseSubcriberFM iResponseSubcriber) {
-
-        loanMainNetworkService.saveHLQuote(fmHomeLoanRequest).enqueue(new Callback<FmSaveQuoteHomeLoanResponse>() {
-            @Override
-            public void onResponse(Call<FmSaveQuoteHomeLoanResponse> call, Response<FmSaveQuoteHomeLoanResponse> response) {
-                if (response.body() != null) {
-
-                    //callback of data
-                    iResponseSubcriber.OnSuccessFM(response.body(), "");
-
-                } else {
-                    //failure
-                    iResponseSubcriber.OnFailure(new RuntimeException("Enable to reach server, Try again later"));
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<FmSaveQuoteHomeLoanResponse> call, Throwable t) {
-                if (t instanceof ConnectException) {
-                    iResponseSubcriber.OnFailure(t);
-                } else if (t instanceof SocketTimeoutException) {
-                    iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
-                } else if (t instanceof UnknownHostException) {
-                    iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
-                } else if (t instanceof NumberFormatException) {
-                    iResponseSubcriber.OnFailure(new RuntimeException("Unexpected server response"));
-                } else {
-                    iResponseSubcriber.OnFailure(new RuntimeException(t.getMessage()));
-                }
-            }
-        });
-
-
-    }
-    //endregion
-
-    // region Personal Loan
-    @Override
-    public void savePLQuoteData(FmPersonalLoanRequest fmPersonalLoanRequest, final IResponseSubcriberFM iResponseSubcriber) {
-
-        loanMainNetworkService.savePLQuote(fmPersonalLoanRequest).enqueue(new Callback<FmSaveQuotePersonalLoanResponse>() {
-            @Override
-            public void onResponse(Call<FmSaveQuotePersonalLoanResponse> call, Response<FmSaveQuotePersonalLoanResponse> response) {
-                if (response.body() != null) {
-
-                    //callback of data
-                    iResponseSubcriber.OnSuccessFM(response.body(), "");
-
-                } else {
-                    //failure
-                    iResponseSubcriber.OnFailure(new RuntimeException("Enable to reach server, Try again later"));
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<FmSaveQuotePersonalLoanResponse> call, Throwable t) {
-                if (t instanceof ConnectException) {
-                    iResponseSubcriber.OnFailure(t);
-                } else if (t instanceof SocketTimeoutException) {
-                    iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
-                } else if (t instanceof UnknownHostException) {
-                    iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
-                } else if (t instanceof NumberFormatException) {
-                    iResponseSubcriber.OnFailure(new RuntimeException("Unexpected server response"));
-                } else {
-                    iResponseSubcriber.OnFailure(new RuntimeException(t.getMessage()));
-                }
-            }
-        });
-
-    }
+         }
 
 
 
@@ -199,42 +89,6 @@ public class MainLoanController implements IMainLoan {
     }
 
 
-    // region BL Loan
-    @Override
-    public void saveBLQuoteData(FmBalanceLoanRequest fmBalanceLoanRequest, final IResponseSubcriberFM iResponseSubcriber) {
-
-        loanMainNetworkService.saveBLQuote(fmBalanceLoanRequest).enqueue(new Callback<FmSaveQuoteBLResponse>() {
-            @Override
-            public void onResponse(Call<FmSaveQuoteBLResponse> call, Response<FmSaveQuoteBLResponse> response) {
-                if (response.body() != null) {
-
-                    //callback of data
-                    iResponseSubcriber.OnSuccessFM(response.body(), "");
-
-                } else {
-                    //failure
-                    iResponseSubcriber.OnFailure(new RuntimeException("Enable to reach server, Try again later"));
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<FmSaveQuoteBLResponse> call, Throwable t) {
-                if (t instanceof ConnectException) {
-                    iResponseSubcriber.OnFailure(t);
-                } else if (t instanceof SocketTimeoutException) {
-                    iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
-                } else if (t instanceof UnknownHostException) {
-                    iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
-                } else if (t instanceof NumberFormatException) {
-                    iResponseSubcriber.OnFailure(new RuntimeException("Unexpected server response"));
-                } else {
-                    iResponseSubcriber.OnFailure(new RuntimeException(t.getMessage()));
-                }
-            }
-        });
-
-    }
 
 
     @Override
@@ -245,35 +99,7 @@ public class MainLoanController implements IMainLoan {
         body.put("count", "" + count);
         body.put("type", "" + type);
 
-        loanMainNetworkService.getBLQuoteApplication(body).enqueue(new Callback<FmBalanceLoanResponse>() {
-            @Override
-            public void onResponse(Call<FmBalanceLoanResponse> call, Response<FmBalanceLoanResponse> response) {
-                if (response.body() != null) {
 
-                    //callback of data
-                    iResponseSubcriber.OnSuccessFM(response.body(), "");
-
-                } else {
-                    //failure
-                    iResponseSubcriber.OnFailure(new RuntimeException("Enable to reach server, Try again later"));
-                }
-            }
-
-            @Override
-            public void onFailure(Call<FmBalanceLoanResponse> call, Throwable t) {
-                if (t instanceof ConnectException) {
-                    iResponseSubcriber.OnFailure(t);
-                } else if (t instanceof SocketTimeoutException) {
-                    iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
-                } else if (t instanceof UnknownHostException) {
-                    iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
-                } else if (t instanceof NumberFormatException) {
-                    iResponseSubcriber.OnFailure(new RuntimeException("Unexpected server response"));
-                } else {
-                    iResponseSubcriber.OnFailure(new RuntimeException(t.getMessage()));
-                }
-            }
-        });
     }
 
     //delete
@@ -402,35 +228,7 @@ public class MainLoanController implements IMainLoan {
         body.put("count", "" + count);
         body.put("type", "" + type);
 
-        loanMainNetworkService.getPLQuoteApplication(body).enqueue(new Callback<FmPersonalLoanResponse>() {
-            @Override
-            public void onResponse(Call<FmPersonalLoanResponse> call, Response<FmPersonalLoanResponse> response) {
-                if (response.body() != null) {
 
-                    //callback of data
-                    iResponseSubcriber.OnSuccessFM(response.body(), "");
-
-                } else {
-                    //failure
-                    iResponseSubcriber.OnFailure(new RuntimeException("Enable to reach server, Try again later"));
-                }
-            }
-
-            @Override
-            public void onFailure(Call<FmPersonalLoanResponse> call, Throwable t) {
-                if (t instanceof ConnectException) {
-                    iResponseSubcriber.OnFailure(t);
-                } else if (t instanceof SocketTimeoutException) {
-                    iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
-                } else if (t instanceof UnknownHostException) {
-                    iResponseSubcriber.OnFailure(new RuntimeException("Check your internet connection"));
-                } else if (t instanceof NumberFormatException) {
-                    iResponseSubcriber.OnFailure(new RuntimeException("Unexpected server response"));
-                } else {
-                    iResponseSubcriber.OnFailure(new RuntimeException(t.getMessage()));
-                }
-            }
-        });
     }
 
 

@@ -771,6 +771,39 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.rupeeboss.rba.home.MainActivity" />
         </activity>
+        <activity
+            android:name=".loan_fm.new_personalloan.city_selecton_personalloan_Activity"
+            android:label="Personal Loan"
+            android:parentActivityName=".loan_fm.new_personalloan.NewPersonalApplicaionActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden|stateHidden">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.loan_fm.new_personalloan.NewPersonalApplicaionActivity" />
+        </activity>
+        <activity
+            android:name=".loan_fm.new_personalloan.bank_selection_personalloanActivity"
+            android:label="Personal Loan"
+            android:parentActivityName=".loan_fm.new_personalloan.city_selecton_personalloan_Activity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden|stateHidden">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.loan_fm.new_personalloan.city_selecton_personalloan_Activity" />
+        </activity>
+        <activity
+            android:name=".loan_fm.new_personalloan.NewPersonalApplicaionActivity"
+            android:label="@string/title_activity_personal_loan_apply"
+            android:parentActivityName=".home.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden|stateHidden">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.home.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

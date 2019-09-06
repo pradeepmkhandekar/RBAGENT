@@ -15,7 +15,9 @@ import com.rupeeboss.rba.BaseActivity;
 import com.rupeeboss.rba.R;
 import com.rupeeboss.rba.core.controller.sync.SyncController;
 import com.rupeeboss.rba.core.facade.LoginFacade;
+import com.rupeeboss.rba.core_loan_fm.controller.erploan.ErpLoanController;
 import com.rupeeboss.rba.home.MainActivity;
+import com.rupeeboss.rba.loan_fm.LoanCityFacade;
 import com.rupeeboss.rba.login.LoginActivity;
 import com.rupeeboss.rba.utility.Constants;
 import com.rupeeboss.rba.utility.Utility;
@@ -55,6 +57,14 @@ public class SplashScreenActivity extends BaseActivity {
 //referrer is a composition of the parameter of the campaing
         i.putExtra("referrer", "SDASDASD@122@eweeew");
         sendBroadcast(i);*/
+//Loan City
+        if(new LoanCityFacade(this) !=null)
+        {
+            if(new LoanCityFacade(this).getLoanCity()==null)
+            {
+                new ErpLoanController(this).getcityloan(null);
+            }
+        }
 
         new SyncController(SplashScreenActivity.this).getCity();
         SugarContext.init(SplashScreenActivity.this);

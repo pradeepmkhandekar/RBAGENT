@@ -19,6 +19,7 @@ import com.rupeeboss.rba.contactus.ContactUsActivity;
 import com.rupeeboss.rba.core.facade.LoginFacade;
 import com.rupeeboss.rba.fragment.AddLeadFragment;
 import com.rupeeboss.rba.incomeSimulator.IncomeSimulatorActivity;
+import com.rupeeboss.rba.loan_fm.new_personalloan.NewPersonalApplicaionActivity;
 import com.rupeeboss.rba.mybuisness.BuisinessActivity;
 import com.rupeeboss.rba.utility.Utility;
 import com.rupeeboss.rba.webviews.commonwebview.CommonWebviewActivity;
@@ -264,13 +265,10 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
                 //   Toast.makeText(getActivity(), "Coming soon...", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.ivpersonal_loan:
-                startActivity(new Intent(getActivity(), CommonWebviewActivity.class)
-                        .putExtra("URL", "http://www.rupeeboss.com/rbl-personal-loan")
-                        .putExtra("NAME", "RBL PERSONAL LOAN")
-                        .putExtra("TITLE", "RBL PERSONAL LOAN"));
 
 
-                //  startActivity(new Intent(getActivity(), GeneralInsuranceType.class));
+
+                startActivity(new Intent(getActivity(), NewPersonalApplicaionActivity.class));
                 // Toast.makeText(getActivity(), "Coming soon...", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.ivhome_loan:

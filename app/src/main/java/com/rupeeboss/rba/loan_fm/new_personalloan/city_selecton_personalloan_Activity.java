@@ -2,8 +2,8 @@ package com.rupeeboss.rba.loan_fm.new_personalloan;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.Toolbar;
+import androidx.cardview.widget.CardView;
+import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -11,30 +11,30 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ListAdapter;
 
-import com.datacomp.magicfinmart.BaseActivity;
-import com.datacomp.magicfinmart.R;
-import com.datacomp.magicfinmart.loan_fm.MakeCityAdapter;
+
+import com.rupeeboss.rba.BaseActivity;
+import com.rupeeboss.rba.R;
+import com.rupeeboss.rba.core_loan_fm.APIResponseERP;
+import com.rupeeboss.rba.core_loan_fm.IResponseSubcriberERP;
+import com.rupeeboss.rba.core_loan_fm.controller.erploan.ErpLoanController;
+import com.rupeeboss.rba.core_loan_fm.model.LoanCityEntity;
+import com.rupeeboss.rba.core_loan_fm.response.LoanCityResponse;
+import com.rupeeboss.rba.loan_fm.LoanCityFacade;
+import com.rupeeboss.rba.loan_fm.MakeCityAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import magicfinmart.datacomp.com.finmartserviceapi.database.DBPersistanceController;
-import magicfinmart.datacomp.com.finmartserviceapi.database.LoanCityFacade;
-import magicfinmart.datacomp.com.finmartserviceapi.finmart.model.LoginResponseEntity;
-import magicfinmart.datacomp.com.finmartserviceapi.loan_fm.APIResponseERP;
-import magicfinmart.datacomp.com.finmartserviceapi.loan_fm.IResponseSubcriberERP;
-import magicfinmart.datacomp.com.finmartserviceapi.loan_fm.controller.erploan.ErpLoanController;
-import magicfinmart.datacomp.com.finmartserviceapi.loan_fm.model.LoanCityEntity;
-import magicfinmart.datacomp.com.finmartserviceapi.loan_fm.response.LoanCityResponse;
 
-public class city_selecton_personalloan_Activity extends BaseActivity implements View.OnClickListener ,IResponseSubcriberERP {
+
+public class city_selecton_personalloan_Activity extends BaseActivity implements View.OnClickListener , IResponseSubcriberERP {
 
 
     AutoCompleteTextView acCity;
     List<String> cityList;
     Button btnNEXT;
-    DBPersistanceController databaseController;
-    LoginResponseEntity loginEntity;
+   // DBPersistanceController databaseController;
+  //  LoginResponseEntity loginEntity;
     ArrayList<String> arrayNewLoan, arrayPreferedCity;
 
     ArrayAdapter<String> preferedCityAdapter;
@@ -51,8 +51,8 @@ public class city_selecton_personalloan_Activity extends BaseActivity implements
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        databaseController = new DBPersistanceController(city_selecton_personalloan_Activity.this);
-        cityList = databaseController.getLoanCity();
+      //  databaseController = new DBPersistanceController(city_selecton_personalloan_Activity.this);
+     //   cityList = databaseController.getLoanCity();
         loanCityFacade = new  LoanCityFacade(this);
         IsCityValid = false;
         acCity = (AutoCompleteTextView)findViewById(R.id.acCity);
@@ -257,7 +257,7 @@ public class city_selecton_personalloan_Activity extends BaseActivity implements
     public void OnSuccessERP(APIResponseERP response, String message) {
 
         cancelDialog();
-        if(response instanceof  LoanCityResponse)
+        if(response instanceof LoanCityResponse)
         {
 
             loadSpinner(((LoanCityResponse) response).getResult().getLstCity());

@@ -1,6 +1,7 @@
 package com.rupeeboss.rba;
 
 import android.app.ProgressDialog;
+
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.widget.EditText;
@@ -60,5 +61,17 @@ public class BaseActivity extends AppCompatActivity {
             return false;
         }
     }
+    protected void cancelDialog() {
+        if (dialog != null) {
+            if (dialog.isShowing()) {
+                dialog.dismiss();
+            }
+        }
+    }
 
+
+
+    public void showDialog() {
+        dialog = ProgressDialog.show(this, "Loading...", LOADING, false);
+    }
 }

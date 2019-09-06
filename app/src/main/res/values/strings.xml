@@ -99,5 +99,5 @@
     <string name="title_activity_posloan">POS Loan</string>
     <string name="title_activity_home_loan_menu">Home Loan</string>
     <string name="title_activity_common_webview">RBA</string>
-
+    <string name="threedots">&#8942;</string>
 </resources>

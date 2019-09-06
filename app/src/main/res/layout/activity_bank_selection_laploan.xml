@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context="com.rupeeboss.rba.loan_fm.new_personalloan.bank_selection_personalloanActivity">
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:titleTextAppearance="@style/TextStyle.Toolbar"
+            app:titleTextColor="@color/white"/>
+
+    </android.support.design.widget.AppBarLayout>
+    <LinearLayout
+        android:id="@+id/llSalaried"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="3dp"
+        android:visibility="visible">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Select Loan Amount"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+            <EditText
+                android:id="@+id/etMonthlyInc"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:digits="0123456789"
+                android:ems="10"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:inputType="phone"
+                android:maxLength="9" />
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:gravity="center"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:id="@+id/llSalarisedq"
+            android:layout_width="0dp"
+            android:layout_weight="28"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:gravity="left"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/textView99"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="Tenure In Years "
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/llSalar"
+            android:layout_width="0dp"
+            android:layout_weight="12"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp"
+
+            android:gravity="center"
+            android:visibility="visible">
+
+            <EditText
+                android:id="@+id/etTenureInYear"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:digits="0123456789"
+                android:ems="10"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:inputType="phone"
+                android:maxLength="2" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="60"
+            android:layout_height="wrap_content"
+
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/llSalariedq"
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="5dp"
+
+                android:layout_marginRight="3dp"
+                android:gravity="left"
+                android:visibility="visible">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="3dp"
+
+                        android:layout_marginTop="2dp">
+
+                        <TextView
+                            android:id="@+id/txtDispalayMinIncome"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:text="1 Y"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+                        <SeekBar
+                            android:id="@+id/sbMonthlyInc"
+                            android:layout_toLeftOf="@+id/txtDispalayMaxIncome"
+                            android:layout_toRightOf="@+id/txtDispalayMinIncome"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:max="20"
+                            android:progress="1"
+                            android:thumbTintMode="multiply" />
+                        <TextView
+                            android:id="@+id/txtDispalayMaxIncome"
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:text="20 Y"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+
+                    </RelativeLayout>
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvQuotes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+    <LinearLayout
+        android:id="@+id/llmessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="16dp"
+
+        android:background="@drawable/grey_border">
+        <TextView
+            android:id="@+id/txtPersonName"
+            style="@style/TextStyle.Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:lines="2"
+            android:text="Your Support Is Appreciated!"
+
+            android:textAppearance="@style/TextStyle.TextMedium"
+            android:textColor="@color/header_dark_text"
+            android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="8dp"
+            android:background="@drawable/loan_rect_border">
+
+            <TextView
+                android:id="@+id/txtPersonName1"
+                style="@style/TextStyle.Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="2dp"
+                android:gravity="center"
+                android:lines="2"
+                android:text="Currently Selected City is not"
+
+                android:textAppearance="@style/TextStyle.TextMedium"
+                android:textColor="@color/header_dark_text"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtPersonName2"
+                style="@style/TextStyle.Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+
+                android:gravity="center"
+                android:lines="1"
+                android:text="serviceable..!!"
+
+                android:textAppearance="@style/TextStyle.TextMedium"
+                android:textColor="@color/red_descent"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtPersonName3"
+                style="@style/TextStyle.Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:lines="1"
+                android:text="We regret the inconvenience"
+
+                android:textAppearance="@style/TextStyle.TextMedium"
+                android:textColor="@color/header_dark_text"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+
+            android:gravity="center"
+            android:src="@drawable/finmart_logo_splash"/>
+
+
+        <Button
+            android:id="@+id/btnBack"
+            style="@style/ButtonStyle.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentBottom="true"
+            android:text="Back" />
+
+    </LinearLayout>
+
+</LinearLayout>

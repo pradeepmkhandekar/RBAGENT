@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="3dp"
+    android:background="@color/white"
+    android:gravity="center_horizontal|center_vertical"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        style="@style/CardViewStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="8dp"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="2dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/search_gray" />
+
+            <LinearLayout
+                android:id="@+id/rvhlknowmore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/green_descent"
+                    android:orientation="horizontal"
+                    android:paddingBottom="3dp"
+                    android:gravity="center"
+                    android:paddingTop="3dp">
+
+                    <TextView
+                        android:id="@+id/tvxsegment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+                        android:paddingLeft="10dp"
+                        android:text="Segment: "
+                        android:textAppearance="@style/TextViewStyle.Medium"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvsegment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+                        android:text=""
+                        android:textAppearance="@style/TextViewStyle.Medium"
+
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:paddingBottom="3dp"
+                    android:paddingTop="3dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+                        android:paddingLeft="10dp"
+                        android:text="Product: "
+                        android:textAppearance="@style/TextViewStyle.Medium"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvProduct"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+
+                        android:textAppearance="@style/TextViewStyle.Medium"
+
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/lightGrey"
+                    android:orientation="horizontal"
+                    android:paddingBottom="3dp"
+                    android:paddingTop="3dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+                        android:paddingLeft="10dp"
+                        android:text="Product Type: "
+                        android:textAppearance="@style/TextViewStyle.Medium"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvProduct_Type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+
+                        android:textAppearance="@style/TextViewStyle.Medium"
+
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:paddingBottom="3dp"
+                    android:paddingTop="3dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+                        android:paddingLeft="10dp"
+                        android:text="BEST ROI: "
+                        android:textAppearance="@style/TextViewStyle.Medium"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvroi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+
+                        android:textAppearance="@style/TextViewStyle.Medium"
+
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/lightGrey"
+                    android:orientation="horizontal"
+                    android:paddingBottom="3dp"
+                    android:paddingTop="3dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+                        android:paddingLeft="10dp"
+                        android:text="Per Lac EMI: "
+                        android:textAppearance="@style/TextViewStyle.Medium"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvPer_Lac_EMI"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+
+                        android:textAppearance="@style/TextViewStyle.Medium"
+
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:paddingBottom="3dp"
+                    android:paddingTop="3dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+                        android:paddingLeft="10dp"
+                        android:text="Loan Amount: "
+                        android:textAppearance="@style/TextViewStyle.Medium"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvLoanAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+
+                        android:textAppearance="@style/TextViewStyle.Medium"
+
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/lightGrey"
+                    android:orientation="horizontal"
+                    android:paddingBottom="3dp"
+                    android:paddingTop="3dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+                        android:paddingLeft="10dp"
+                        android:text="Tenure: "
+                        android:textAppearance="@style/TextViewStyle.Medium"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvTenure"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+
+                        android:textAppearance="@style/TextViewStyle.Medium"
+
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:paddingBottom="3dp"
+                    android:paddingTop="3dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+                        android:paddingLeft="10dp"
+                        android:text="Age: "
+                        android:textAppearance="@style/TextViewStyle.Medium"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvAge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+
+                        android:textAppearance="@style/TextViewStyle.Medium"
+
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/lightGrey"
+                    android:orientation="horizontal"
+                    android:paddingBottom="3dp"
+                    android:paddingTop="3dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+                        android:paddingLeft="10dp"
+                        android:text="Min.Salary: "
+                        android:textAppearance="@style/TextViewStyle.Medium"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvminSalary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+
+                        android:textAppearance="@style/TextViewStyle.Medium"
+
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:paddingBottom="3dp"
+                    android:paddingTop="3dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+                        android:paddingLeft="10dp"
+                        android:text="Min. Work Experence: "
+                        android:textAppearance="@style/TextViewStyle.Medium"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvWorkExperence"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+
+                        android:textAppearance="@style/TextViewStyle.Medium"
+
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/lightGrey"
+                    android:orientation="horizontal"
+                    android:paddingBottom="3dp"
+                    android:paddingTop="3dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+                        android:paddingLeft="10dp"
+                        android:text="Processing Fees: "
+                        android:textAppearance="@style/TextViewStyle.Medium"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvProcessingFees"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+
+                        android:textAppearance="@style/TextViewStyle.Medium"
+
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:paddingBottom="3dp"
+                    android:paddingTop="3dp">
+
+
+                    <TextView
+                        android:id="@+id/tvCibilscore1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+                        android:paddingLeft="10dp"
+                        android:text="Minimum Cibil score: "
+                        android:textAppearance="@style/TextViewStyle.Medium"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvCibilscore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+
+                        android:textAppearance="@style/TextViewStyle.Medium"
+
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/lightGrey"
+                    android:orientation="horizontal"
+                    android:paddingBottom="3dp"
+                    android:paddingTop="3dp">
+
+
+                    <TextView
+                        android:id="@+id/tvForeclosure1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+                        android:paddingLeft="10dp"
+                        android:text="Foreclosure charges: "
+                        android:textAppearance="@style/TextViewStyle.Medium"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvForeclosure"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+
+                        android:textAppearance="@style/TextViewStyle.Medium"
+
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:paddingBottom="3dp"
+                    android:paddingTop="3dp">
+
+
+                    <TextView
+                        android:id="@+id/tvPrepayment1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+                        android:paddingLeft="10dp"
+                        android:text="Prepayment: "
+                        android:textAppearance="@style/TextViewStyle.Medium"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvPrepayment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+
+                        android:textAppearance="@style/TextViewStyle.Medium"
+
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/lightGrey"
+                    android:orientation="horizontal"
+                    android:paddingBottom="3dp"
+                    android:gravity="center"
+                    android:paddingTop="3dp">
+
+
+                    <TextView
+                        android:id="@+id/tvtnc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+                        android:paddingLeft="10dp"
+
+                        android:text="T&amp;C Apply"
+                        android:textAppearance="@style/TextViewStyle.Medium"
+                        android:textColor="@color/blue" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

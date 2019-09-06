@@ -2,13 +2,7 @@ package com.rupeeboss.rba.core_loan_fm.requestbuilder;
 
 import com.rupeeboss.rba.core_loan_fm.FinmartRetroRequestBuilder;
 import com.rupeeboss.rba.core_loan_fm.requestentity.BankSaveRequest;
-import com.rupeeboss.rba.core_loan_fm.requestentity.FmBalanceLoanRequest;
-import com.rupeeboss.rba.core_loan_fm.requestentity.FmHomeLoanRequest;
-import com.rupeeboss.rba.core_loan_fm.requestentity.FmPersonalLoanRequest;
 import com.rupeeboss.rba.core_loan_fm.response.BankForNodeResponse;
-import com.rupeeboss.rba.core_loan_fm.response.FmBalanceLoanResponse;
-import com.rupeeboss.rba.core_loan_fm.response.FmHomelLoanResponse;
-import com.rupeeboss.rba.core_loan_fm.response.FmPersonalLoanResponse;
 import com.rupeeboss.rba.core_loan_fm.response.FmSaveQuoteBLResponse;
 import com.rupeeboss.rba.core_loan_fm.response.FmSaveQuoteHomeLoanResponse;
 import com.rupeeboss.rba.core_loan_fm.response.FmSaveQuotePersonalLoanResponse;
@@ -36,15 +30,6 @@ public class LoanMainRequestBuilder extends FinmartRetroRequestBuilder {
 
         //    region HomeLoan
 
-        @Headers("token:1234567890")
-        @POST("/api/get-loan-request")
-        Call<FmHomelLoanResponse> getHLQuoteApplication(@Body HashMap<String, String> body);
-
-        @Headers("token:1234567890")
-//        @POST("/api/save-HLloan-request")
-        @POST("/api/save-loan-request")
-        Call<FmSaveQuoteHomeLoanResponse> saveHLQuote(@Body FmHomeLoanRequest fmHomeLoanRequest);
-
 
         //endregion
 
@@ -55,13 +40,6 @@ public class LoanMainRequestBuilder extends FinmartRetroRequestBuilder {
         @POST("/api/getloanrequest")
         Call<NewLoanApplicationResponse> getLoanApplication(@Body HashMap<String, String> body);
 
-        @Headers("token:1234567890")
-        @POST("/api/get-personalloan-request")
-        Call<FmPersonalLoanResponse> getPLQuoteApplication(@Body HashMap<String, String> body);
-
-        @Headers("token:1234567890")
-        @POST("/api/manage-personalloan")
-        Call<FmSaveQuotePersonalLoanResponse> savePLQuote(@Body FmPersonalLoanRequest fmPersonalLoanRequest);
 
         //endregion
 
@@ -72,15 +50,7 @@ public class LoanMainRequestBuilder extends FinmartRetroRequestBuilder {
 
         //BT
 
-
-        @Headers("token:1234567890")
-        @POST("/api/get-balance-transfer-request")
-        Call<FmBalanceLoanResponse> getBLQuoteApplication(@Body HashMap<String, String> body);
-
-        @Headers("token:1234567890")
-        @POST("/api/ManageBalanceTransfer")
-        Call<FmSaveQuoteBLResponse> saveBLQuote(@Body FmBalanceLoanRequest fmBalanceLoanRequest);
-        //delete
+      //delete
         @Headers("token:1234567890")
         @POST("/api/delete-loan-request-loan")
         Call<FmSaveQuoteHomeLoanResponse> getdelete_loanrequest(@Body HashMap<String, String> body);

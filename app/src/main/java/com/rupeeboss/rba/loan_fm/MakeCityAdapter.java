@@ -1,7 +1,7 @@
 package com.rupeeboss.rba.loan_fm;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,12 +9,14 @@ import android.widget.ArrayAdapter;
 import android.widget.Filter;
 import android.widget.TextView;
 
-import com.datacomp.magicfinmart.R;
+
+import com.rupeeboss.rba.R;
+import com.rupeeboss.rba.core_loan_fm.model.LoanCityEntity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import magicfinmart.datacomp.com.finmartserviceapi.loan_fm.model.LoanCityEntity;
+
 
 public class MakeCityAdapter extends ArrayAdapter<LoanCityEntity> {
 

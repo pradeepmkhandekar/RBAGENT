@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:background="@color/white"
+tools:context="com.rupeeboss.rba.loan_fm.new_personalloan.NewPersonalApplicaionActivity">
+>
+
+    <com.google.android.material.appbar.AppBarLayout
+        app:elevation="0dp"
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:id="@+id/llSearch"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/seperator"
+        android:gravity="center"
+        android:layout_below="@id/app_bar"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="35"
+            android:gravity="left|center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvAdd"
+                style="@style/TextStyle.TextMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:drawableLeft="@drawable/file_add"
+                android:drawablePadding="0dp"
+                android:gravity="center_vertical|left"
+                android:padding="0dp"
+                android:textColor="#474747"
+                android:textStyle="bold"
+                android:text="ADD NEW LOAN" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvApplicationList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/llSearch"
+        android:scrollbarStyle="insideOverlay" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/loanAddlist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="16dp"
+        app:fabSize="normal"
+       />
+</RelativeLayout>
+

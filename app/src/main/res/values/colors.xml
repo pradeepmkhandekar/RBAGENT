@@ -71,5 +71,12 @@
     <color name="dashboard_fontcolor3">#1f3871</color>
     <color name="secondary_text_color">#9ba0a6</color>
     <color name="description_text">#929292</color>
-
+    <color name="header_text_color">#696969</color>
+    <color name="header_dark_text">#5D5C5D</color>
+    <color name="header_light_text">#6A6F71</color>
+    <color name="bg_white">#f1f1f1</color>
+    <color name="seperator">#E1DEDE</color>
+    <color name="gray_divider_color">#D1D1D1</color>
+    <color name="divider">#F1F1F1</color>
+    <color name="blue">#005faf</color>
 </resources>

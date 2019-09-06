@@ -3,10 +3,10 @@ package com.rupeeboss.rba.loan_fm.new_personalloan;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -17,24 +17,24 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.datacomp.magicfinmart.BaseActivity;
-import com.datacomp.magicfinmart.R;
-import com.datacomp.magicfinmart.webviews.CommonWebViewActivity;
+
+import com.rupeeboss.rba.BaseActivity;
+import com.rupeeboss.rba.R;
+import com.rupeeboss.rba.core_loan_fm.APIResponseERP;
+import com.rupeeboss.rba.core_loan_fm.IResponseSubcriberERP;
+import com.rupeeboss.rba.core_loan_fm.controller.erploan.ErpLoanController;
+import com.rupeeboss.rba.core_loan_fm.model.LstCitywiseBankLoanEntity;
+import com.rupeeboss.rba.core_loan_fm.response.citywisebankloanResponse;
+import com.rupeeboss.rba.loan_fm.Utility;
+import com.rupeeboss.rba.webviews.commonwebview.CommonWebviewActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import magicfinmart.datacomp.com.finmartserviceapi.Utility;
-import magicfinmart.datacomp.com.finmartserviceapi.database.DBPersistanceController;
-import magicfinmart.datacomp.com.finmartserviceapi.finmart.model.LoginResponseEntity;
-import magicfinmart.datacomp.com.finmartserviceapi.loan_fm.APIResponseERP;
-import magicfinmart.datacomp.com.finmartserviceapi.loan_fm.IResponseSubcriberERP;
-import magicfinmart.datacomp.com.finmartserviceapi.loan_fm.controller.erploan.ErpLoanController;
-import magicfinmart.datacomp.com.finmartserviceapi.loan_fm.model.LstCitywiseBankLoanEntity;
-import magicfinmart.datacomp.com.finmartserviceapi.loan_fm.response.citywisebankloanResponse;
 
 
-public class bank_selection_personalloanActivity extends BaseActivity   implements View.OnClickListener, TextWatcher, SeekBar.OnSeekBarChangeListener, IResponseSubcriberERP {
+
+public class bank_selection_personalloanActivity extends BaseActivity implements View.OnClickListener, TextWatcher, SeekBar.OnSeekBarChangeListener, IResponseSubcriberERP {
     RecyclerView rvQuotes;
     bank_display_personalloan_Adapter  mAdapter;
     List<LstCitywiseBankLoanEntity> quoteEntities;
@@ -42,8 +42,8 @@ public class bank_selection_personalloanActivity extends BaseActivity   implemen
     citywisebankloanResponse getpersonal_bank_list_response;
     Toolbar toolbar;
     String Cityid="";
-    DBPersistanceController dbPersistanceController;
-    LoginResponseEntity loginResponseEntity;
+   // DBPersistanceController dbPersistanceController;
+   // LoginResponseEntity loginResponseEntity;
     LinearLayout llmessage;
     Button btnBack;
     EditText etMonthlyInc;
@@ -92,8 +92,8 @@ public class bank_selection_personalloanActivity extends BaseActivity   implemen
         rvQuotes.setLayoutManager(new LinearLayoutManager(bank_selection_personalloanActivity.this));
     //getBankdetail_personalloan
         Cityid= getIntent().getStringExtra("city_id");
-        dbPersistanceController = new DBPersistanceController(bank_selection_personalloanActivity.this);
-        loginResponseEntity = dbPersistanceController.getUserData();
+      //  dbPersistanceController = new DBPersistanceController(bank_selection_personalloanActivity.this);
+     //   loginResponseEntity = dbPersistanceController.getUserData();
 
         setListener();
         List<LstCitywiseBankLoanEntity> lst = new ArrayList<>();
@@ -312,42 +312,19 @@ public class bank_selection_personalloanActivity extends BaseActivity   implemen
         String Bankname="";
 
         Bankname = entity.getBank_Name();
-        url= entity.getBank_Form_URL() + "?BrokerId=" + loginResponseEntity.getLoanId()+"&FBAId=" + loginResponseEntity.getFBAId() + "&client_source=finmart&lead_id=";
+       url= entity.getBank_Form_URL() + "?BrokerId=" + "1978"+"&FBAId=" + "1978" + "&client_source=finmart&lead_id=";
 
-//        if(entity.getBank_Id().equals("33")){
-//            Bankname="KOTAK MAHINDRA BANK";
-//            url="https://www.rupeeboss.com/kotakmahindra-pl?BrokerId=" + loginResponseEntity.getLoanId()+"&FBAId=" + loginResponseEntity.getFBAId() + "&client_source=finmart&lead_id=";
-//
-//        }else  if(entity.getBank_Id().equals("43")){
-//            Bankname="RBL BANK";
-//            url="https://www.rupeeboss.com/rbl-pl?BrokerId=" + loginResponseEntity.getLoanId()+"&FBAId=" + loginResponseEntity.getFBAId() + "&client_source=finmart&lead_id=";
-//
-//        }else  if(entity.getBank_Id().equals("51")){
-//            Bankname="TATA CAPITAL";
-//            url="https://www.rupeeboss.com/tatacapital-pl?BrokerId=" + loginResponseEntity.getLoanId()+"&FBAId=" + loginResponseEntity.getFBAId() + "&client_source=finmart&lead_id=";
-//
-//        }else  if(entity.getBank_Id().equals("53")){
-//            Bankname="YES BANK";
-//            String url1 = "https://yesbankbot.buildquickbots.com/chat/rupeeboss/staff/?userid=" + loginResponseEntity.getFBAId()+ "&usertype=finmart&vkey=b34f02e9-8f1c";
-//
-//            Utility.loadWebViewUrlInBrowser(bank_selection_personalloanActivity.this,url1);
-//        }else  if(entity.getBank_Id().equals("20")){
-//            Bankname="HDFC BANK";
-//            url="https://www.rupeeboss.com/hdfc-pl?BrokerId=" + loginResponseEntity.getLoanId()+"&FBAId=" + loginResponseEntity.getFBAId() + "&client_source=finmart&lead_id=";
-//        }else  if(entity.getBank_Id().equals("2152")){
-//            Bankname="CASHE";
-//            url="https://www.rupeeboss.com/cashe-new?BrokerId=" + loginResponseEntity.getLoanId()+"&FBAId=" + loginResponseEntity.getFBAId() + "&client_source=finmart&lead_id=";
-//        }
+
 
         if(!entity.getBank_Id().equals("53")) {
-            startActivity(new Intent(this, CommonWebViewActivity.class)
+            startActivity(new Intent(this, CommonWebviewActivity.class)
                     .putExtra("URL", url)
                     .putExtra("NAME", "" + Bankname)
                     .putExtra("TITLE", "" + Bankname));
         }else
         {
             Bankname="YES BANK";
-            String url1 = "https://yesbankbot.buildquickbots.com/chat/rupeeboss/staff/?userid=" + loginResponseEntity.getFBAId()+ "&usertype=finmart&vkey=b34f02e9-8f1c";
+            String url1 = "https://yesbankbot.buildquickbots.com/chat/rupeeboss/staff/?userid=" + "1978"+ "&usertype=finmart&vkey=b34f02e9-8f1c";
 
             Utility.loadWebViewUrlInBrowser(bank_selection_personalloanActivity.this,url1);
         }
