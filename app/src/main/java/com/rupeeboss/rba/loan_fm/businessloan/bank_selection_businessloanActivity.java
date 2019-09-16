@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.rupeeboss.rba.BaseActivity;
 import com.rupeeboss.rba.R;
+import com.rupeeboss.rba.core.facade.LoginFacade;
 import com.rupeeboss.rba.core_loan_fm.APIResponseERP;
 import com.rupeeboss.rba.core_loan_fm.IResponseSubcriberERP;
 import com.rupeeboss.rba.core_loan_fm.controller.erploan.ErpLoanController;
@@ -50,6 +51,8 @@ public class bank_selection_businessloanActivity extends BaseActivity implements
     int tenureyears=3;
     int loanamount= 500000;
     TextView txtPendingDays1,txtPendingDays2,txtPendingDays3;
+    LoginFacade loginFacade;
+    String brokerId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +87,8 @@ public class bank_selection_businessloanActivity extends BaseActivity implements
         Cityid = getIntent().getStringExtra("city_id");
      //   dbPersistanceController = new DBPersistanceController(bank_selection_businessloanActivity.this);
     //    loginResponseEntity = dbPersistanceController.getUserData();
+        loginFacade = new LoginFacade(this);
+        brokerId = "" + loginFacade.getUser().getBrokerId();
 
         setListener();
         List<LstCitywiseBankLoanEntity> lst = new ArrayList<>();
@@ -301,7 +306,7 @@ public class bank_selection_businessloanActivity extends BaseActivity implements
         String url = "";
         String Bankname = "";
         Bankname = entity.getBank_Name();
-        url= entity.getBank_Form_URL() + "?BrokerId=" + "1978"+"&FBAId=" + "1978" + "&client_source=finmart&lead_id=";
+        url= entity.getBank_Form_URL() + "?BrokerId=" + brokerId+"&FBAId=" + "0" + "&client_source=RBA&lead_id=";
 
 
 //        if (entity.getBank_Id().equals("33")) {

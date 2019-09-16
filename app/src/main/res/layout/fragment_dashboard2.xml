@@ -15,7 +15,7 @@
         android:layout_height="0dp"
         android:layout_weight="13"
         android:gravity="center_horizontal|center_vertical"
-        android:background="@color/dashboard_color3"
+        android:background="@drawable/gradient_dashboard"
         android:orientation="horizontal">
         <TextView
             android:drawableTop="@drawable/contact_us"
@@ -148,7 +148,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:id="@+id/ivloan_against_property"
-                android:text="Loan Against\nProperty"
+                android:text="LAP"
 
                 android:textAppearance="@style/TextViewStyle.VerySmall"
                 android:textColor="@color/dashboard_fontcolor3" />

@@ -37,7 +37,7 @@ public class LoanMainRequestBuilder extends FinmartRetroRequestBuilder {
 
 
         @Headers("token:1234567890")
-        @POST("/api/getloanrequest")
+        @POST("/api/getrbaloanrequest")
         Call<NewLoanApplicationResponse> getLoanApplication(@Body HashMap<String, String> body);
 
 
