@@ -1,11 +1,17 @@
 package com.rupeeboss.rba.dashboard;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.core.content.ContextCompat;
+
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +35,10 @@ import com.rupeeboss.rba.webviews.commonwebview.CommonWebviewActivity;
 import com.rupeeboss.rba.webviews.creditcard.CreditCardApplyActivity;
 import com.rupeeboss.rba.webviews.generalInsurance.GeneralInsuranceType;
 import com.rupeeboss.rba.webviews.workingCapital.WorkingCapitalActivity;
+import com.scanlibrary.ScanActivity;
+import com.scanlibrary.ScanConstants;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,13 +52,14 @@ import ss.com.bannerslider.views.BannerSlider;
  */
 public class DashboardFragment extends BaseFragment implements View.OnClickListener {
 
+    private static final int REQUEST_CODE = 99;
 
     LinearLayout explorerba;
-    TextView ivcontact_us,ivmy_business,ivinbox,ivloan_on_chat,
+    TextView ivcontact_us, ivmy_business, ivinbox, ivloan_on_chat,
             ivmsme, ivcredit_card, ivpersonal_loan, ivhome_loan, ivloan_against_property,
-            ivbalance_transfer, ivcar_loan,ivrectify_productss,ivworking_capital,
-            ivcash_loan,ivinsurance,ivcommercial_purchase,
-            ivhome,ivincome_simulator,ivScan,ivgenerate_leads;
+            ivbalance_transfer, ivcar_loan, ivrectify_productss, ivworking_capital,
+            ivcash_loan, ivinsurance, ivcommercial_purchase,
+            ivhome, ivincome_simulator, ivScan, ivgenerate_leads;
 
 
     BannerSlider bannerSlider;
@@ -235,7 +245,7 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
                         .putExtra("URL", url)
                         .putExtra("NAME", "YES BANK BOT")
                         .putExtra("TITLE", "YES BANK BOT"));
-                 break;
+                break;
             case R.id.ivmsme:
                 startActivity(new Intent(getActivity(), WorkingCapitalActivity.class));
 //                if (ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.WRITE_CALL_LOG)
@@ -376,11 +386,35 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
                  startActivity(new Intent(getActivity(), IncomeSimulatorActivity.class));
                 break;
             case R.id.ivScan:
+                openCamera();
                 break;
 
         }
     }
 
+    public void openCamera() {
+        int preference = ScanConstants.OPEN_CAMERA;
+        Intent intent = new Intent(getActivity(), ScanActivity.class);
+        intent.putExtra(ScanConstants.OPEN_INTENT_PREFERENCE, preference);
+        startActivityForResult(intent, REQUEST_CODE);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            Uri uri = data.getExtras().getParcelable(ScanConstants.SCANNED_RESULT);
+            Bitmap bitmap = null;
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), uri);
+                getActivity().getContentResolver().delete(uri, null, null);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
