@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.rupeeboss.rba.BaseActivity;
 import com.rupeeboss.rba.R;
+import com.rupeeboss.rba.core.facade.LoginFacade;
 import com.rupeeboss.rba.webviews.commonwebview.CommonWebviewActivity;
 
 
@@ -42,6 +43,9 @@ public class bank_selection_laploanActivity extends BaseActivity implements View
     String Cityid="";
    // DBPersistanceController dbPersistanceController;
   //  LoginResponseEntity loginResponseEntity;
+
+    LoginFacade loginFacade;
+    String brokerId;
     LinearLayout llmessage;
     Button btnBack;
     EditText etMonthlyInc,etTenureInYear;
@@ -83,7 +87,8 @@ public class bank_selection_laploanActivity extends BaseActivity implements View
         Cityid= getIntent().getStringExtra("city_id");
       //  dbPersistanceController = new DBPersistanceController(bank_selection_laploanActivity.this);
      //   loginResponseEntity = dbPersistanceController.getUserData();
-
+        loginFacade = new LoginFacade(this);
+        brokerId = "" + loginFacade.getUser().getBrokerId();
         setListener();
         List<LstCitywiseBankLoanEntity> lst = new ArrayList<>();
         mAdapter = new bank_display_laploan_Adapter(bank_selection_laploanActivity.this, lst);
@@ -243,7 +248,7 @@ public class bank_selection_laploanActivity extends BaseActivity implements View
         String url="";
         String Bankname="";
         Bankname = entity.getBank_Name();
-        url= entity.getBank_Form_URL() + "?BrokerId=" +  "1978"+"&FBAId=" +  "1978"+ "&client_source=finmart&lead_id=";
+        url= entity.getBank_Form_URL() + "?BrokerId=" +  brokerId+"&FBAId=" +  "0"+ "&client_source=RBA&lead_id=";
 
 
 //        if (entity.getBank_Id().equals("33")) {

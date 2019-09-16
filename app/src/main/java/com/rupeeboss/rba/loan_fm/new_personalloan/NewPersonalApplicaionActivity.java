@@ -5,6 +5,7 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.rupeeboss.rba.BaseActivity;
 import com.rupeeboss.rba.R;
+import com.rupeeboss.rba.core.facade.LoginFacade;
 import com.rupeeboss.rba.core_loan_fm.APIResponseFM;
 import com.rupeeboss.rba.core_loan_fm.IResponseSubcriberFM;
 import com.rupeeboss.rba.core_loan_fm.controller.mainloan.MainLoanController;
@@ -36,7 +37,8 @@ public class NewPersonalApplicaionActivity extends BaseActivity implements View.
     FloatingActionButton loanAddlist;
     TextView tvAdd;
     boolean isHit = false;
-
+    LoginFacade loginFacade;
+    String brokerId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,8 +59,10 @@ public class NewPersonalApplicaionActivity extends BaseActivity implements View.
 
        // dbPersistanceController = new DBPersistanceController(NewPersonalApplicaionActivity.this);
       //  loginResponseEntity = dbPersistanceController.getUserData();
+        loginFacade = new LoginFacade(this);
+        brokerId = "" + loginFacade.getUser().getBrokerId();
         showDialog();
-        new MainLoanController(NewPersonalApplicaionActivity.this).getLoanApplication(0,"PSL",String.valueOf("1978"),NewPersonalApplicaionActivity.this);
+        new MainLoanController(NewPersonalApplicaionActivity.this).getLoanApplication(0,"PSL",String.valueOf(brokerId),NewPersonalApplicaionActivity.this);
 
     }
 
@@ -117,7 +121,7 @@ public class NewPersonalApplicaionActivity extends BaseActivity implements View.
         String url="";
         String Bankname="";
         Bankname = entity.getBankName();
-        url = entity.getBank_URL() + "?BrokerId=" + "1978"+"&FBAId=" + "1978" + "&client_source=finmart&lead_id="+entity.getLeadId()+"";
+        url = entity.getBank_URL() + "?BrokerId=" +brokerId+"&FBAId=" + "0" + "&client_source=RBA&lead_id="+entity.getLeadId()+"";
 
 
 
@@ -132,7 +136,7 @@ public class NewPersonalApplicaionActivity extends BaseActivity implements View.
         {
             Bankname="YES BANK";
 
-            String url1 = "https://yesbankbot.buildquickbots.com/chat/rupeeboss/staff/?userid=" + "1978"+ "&usertype=finmart&vkey=b34f02e9-8f1c";
+            String url1 = "https://yesbankbot.buildquickbots.com/chat/rupeeboss/staff/?userid=" +brokerId+ "&usertype=RBA&vkey=b34f02e9-8f1c";
 
             Utility.loadWebViewUrlInBrowser(NewPersonalApplicaionActivity.this,url1);
 

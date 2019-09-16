@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.rupeeboss.rba.BaseActivity;
 import com.rupeeboss.rba.R;
+import com.rupeeboss.rba.core.facade.LoginFacade;
 import com.rupeeboss.rba.core_loan_fm.APIResponseFM;
 import com.rupeeboss.rba.core_loan_fm.IResponseSubcriberFM;
 import com.rupeeboss.rba.core_loan_fm.controller.mainloan.MainLoanController;
@@ -35,7 +36,8 @@ public class NewbusinessApplicaionActivity extends BaseActivity implements View.
     FloatingActionButton loanAddlist;
     TextView tvAdd;
     boolean isHit = false;
-
+    LoginFacade loginFacade;
+    String brokerId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,13 +58,16 @@ public class NewbusinessApplicaionActivity extends BaseActivity implements View.
 
      //   dbPersistanceController = new DBPersistanceController(NewbusinessApplicaionActivity.this);
      //   loginResponseEntity = dbPersistanceController.getUserData();
+        loginFacade = new LoginFacade(this);
+        brokerId = "" + loginFacade.getUser().getBrokerId();
+
         showDialog();
-        new MainLoanController(NewbusinessApplicaionActivity.this).getLoanApplication(0,"BL",String.valueOf("1978"), NewbusinessApplicaionActivity.this);
+        new MainLoanController(NewbusinessApplicaionActivity.this).getLoanApplication(0,"BL",String.valueOf("999999"), NewbusinessApplicaionActivity.this);
 
     }
 
     @Override
-    public void onClick(View v) {
+        public void onClick(View v) {
         switch (v.getId()) {
             case R.id.loanAddlist:
 
@@ -72,7 +77,7 @@ public class NewbusinessApplicaionActivity extends BaseActivity implements View.
             case R.id.tvAdd:
 
                 startActivity(new Intent(NewbusinessApplicaionActivity.this, city_selecton_businessloan_Activity.class));
-		    
+
                 break;
         }
     }
@@ -114,7 +119,7 @@ public class NewbusinessApplicaionActivity extends BaseActivity implements View.
         String url="";
         String Bankname="";
         Bankname = entity.getBankName();
-        url = entity.getBank_URL() + "?BrokerId=" + "1978"+"&FBAId=" + "1978" + "&client_source=finmart&lead_id="+entity.getLeadId()+"";
+        url = entity.getBank_URL() + "?BrokerId=" + brokerId+"&FBAId=" + "0" + "&client_source=RBA&lead_id="+entity.getLeadId()+"";
 
 
 //        if(String.valueOf(entity.getBankId()).equals("33")){

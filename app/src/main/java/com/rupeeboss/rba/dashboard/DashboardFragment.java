@@ -19,12 +19,16 @@ import com.rupeeboss.rba.contactus.ContactUsActivity;
 import com.rupeeboss.rba.core.facade.LoginFacade;
 import com.rupeeboss.rba.fragment.AddLeadFragment;
 import com.rupeeboss.rba.incomeSimulator.IncomeSimulatorActivity;
+import com.rupeeboss.rba.loan_fm.new_HomeLoan.NewHomeApplicaionActivity;
 import com.rupeeboss.rba.loan_fm.new_personalloan.NewPersonalApplicaionActivity;
+import com.rupeeboss.rba.loan_fm.newlaploan.NewLAPApplicaionActivity;
 import com.rupeeboss.rba.mybuisness.BuisinessActivity;
 import com.rupeeboss.rba.utility.Utility;
+import com.rupeeboss.rba.webviews.balancetransfer.BalanceTransferActivity;
 import com.rupeeboss.rba.webviews.commonwebview.CommonWebviewActivity;
 import com.rupeeboss.rba.webviews.creditcard.CreditCardApplyActivity;
 import com.rupeeboss.rba.webviews.generalInsurance.GeneralInsuranceType;
+import com.rupeeboss.rba.webviews.workingCapital.WorkingCapitalActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +55,8 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
     BannerSlider bannerSlider;
     List<Banner> banners;
     LoginFacade loginFacade;
+    String brokerId;
+
     public DashboardFragment() {
         // Required empty public constructor
     }
@@ -63,6 +69,8 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
         View view = inflater.inflate(R.layout.fragment_dashboard2, container, false);
         //((AppCompatActivity) getActivity()).getSupportActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.bg2));
         loginFacade = new LoginFacade(getActivity());
+        brokerId = "" + loginFacade.getUser().getBrokerId();
+
         initialize(view);
         banners = new ArrayList<>();
         //add banner using image url
@@ -100,37 +108,37 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
                 switch (position) {
                     case 0://rbl_banner
                         startActivity(new Intent(getActivity(), CommonWebviewActivity.class)
-                                .putExtra("URL", "http://www.rupeeboss.com/rbl-personal-loan")
+                                .putExtra("URL", "http://www.rupeeboss.com/rbl-personal-loan?BrokerId="+brokerId+"&client_source=RBA")
                                 .putExtra("NAME", "RBL PERSONAL LOAN")
                                 .putExtra("TITLE", "RBL PERSONAL LOAN"));
                         break;
                     case 1://kotak_banner
                         startActivity(new Intent(getActivity(), CommonWebviewActivity.class)
-                                .putExtra("URL", "http://www.rupeeboss.com/kotak-personal-loan")
+                                .putExtra("URL", "http://www.rupeeboss.com/kotak-personal-loan?BrokerId="+brokerId+"&client_source=RBA")
                                 .putExtra("NAME", "KOTAK PERSONAL LOAN")
                                 .putExtra("TITLE", "KOTAK PERSONAL LOAN"));
                         break;
                     case 2://iifl_banner
                         startActivity(new Intent(getActivity(), CommonWebviewActivity.class)
-                                .putExtra("URL", "http://www.rupeeboss.com/apply-iifl-loan")
+                                .putExtra("URL", "http://www.rupeeboss.com/apply-iifl-loan?BrokerId="+brokerId+"&client_source=RBA")
                                 .putExtra("NAME", "IIFL PERSONAL LOAN")
                                 .putExtra("TITLE", "IIFL PERSONAL LOAN"));
                         break;
                     case 3://hdfc_personal_loan_banner
                         startActivity(new Intent(getActivity(), CommonWebviewActivity.class)
-                                .putExtra("URL", "http://www.rupeeboss.com/hdfc-personal-loan")
+                                .putExtra("URL", "http://www.rupeeboss.com/hdfc-personal-loan?BrokerId="+brokerId+"&client_source=RBA")
                                 .putExtra("NAME", "HDFC PERSONAL LOAN")
                                 .putExtra("TITLE", "HDFC PERSONAL LOAN"));
                         break;
                     case 4://hdfc_business_loan
                         startActivity(new Intent(getActivity(), CommonWebviewActivity.class)
-                                .putExtra("URL", "http://www.rupeeboss.com/hdfc-business-loan")
+                                .putExtra("URL", "http://www.rupeeboss.com/hdfc-business-loan?BrokerId="+brokerId+"&client_source=RBA")
                                 .putExtra("NAME", "HDFC BUSINESS LOAN")
                                 .putExtra("TITLE", "HDFC BUSINESS LOAN"));
                         break;
                     case 5://kotak_home_loan_banner
                         startActivity(new Intent(getActivity(), CommonWebviewActivity.class)
-                                .putExtra("URL", "http://www.rupeeboss.com/kotak-home-loan")
+                                .putExtra("URL", "http://www.rupeeboss.com/kotak-home-loan?BrokerId="+brokerId+"&client_source=RBA")
                                 .putExtra("NAME", "KOTAK HOME LOAN")
                                 .putExtra("TITLE", "KOTAK HOME LOAN"));
                         break;
@@ -229,10 +237,7 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
                         .putExtra("TITLE", "YES BANK BOT"));
                  break;
             case R.id.ivmsme:
-                startActivity(new Intent(getActivity(), CommonWebviewActivity.class)
-                        .putExtra("URL", "http://www.rupeeboss.com/rbl-personal-loan")
-                        .putExtra("NAME", "RBL PERSONAL LOAN")
-                        .putExtra("TITLE", "RBL PERSONAL LOAN"));
+                startActivity(new Intent(getActivity(), WorkingCapitalActivity.class));
 //                if (ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.WRITE_CALL_LOG)
 //                        + ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE)
 //                        + ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_PHONE_STATE)
@@ -266,32 +271,21 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
                 break;
             case R.id.ivpersonal_loan:
 
-
-
                 startActivity(new Intent(getActivity(), NewPersonalApplicaionActivity.class));
                 // Toast.makeText(getActivity(), "Coming soon...", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.ivhome_loan:
-                startActivity(new Intent(getActivity(), CommonWebviewActivity.class)
-                        .putExtra("URL", "http://www.rupeeboss.com/rbl-personal-loan")
-                        .putExtra("NAME", "RBL PERSONAL LOAN")
-                        .putExtra("TITLE", "RBL PERSONAL LOAN"));
+
                 // Toast.makeText(getActivity(), "Coming soon...", Toast.LENGTH_SHORT).show();
-             //   startActivity(new Intent(getActivity(), BuisinessActivity.class));
+                startActivity(new Intent(getActivity(), NewHomeApplicaionActivity.class));
                 break;
             case R.id.ivloan_against_property:
-                startActivity(new Intent(getActivity(), CommonWebviewActivity.class)
-                        .putExtra("URL", "http://www.rupeeboss.com/rbl-personal-loan")
-                        .putExtra("NAME", "RBL PERSONAL LOAN")
-                        .putExtra("TITLE", "RBL PERSONAL LOAN"));
-            //    startActivity(new Intent(getActivity(), BalanceTransferType.class));
+
+               startActivity(new Intent(getActivity(), NewLAPApplicaionActivity.class));
                 break;
 
             case R.id.ivbalance_transfer:
-                startActivity(new Intent(getActivity(), CommonWebviewActivity.class)
-                        .putExtra("URL", "http://www.rupeeboss.com/rbl-personal-loan")
-                        .putExtra("NAME", "RBL PERSONAL LOAN")
-                        .putExtra("TITLE", "RBL PERSONAL LOAN"));
+                startActivity(new Intent(getActivity(), BalanceTransferActivity.class));
 
              //   startActivity(new Intent(getActivity(), ShareMessageActivity.class));
                 /*Fragment fragment = null;
@@ -323,7 +317,7 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
 
             case R.id.ivcar_loan:
                 startActivity(new Intent(getActivity(), CommonWebviewActivity.class)
-                        .putExtra("URL", "https://www.rupeeboss.com/hdfc-car-top-up-loan")
+                        .putExtra("URL", "https://www.rupeeboss.com/hdfc-car-top-up-loan?BrokerId="+brokerId+"&client_source=RBA")
                         .putExtra("NAME", "CAR LOAN")
                         .putExtra("TITLE", "CAR LOAN"));
               //  startActivity(new Intent(getActivity(), BalanceTransferType.class));
@@ -331,7 +325,7 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
 
             case R.id.ivrectify_productss:
                 startActivity(new Intent(getActivity(), CommonWebviewActivity.class)
-                        .putExtra("URL", " https://www.rupeeboss.com/rectifycredit?fbaid=1976&type=finmart&loan_id=30189")
+                        .putExtra("URL", " https://www.rupeeboss.com/rectifycredit?fbaid=0&type=RBA&loan_id="+brokerId+"")
                         .putExtra("NAME", "RECTIFY PRODUCT")
                         .putExtra("TITLE", "RECTIFY PRODUCT"));
             //    startActivity(new Intent(getActivity(), BalanceTransferType.class));
@@ -339,7 +333,7 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
 
             case R.id.ivworking_capital:
                 startActivity(new Intent(getActivity(), CommonWebviewActivity.class)
-                        .putExtra("URL", "https://www.rupeeboss.com/working-capital")
+                        .putExtra("URL", "https://www.rupeeboss.com/working-capital?BrokerId="+brokerId+"&client_source=RBA")
                         .putExtra("NAME", "WORKING CAPITAL")
                         .putExtra("TITLE", "WORKING CAPITAL"));
             //    startActivity(new Intent(getActivity(), BalanceTransferType.class));
@@ -347,7 +341,7 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
 
             case R.id.ivcash_loan:
                 startActivity(new Intent(getActivity(), CommonWebviewActivity.class)
-                        .putExtra("URL", "https://www.rupeeboss.com/cashe")
+                        .putExtra("URL", "https://www.rupeeboss.com/cashe?BrokerId="+brokerId+"&client_source=RBA")
                         .putExtra("NAME", "CASH LOAN")
                         .putExtra("TITLE", "CASH LOAN"));
              //   startActivity(new Intent(getActivity(), BalanceTransferType.class));
@@ -359,11 +353,7 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
                 break;
 
             case R.id.ivcommercial_purchase:
-                startActivity(new Intent(getActivity(), CommonWebviewActivity.class)
-                        .putExtra("URL", "http://www.rupeeboss.com/rbl-personal-loan")
-                        .putExtra("NAME", "RBL PERSONAL LOAN")
-                        .putExtra("TITLE", "RBL PERSONAL LOAN"));
-              //  startActivity(new Intent(getActivity(), BalanceTransferType.class));
+                startActivity(new Intent(getActivity(), NewLAPApplicaionActivity.class));
                 break;
             case R.id.ivgenerate_leads:
 

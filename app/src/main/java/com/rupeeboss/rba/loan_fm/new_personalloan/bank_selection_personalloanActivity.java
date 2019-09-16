@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.rupeeboss.rba.BaseActivity;
 import com.rupeeboss.rba.R;
+import com.rupeeboss.rba.core.facade.LoginFacade;
 import com.rupeeboss.rba.core_loan_fm.APIResponseERP;
 import com.rupeeboss.rba.core_loan_fm.IResponseSubcriberERP;
 import com.rupeeboss.rba.core_loan_fm.controller.erploan.ErpLoanController;
@@ -52,6 +53,8 @@ public class bank_selection_personalloanActivity extends BaseActivity implements
     int seekBarApplIncomeProgress = 50;
     int tenureyears=5;
     int loanamount= 100000;
+    LoginFacade loginFacade;
+    String brokerId;
     TextView txtPendingDayshalf,txtPendingDays1,txtPendingDays2,txtPendingDays3,txtPendingDays4,txtPendingDays5;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,7 +97,8 @@ public class bank_selection_personalloanActivity extends BaseActivity implements
         Cityid= getIntent().getStringExtra("city_id");
       //  dbPersistanceController = new DBPersistanceController(bank_selection_personalloanActivity.this);
      //   loginResponseEntity = dbPersistanceController.getUserData();
-
+        loginFacade = new LoginFacade(this);
+        brokerId = "" + loginFacade.getUser().getBrokerId();
         setListener();
         List<LstCitywiseBankLoanEntity> lst = new ArrayList<>();
         mAdapter = new bank_display_personalloan_Adapter(bank_selection_personalloanActivity.this, lst);
@@ -312,7 +316,7 @@ public class bank_selection_personalloanActivity extends BaseActivity implements
         String Bankname="";
 
         Bankname = entity.getBank_Name();
-       url= entity.getBank_Form_URL() + "?BrokerId=" + "1978"+"&FBAId=" + "1978" + "&client_source=finmart&lead_id=";
+       url= entity.getBank_Form_URL() + "?BrokerId=" + brokerId+"&FBAId=" + "0" + "&client_source=RBA&lead_id=";
 
 
 
@@ -324,7 +328,7 @@ public class bank_selection_personalloanActivity extends BaseActivity implements
         }else
         {
             Bankname="YES BANK";
-            String url1 = "https://yesbankbot.buildquickbots.com/chat/rupeeboss/staff/?userid=" + "1978"+ "&usertype=finmart&vkey=b34f02e9-8f1c";
+            String url1 = "https://yesbankbot.buildquickbots.com/chat/rupeeboss/staff/?userid=" + brokerId+ "&usertype=RBA&vkey=b34f02e9-8f1c";
 
             Utility.loadWebViewUrlInBrowser(bank_selection_personalloanActivity.this,url1);
         }

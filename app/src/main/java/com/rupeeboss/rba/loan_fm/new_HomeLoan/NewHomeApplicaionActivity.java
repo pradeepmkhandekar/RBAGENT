@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.rupeeboss.rba.BaseActivity;
 import com.rupeeboss.rba.R;
+import com.rupeeboss.rba.core.facade.LoginFacade;
 import com.rupeeboss.rba.core_loan_fm.APIResponseFM;
 import com.rupeeboss.rba.core_loan_fm.IResponseSubcriberFM;
 import com.rupeeboss.rba.core_loan_fm.controller.mainloan.MainLoanController;
@@ -36,7 +37,8 @@ public class NewHomeApplicaionActivity extends BaseActivity implements View.OnCl
     FloatingActionButton loanAddlist;
     TextView tvAdd;
     boolean isHit = false;
-
+    LoginFacade loginFacade;
+    String brokerId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,8 +59,11 @@ public class NewHomeApplicaionActivity extends BaseActivity implements View.OnCl
 
       //  dbPersistanceController = new DBPersistanceController(NewHomeApplicaionActivity.this);
      //   loginResponseEntity = dbPersistanceController.getUserData();
+        loginFacade = new LoginFacade(this);
+        brokerId = "" + loginFacade.getUser().getBrokerId();
+
         showDialog();
-        new MainLoanController(NewHomeApplicaionActivity.this).getLoanApplication(0,"HML",String.valueOf("1978"), NewHomeApplicaionActivity.this);
+        new MainLoanController(NewHomeApplicaionActivity.this).getLoanApplication(0,"HML",String.valueOf("999999"), NewHomeApplicaionActivity.this);
 
     }
 
@@ -113,24 +118,24 @@ public class NewHomeApplicaionActivity extends BaseActivity implements View.OnCl
         String url="";
         String Bankname="";
         Bankname = entity.getBankName();
-        url = entity.getBank_URL() + "?BrokerId=" + "1978"+"&FBAId=" + "1978" + "&client_source=finmart&lead_id="+entity.getLeadId()+"";
+        url = entity.getBank_URL() + "?BrokerId=" + brokerId+"&FBAId=" + "0" + "&client_source=RBA&lead_id="+entity.getLeadId()+"";
 
 //        if(String.valueOf(entity.getBankId()).equals("33")){
 //            Bankname="KOTAK MAHINDRA BANK";
-//            url="https://www.rupeeboss.com/kotakmahindra-home-loan?BrokerId=" + loginResponseEntity.getLoanId()+"&FBAId=" + loginResponseEntity.getFBAId() + "&client_source=finmart&lead_id="+entity.getLeadId()+"";
+//            url="https://www.rupeeboss.com/kotakmahindra-home-loan?BrokerId=" + loginResponseEntity.getLoanId()+"&FBAId=" + loginResponseEntity.getFBAId() + "&client_source=RBA&lead_id="+entity.getLeadId()+"";
 //
 //        }else   if(String.valueOf(entity.getBankId()).equals("43")){
 //            Bankname="RBL BANK";
-//           // url="https://www.rupeeboss.com/rbl-pl?BrokerId=" + loginResponseEntity.getLoanId()+"&FBAId=" + loginResponseEntity.getFBAId() + "&client_source=finmart&lead_id="+entity.getLeadId()+"";
+//           // url="https://www.rupeeboss.com/rbl-pl?BrokerId=" + loginResponseEntity.getLoanId()+"&FBAId=" + loginResponseEntity.getFBAId() + "&client_source=RBA&lead_id="+entity.getLeadId()+"";
 //
 //        }else  if(String.valueOf(entity.getBankId()).equals("51")){
 //            Bankname="TATA CAPITAL";
-//          //  url="https://www.rupeeboss.com/tatacapital-pl?BrokerId=" + loginResponseEntity.getLoanId()+"&FBAId=" + loginResponseEntity.getFBAId() + "&client_source=finmart&lead_id="+entity.getLeadId()+"";
+//          //  url="https://www.rupeeboss.com/tatacapital-pl?BrokerId=" + loginResponseEntity.getLoanId()+"&FBAId=" + loginResponseEntity.getFBAId() + "&client_source=RBA&lead_id="+entity.getLeadId()+"";
 //
 //        }else   if(String.valueOf(entity.getBankId()).equals("53")){
 //            Bankname="YES BANK";
-//         //   String url1 = "https://yesbankbot.buildquickbots.com/chat/rupeeboss/staff/?userid=" + loginResponseEntity.getFBAId()+ "&usertype=finmart&vkey=b34f02e9-8f1c";
-//            url="https://www.rupeeboss.com/yes-bank-home-loan?BrokerId=" + loginResponseEntity.getLoanId()+"&FBAId=" + loginResponseEntity.getFBAId() + "&client_source=finmart&lead_id="+entity.getLeadId()+"";
+//         //   String url1 = "https://yesbankbot.buildquickbots.com/chat/rupeeboss/staff/?userid=" + loginResponseEntity.getFBAId()+ "&usertype=RBA&vkey=b34f02e9-8f1c";
+//            url="https://www.rupeeboss.com/yes-bank-home-loan?BrokerId=" + loginResponseEntity.getLoanId()+"&FBAId=" + loginResponseEntity.getFBAId() + "&client_source=RBA&lead_id="+entity.getLeadId()+"";
 //
 //            //Utility.loadWebViewUrlInBrowser(NewHomeApplicaionActivity.this,url1);
 //        }else   if(String.valueOf(entity.getBankId()).equals("20")){

@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.rupeeboss.rba.BaseActivity;
 import com.rupeeboss.rba.R;
+import com.rupeeboss.rba.core.facade.LoginFacade;
 import com.rupeeboss.rba.core_loan_fm.APIResponseFM;
 import com.rupeeboss.rba.core_loan_fm.IResponseSubcriberFM;
 import com.rupeeboss.rba.core_loan_fm.controller.mainloan.MainLoanController;
@@ -34,7 +35,8 @@ public class NewLAPApplicaionActivity extends BaseActivity implements View.OnCli
     FloatingActionButton loanAddlist;
     TextView tvAdd;
     boolean isHit = false;
-
+    LoginFacade loginFacade;
+    String brokerId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,8 +57,11 @@ public class NewLAPApplicaionActivity extends BaseActivity implements View.OnCli
 
         //dbPersistanceController = new DBPersistanceController(NewLAPApplicaionActivity.this);
        // loginResponseEntity = dbPersistanceController.getUserData();
+        loginFacade = new LoginFacade(this);
+        brokerId = "" + loginFacade.getUser().getBrokerId();
+
         showDialog();
-        new MainLoanController(NewLAPApplicaionActivity.this).getLoanApplication(0,"LAP",String.valueOf( "1978"), NewLAPApplicaionActivity.this);
+        new MainLoanController(NewLAPApplicaionActivity.this).getLoanApplication(0,"LAP",String.valueOf( "999999"), NewLAPApplicaionActivity.this);
 
     }
 
@@ -109,7 +114,7 @@ public class NewLAPApplicaionActivity extends BaseActivity implements View.OnCli
         String url="";
         String Bankname="";
         Bankname = entity.getBankName();
-        url = entity.getBank_URL() + "?BrokerId=" + "1978"+"&FBAId=" +  "1978"+ "&client_source=finmart&lead_id="+entity.getLeadId()+"";
+        url = entity.getBank_URL() + "?BrokerId=" + brokerId+"&FBAId=" +  "0"+ "&client_source=RBA&lead_id="+entity.getLeadId()+"";
 
 //        if(String.valueOf(entity.getBankId()).equals("33")){
 //            Bankname="KOTAK MAHINDRA BANK";

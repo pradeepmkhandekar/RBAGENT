@@ -235,7 +235,7 @@ public class MainLoanController implements IMainLoan {
     @Override
     public void getLoanApplication(int count, String type, String fbaid,final IResponseSubcriberFM iResponseSubcriber) {
         HashMap<String, String> body = new HashMap<>();
-        body.put("FBAID", fbaid);
+        body.put("brokerid", fbaid);
         body.put("Count", "" + count);
         body.put("Type", "" + type);
 
