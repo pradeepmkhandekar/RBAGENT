@@ -6,13 +6,25 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
 import com.google.android.material.textfield.TextInputEditText;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,7 +41,7 @@ import com.rupeeboss.rba.home.MainActivity;
 import com.rupeeboss.rba.utility.Constants;
 import com.rupeeboss.rba.utility.Utility;
 
-public class LoginActivity extends BaseActivity implements IResponseSubcriber, View.OnClickListener {
+public class LoginActivity extends BaseActivity implements IResponseSubcriber, View.OnClickListener , GoogleApiClient.OnConnectionFailedListener{
     int localAppVersionCode, serverAppVersion;
     TextInputEditText etpanno, etPassword;
 
@@ -39,6 +51,10 @@ public class LoginActivity extends BaseActivity implements IResponseSubcriber, V
     TextView txtnewRegistration;
     TextView txtForgotPwd;
     Button btnLogin;
+    ImageView imgGoogleLogin;
+    private GoogleApiClient mGoogleApiClient;
+    private static final int RC_SIGN_IN = 007;
+
     String[] perms = {
             "android.permission.CAMERA",
             "android.permission.READ_PHONE_STATE",
@@ -58,6 +74,15 @@ public class LoginActivity extends BaseActivity implements IResponseSubcriber, V
         editor = sharedPreferences.edit();
         initialize_widgets();
 
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this, this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .addOnConnectionFailedListener(this)
+                .build();
     }
 
     private void initialize_widgets() {
@@ -65,6 +90,7 @@ public class LoginActivity extends BaseActivity implements IResponseSubcriber, V
         etPassword = (TextInputEditText) findViewById(R.id.etPassword);
         btnLogin = (Button) findViewById(R.id.btnLogin);
         txtForgotPwd = (TextView) findViewById(R.id.txtforgotPwd);
+        imgGoogleLogin = (ImageView) findViewById(R.id.img_google_login);
 
         if (!checkPermission()) {
             requestPermission();
@@ -79,6 +105,7 @@ public class LoginActivity extends BaseActivity implements IResponseSubcriber, V
             }
         });
         txtForgotPwd.setOnClickListener(this);
+        imgGoogleLogin.setOnClickListener(this);
     }
 
     private void openAppMarketPlace() {
@@ -133,10 +160,14 @@ public class LoginActivity extends BaseActivity implements IResponseSubcriber, V
     @Override
     public void onClick(View v) {
 
-        if (v.getId() == R.id.txtforgotPwd) {
+        if (v.getId() == R.id.img_google_login) {
+            showProgressDialog();
+            signIn();
+        }
+        else if (v.getId() == R.id.txtforgotPwd) {
             startActivity(new Intent(LoginActivity.this, ForgotPasswordActivity.class));
         }
-        if (v.getId() == R.id.btnLogin) {
+       else if (v.getId() == R.id.btnLogin) {
             if (etpanno.getText().toString().matches("")) {
                 etpanno.setError("ENTER VALID PANCARD");
                 etpanno.requestFocus();
@@ -224,5 +255,75 @@ public class LoginActivity extends BaseActivity implements IResponseSubcriber, V
     }
 
 
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
+        dismissDialog();
+        Toast.makeText(this,"Connection Failed" + connectionResult,Toast.LENGTH_SHORT).show();
+    }
+
+    private void signIn() {
+        if (mGoogleApiClient.isConnected())
+        {
+            signOut();
+        }
+        Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
+        startActivityForResult(signInIntent,RC_SIGN_IN);
+    }
+
+    private void signOut() {
+
+        Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
+                new ResultCallback<Status>() {
+                    @Override
+                    public void onResult(@NonNull Status status) {
+                        updateUI(false);
+                    }
+                }
+        );
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+
+        if(requestCode == RC_SIGN_IN)
+        {
+            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+            handleSignInResult(result);
+        }
+    }
+
+    private void handleSignInResult(GoogleSignInResult result) {
+
+        dismissDialog();
+        if (result.isSuccess()) {
+            // Signed in successfully, show authenticated UI.
+            GoogleSignInAccount acct = result.getSignInAccount();
+
+            Toast.makeText(this,acct.getEmail(),Toast.LENGTH_SHORT).show();
+
+            String fName = acct.getGivenName();
+            String email = acct.getEmail();
+            String lname = acct.getFamilyName();
+
+
+
+        } else {
+            // Signed out, show unauthenticated UI.
+
+            Toast.makeText(this,"Connection Failed",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void updateUI(boolean isSignedIn) {
+        if (isSignedIn) {
+
+            imgGoogleLogin.setVisibility(View.GONE);
+        } else {
+
+            imgGoogleLogin.setVisibility(View.VISIBLE);
+        }
+    }
 }

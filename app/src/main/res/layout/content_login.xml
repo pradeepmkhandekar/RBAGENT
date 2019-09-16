@@ -94,7 +94,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_marginTop="16dp"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
 
             <Button
@@ -108,6 +108,14 @@
                 android:text="Login"
 
                 android:textColor="@color/white" />
+
+            <ImageView
+                android:id="@+id/img_google_login"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/google_ic" />
+
 
         </LinearLayout>
 
