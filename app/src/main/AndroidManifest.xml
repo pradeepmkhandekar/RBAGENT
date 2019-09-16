@@ -797,16 +797,16 @@
                 android:value="com.rupeeboss.rba.home.MainActivity" />
         </activity>
         <activity
-            android:name=".loan_fm.new_personalloan.city_selecton_personalloan_Activity"
-            android:label="Personal Loan"
-            android:parentActivityName=".loan_fm.new_personalloan.NewPersonalApplicaionActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"
-            android:windowSoftInputMode="stateAlwaysHidden|stateHidden">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.rupeeboss.rba.loan_fm.new_personalloan.NewPersonalApplicaionActivity" />
-        </activity>
+        android:name=".loan_fm.new_personalloan.city_selecton_personalloan_Activity"
+        android:label="Personal Loan"
+        android:parentActivityName=".loan_fm.new_personalloan.NewPersonalApplicaionActivity"
+        android:screenOrientation="portrait"
+        android:theme="@style/AppTheme"
+        android:windowSoftInputMode="stateAlwaysHidden|stateHidden">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.rupeeboss.rba.loan_fm.new_personalloan.NewPersonalApplicaionActivity" />
+    </activity>
         <activity
             android:name=".loan_fm.new_personalloan.bank_selection_personalloanActivity"
             android:label="Personal Loan"
@@ -828,6 +828,114 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.rupeeboss.rba.home.MainActivity" />
+        </activity>
+
+
+        <activity
+            android:name=".loan_fm.new_HomeLoan.city_selecton_homeloan_Activity"
+            android:label="Home Loan"
+            android:parentActivityName=".loan_fm.new_HomeLoan.NewHomeApplicaionActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden|stateHidden">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.loan_fm.new_HomeLoan.NewHomeApplicaionActivity" />
+        </activity>
+        <activity
+            android:name=".loan_fm.new_HomeLoan.bank_selection_homeloanActivity"
+            android:label="Home Loan"
+            android:parentActivityName=".loan_fm.new_HomeLoan.city_selecton_homeloan_Activity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden|stateHidden">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.loan_fm.new_HomeLoan.city_selecton_homeloan_Activity" />
+        </activity>
+        <activity
+            android:name=".loan_fm.new_HomeLoan.NewHomeApplicaionActivity"
+            android:label="Home Loan"
+            android:parentActivityName=".home.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden|stateHidden">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.home.MainActivity" />
+
+        </activity>
+
+        <activity
+            android:name=".loan_fm.newlaploan.city_selecton_laploan_Activity"
+            android:label="Loan Against Property"
+            android:parentActivityName=".loan_fm.newlaploan.NewLAPApplicaionActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden|stateHidden">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.loan_fm.newlaploan.NewLAPApplicaionActivity" />
+        </activity>
+        <activity
+            android:name=".loan_fm.newlaploan.bank_selection_laploanActivity"
+            android:label="Loan Against Property"
+            android:parentActivityName=".loan_fm.newlaploan.city_selecton_laploan_Activity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden|stateHidden">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.loan_fm.newlaploan.city_selecton_laploan_Activity" />
+        </activity>
+        <activity
+            android:name=".loan_fm.newlaploan.NewLAPApplicaionActivity"
+            android:label="Loan Against Property"
+            android:parentActivityName=".home.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden|stateHidden">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.home.MainActivity" />
+
+        </activity>
+
+
+
+        <activity
+            android:name=".loan_fm.businessloan.city_selecton_businessloan_Activity"
+            android:label="Loan Against Property"
+            android:parentActivityName=".loan_fm.businessloan.NewbusinessApplicaionActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden|stateHidden">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.loan_fm.businessloan.NewbusinessApplicaionActivity" />
+        </activity>
+        <activity
+            android:name=".loan_fm.businessloan.bank_selection_businessloanActivity"
+            android:label="Loan Against Property"
+            android:parentActivityName=".loan_fm.businessloan.city_selecton_businessloan_Activity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden|stateHidden">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.loan_fm.businessloan.city_selecton_businessloan_Activity" />
+        </activity>
+        <activity
+            android:name=".loan_fm.businessloan.NewbusinessApplicaionActivity"
+            android:label="Loan Against Property"
+            android:parentActivityName=".home.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden|stateHidden">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.home.MainActivity" />
+
         </activity>
     </application>
 

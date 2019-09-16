@@ -39,6 +39,7 @@
                     android:gravity="center"
                     android:padding="5dp"
                     android:text=""
+                    android:textColor="@color/colorPrimaryDark"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
 
                     android:textStyle="normal" />
@@ -72,7 +73,7 @@
                     android:maxLines="2"
                     android:textStyle="normal"
                     android:text="Reporting Employee:"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
 
@@ -115,7 +116,7 @@
                     android:maxLines="2"
                     android:text="Designation:"
                     android:textStyle="normal"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
 
@@ -160,7 +161,7 @@
                     android:maxLines="2"
                     android:text="Email:"
                     android:textStyle="normal"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
 
@@ -205,7 +206,7 @@
                     android:maxLines="2"
                     android:text="Mobile:"
                     android:textStyle="normal"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
 
