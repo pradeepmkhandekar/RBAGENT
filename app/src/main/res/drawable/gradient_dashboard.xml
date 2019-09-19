@@ -2,11 +2,17 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <!--<stroke android:width="2dp"-->
     <!--android:color="#C2E2FF"/>-->
+    <!-- <gradient
+         android:angle="90"
+         android:startColor="#fafafa"
+         android:centerColor="#dcdcdc"
+         android:endColor="#919191"/>-->
+
     <gradient
         android:angle="90"
-        android:startColor="#fafafa"
-        android:centerColor="#dcdcdc"
-        android:endColor="#919191"/>
+        android:centerColor="@color/colorPrimaryDark"
+        android:endColor="@color/colorPrimaryDark"
+        android:startColor="@color/colorPrimaryDark" />
 
 
 </shape>

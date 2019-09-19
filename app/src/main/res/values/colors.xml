@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--toolbar bar color-->
+    <color name="colorPrimary">#A5A5A5</color>
+    <!--status bar color-->
+    <color name="colorPrimaryDark">#bdbdbd</color>
+    <color name="colorAccent">#e0e0e0</color>
 
 
-<!--    <color name="colorPrimary">#DDDDDD</color>-->
-    <color name="colorPrimary">#696969</color>
-    <color name="colorPrimaryDark">#696969</color>
-    <color name="colorAccent">#efefef</color>
     <color name="darkBlue">#1565c0</color>
     <color name="windowBackground">#696969</color>
 

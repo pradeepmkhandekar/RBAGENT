@@ -71,7 +71,7 @@
         android:layout_height="0dp"
         android:gravity="center_horizontal|center_vertical"
         android:layout_weight="48"
-        android:background="@color/dashboard_color1"
+        android:background="@color/bg"
         android:orientation="vertical">
 
         <LinearLayout
