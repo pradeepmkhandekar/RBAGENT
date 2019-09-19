@@ -9,7 +9,7 @@ import com.rupeeboss.rba.core.request.requestentity.HomeLoanRequest;
 
 public interface ILogin {
 
-    void login(String panNo, String password, String devID, String deviceToken, IResponseSubcriber IResponseSubcriber);
+    void login(String panNo, String password, String devID, String deviceToken,String loginType, IResponseSubcriber IResponseSubcriber);
 
     void uploadProfilePicture(String panNo, String base64Image, IResponseSubcriber iResponseSubcriber);
 }

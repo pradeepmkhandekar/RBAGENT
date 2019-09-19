@@ -13,6 +13,11 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:appComponentFactory">
         <activity
+            android:name=".profile.myprofile"
+            android:label="@string/title_activity_myprofile"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"></activity>
+        <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name" />
@@ -42,7 +47,6 @@
             android:label="@string/title_activity_login"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
-
         <!--
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -54,13 +58,11 @@
                 android:resource="@xml/provider_paths" />
         </provider>
         -->
-
         <!-- TODO for facebook ID -->
         <activity
             android:name=".home.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
-
         <activity
             android:name=".creditcard.CreditCardActivity"
             android:label="Credit Card"
@@ -71,7 +73,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".home.MainActivity" />
         </activity>
-
         <activity
             android:name=".calling.CallingActivity"
             android:label="Calling"
@@ -82,8 +83,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".home.MainActivity" />
         </activity>
-
-
         <activity
             android:name=".loan.LoanMenuActivity"
             android:label="Loan"
@@ -302,7 +301,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.rupeeboss.rba.home.MainActivity" />
         </activity>
-
         <activity
             android:name=".sharemessage.LeadSmsActivity"
             android:label="@string/title_activity_lead_sms"
@@ -313,7 +311,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.rupeeboss.rba.sharemessage.ShareMessageActivity" />
         </activity>
-
         <activity
             android:name=".mylead.MyLeadActivity"
             android:label="@string/title_activity_my_lead"
@@ -324,7 +321,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".mylist.GroupListActivity" />
         </activity>
-
         <activity
             android:name=".LAP.Loan_LAPActivity"
             android:label="LAP"
@@ -472,7 +468,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".EmiCalculator.EmiMenuActivity" />
         </activity>
-
         <activity
             android:name=".webviews.document.DocumentWebViewActivity"
             android:label="@string/title_activity_document_web_view"
@@ -483,7 +478,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.rupeeboss.rba.home.MainActivity" />
         </activity>
-
         <activity
             android:name=".EmiCalculator.HomeEMICalcActivity"
             android:label="@string/title_activity_home_emicalc"
@@ -758,16 +752,16 @@
                 android:value="com.rupeeboss.rba.home.MainActivity" />
         </activity>
         <activity
-        android:name=".loan_fm.new_personalloan.city_selecton_personalloan_Activity"
-        android:label="Personal Loan"
-        android:parentActivityName=".loan_fm.new_personalloan.NewPersonalApplicaionActivity"
-        android:screenOrientation="portrait"
-        android:theme="@style/AppTheme"
-        android:windowSoftInputMode="stateAlwaysHidden|stateHidden">
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.rupeeboss.rba.loan_fm.new_personalloan.NewPersonalApplicaionActivity" />
-    </activity>
+            android:name=".loan_fm.new_personalloan.city_selecton_personalloan_Activity"
+            android:label="Personal Loan"
+            android:parentActivityName=".loan_fm.new_personalloan.NewPersonalApplicaionActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden|stateHidden">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.loan_fm.new_personalloan.NewPersonalApplicaionActivity" />
+        </activity>
         <activity
             android:name=".loan_fm.new_personalloan.bank_selection_personalloanActivity"
             android:label="Personal Loan"
@@ -790,8 +784,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.rupeeboss.rba.home.MainActivity" />
         </activity>
-
-
         <activity
             android:name=".loan_fm.new_HomeLoan.city_selecton_homeloan_Activity"
             android:label="Home Loan"
@@ -824,9 +816,7 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.rupeeboss.rba.home.MainActivity" />
-
         </activity>
-
         <activity
             android:name=".loan_fm.newlaploan.city_selecton_laploan_Activity"
             android:label="Loan Against Property"
@@ -859,11 +849,7 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.rupeeboss.rba.home.MainActivity" />
-
         </activity>
-
-
-
         <activity
             android:name=".loan_fm.businessloan.city_selecton_businessloan_Activity"
             android:label="Loan Against Property"
@@ -896,8 +882,13 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.rupeeboss.rba.home.MainActivity" />
-
         </activity>
+        <activity
+            android:name=".loan_fm.popup.LeadInfoPopupActivity"
+            android:label="Lead Details"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+
         <meta-data
             android:name="DATABASE"
             android:value="rba.db" />
@@ -919,6 +910,7 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
         <receiver
             android:name=".referrar.InstallReferrerReceiver"
             android:exported="true">
@@ -928,19 +920,15 @@
         </receiver>
     </application>
     <uses-permission android:name="android.permission.CAPTURE_AUDIO_OUTPUT" />
-
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-
-    <!-- <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> -->
     <uses-permission android:name="android.permission.STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.CAMERA" />
-
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 

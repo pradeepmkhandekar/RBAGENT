@@ -151,7 +151,7 @@ public class MainActivity extends BaseActivity implements IResponseSubcriber, Vi
         new SyncController(MainActivity.this).getProducts();
         new SyncController(MainActivity.this).getProperty();
 
-        new LoginController(this).login(loginFacade.getPanNumber(), loginFacade.getPassword(), loginFacade.getDeviceId(), "", this);
+        new LoginController(this).login(loginFacade.getPanNumber(), loginFacade.getPassword(), loginFacade.getDeviceId(), "","N", this);
 
         localAppVersionCode = Utility.getVersionCode(MainActivity.this);
         serverAppVersion = Integer.parseInt(loginFacade.getUser().getVersionCode());

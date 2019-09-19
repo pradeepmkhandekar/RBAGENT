@@ -1,22 +1,4 @@
 <resources>
-    <string name="app_name">RBA</string>
-    <string name="copyright_content">Powered by Rupeeboss</string>
-
-    <!-- TODO:FaceBook Default ID ie fixed id from Facebook Doc  -->
-    <string name="facebook_app_id">1463474817011736</string>
-    <string name="fb_login_protocol_scheme">fb1463474817011736</string>
-
-    <string name="title_activity_login">Login</string>
-
-    <string name="openDrawer">Open navigation drawer</string>
-    <string name="closeDrawer">Close navigation drawer</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="title_activity_home_loan">Home Loan</string>
-    <string name="newregistration"><u>Create New Account</u></string>
-    <!--<string name="forgot_password"><u>Forgot Password?</u></string>-->
-    <string name="title_forgot_pwd"><u>Forgot Password?</u></string>
-
     <array name="IncomeSource">
         <item>Salaried</item>
         <item>Self-Employed</item>
@@ -28,6 +10,24 @@
         <item>Son</item>
 
     </array>
+
+    <!-- TODO:FaceBook Default ID ie fixed id from Facebook Doc  -->
+    <string name="app_name">RBA</string>
+    <string name="copyright_content">Powered by Rupeeboss</string>
+
+    <string name="facebook_app_id">1463474817011736</string>
+
+    <string name="fb_login_protocol_scheme">fb1463474817011736</string>
+    <string name="title_activity_login">Login</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="openDrawer">Open navigation drawer</string>
+    <string name="closeDrawer">Close navigation drawer</string>
+    <!--<string name="forgot_password"><u>Forgot Password?</u></string>-->
+    <string name="title_activity_home_loan">Home Loan</string>
+
+    <string name="newregistration"><u>Create New Account</u></string>
+    <string name="title_forgot_pwd"><u>Forgot Password?</u></string>
 
     <string name="no_files_login">No. Of Files Login</string>
     <string name="no_files_sact">No. Of Files Sanctioned</string>
@@ -105,4 +105,5 @@
     <string name="title_activity_home_loan_menu">Home Loan</string>
     <string name="title_activity_common_webview">RBA</string>
     <string name="threedots">&#8942;</string>
+    <string name="title_activity_myprofile">myprofile</string>
 </resources>

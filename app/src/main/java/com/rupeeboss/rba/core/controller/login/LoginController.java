@@ -32,7 +32,7 @@ public class LoginController implements ILogin {
     }
 
     @Override
-    public void login(String panNo, String password, String devID, String deviceToken, final IResponseSubcriber IResponseSubcriber) {
+    public void login(String panNo, String password, String devID, String deviceToken,String loginType, final IResponseSubcriber IResponseSubcriber) {
 
         HashMap<String, String> bodyparameter = new HashMap<String, String>();
 
@@ -40,6 +40,8 @@ public class LoginController implements ILogin {
         bodyparameter.put("pwd", password);
         bodyparameter.put("devId", devID);
         bodyparameter.put("tokenId", deviceToken);
+        bodyparameter.put("loginType", loginType);
+
 
         loginNetworkService.login(bodyparameter).enqueue(new Callback<LoginResponse>() {
             @Override
