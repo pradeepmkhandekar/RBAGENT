@@ -4,6 +4,7 @@
     android:id="@+id/drawer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg"
     android:fitsSystemWindows="true">
     <!--android:theme="@style/Menu"-->
 
@@ -26,7 +27,57 @@
                 android:layout_height="?attr/actionBarSize"
                 android:background="@color/colorPrimaryDark"
                 app:layout_scrollFlags="enterAlways|snap"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+                app:contentInsetLeft="0dp"
+                app:contentInsetStart="0dp"
+                app:contentInsetStartWithNavigation="0dp"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+                <androidx.cardview.widget.CardView
+
+                    android:id="@+id/cvSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="22dp"
+                    android:layout_marginTop="5dp"
+                    app:cardCornerRadius="4dp"
+                    app:cardElevation="2dp"
+
+                    android:layout_marginBottom="5dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:paddingTop="10dp"
+                        android:paddingBottom="5dp"
+                        android:background="@color/white"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="26dp"
+                            android:layout_height="26dp"
+                            android:layout_alignParentLeft="true"
+                            android:src="@mipmap/ic_launcher"
+                            />
+
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="26dp"
+                            android:layout_height="26dp"
+                            android:src="@drawable/ic_notifications"
+                            android:layout_alignParentRight="true"
+                            android:layout_gravity="right"
+                            android:tint="@color/gray" />
+
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+            </androidx.appcompat.widget.Toolbar>
+
+
 
         </com.google.android.material.appbar.AppBarLayout>
 

@@ -3,7 +3,9 @@ package com.rupeeboss.rba.login;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -21,6 +23,8 @@ import com.google.android.gms.common.api.Status;
 import com.google.android.material.textfield.TextInputEditText;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -39,7 +43,11 @@ import com.rupeeboss.rba.core.response.LoginResponse;
 import com.rupeeboss.rba.forgetpwd.ForgotPasswordActivity;
 import com.rupeeboss.rba.home.MainActivity;
 import com.rupeeboss.rba.utility.Constants;
+import com.rupeeboss.rba.utility.PrefManager;
 import com.rupeeboss.rba.utility.Utility;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class LoginActivity extends BaseActivity implements IResponseSubcriber, View.OnClickListener , GoogleApiClient.OnConnectionFailedListener{
     int localAppVersionCode, serverAppVersion;
@@ -54,6 +62,7 @@ public class LoginActivity extends BaseActivity implements IResponseSubcriber, V
     ImageView imgGoogleLogin;
     private GoogleApiClient mGoogleApiClient;
     private static final int RC_SIGN_IN = 007;
+    PrefManager prefManager;
 
     String[] perms = {
             "android.permission.CAMERA",
@@ -72,7 +81,9 @@ public class LoginActivity extends BaseActivity implements IResponseSubcriber, V
         setSupportActionBar(toolbar);*/
         sharedPreferences = getSharedPreferences(Constants.SHAREDPREFERENCE_TITLE, MODE_PRIVATE);
         editor = sharedPreferences.edit();
+        prefManager = new PrefManager(this);
         initialize_widgets();
+
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -160,6 +171,7 @@ public class LoginActivity extends BaseActivity implements IResponseSubcriber, V
     @Override
     public void onClick(View v) {
 
+        Log.d("TOKEN" , "Token :"+prefManager.getToken());
         if (v.getId() == R.id.img_google_login) {
             showProgressDialog();
             signIn();
@@ -200,7 +212,9 @@ public class LoginActivity extends BaseActivity implements IResponseSubcriber, V
     public void OnSuccess(APIResponse response, String message) {
         dismissDialog();
         if (response instanceof LoginResponse) {
+
             if (response.getStatusId() == 0) {
+
                 new LoginFacade(LoginActivity.this).storeLoginDetails(etpanno.getText().toString(), etPassword.getText().toString(), deviceId);
                 localAppVersionCode = Utility.getVersionCode(LoginActivity.this);
                 serverAppVersion = Integer.parseInt(new LoginFacade(LoginActivity.this).getUser().getVersionCode());
@@ -209,7 +223,18 @@ public class LoginActivity extends BaseActivity implements IResponseSubcriber, V
                     showDialog("Update RBAgent App..");
                     return;
                 }
-                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+
+                if (!prefManager.getSharePushType().equals("")) {
+
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class).putExtra(Utility.PUSH_LOGIN_PAGE, "555"));
+                    finish();
+                }
+                else{
+
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    finish();
+                }
+
             } else {
                 Toast.makeText(this, response.getMessage(), Toast.LENGTH_SHORT).show();
             }
@@ -324,6 +349,29 @@ public class LoginActivity extends BaseActivity implements IResponseSubcriber, V
         } else {
 
             imgGoogleLogin.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private void getReleaseKey()
+    {
+
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(
+                     getPackageName(),
+                    PackageManager.GET_SIGNATURES);
+
+            for(Signature signature : info.signatures){
+                MessageDigest messageDigest = MessageDigest.getInstance("SHA");
+                messageDigest.update(signature.toByteArray());
+                Log.d("KeyHash" , Base64.encodeToString(messageDigest.digest(),Base64.DEFAULT));
+
+
+            }
+        }catch (PackageManager.NameNotFoundException ex){
+            Log.d("KeyHash" , ex.toString());
+        }
+        catch (NoSuchAlgorithmException ex){
+            Log.d("KeyHash" , ex.toString());
         }
     }
 }

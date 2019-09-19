@@ -13,6 +13,8 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.StrictMode;
+
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import com.google.android.material.navigation.NavigationView;
 import androidx.core.app.ActivityCompat;
@@ -44,6 +46,7 @@ import com.rupeeboss.rba.core.controller.authenticate.Authentication;
 import com.rupeeboss.rba.core.controller.login.LoginController;
 import com.rupeeboss.rba.core.controller.sync.SyncController;
 import com.rupeeboss.rba.core.facade.LoginFacade;
+import com.rupeeboss.rba.core.model.NotifyEntity;
 import com.rupeeboss.rba.core.response.AppVersionResponse;
 import com.rupeeboss.rba.core.response.ProfileResponse;
 import com.rupeeboss.rba.creditcard.CreditCardFragment;
@@ -56,8 +59,12 @@ import com.rupeeboss.rba.loan.LoanMenuFragment;
 import com.rupeeboss.rba.login.LoginActivity;
 import com.rupeeboss.rba.mylead.MyLeadActivity;
 import com.rupeeboss.rba.mylist.GroupListActivity;
+import com.rupeeboss.rba.notification.NotificationActivity;
 import com.rupeeboss.rba.repository.RepositoryHomeFragment;
+import com.rupeeboss.rba.search.SearchActivity;
+import com.rupeeboss.rba.splashscreen.SplashScreenActivity;
 import com.rupeeboss.rba.utility.Constants;
+import com.rupeeboss.rba.utility.PrefManager;
 import com.rupeeboss.rba.utility.Utility;
 import com.rupeeboss.rba.utility.imagecropper.BitmapUtil;
 import com.rupeeboss.rba.utility.imagecropper.CropHandler;
@@ -82,6 +89,7 @@ public class MainActivity extends BaseActivity implements IResponseSubcriber, Vi
     boolean doubleBackToExitPressedOnce = false;
     // index to identify current nav menu item
     public static int navItemIndex = 0;
+    CardView cvSearch;
 
     String[] perms = {"android.permission.WRITE_EXTERNAL_STORAGE",
             "android.permission.READ_EXTERNAL_STORAGE",
@@ -123,6 +131,7 @@ public class MainActivity extends BaseActivity implements IResponseSubcriber, Vi
     CircleImageView imgUser;
     private CropHelper cropHelper;
     LoginFacade loginFacade;
+    PrefManager prefManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,9 +149,11 @@ public class MainActivity extends BaseActivity implements IResponseSubcriber, Vi
         editor = sharedPreferences.edit();
         drawer = (DrawerLayout) findViewById(R.id.drawer);
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
-
+        cvSearch =   findViewById(R.id.cvSearch);
         cropHelper = new CropHelper(getApplicationContext());
         loginFacade = new LoginFacade(this);
+        cvSearch.setOnClickListener(this);
+        getNotificationAction();
         // initializing navigation menu
         setUpNavigationView();
         BindNavigationProfile();
@@ -257,6 +268,102 @@ public class MainActivity extends BaseActivity implements IResponseSubcriber, Vi
 
             imgUser.setImageBitmap(null);
         }
+    }
+
+
+    private void getNotificationAction() {
+
+        // region Activity Open Usnig Notification
+
+        if (getIntent().getExtras() != null) {
+
+            // For getting User Click Action
+            if (getIntent().getExtras().getParcelable(Utility.PUSH_NOTIFY) != null) {
+                NotifyEntity notifyEntity = getIntent().getExtras().getParcelable(Utility.PUSH_NOTIFY);
+
+            }
+            // step1: boolean verifyLogin = prefManager.getIsUserLogin();
+            // region verifyUser : when user logout and when Apps in background
+            if (loginFacade == null) {
+
+                NotifyEntity notifyEntity = getIntent().getExtras().getParcelable(Utility.PUSH_NOTIFY);
+                if (notifyEntity == null) {
+                    return;
+                }
+
+                prefManager.setPushNotifyPreference(notifyEntity);
+                prefManager.setSharePushType(notifyEntity.getNotifyFlag());
+
+                Intent intent = new Intent(this, SplashScreenActivity.class);
+                startActivity(intent);
+                finish();
+
+
+            }
+            //endregion
+
+            //  region step2: For Notification come via Login for user credential  (step2 perform after step1)
+            else if (getIntent().getStringExtra(Utility.PUSH_LOGIN_PAGE) != null) {
+                String pushLogin = getIntent().getStringExtra(Utility.PUSH_LOGIN_PAGE);
+                if (pushLogin.equals("555")) {
+
+                    NotifyEntity notifyEntity;
+                    String type = "", title = "", body = "", web_url = "", web_title = "", web_name = "";
+                    if (prefManager.getPushNotifyPreference() != null) {
+                        notifyEntity = prefManager.getPushNotifyPreference();
+
+                        type = notifyEntity.getNotifyFlag();
+                        title = notifyEntity.getTitle();
+                        body = notifyEntity.getBody();
+                        web_url = notifyEntity.getWeb_url();
+                        web_title = notifyEntity.getWeb_title();
+
+                    }
+
+                    prefManager.clearNotification();
+
+                    if (type.matches("NL")) {
+                        Intent intent = new Intent(this, NotificationActivity.class);
+                        startActivity(intent);
+
+                    }
+                   else if (type.matches("WB")) {
+
+                        startActivity(new Intent(MainActivity.this, CommonWebviewActivity.class)
+                                .putExtra("URL", web_url)
+                                .putExtra("NAME", web_name)
+                                .putExtra("TITLE", web_title));
+
+                    }
+                }
+
+            }
+            //endregion
+
+            // region user already logged in and app in forground
+            else if (getIntent().getExtras().getParcelable(Utility.PUSH_NOTIFY) != null) {
+                NotifyEntity notificationEntity = getIntent().getExtras().getParcelable(Utility.PUSH_NOTIFY);
+                if (notificationEntity.getNotifyFlag().matches("NL")) {
+                    Intent intent = new Intent(this, NotificationActivity.class);
+                    startActivity(intent);
+                }  else if (notificationEntity.getNotifyFlag().matches("WB")) {
+                    String web_url = notificationEntity.getWeb_url();
+                    String web_title = notificationEntity.getWeb_title();
+                    String web_name = "";
+                    startActivity(new Intent(MainActivity.this, CommonWebviewActivity.class)
+                            .putExtra("URL", web_url)
+                            .putExtra("NAME", web_name)
+                            .putExtra("TITLE", web_title));
+
+                }
+            }
+            //endregion
+
+        }
+
+        ///
+
+        //endregion
     }
 
 
@@ -782,6 +889,10 @@ public class MainActivity extends BaseActivity implements IResponseSubcriber, Vi
     public void onClick(View v) {
         if (v.getId() == R.id.imgUser) {
             selectImage();
+        }else if( v.getId() == R.id.cvSearch){
+
+
+                startActivity(new Intent(MainActivity.this, SearchActivity.class));
         }
 
     }

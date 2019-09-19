@@ -3,7 +3,8 @@
 
 
 
-    <color name="colorPrimary">#DDDDDD</color>
+<!--    <color name="colorPrimary">#DDDDDD</color>-->
+    <color name="colorPrimary">#696969</color>
     <color name="colorPrimaryDark">#696969</color>
     <color name="colorAccent">#efefef</color>
     <color name="darkBlue">#1565c0</color>

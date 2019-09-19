@@ -81,6 +81,11 @@ public class Utility {
     final static public int REQUEST_CODE_ASK_PERMISSIONS_ALL = 125;
     public static final int REQUEST_CODE_ASK_PERMISSIONS_Login= 126;
 
+    public static String PUSH_BROADCAST_ACTION = "Rbagent_Push_BroadCast_Action";
+    public static String PUSH_NOTIFY = "notifyFlag";
+    public static String PUSH_LOGIN_PAGE = "pushloginPage";
+
+
     /*public static String[] perms = {"android.permission.WRITE_CALL_LOG",
             "android.permission.CALL_PHONE",
             "android.permission.READ_PHONE_STATE",

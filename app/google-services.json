@@ -1,45 +1,37 @@
 {
   "project_info": {
-    "project_number": "1042863171119",
-    "project_id": "centering-crow-164210"
+    "project_number": "1011031635301",
+    "firebase_url": "https://rbagent-33156.firebaseio.com",
+    "project_id": "rbagent-33156",
+    "storage_bucket": "rbagent-33156.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1042863171119:android:7cc75ec06c5504ab",
+        "mobilesdk_app_id": "1:1011031635301:android:92216a2f2c81d1086a9d8c",
         "android_client_info": {
           "package_name": "com.rupeeboss.rba"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1042863171119-df55e2jfgidr5prdmhen14l0m7jl6gev.apps.googleusercontent.com",
+          "client_id": "1011031635301-8uau5iqc4inn6sk8p3s4h9tqjj468mil.apps.googleusercontent.com",
           "client_type": 3
-        },
-        {
-          "client_id": "1042863171119-09r8ss6fldolsbo37hfkqfabr29ljdda.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.rupeeboss.rba",
-            "certificate_hash": "91bb6e8d4da9a52a8760c5d40e902aebf0f9247e"
-          }
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCpcpm4sd-qV-bGOQae5wHRSPdHYXY39-4"
+          "current_key": "AIzaSyAcrnDSPCWqaXE7RI3xL-7I2tC0AjLS9Pw"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 1
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1011031635301-8uau5iqc4inn6sk8p3s4h9tqjj468mil.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
