@@ -61,7 +61,7 @@ public class NewLAPApplicaionActivity extends BaseActivity implements View.OnCli
         brokerId = "" + loginFacade.getUser().getBrokerId();
 
         showDialog();
-        new MainLoanController(NewLAPApplicaionActivity.this).getLoanApplication(0,"LAP",String.valueOf( "999999"), NewLAPApplicaionActivity.this);
+        new MainLoanController(NewLAPApplicaionActivity.this).getLoanApplication(0,"LAP",String.valueOf( brokerId), NewLAPApplicaionActivity.this);
 
     }
 

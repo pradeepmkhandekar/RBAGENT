@@ -63,7 +63,7 @@ public class NewHomeApplicaionActivity extends BaseActivity implements View.OnCl
         brokerId = "" + loginFacade.getUser().getBrokerId();
 
         showDialog();
-        new MainLoanController(NewHomeApplicaionActivity.this).getLoanApplication(0,"HML",String.valueOf("999999"), NewHomeApplicaionActivity.this);
+        new MainLoanController(NewHomeApplicaionActivity.this).getLoanApplication(0,"HML",String.valueOf(brokerId), NewHomeApplicaionActivity.this);
 
     }
 

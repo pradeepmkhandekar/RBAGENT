@@ -62,7 +62,7 @@ public class NewbusinessApplicaionActivity extends BaseActivity implements View.
         brokerId = "" + loginFacade.getUser().getBrokerId();
 
         showDialog();
-        new MainLoanController(NewbusinessApplicaionActivity.this).getLoanApplication(0,"BL",String.valueOf("999999"), NewbusinessApplicaionActivity.this);
+        new MainLoanController(NewbusinessApplicaionActivity.this).getLoanApplication(0,"BL",String.valueOf(brokerId), NewbusinessApplicaionActivity.this);
 
     }
 

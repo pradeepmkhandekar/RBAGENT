@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".profile.myprofile"
+    android:background="@color/background_color"
+    tools:showIn="@layout/activity_myprofile">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+
+            <TextView
+                android:id="@+id/txtEmpName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:padding="5dp"
+                android:text="Upload Photo"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/bg" />
+
+        <LinearLayout
+            android:id="@+id/ll_Login"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:padding="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+       >
+            <ImageView
+                android:id="@+id/imgLogin"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/robot_icon" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:ellipsize="end"
+                android:gravity="left"
+                android:maxLines="2"
+
+                android:textStyle="bold"
+                android:text="Login Details"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+
+
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/bg" />
+
+        <LinearLayout
+            android:id="@+id/ll_Notification"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:padding="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            >
+            <ImageView
+                android:id="@+id/img2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/robot_icon" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:ellipsize="end"
+                android:gravity="left"
+                android:maxLines="2"
+
+                android:textStyle="bold"
+                android:text="Notification"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+
+
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/bg" />
+
+
+        <LinearLayout
+            android:id="@+id/ll_Password"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:padding="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            >
+            <ImageView
+                android:id="@+id/imgRoboPlay3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/robot_icon" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:ellipsize="end"
+                android:gravity="left"
+                android:maxLines="2"
+
+                android:textStyle="bold"
+                android:text="Change Password"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+
+
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/bg" />
+
+        <LinearLayout
+            android:id="@+id/ll_Documents"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:padding="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            >
+            <ImageView
+                android:id="@+id/imgRoboPlay4"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/robot_icon" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:ellipsize="end"
+                android:gravity="left"
+                android:maxLines="2"
+
+                android:textStyle="bold"
+                android:text="My Documents"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+
+
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/bg" />
+
+        <LinearLayout
+            android:id="@+id/ll_Club"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:padding="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            >
+            <ImageView
+                android:id="@+id/imgRoboPlay5"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/robot_icon" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:ellipsize="end"
+                android:gravity="left"
+                android:maxLines="2"
+
+                android:textStyle="bold"
+                android:text="My Club"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+
+
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/bg" />
+
+        <LinearLayout
+            android:id="@+id/ll_RewardPoint"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:padding="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            >
+            <ImageView
+                android:id="@+id/imgRoboPlay6"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/robot_icon" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:ellipsize="end"
+                android:gravity="left"
+                android:maxLines="2"
+
+                android:textStyle="bold"
+                android:text="Redeem Reward Point"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+
+
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/bg" />
+    </LinearLayout>
+</LinearLayout>

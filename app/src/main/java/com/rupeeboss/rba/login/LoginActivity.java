@@ -12,10 +12,12 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.google.android.gms.auth.GoogleAuthUtil;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+import com.google.android.gms.common.AccountPicker;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
@@ -62,7 +64,11 @@ public class LoginActivity extends BaseActivity implements IResponseSubcriber, V
     ImageView imgGoogleLogin;
     private GoogleApiClient mGoogleApiClient;
     private static final int RC_SIGN_IN = 007;
+
     PrefManager prefManager;
+
+    String  Gmail_id="";
+
 
     String[] perms = {
             "android.permission.CAMERA",
@@ -168,13 +174,17 @@ public class LoginActivity extends BaseActivity implements IResponseSubcriber, V
         dialog.show();
     }
 
+
+
     @Override
     public void onClick(View v) {
 
         Log.d("TOKEN" , "Token :"+prefManager.getToken());
         if (v.getId() == R.id.img_google_login) {
-            showProgressDialog();
-            signIn();
+           Intent intent= AccountPicker.newChooseAccountIntent(null,null,new String[]{GoogleAuthUtil.GOOGLE_ACCOUNT_TYPE},true,null,null,null,null);
+           startActivityForResult(intent,000);
+            // showProgressDialog();
+          //  signIn();
         }
         else if (v.getId() == R.id.txtforgotPwd) {
             startActivity(new Intent(LoginActivity.this, ForgotPasswordActivity.class));
@@ -202,8 +212,9 @@ public class LoginActivity extends BaseActivity implements IResponseSubcriber, V
                 e.printStackTrace();
             }
             showProgressDialog();
-            new LoginController(this).login(etpanno.getText().toString(), etPassword.getText().toString(), deviceId, "", this);
+           new LoginController(this).login(etpanno.getText().toString(), etPassword.getText().toString(), deviceId, "","N", this);
 
+        //    new LoginController(this).login("kumaranchal788@gmail.com", "", deviceId, "","Y", this);
 
         }
     }
@@ -318,6 +329,10 @@ public class LoginActivity extends BaseActivity implements IResponseSubcriber, V
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             handleSignInResult(result);
         }
+
+        if (requestCode == 000){
+
+        }
     }
 
     private void handleSignInResult(GoogleSignInResult result) {
@@ -330,9 +345,11 @@ public class LoginActivity extends BaseActivity implements IResponseSubcriber, V
             Toast.makeText(this,acct.getEmail(),Toast.LENGTH_SHORT).show();
 
             String fName = acct.getGivenName();
-            String email = acct.getEmail();
+            String Gmail_id = acct.getEmail();
             String lname = acct.getFamilyName();
 
+            showProgressDialog();
+            new LoginController(this).login(Gmail_id, etPassword.getText().toString(), deviceId, "","Y", this);
 
 
         } else {

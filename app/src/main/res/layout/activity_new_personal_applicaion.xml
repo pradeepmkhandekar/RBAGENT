@@ -76,6 +76,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
-        app:fabSize="normal" />
+        app:fabSize="normal"
+        android:src="@drawable/ic_add_white"/>
 </RelativeLayout>
 
