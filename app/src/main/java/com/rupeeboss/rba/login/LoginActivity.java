@@ -8,10 +8,30 @@ import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import com.facebook.AccessToken;
+import com.facebook.AccessTokenTracker;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookActivity;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.GoogleAuthUtil;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -23,17 +43,6 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.google.android.material.textfield.TextInputEditText;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
-import android.util.Base64;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import com.rupeeboss.rba.BaseActivity;
 import com.rupeeboss.rba.R;
 import com.rupeeboss.rba.ReadDeviceID;
@@ -48,10 +57,15 @@ import com.rupeeboss.rba.utility.Constants;
 import com.rupeeboss.rba.utility.PrefManager;
 import com.rupeeboss.rba.utility.Utility;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
+import java.util.List;
 
-public class LoginActivity extends BaseActivity implements IResponseSubcriber, View.OnClickListener , GoogleApiClient.OnConnectionFailedListener{
+public class LoginActivity extends BaseActivity implements IResponseSubcriber, View.OnClickListener {
     int localAppVersionCode, serverAppVersion;
     TextInputEditText etpanno, etPassword;
 
@@ -61,13 +75,16 @@ public class LoginActivity extends BaseActivity implements IResponseSubcriber, V
     TextView txtnewRegistration;
     TextView txtForgotPwd;
     Button btnLogin;
-    ImageView imgGoogleLogin;
+    ImageView imgGoogleLogin,imgfaceebook;
     private GoogleApiClient mGoogleApiClient;
     private static final int RC_SIGN_IN = 007;
+    private CallbackManager callbackManager;
+    AccessTokenTracker tokenTracker;
+
 
     PrefManager prefManager;
+    LoginButton loginButton;
 
-    String  Gmail_id="";
 
 
     String[] perms = {
@@ -76,7 +93,7 @@ public class LoginActivity extends BaseActivity implements IResponseSubcriber, V
             "android.permission.RECORD_AUDIO",
             "android.permission.WRITE_EXTERNAL_STORAGE",
             "android.permission.ACCESS_FINE_LOCATION"
-         }; //"android.permission.ACCESS_COARSE_LOCATION",
+    }; //"android.permission.ACCESS_COARSE_LOCATION",
 
 
     @Override
@@ -91,16 +108,88 @@ public class LoginActivity extends BaseActivity implements IResponseSubcriber, V
         initialize_widgets();
 
 
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build();
+        // region FaceBook Integration step 1
 
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .enableAutoManage(this, this)
-                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
-                .addOnConnectionFailedListener(this)
-                .build();
+        loginButton.setReadPermissions(Arrays.asList("email","public_profile"));
+        // FacebookSdk.sdkInitialize(getApplicationContext());
+        callbackManager = CallbackManager.Factory.create();
+
+
+        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+
+            }
+        });
+
+        tokenTracker  = new AccessTokenTracker() {
+            @Override
+            protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken) {
+
+                if(currentAccessToken == null)
+                {
+
+                    Toast.makeText(LoginActivity.this,"User Logged Out",Toast.LENGTH_SHORT).show();
+                }else {
+                    loadUserProfile(currentAccessToken);
+                    LoginManager.getInstance().logOut();   // for logout for facebook After getting login
+                }
+
+            }
+        };
+
+        tokenTracker.startTracking();
+
+        //endregion
+
     }
+
+    // region FaceBook Integration step 2
+
+    private void loadUserProfile (AccessToken newaccessToken){
+
+        GraphRequest request = GraphRequest.newMeRequest(newaccessToken, new GraphRequest.GraphJSONObjectCallback() {
+            @Override
+            public void onCompleted(JSONObject object, GraphResponse response) {
+
+                try {
+                    String first_name = object.getString("first_name");
+                    String last_name = object.getString("last_name");
+                    String email = object.getString("email");
+                    String id = object.getString("id");
+
+                    Toast.makeText(LoginActivity.this,first_name +" " + last_name + " emailID "+ email,Toast.LENGTH_LONG).show();
+
+
+                    email ="kumaranchal788@gmail.com";
+                    showProgressDialog();
+                    new LoginController(LoginActivity.this).login(email, "", deviceId, "", "Y", LoginActivity.this);
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        Bundle parameters = new Bundle();
+        parameters.putString("fields","first_name,last_name,email,id");
+        request.setParameters(parameters);
+        request.executeAsync();
+
+    }
+
+     // endregion
 
     private void initialize_widgets() {
         etpanno = (TextInputEditText) findViewById(R.id.etpanno);
@@ -108,6 +197,8 @@ public class LoginActivity extends BaseActivity implements IResponseSubcriber, V
         btnLogin = (Button) findViewById(R.id.btnLogin);
         txtForgotPwd = (TextView) findViewById(R.id.txtforgotPwd);
         imgGoogleLogin = (ImageView) findViewById(R.id.img_google_login);
+        imgfaceebook = (ImageView) findViewById(R.id.img_faceebook);
+        loginButton = (LoginButton) findViewById(R.id.loginButton);
 
         if (!checkPermission()) {
             requestPermission();
@@ -123,6 +214,7 @@ public class LoginActivity extends BaseActivity implements IResponseSubcriber, V
         });
         txtForgotPwd.setOnClickListener(this);
         imgGoogleLogin.setOnClickListener(this);
+        imgfaceebook.setOnClickListener(this);
     }
 
     private void openAppMarketPlace() {
@@ -175,21 +267,22 @@ public class LoginActivity extends BaseActivity implements IResponseSubcriber, V
     }
 
 
-
     @Override
     public void onClick(View v) {
 
-        Log.d("TOKEN" , "Token :"+prefManager.getToken());
+      //  Log.d("TOKEN", "Token :" + prefManager.getToken());
         if (v.getId() == R.id.img_google_login) {
-           Intent intent= AccountPicker.newChooseAccountIntent(null,null,new String[]{GoogleAuthUtil.GOOGLE_ACCOUNT_TYPE},true,null,null,null,null);
-           startActivityForResult(intent,000);
+            Intent intent = AccountPicker.newChooseAccountIntent(null, null, new String[]{GoogleAuthUtil.GOOGLE_ACCOUNT_TYPE}, true, null, null, null, null);
+            startActivityForResult(intent, 000);
             // showProgressDialog();
-          //  signIn();
-        }
-        else if (v.getId() == R.id.txtforgotPwd) {
+            //  signIn();
+        } else if (v.getId() == R.id.txtforgotPwd) {
             startActivity(new Intent(LoginActivity.this, ForgotPasswordActivity.class));
-        }
-       else if (v.getId() == R.id.btnLogin) {
+        }else if(v.getId() == R.id.img_faceebook){
+
+            loginButton.performClick();
+
+        } else if (v.getId() == R.id.btnLogin) {
             if (etpanno.getText().toString().matches("")) {
                 etpanno.setError("ENTER VALID PANCARD");
                 etpanno.requestFocus();
@@ -212,9 +305,9 @@ public class LoginActivity extends BaseActivity implements IResponseSubcriber, V
                 e.printStackTrace();
             }
             showProgressDialog();
-           new LoginController(this).login(etpanno.getText().toString(), etPassword.getText().toString(), deviceId, "","N", this);
+            new LoginController(this).login(etpanno.getText().toString(), etPassword.getText().toString(), deviceId, "", "N", this);
 
-        //    new LoginController(this).login("kumaranchal788@gmail.com", "", deviceId, "","Y", this);
+            //    new LoginController(this).login("kumaranchal788@gmail.com", "", deviceId, "","Y", this);
 
         }
     }
@@ -239,8 +332,7 @@ public class LoginActivity extends BaseActivity implements IResponseSubcriber, V
 
                     startActivity(new Intent(LoginActivity.this, MainActivity.class).putExtra(Utility.PUSH_LOGIN_PAGE, "555"));
                     finish();
-                }
-                else{
+                } else {
 
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     finish();
@@ -266,6 +358,18 @@ public class LoginActivity extends BaseActivity implements IResponseSubcriber, V
 
     }
 
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+
+
+
+
+
     private boolean checkPermission() {
 
         int accessCamera = ContextCompat.checkSelfPermission(getApplicationContext(), perms[0]);
@@ -290,105 +394,44 @@ public class LoginActivity extends BaseActivity implements IResponseSubcriber, V
         ActivityCompat.requestPermissions(this, perms, Utility.REQUEST_CODE_ASK_PERMISSIONS_Login);
     }
 
-
     @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+    protected void onDestroy() {
+        super.onDestroy();
 
-        dismissDialog();
-        Toast.makeText(this,"Connection Failed" + connectionResult,Toast.LENGTH_SHORT).show();
-    }
-
-    private void signIn() {
-        if (mGoogleApiClient.isConnected())
+        try {
+            LoginManager.getInstance().logOut();
+        }catch (Exception ex)
         {
-            signOut();
-        }
-        Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
-        startActivityForResult(signInIntent,RC_SIGN_IN);
-    }
-
-    private void signOut() {
-
-        Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
-                new ResultCallback<Status>() {
-                    @Override
-                    public void onResult(@NonNull Status status) {
-                        updateUI(false);
-                    }
-                }
-        );
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
-
-        if(requestCode == RC_SIGN_IN)
-        {
-            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-            handleSignInResult(result);
-        }
-
-        if (requestCode == 000){
 
         }
     }
 
-    private void handleSignInResult(GoogleSignInResult result) {
-
-        dismissDialog();
-        if (result.isSuccess()) {
-            // Signed in successfully, show authenticated UI.
-            GoogleSignInAccount acct = result.getSignInAccount();
-
-            Toast.makeText(this,acct.getEmail(),Toast.LENGTH_SHORT).show();
-
-            String fName = acct.getGivenName();
-            String Gmail_id = acct.getEmail();
-            String lname = acct.getFamilyName();
-
-            showProgressDialog();
-            new LoginController(this).login(Gmail_id, etPassword.getText().toString(), deviceId, "","Y", this);
+    // region facebook Hashkey
+    // Todo : genertate facebook Hashkey (put buildvariant in release mode) we have to put this key in facebook developer that app console.
+    // for Debug Mode : h5+/D2GcTgYTKSX/ikIR/jdVlUU=
+    // for Release Mode :  Gi/hz4epMMnUrMSLxl6pClYlXqM=
 
 
-        } else {
-            // Signed out, show unauthenticated UI.
-
-            Toast.makeText(this,"Connection Failed",Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private void updateUI(boolean isSignedIn) {
-        if (isSignedIn) {
-
-            imgGoogleLogin.setVisibility(View.GONE);
-        } else {
-
-            imgGoogleLogin.setVisibility(View.VISIBLE);
-        }
-    }
-
-    private void getReleaseKey()
-    {
+    private void getReleaseKey() {
 
         try {
             PackageInfo info = getPackageManager().getPackageInfo(
-                     getPackageName(),
+                    getPackageName(),
                     PackageManager.GET_SIGNATURES);
 
-            for(Signature signature : info.signatures){
+            for (Signature signature : info.signatures) {
                 MessageDigest messageDigest = MessageDigest.getInstance("SHA");
                 messageDigest.update(signature.toByteArray());
-                Log.d("KeyHash" , Base64.encodeToString(messageDigest.digest(),Base64.DEFAULT));
+                Log.d("KeyHash", Base64.encodeToString(messageDigest.digest(), Base64.DEFAULT));
 
 
             }
-        }catch (PackageManager.NameNotFoundException ex){
-            Log.d("KeyHash" , ex.toString());
-        }
-        catch (NoSuchAlgorithmException ex){
-            Log.d("KeyHash" , ex.toString());
+        } catch (PackageManager.NameNotFoundException ex) {
+            Log.d("KeyHash", ex.toString());
+        } catch (NoSuchAlgorithmException ex) {
+            Log.d("KeyHash", ex.toString());
         }
     }
+
+    //endregion
 }

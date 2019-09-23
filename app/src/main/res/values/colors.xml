@@ -12,6 +12,8 @@
     <color name="windowBackground">#696969</color>
 
     <color name="bg">#eeeeee</color>
+
+    <color name="background">#f2f1f6</color>
     <color name="background_color">#e4e2e3</color>
     <color name="green">#00796B</color>
     <color name="white_transparent">#80ffffff</color>
@@ -84,4 +86,6 @@
     <color name="gray_divider_color">#D1D1D1</color>
     <color name="divider">#F1F1F1</color>
     <color name="blue">#005faf</color>
+    <color name="lightblue">#4a5e81</color>
+
 </resources>

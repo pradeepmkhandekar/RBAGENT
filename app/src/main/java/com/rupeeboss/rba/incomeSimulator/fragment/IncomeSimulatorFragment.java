@@ -105,7 +105,7 @@ public class IncomeSimulatorFragment extends BaseFragment implements View.OnClic
 
         } else {
 
-            etPtClient.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
+            etPtClient.getBackground().setColorFilter(Color.LTGRAY, PorterDuff.Mode.SRC_IN);
             setChildLayout(true);
 
         }
@@ -113,10 +113,10 @@ public class IncomeSimulatorFragment extends BaseFragment implements View.OnClic
 
     private void setChildLayout(boolean bln) {
         if (bln) {
-            lyMedia.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.login_background));
-            lyWorkSpace.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.login_background));
-            lyFlate.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.login_background));
-            lyPhoneBook.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.login_background));
+            lyMedia.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.background));
+            lyWorkSpace.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.background));
+            lyFlate.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.background));
+            lyPhoneBook.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.background));
 
         } else {
             lyMedia.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.lightGrey));
@@ -251,7 +251,8 @@ public class IncomeSimulatorFragment extends BaseFragment implements View.OnClic
                         Constants.hideKeyBoard(txtTotal, getActivity());
                     }
                 } else {
-                    etPtClient.setText("0");
+                   // etPtClient.setText("0");
+                    etPtClient.setText("");
                     etPtClient.requestFocus();
                     etPtClient.setSelection(etPtClient.getText().length());
                 }
@@ -267,7 +268,8 @@ public class IncomeSimulatorFragment extends BaseFragment implements View.OnClic
                         Constants.hideKeyBoard(txtTotal, getActivity());
                     }
                 } else {
-                    etMedia.setText("0");
+                   // etMedia.setText("0");
+                    etMedia.setText("");
                     etMedia.requestFocus();
                     etMedia.setSelection(etMedia.getText().length());
                 }
@@ -282,7 +284,8 @@ public class IncomeSimulatorFragment extends BaseFragment implements View.OnClic
                         Constants.hideKeyBoard(txtTotal, getActivity());
                     }
                 } else {
-                    etWorkSpace.setText("0");
+                  //  etWorkSpace.setText("0");
+                    etWorkSpace.setText("");
                     etWorkSpace.requestFocus();
                     etWorkSpace.setSelection(etWorkSpace.getText().length());
                 }
@@ -297,7 +300,8 @@ public class IncomeSimulatorFragment extends BaseFragment implements View.OnClic
                         Constants.hideKeyBoard(txtTotal, getActivity());
                     }
                 } else {
-                    etFlate.setText("0");
+                   // etFlate.setText("0");
+                    etFlate.setText("");
                     etFlate.requestFocus();
                     etFlate.setSelection(etFlate.getText().length());
                 }
@@ -312,7 +316,8 @@ public class IncomeSimulatorFragment extends BaseFragment implements View.OnClic
                         Constants.hideKeyBoard(txtTotal, getActivity());
                     }
                 } else {
-                    etPhBook.setText("0");
+                    etPhBook.setText("");
+                  //  etPhBook.setText("0");
                     etPhBook.requestFocus();
                     etPhBook.setSelection(etPhBook.getText().length());
                 }
