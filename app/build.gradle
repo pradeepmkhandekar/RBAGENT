@@ -16,14 +16,16 @@ repositories {
 
 
 android {
-    signingConfigs {
-        config {
-            storeFile file('D:\\SignedApk\\Rbagent\\rba.jks')
-            storePassword 'rbagent'
-            keyAlias = 'rba'
-            keyPassword 'rbagent'
-        }
-    }
+//    signingConfigs {
+//
+//        // for SHA File
+//        config {
+//            storeFile file('D:\\SignedApk\\Rbagent\\rba.jks')
+//            storePassword 'rbagent'
+//            keyAlias = 'rba'
+//            keyPassword 'rbagent'
+//        }
+//    }
     compileSdkVersion 28
     buildToolsVersion '26.0.3'
     defaultConfig {
@@ -39,8 +41,7 @@ android {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            debuggable = true
-            signingConfig signingConfigs.config
+//            signingConfig signingConfigs.release
 
         }
     }

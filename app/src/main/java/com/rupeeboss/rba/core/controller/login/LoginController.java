@@ -57,10 +57,10 @@ public class LoginController implements ILogin {
                         // store profile pic
                         new LoginFacade(mContext).storeUserProfile(response.body().getResult().getProfilePic());
 
-                        IResponseSubcriber.OnSuccess(response.body(), response.body().getMsg());
+                        IResponseSubcriber.OnSuccess(response.body(), response.body().getMessage());
 
                     } else {
-                        IResponseSubcriber.OnFailure(new RuntimeException(response.body().getMsg()));
+                        IResponseSubcriber.OnFailure(new RuntimeException(response.body().getMessage()));
                     }
 
                 } catch (InterruptedException e) {

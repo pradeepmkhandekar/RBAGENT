@@ -12,12 +12,15 @@
     </array>
 
 
+
     <string name="app_name">RBA</string>
     <string name="copyright_content">Powered by Rupeeboss</string>
 
 
-    <string name="facebook_app_id">1463474817011736</string>
-    <string name="fb_login_protocol_scheme">fb1463474817011736</string>
+
+    <string name="facebook_app_id">387113298628310</string>
+    <string name="fb_login_protocol_scheme">fb387113298628310</string>
+
     <string name="title_activity_login">Login</string>
 
     <!-- TODO: Remove or change this placeholder text -->
