@@ -31,7 +31,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="10dp"
                 android:text="Subject:"
-                android:textColor="@color/white" />
+                android:textColor="@color/colorPrimary" />
 
             <EditText
                 android:id="@+id/etSubject"
@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:text="Body:"
-                android:textColor="@color/white" />
+                android:textColor="@color/colorPrimary" />
 
             <EditText
                 android:id="@+id/etBody"
@@ -88,7 +88,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="If any query, Please contact our help desk: "
-                android:textColor="@color/white" />
+                android:textColor="@color/colorPrimary" />
 
             <LinearLayout
                 android:id="@+id/lvCall"
@@ -104,7 +104,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:text="@string/contact_number"
-                    android:textColor="@color/white"
+                    android:textColor="@color/colorPrimary"
                     android:textStyle="bold" />
 
                 <ImageView

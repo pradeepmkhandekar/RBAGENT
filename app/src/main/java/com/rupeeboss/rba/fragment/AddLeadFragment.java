@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 
+import com.rupeeboss.rba.BaseActivity;
 import com.rupeeboss.rba.BaseFragment;
 import com.rupeeboss.rba.R;
 import com.rupeeboss.rba.core.APIResponse;
@@ -66,7 +67,7 @@ public class AddLeadFragment extends BaseFragment implements IResponseSubcriber,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.content_rb_add_lead, container, false);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setBackgroundDrawable(getResources().getDrawable(R.color.transparent_white));
+
         arrayStatus = new ArrayList<String>();
         arrayProduct = new ArrayList<String>();
         arrayAssignee = new ArrayList<String>();

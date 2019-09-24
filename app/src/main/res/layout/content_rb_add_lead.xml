@@ -28,7 +28,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Name"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/colorPrimary" />
 
                 <EditText
                     android:id="@+id/et_lead_name"
@@ -41,7 +41,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Email"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/colorPrimary" />
 
                 <EditText
                     android:id="@+id/et_lead_email"
@@ -55,7 +55,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Mobile No"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/colorPrimary" />
 
                 <EditText
                     android:id="@+id/et_lead_mobile"
@@ -70,7 +70,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Status"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/colorPrimary" />
 
                 <Spinner
                     android:id="@+id/sp_lead_status"
@@ -86,7 +86,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Product"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/colorPrimary" />
 
                 <Spinner
                     android:id="@+id/sp_lead_product"
@@ -102,7 +102,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Loan Amount"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/colorPrimary" />
 
                 <EditText
                     android:id="@+id/et_lead_loan_amount"
@@ -116,7 +116,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Monthly Income"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/colorPrimary" />
 
                 <EditText
                     android:id="@+id/et_lead_monthly_income"
@@ -131,7 +131,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Assign"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/colorPrimary" />
 
                 <Spinner
                     android:id="@+id/sp_lead_assign"
@@ -148,7 +148,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Date"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/colorPrimary" />
 
                 <EditText
                     android:id="@+id/et_lead_date"
@@ -183,7 +183,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Remark"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/colorPrimary" />
 
                 <EditText
                     android:id="@+id/etRemark"
@@ -210,7 +210,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="Demo Given"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/colorPrimary" />
 
                     <RadioButton
                         android:id="@+id/rb_demoNotGiven"
@@ -219,7 +219,7 @@
                         android:layout_marginLeft="@dimen/activity_horizontal_margin"
                         android:layout_weight="1"
                         android:text="Demo Not Given"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/colorPrimary" />
                 </RadioGroup>
 
 
@@ -227,7 +227,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Expected Disbursement Date"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/colorPrimary" />
 
                 <EditText
                     android:id="@+id/etExpctDisbsDate"

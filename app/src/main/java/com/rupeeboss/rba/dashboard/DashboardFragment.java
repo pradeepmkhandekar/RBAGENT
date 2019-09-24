@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.rupeeboss.rba.AddLead.AddLeadActivity;
 import com.rupeeboss.rba.BaseFragment;
 import com.rupeeboss.rba.R;
 import com.rupeeboss.rba.contact.ContactActivity;
@@ -30,6 +31,7 @@ import com.rupeeboss.rba.loan_fm.new_HomeLoan.NewHomeApplicaionActivity;
 import com.rupeeboss.rba.loan_fm.new_personalloan.NewPersonalApplicaionActivity;
 import com.rupeeboss.rba.loan_fm.newlaploan.NewLAPApplicaionActivity;
 import com.rupeeboss.rba.mybuisness.BuisinessActivity;
+import com.rupeeboss.rba.sharemessage.ShareMessageActivity;
 import com.rupeeboss.rba.utility.Utility;
 import com.rupeeboss.rba.webviews.balancetransfer.BalanceTransferActivity;
 import com.rupeeboss.rba.webviews.commonwebview.CommonWebviewActivity;
@@ -57,7 +59,7 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
     private static final int REQUEST_CODE = 99;
 
     LinearLayout explorerba;
-    TextView ivcontact_us, ivmy_business, ivinbox, ivloan_on_chat,
+    TextView ivcontact_us, ivmy_business, ivloan_on_chat,
             ivmsme, ivcredit_card, ivpersonal_loan, ivhome_loan, ivloan_against_property,
             ivbalance_transfer, ivcar_loan, ivrectify_productss, ivworking_capital,
             ivcash_loan, ivinsurance, ivcommercial_purchase,
@@ -165,7 +167,7 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
 
         ivcontact_us = (TextView) view.findViewById(R.id.ivcontact_us);
         ivmy_business = (TextView) view.findViewById(R.id.ivmy_business);
-        ivinbox = (TextView) view.findViewById(R.id.ivinbox);
+
         ivloan_on_chat = (TextView) view.findViewById(R.id.ivloan_on_chat);
         ivmsme = (TextView) view.findViewById(R.id.ivmsme);
         ivcredit_card = (TextView) view.findViewById(R.id.ivcredit_card);
@@ -189,7 +191,7 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
 //
         ivcontact_us.setOnClickListener(this);
         ivmy_business.setOnClickListener(this);
-        ivinbox.setOnClickListener(this);
+
         ivloan_on_chat.setOnClickListener(this);
         ivmsme.setOnClickListener(this);
         ivcredit_card.setOnClickListener(this);
@@ -228,11 +230,7 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
               startActivity(new Intent(getActivity(), BuisinessActivity.class));
 
                 break;
-            case R.id.ivinbox:
-                //  startActivity(new Intent(getActivity(), LoanActivity.class));
-               // startActivity(new Intent(getActivity(), LoanMenuActivity.class));
 
-                break;
             case R.id.ivloan_on_chat:
                 String url;
                 if (loginFacade.getUser().getBrokerId() == 0) {
@@ -249,7 +247,7 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
                         .putExtra("TITLE", "YES BANK BOT"));
                 break;
             case R.id.ivmsme:
-                startActivity(new Intent(getActivity(), WorkingCapitalActivity.class));
+                startActivity(new Intent(getActivity(), NewbusinessApplicaionActivity.class));
 //                if (ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.WRITE_CALL_LOG)
 //                        + ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE)
 //                        + ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_PHONE_STATE)
@@ -343,7 +341,7 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
 
             case R.id.ivrectify_productss:
                 startActivity(new Intent(getActivity(), CommonWebviewActivity.class)
-                        .putExtra("URL", " https://www.rupeeboss.com/rectifycredit?fbaid=0&type=RBA&loan_id="+brokerId+"")
+                        .putExtra("URL", " https://www.rupeeboss.com/rectify-credit?fbaid=0&type=RBA&loan_id="+brokerId+"")
                         .putExtra("NAME", "RECTIFY PRODUCT")
                         .putExtra("TITLE", "RECTIFY PRODUCT"));
             //    startActivity(new Intent(getActivity(), BalanceTransferType.class));
@@ -375,13 +373,14 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
                 break;
             case R.id.ivgenerate_leads:
 
-                Fragment fragment = null;
-                        fragment = new AddLeadFragment();
-                        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                        fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
-                                android.R.anim.fade_out);
-                        fragmentTransaction.replace(R.id.frame, fragment, "Share Text");
-                        fragmentTransaction.commitAllowingStateLoss();
+                startActivity(new Intent(getActivity(), AddLeadActivity.class));
+//                Fragment fragment = null;
+//                        fragment = new AddLeadFragment();
+//                        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+//                        fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
+//                                android.R.anim.fade_out);
+//                        fragmentTransaction.replace(R.id.frame, fragment, "Share Text");
+//                        fragmentTransaction.commitAllowingStateLoss();
                 break;
             case R.id.ivhome:
                 break;
@@ -390,6 +389,9 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
                 break;
             case R.id.ivScan:
                 openCamera();
+                break;
+            case R.id.ivShareData:
+                startActivity(new Intent(getActivity(), ShareMessageActivity.class));
                 break;
 
         }
