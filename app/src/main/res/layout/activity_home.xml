@@ -8,8 +8,7 @@
     android:fitsSystemWindows="true">
     <!--android:theme="@style/Menu"-->
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/main_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -56,11 +55,10 @@
                         android:orientation="horizontal">
 
                         <androidx.appcompat.widget.AppCompatImageView
-                            android:layout_width="26dp"
-                            android:layout_height="26dp"
+                            android:layout_width="136dp"
+                            android:layout_height="36dp"
                             android:layout_alignParentLeft="true"
-                            android:src="@mipmap/ic_launcher"
-                            />
+                            android:src="@drawable/rb_lg" />
 
 
                         <androidx.appcompat.widget.AppCompatImageView
