@@ -68,6 +68,7 @@ public class NewRegistration extends BaseActivity implements View.OnClickListene
         setContentView(R.layout.activity_new_registration);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);

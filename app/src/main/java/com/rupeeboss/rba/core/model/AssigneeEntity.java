@@ -1,19 +1,21 @@
 package com.rupeeboss.rba.core.model;
 
 public class AssigneeEntity {
+
+
     /**
      * assigneeId : 190
      * assigneeName : Rakesh Azad Yadav
      */
 
-    private int assigneeId;
+    private String assigneeId;
     private String assigneeName;
 
-    public int getAssigneeId() {
+    public String getAssigneeId() {
         return assigneeId;
     }
 
-    public void setAssigneeId(int assigneeId) {
+    public void setAssigneeId(String assigneeId) {
         this.assigneeId = assigneeId;
     }
 

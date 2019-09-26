@@ -87,7 +87,7 @@ public class LoginFacade {
         List<AssigneeEntity> assigneeEntities = getUser().getAssignee();
         for (AssigneeEntity entity : assigneeEntities) {
             if (entity.getAssigneeName().equals(assignee)) {
-                assignId = entity.getAssigneeId();
+                assignId =  Integer.parseInt(entity.getAssigneeId());
                 break;
             }
         }

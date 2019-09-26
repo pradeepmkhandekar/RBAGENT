@@ -40,7 +40,7 @@
             android:textColor="@color/dashboard_fontcolor3" />
 
         <TextView
-            android:drawableTop="@drawable/generate_leads"
+            android:drawableTop="@drawable/capture_lead"
             android:id="@+id/ivgenerate_leads"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -362,7 +362,7 @@
             android:textColor="@color/dashboard_fontcolor3" />
 
         <TextView
-            android:drawableTop="@drawable/generate_leads"
+            android:drawableTop="@drawable/share_link"
             android:gravity="center_horizontal|center_vertical"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

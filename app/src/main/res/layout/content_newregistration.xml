@@ -41,7 +41,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="First Name"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/colorPrimary" />
 
                 <EditText
                     android:id="@+id/et_first_name"
@@ -49,25 +49,26 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
-                <EditText
-                    android:id="@+id/et_last_name"
-                    style="@style/JEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
 
                 <TextView
                     android:id="@+id/textViewl"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Last Name"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/colorPrimary" />
+                <EditText
+                    android:id="@+id/et_last_name"
+                    style="@style/JEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
 
                 <TextView
                     android:id="@+id/textView332"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Email"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/colorPrimary" />
 
                 <EditText
                     android:id="@+id/et_email"
@@ -81,7 +82,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Mobile No"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/colorPrimary" />
 
                 <EditText
                     android:id="@+id/et_mobile"
@@ -96,7 +97,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="PAN No"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/colorPrimary" />
 
                 <EditText
                     android:id="@+id/et_pan_no"
@@ -111,7 +112,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Password"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/colorPrimary" />
 
                 <EditText
                     android:id="@+id/et_password"
@@ -125,7 +126,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Confirm Password"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/colorPrimary" />
 
                 <EditText
                     android:id="@+id/etRePassword"
@@ -139,7 +140,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Referral RB Emp code/ PB UID (Optional)"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/colorPrimary" />
 
                 <EditText
                     android:id="@+id/etReferEmployeeCode"
@@ -152,7 +153,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="City"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/colorPrimary" />
 
                 <Spinner
                     android:id="@+id/sp_city"
