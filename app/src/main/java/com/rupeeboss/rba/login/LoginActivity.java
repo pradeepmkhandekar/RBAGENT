@@ -171,7 +171,7 @@ public class LoginActivity extends BaseActivity implements IResponseSubcriber, V
                     Toast.makeText(LoginActivity.this,first_name +" " + last_name + " emailID "+ email,Toast.LENGTH_LONG).show();
 
 
-                    email ="kumaranchal788@gmail.com";
+                    //email ="kumaranchal788@gmail.com";
                     showProgressDialog();
                     new LoginController(LoginActivity.this).login(email, "", deviceId, "", "Y", LoginActivity.this);
 
