@@ -31,6 +31,7 @@ import com.rupeeboss.rba.loan_fm.new_HomeLoan.NewHomeApplicaionActivity;
 import com.rupeeboss.rba.loan_fm.new_personalloan.NewPersonalApplicaionActivity;
 import com.rupeeboss.rba.loan_fm.newlaploan.NewLAPApplicaionActivity;
 import com.rupeeboss.rba.mybuisness.BuisinessActivity;
+import com.rupeeboss.rba.profile.myprofile;
 import com.rupeeboss.rba.sharemessage.ShareMessageActivity;
 import com.rupeeboss.rba.utility.Utility;
 import com.rupeeboss.rba.webviews.balancetransfer.BalanceTransferActivity;
@@ -63,7 +64,8 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
             ivmsme, ivcredit_card, ivpersonal_loan, ivhome_loan, ivloan_against_property,
             ivbalance_transfer, ivcar_loan, ivrectify_productss, ivworking_capital,
             ivcash_loan, ivinsurance, ivcommercial_purchase,
-            ivhome, ivincome_simulator, ivScan, ivgenerate_leads;
+            ivhome, ivincome_simulator, ivScan, ivgenerate_leads,
+            ivprofile;
 
 
     BannerSlider bannerSlider;
@@ -188,6 +190,8 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
         ivScan = (TextView) view.findViewById(R.id.ivScan);
         ivgenerate_leads = (TextView) view.findViewById(R.id.ivgenerate_leads);
 
+        ivprofile  = (TextView) view.findViewById(R.id.ivprofile);
+
 //
         ivcontact_us.setOnClickListener(this);
         ivmy_business.setOnClickListener(this);
@@ -211,6 +215,8 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
         ivincome_simulator.setOnClickListener(this);
         ivScan.setOnClickListener(this);
         ivgenerate_leads.setOnClickListener(this);
+
+        ivprofile.setOnClickListener(this);
 //        textview = (TextView) view.findViewById(R.id.brokername);
 //        //   textview.setSelected(true);
 //        //  textview.setEllipsize(TextUtils.TruncateAt.MARQUEE);
@@ -222,6 +228,12 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+
+            case R.id.ivprofile:
+
+                startActivity(new Intent(getActivity(), myprofile.class));
+
+                break;
             case R.id.ivcontact_us:
                 startActivity(new Intent(getActivity(), ContactUsActivity.class));
 

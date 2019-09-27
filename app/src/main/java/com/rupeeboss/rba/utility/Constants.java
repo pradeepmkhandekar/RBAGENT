@@ -28,6 +28,11 @@ public class Constants {
     public static String PL_REQUEST = "personalloanRequest";
     public static String LAP_REQUEST = "loanagainstpropertyRequest";
 
+    public static final int PERMISSION_CALLBACK_CONSTANT = 100;
+    public static final int REQUEST_PERMISSION_SETTING = 101;
+    public static final int PERMISSION_CAMERA_STORACGE_CONSTANT = 103;
+    public static final int PERMISSION_CALLBACK_SUPPORT = 104;
+
     public static void hideKeyBoard(View view, Context context) {
         if (view != null) {
             InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
