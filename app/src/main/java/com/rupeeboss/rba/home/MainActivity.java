@@ -904,7 +904,7 @@ public class MainActivity extends BaseActivity implements IResponseSubcriber, Vi
         new LoginController(this).uploadProfilePicture(new LoginFacade(MainActivity.this).getPanNumber(), base64String, this);
         Log.d("Base64", base64String);
 
-        CropHelper.clearCacheDir();
+       // CropHelper.clearCacheDir();
     }
 
 

@@ -348,7 +348,7 @@ public class Utility {
         try {
             if (bitmap != null) {
                 ByteArrayOutputStream os = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 70, os);
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, os);
                 byte[] byteArray = os.toByteArray();
                 return Base64.encodeToString(byteArray, Base64.NO_WRAP);
             } else {
