@@ -7,16 +7,73 @@
     tools:context=".profile.myprofile">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/profileAppBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:background="@drawable/semicircle"
+       app:elevation="0dp">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+                <androidx.appcompat.widget.Toolbar
+
+                    app:popupTheme="@style/AppTheme.PopupOverlay"
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                   />
+
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            android:layout_height="200dp"
+            android:gravity="center"
+            >
+
+            <ImageView
+                android:id="@+id/ivUser"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="30dp"
+               android:layout_centerHorizontal="true"
+                android:background="@drawable/circle_placeholder"
+                android:padding="6dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/profile"
+                android:transitionName="profileTransition" />
+
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/ivUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:padding="5dp"
+                android:text="Upload Photo"
+                style="@style/TextViewStyle.Medium"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                />
+
+
+            <TextView
+                android:id="@+id/txtProfileName"
+                android:layout_alignParentTop="true"
+                style="@style/TextViewStyle.Large"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="wcwccwcwcwc"
+                android:textColor="@color/white">
+
+            </TextView>
+
+        </RelativeLayout>
+
+
+        <!--        </androidx.appcompat.widget.Toolbar>-->
 
     </com.google.android.material.appbar.AppBarLayout>
 

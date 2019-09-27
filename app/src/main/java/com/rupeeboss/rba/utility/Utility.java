@@ -16,7 +16,10 @@ import android.os.Build;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.appcompat.app.AlertDialog;
+
+import android.os.Environment;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
@@ -367,6 +370,19 @@ public class Utility {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static File createDirIfNotExists() {
+        boolean ret = true;
+
+        File file = new File(Environment.getExternalStorageDirectory(), "/RBAGENT");
+        if (!file.exists()) {
+            if (!file.mkdirs()) {
+                Log.e("TravellerLog :: ", "Problem creating Image folder");
+                ret = false;
+            }
+        }
+        return file;
     }
 
 }
