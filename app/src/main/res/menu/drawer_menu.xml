@@ -5,20 +5,23 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/nav_home"
-            android:title="HOME" />
+            android:title="HOME"
+            android:visible="false"/>
 
         <item
             android:id="@+id/nav_yes_bank_bot"
             android:icon="@drawable/chat_icon_white"
-            android:title="YES BANK BOT" />
+            android:title="YES BANK BOT"
+            android:visible="false"/>
         <item
             android:id="@+id/nav_manager"
-            android:icon="@drawable/callingicon"
+            android:icon="@drawable/contact_manager"
             android:title="CONTACT MANAGER" />
         <item
             android:id="@+id/nav_loan"
             android:icon="@drawable/nav_loan"
-            android:title="LOAN" />
+            android:title="LOAN"
+            android:visible="false"/>
         <item
             android:id="@+id/nav_credit_card"
             android:icon="@drawable/nav_credit"
@@ -39,28 +42,30 @@
 
         <item
             android:id="@+id/nav_addLead"
-            android:icon="@drawable/add_button_white"
+            android:icon="@drawable/add_lead"
             android:title="ADD LEAD" />
         <item
             android:id="@+id/nav_mylist"
-            android:icon="@drawable/leadic"
+            android:icon="@drawable/my_list"
             android:title="MY LIST" />
         <item
             android:id="@+id/nav_MyLead"
-            android:icon="@drawable/leadic"
-            android:title="MY LEAD" />
+            android:icon="@drawable/my_list"
+            android:title="MY LEAD"
+            android:visible="false"/>
         <item
             android:id="@+id/nav_docRequired"
-            android:icon="@drawable/document_ic"
+            android:icon="@drawable/document_check_list"
             android:title="DOCUMENT CHECKLIST" />
 
         <item
             android:id="@+id/nav_policyboss"
             android:icon="@drawable/add_button_white"
-            android:title="POLICYBOSS" />
+            android:title="POLICYBOSS"
+            android:visible="false"/>
         <item
             android:id="@+id/nav_repository"
-            android:icon="@drawable/document_ic"
+            android:icon="@drawable/repositories"
             android:title="REPOSITORIES"
             android:visible="true" />
         <item
@@ -77,12 +82,13 @@
         <item
             android:id="@+id/nav_change_pwd"
             android:icon="@drawable/change_password"
-            android:title="CHANGE PASSWORD" />
+            android:title="CHANGE PASSWORD"
+            android:visible="false"/>
 
 
         <item
             android:id="@+id/nav_upload_document"
-            android:icon="@drawable/message_icon"
+            android:icon="@drawable/upload"
             android:title="UPLOAD DOCUMENT" />
 
 
@@ -90,11 +96,13 @@
             android:id="@+id/nav_income_simulator"
             android:icon="@drawable/income_simmu"
             android:title="GENERAL INSURANCE"
+            android:visible="false"
             />
         <item
             android:id="@+id/nav_contact_us"
             android:icon="@drawable/message_icon"
-            android:title="CONTACT US" />
+            android:title="CONTACT US"
+            android:visible="false"/>
 
 
         <item

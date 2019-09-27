@@ -3,60 +3,67 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_horizontal|center_vertical"
+    android:background="@color/nav_blue"
     android:minHeight="140dp"
     android:orientation="horizontal"
     android:weightSum="100">
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="30"
-        android:gravity="right"
-        android:orientation="horizontal">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/imgUser"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/contact" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="70"
-        android:orientation="vertical">
-
-        <TextView
-            android:textAllCaps="true"
-            android:id="@+id/txtUserName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="left"
-            android:layout_marginLeft="8dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="@android:color/white" />
-
-        <TextView
-            android:visibility="gone"
-            android:textAllCaps="true"
-            android:layout_marginLeft="8dp"
-            android:id="@+id/txtRBA"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/txtUserName"
-            android:layout_toRightOf="@+id/imgUser"
-            android:gravity="left"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            android:textColor="@android:color/white" />
-
-    </LinearLayout>
-
-    <!--<TextView
-        android:background="@color/bg"
+    <ImageView
+        android:id="@+id/Image"
         android:layout_width="match_parent"
-        android:layout_height="1dp" />-->
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="center"
+        android:padding="50dp"
+        android:src="@drawable/rb_lg" />
+<!--    <LinearLayout-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_weight="30"-->
+<!--        android:gravity="right"-->
+<!--        android:orientation="horizontal">-->
+
+<!--        <de.hdodenhof.circleimageview.CircleImageView-->
+<!--            android:id="@+id/imgUser"-->
+<!--            android:layout_width="64dp"-->
+<!--            android:layout_height="64dp"-->
+<!--            android:scaleType="centerCrop"-->
+<!--            android:src="@drawable/contact" />-->
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_weight="70"-->
+<!--        android:orientation="vertical">-->
+
+<!--        <TextView-->
+<!--            android:textAllCaps="true"-->
+<!--            android:id="@+id/txtUserName"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="left"-->
+<!--            android:layout_marginLeft="8dp"-->
+<!--            android:textAppearance="@style/TextAppearance.AppCompat.Medium"-->
+<!--            android:textColor="@android:color/white" />-->
+
+<!--        <TextView-->
+<!--            android:visibility="gone"-->
+<!--            android:textAllCaps="true"-->
+<!--            android:layout_marginLeft="8dp"-->
+<!--            android:id="@+id/txtRBA"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_alignParentRight="true"-->
+<!--            android:layout_below="@+id/txtUserName"-->
+<!--            android:layout_toRightOf="@+id/imgUser"-->
+<!--            android:gravity="left"-->
+<!--            android:textAppearance="@style/TextAppearance.AppCompat.Small"-->
+<!--            android:textColor="@android:color/white" />-->
+
+<!--    </LinearLayout>-->
+
+
 </LinearLayout>

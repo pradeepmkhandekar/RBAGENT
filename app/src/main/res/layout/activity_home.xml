@@ -92,11 +92,11 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:itemBackground="@drawable/nav_selector"
-        android:background="@color/nav_blue"
+
+        android:background="#FFFFFF"
         app:headerLayout="@layout/drawer_header"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
+
+        app:itemTextColor="@color/nav_blue"
         app:itemTextAppearance="@style/Base.TextAppearance.AppCompat.Small"
         app:menu="@menu/drawer_menu">
 
