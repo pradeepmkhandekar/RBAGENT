@@ -3,7 +3,6 @@ package com.rupeeboss.rba.profile;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.media.ExifInterface;
@@ -35,7 +34,6 @@ import com.rupeeboss.rba.core.IResponseSubcriber;
 import com.rupeeboss.rba.core.controller.login.LoginController;
 import com.rupeeboss.rba.core.facade.LoginFacade;
 import com.rupeeboss.rba.core.response.ProfileResponse;
-import com.rupeeboss.rba.home.MainActivity;
 import com.rupeeboss.rba.utility.CircleTransform;
 import com.rupeeboss.rba.utility.Constants;
 import com.rupeeboss.rba.utility.Utility;
@@ -72,7 +70,6 @@ public class myprofile extends BaseActivity implements View.OnClickListener, IRe
     ExifInterface ei;
 
 
-
     String[] perms = {
             "android.permission.CAMERA",
             "android.permission.WRITE_EXTERNAL_STORAGE",
@@ -94,12 +91,12 @@ public class myprofile extends BaseActivity implements View.OnClickListener, IRe
         empCode = loginFacade.getUser().getEmpCode();
 
 
-
         initialize();
 
         setListener();
 
-        txtProfileName.setText(""+ loginFacade.getUser().getBrokerName());
+        setUserName();
+
         getProfilePic();
     }
 
@@ -129,6 +126,15 @@ public class myprofile extends BaseActivity implements View.OnClickListener, IRe
 
         ll_Club = findViewById(R.id.ll_Club);
         ll_RewardPoint = findViewById(R.id.ll_RewardPoint);
+    }
+
+    private void setUserName() {
+        if (loginFacade.getUser().getUName().equals("")) {
+            txtProfileName.setText(loginFacade.getUser().getBrokerName());
+        } else {
+            txtProfileName.setText(loginFacade.getUser().getUName());
+        }
+
     }
 
     // region permission
@@ -394,13 +400,10 @@ public class myprofile extends BaseActivity implements View.OnClickListener, IRe
                     .into(ivUser);
 
 
-        }
-        else {
+        } else {
             ivUser.setImageDrawable(getResources().getDrawable(R.drawable.profile));
             ivUser.setBackground(getResources().getDrawable(R.drawable.circle_placeholder));
         }
-
-
 
 
     }
