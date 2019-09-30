@@ -121,14 +121,14 @@
                 </LinearLayout>
             </LinearLayout>
 
+
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@color/red_nav"
-                android:visibility="visible"
-                app:layout_collapseMode="pin"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+                android:background="@color/colorPrimaryDark"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
 

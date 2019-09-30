@@ -29,17 +29,21 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.rupeeboss.rba.BaseActivity;
 import com.rupeeboss.rba.R;
+import com.rupeeboss.rba.changepassword.ChangePasswordActivity;
 import com.rupeeboss.rba.core.APIResponse;
 import com.rupeeboss.rba.core.IResponseSubcriber;
 import com.rupeeboss.rba.core.controller.login.LoginController;
 import com.rupeeboss.rba.core.facade.LoginFacade;
 import com.rupeeboss.rba.core.response.ProfileResponse;
+import com.rupeeboss.rba.notification.NotificationActivity;
 import com.rupeeboss.rba.utility.CircleTransform;
 import com.rupeeboss.rba.utility.Constants;
 import com.rupeeboss.rba.utility.Utility;
 import com.rupeeboss.rba.utility.imagecropper.CropHelper;
+import com.rupeeboss.rba.webviews.document.DocumentWebViewActivity;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
+
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -483,6 +487,17 @@ public class myprofile extends BaseActivity implements View.OnClickListener, IRe
             case R.id.ivUser:
                 galleryCamPopUp();
                 break;
+            case R.id.ll_Notification:
+                startActivity(new Intent(myprofile.this, NotificationActivity.class));
+                break;
+            case R.id.ll_Password:
+                startActivity(new Intent(myprofile.this, ChangePasswordActivity.class));
+                break;
+            case R.id.ll_Documents:
+                startActivity(new Intent(myprofile.this, DocumentWebViewActivity.class));
+                break;
+
+
         }
 
     }

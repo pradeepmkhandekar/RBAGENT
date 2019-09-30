@@ -83,7 +83,7 @@ import java.io.File;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
-public class MainActivity extends BaseActivity implements IResponseSubcriber, View.OnClickListener, CropHandler {
+public class MainActivity extends BaseActivity implements IResponseSubcriber, View.OnClickListener {
     int localAppVersionCode, serverAppVersion;
     private NavigationView navigationView;
     private DrawerLayout drawer;
@@ -130,7 +130,7 @@ public class MainActivity extends BaseActivity implements IResponseSubcriber, Vi
     private Handler mHandler;
 
     private Toolbar toolbar;
-    CircleImageView imgUser;
+  //  CircleImageView imgUser;
     private CropHelper cropHelper;
     LoginFacade loginFacade;
     PrefManager prefManager;
@@ -183,7 +183,7 @@ public class MainActivity extends BaseActivity implements IResponseSubcriber, Vi
             loadHomeFragment("Home");
         }
 
-        getProfilePic();
+      //  getProfilePic();
     }
 
     private boolean checkPermission() {
@@ -250,31 +250,7 @@ public class MainActivity extends BaseActivity implements IResponseSubcriber, Vi
         dialog.show();
     }
 
-    private void getProfilePic() {
 
-        try {
-            String imageProfile = new LoginFacade(MainActivity.this).getUserProfile();
-
-            if (!imageProfile.equals("")) {
-                //Bitmap photo = Utility.convertBase64ToBitmap(imageProfile);
-                Glide.with(this)
-                        .load(imageProfile)
-                        .crossFade()
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .into(imgUser);
-
-                // imgUser.setImageBitmap(photo);
-
-            } else {
-                imgUser.setImageDrawable(getResources().getDrawable(R.drawable.contact));
-            }
-
-
-        } catch (Exception ex) {
-
-            imgUser.setImageBitmap(null);
-        }
-    }
 
 
     private void getNotificationAction() {
@@ -700,15 +676,15 @@ public class MainActivity extends BaseActivity implements IResponseSubcriber, Vi
     private void BindNavigationProfile() {
 
         View profileView = navigationView.getHeaderView(0);
-        TextView txtUserName = (TextView) profileView.findViewById(R.id.txtUserName);
-        TextView txtRBA = (TextView) profileView.findViewById(R.id.txtRBA);
-        imgUser = (CircleImageView) profileView.findViewById(R.id.imgUser);
-        if (new LoginFacade(MainActivity.this).getUser().getUName().equals("")) {
-            txtUserName.setText(new LoginFacade(MainActivity.this).getUser().getBrokerName());
-        } else {
-            txtUserName.setText(new LoginFacade(MainActivity.this).getUser().getUName());
-        }
-        txtRBA.setText(new LoginFacade(MainActivity.this).getUser().getEmpCode());
+      //  TextView txtUserName = (TextView) profileView.findViewById(R.id.txtUserName);
+       // TextView txtRBA = (TextView) profileView.findViewById(R.id.txtRBA);
+      //  imgUser = (CircleImageView) profileView.findViewById(R.id.imgUser);
+//        if (new LoginFacade(MainActivity.this).getUser().getUName().equals("")) {
+//            txtUserName.setText(new LoginFacade(MainActivity.this).getUser().getBrokerName());
+//        } else {
+//            txtUserName.setText(new LoginFacade(MainActivity.this).getUser().getUName());
+//        }
+//        txtRBA.setText(new LoginFacade(MainActivity.this).getUser().getEmpCode());
 //        Button nav_footer_logout = (Button) findViewById(R.id.nav_footer_logout);
 //        nav_footer_logout.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -721,8 +697,8 @@ public class MainActivity extends BaseActivity implements IResponseSubcriber, Vi
 //            }
 //        });
 
-        mCropParams = new CropParams(this);  // initializing CropParms
-        imgUser.setOnClickListener(this);
+//        mCropParams = new CropParams(this);  // initializing CropParms
+//        imgUser.setOnClickListener(this);
 
 
     }
@@ -735,7 +711,7 @@ public class MainActivity extends BaseActivity implements IResponseSubcriber, Vi
             if (response.getStatus_Id() == 0) {
 
                 if (((ProfileResponse) response).getProfilePic() != null) {
-                    getProfilePic();
+                    //getProfilePic();
                 }
             }
 
@@ -756,146 +732,15 @@ public class MainActivity extends BaseActivity implements IResponseSubcriber, Vi
     @Override
     public void OnFailure(Throwable t) {
 
-        imgUser.setImageDrawable(getResources().getDrawable(R.drawable.contact));
+        //imgUser.setImageDrawable(getResources().getDrawable(R.drawable.contact));
     }
 
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        switch (requestCode) {
-            case Utility.MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE:
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    if (userChoosenTask.equals("Take Photo"))
-                        cameraIntent();
-                    else if (userChoosenTask.equals("Choose from Library"))
-                        galleryIntent();
-                } else {
-                    //code for deny
-                }
-                break;
-        }
-    }
-
-
-    // region Crop Handler
-    @Override
-    public void onPhotoCropped(Uri uri) {
-        // Original or Cropped uri
-        Log.d(TAG, "Crop Uri in path: " + uri.getPath());
-        if (!mCropParams.compress) {
-
-            updateProfilePic(BitmapUtil.decodeUriAsBitmap(this, uri));
-        }
-    }
-
-    @Override
-    public void onCompressed(Uri uri) {
-
-        updateProfilePic(BitmapUtil.decodeUriAsBitmap(this, uri));
-    }
-
-    @Override
-    public void onCancel() {
-        Toast.makeText(this, "upload cancelled!", Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public void onFailed(String message) {
-
-        Toast.makeText(this, "upload failed: " + message, Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public void handleIntent(Intent intent, int requestCode) {
-        startActivityForResult(intent, requestCode);
-    }
-
-    @Override
-    public CropParams getCropParams() {
-        return mCropParams;
-    }
-
-    //endregion
-
-    //region Camera and Gallery
-    private void selectImage() {
-        final CharSequence[] items = {"Take Photo", "Choose from Library",
-                "Cancel"};
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-        builder.setTitle("Profile Photo");
-        builder.setItems(items, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int item) {
-                // boolean result = Utility.checkPermission(MainActivity.this);
-                if (!checkPermission()) {
-                    requestPermission();
-                } else {
-                    boolean result = checkPermission();
-                    if (items[item].equals("Take Photo")) {
-                        userChoosenTask = "Take Photo";
-                        if (result)
-                            cameraIntent();
-
-                    } else if (items[item].equals("Choose from Library")) {
-                        userChoosenTask = "Choose from Library";
-                        if (result)
-                            galleryIntent();
-
-                    } else if (items[item].equals("Cancel")) {
-                        dialog.dismiss();
-                    }
-                }
-            }
-        });
-        builder.show();
-    }
-
-    private void cameraIntent() {
-        mCropParams.refreshUri();
-
-        launchCamera();
-    }
-
-    private void launchCamera() {
-        try {
-            //  use standard intent to capture an image
-//            Intent captureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//            captureIntent.putExtra("android.intent.extras.CAMERA_FACING", 1);
-//            startActivityForResult(captureIntent,  CropHelper.REQUEST_CAMERA);
-
-            //we will handle the returned data in onActivityResult
-
-            /// For Crop Enable or Disabling
-            mCropParams.enable = true;
-            Intent captureIntent = CropHelper.buildCameraIntent(mCropParams);
-            captureIntent.putExtra("android.intent.extras.CAMERA_FACING", 1);
-
-            captureIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);    // rahul05
-            startActivityForResult(captureIntent, CropHelper.REQUEST_CAMERA);
-
-        } catch (ActivityNotFoundException anfe) {
-            //display an error message
-            String errorMessage = "Whoops - your device doesn't support capturing images!";
-            Toast toast = Toast.makeText(MainActivity.this, errorMessage, Toast.LENGTH_SHORT);
-            toast.show();
-        }
-    }
-
-
-    private void galleryIntent() {
-        mCropParams.enable = true;
-        Intent intent = CropHelper.buildGalleryIntent(mCropParams);
-        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);    // rahul05
-        startActivityForResult(intent, CropHelper.REQUEST_CROP);
-    }
-    //endregion
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.imgUser) {
-            selectImage();
-        }else if( v.getId() == R.id.cvSearch){
+
+            if( v.getId() == R.id.cvSearch){
 
 
                 startActivity(new Intent(MainActivity.this, SearchActivity.class));
@@ -903,26 +748,6 @@ public class MainActivity extends BaseActivity implements IResponseSubcriber, Vi
 
     }
 
-    private void updateProfilePic(Bitmap bitmap) {
-
-        String base64String = Utility.convertBitmapToBase64(bitmap);
-
-        new LoginController(this).uploadProfilePicture(new LoginFacade(MainActivity.this).getPanNumber(), base64String, this);
-        Log.d("Base64", base64String);
-
-       // CropHelper.clearCacheDir();
-    }
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        CropHelper.handleResult(this, requestCode, resultCode, data);
-        if (requestCode == 1) {
-            Log.e(TAG, "");
-        }
-    }
 
     @Override
     protected void onResume() {

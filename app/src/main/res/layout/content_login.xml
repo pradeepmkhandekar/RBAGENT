@@ -48,7 +48,7 @@
                 android:hint="Pan Number"
                 android:maxLines="1"
                 android:padding="15dp"
-                android:text="aiepc1258n"
+                android:text="JATIN1111G"
                 android:textColorHint="@color/white"
 
                 />
