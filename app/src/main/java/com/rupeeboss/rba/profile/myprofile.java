@@ -385,13 +385,36 @@ public class myprofile extends BaseActivity implements View.OnClickListener, IRe
 
     }
 
-    private void setDocumentUpload(Bitmap mphoto) {
+    private void setDocumentUploadold(Bitmap mphoto) {
 
         ivUser.setPadding(0, 0, 0, 0);
         if (mphoto != null) {
             Glide.with(myprofile.this)
                     .load(bitmapToByte(mphoto))
                     .asBitmap()
+                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .placeholder(R.drawable.circle_placeholder)
+                    .skipMemoryCache(true)
+                    .override(100, 100)
+                    .transform(new CircleTransform(myprofile.this)) // applying the image transformer
+                    .into(ivUser);
+
+
+        } else {
+            ivUser.setImageDrawable(getResources().getDrawable(R.drawable.profile));
+            ivUser.setBackground(getResources().getDrawable(R.drawable.circle_placeholder));
+        }
+
+
+    }
+
+
+    private void setDocumentUpload(String urlProfile) {
+
+        ivUser.setPadding(0, 0, 0, 0);
+        if (urlProfile.equalsIgnoreCase("")) {
+            Glide.with(myprofile.this)
+                    .load(urlProfile)
                     .diskCacheStrategy(DiskCacheStrategy.NONE)
                     .placeholder(R.drawable.circle_placeholder)
                     .skipMemoryCache(true)
@@ -436,6 +459,7 @@ public class myprofile extends BaseActivity implements View.OnClickListener, IRe
         } catch (Exception ex) {
 
             ivUser.setImageDrawable(getResources().getDrawable(R.drawable.profile));
+            ivUser.setPadding(6, 6, 6, 6);
             ivUser.setBackground(getResources().getDrawable(R.drawable.circle_placeholder));
         }
     }
@@ -448,7 +472,7 @@ public class myprofile extends BaseActivity implements View.OnClickListener, IRe
         new LoginController(this).uploadProfilePicture(new LoginFacade(myprofile.this).getPanNumber(), base64String, this);
         Log.d("Base64", base64String);
 
-        CropHelper.clearCacheDir();
+
     }
 
     @Override
@@ -471,7 +495,7 @@ public class myprofile extends BaseActivity implements View.OnClickListener, IRe
             if (response.getStatus_Id() == 0) {
 
                 if (((ProfileResponse) response).getProfilePic() != null) {
-                    setDocumentUpload(bitmapPhoto);
+                    setDocumentUpload(((ProfileResponse) response).getProfilePic());
                 }
             }
 
@@ -481,6 +505,7 @@ public class myprofile extends BaseActivity implements View.OnClickListener, IRe
     @Override
     public void OnFailure(Throwable t) {
 
+        dismissDialog();
     }
 
 

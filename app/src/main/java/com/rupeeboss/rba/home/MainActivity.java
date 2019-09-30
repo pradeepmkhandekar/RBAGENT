@@ -18,6 +18,7 @@ import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import com.google.android.material.navigation.NavigationView;
 import androidx.core.app.ActivityCompat;
+import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.core.content.ContextCompat;
@@ -26,6 +27,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -132,6 +134,7 @@ public class MainActivity extends BaseActivity implements IResponseSubcriber, Vi
     private CropHelper cropHelper;
     LoginFacade loginFacade;
     PrefManager prefManager;
+    TextView textNotifyItemCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -153,6 +156,9 @@ public class MainActivity extends BaseActivity implements IResponseSubcriber, Vi
         cropHelper = new CropHelper(getApplicationContext());
         loginFacade = new LoginFacade(this);
         cvSearch.setOnClickListener(this);
+
+        prefManager = new PrefManager(this);
+        prefManager.setNotificationCounter(0);
         getNotificationAction();
         // initializing navigation menu
         setUpNavigationView();
@@ -924,4 +930,61 @@ public class MainActivity extends BaseActivity implements IResponseSubcriber, Vi
         showProgressDialog();
         new Authentication(MainActivity.this).getApiVersionCode("2", this);   //    RB Caller App :  appTypeId = "2"
     }
+
+
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.dashboard_menu, menu);
+
+        final MenuItem menuItem = menu.findItem(R.id.action_push_notification);
+
+        //  SearchView actionView = (SearchView) menuItem.getActionView();
+
+        View actionView = MenuItemCompat.getActionView(menuItem);
+        textNotifyItemCount = (TextView) actionView.findViewById(R.id.notify_badge);
+        textNotifyItemCount.setVisibility(View.GONE);
+
+        int PushCount = prefManager.getNotificationCounter();
+
+        if (PushCount == 0) {
+            textNotifyItemCount.setVisibility(View.GONE);
+        } else {
+            textNotifyItemCount.setVisibility(View.VISIBLE);
+            textNotifyItemCount.setText("" + String.valueOf(PushCount));
+        }
+
+        actionView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                onOptionsItemSelected(menuItem);
+
+
+            }
+        });
+
+
+        return true;
+
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        Intent intent;
+        switch (item.getItemId()) {
+
+            case R.id.action_push_notification:
+                intent = new Intent(MainActivity.this, NotificationActivity.class);
+                startActivityForResult(intent, Constants.REQUEST_CODE);
+                break;
+
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 }
