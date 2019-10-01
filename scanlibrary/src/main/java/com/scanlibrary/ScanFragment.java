@@ -213,17 +213,16 @@ public class ScanFragment extends Fragment {
 
         @Override
         protected Bitmap doInBackground(Void... params) {
-            Bitmap bitmap =  getScannedBitmap(original, points);
-            Uri uri = Utils.getUri(getActivity(), bitmap);
-            scanner.onScanFinish(uri);
-            return bitmap;
+            return getScannedBitmap(original, points);
         }
 
         @Override
         protected void onPostExecute(Bitmap bitmap) {
             super.onPostExecute(bitmap);
-            bitmap.recycle();
             dismissDialog();
+            Uri uri = Utils.getUri(getActivity(), bitmap);
+            bitmap.recycle();
+            scanner.onScanFinish(uri);
         }
     }
 
