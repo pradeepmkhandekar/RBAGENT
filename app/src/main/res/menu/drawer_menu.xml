@@ -51,8 +51,7 @@
         <item
             android:id="@+id/nav_MyLead"
             android:icon="@drawable/my_list"
-            android:title="MY LEAD"
-            android:visible="false"/>
+            android:title="MY LEAD" />
         <item
             android:id="@+id/nav_docRequired"
             android:icon="@drawable/document_check_list"

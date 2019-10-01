@@ -64,7 +64,7 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
             ivmsme, ivcredit_card, ivpersonal_loan, ivhome_loan, ivloan_against_property,
             ivbalance_transfer, ivcar_loan, ivrectify_productss, ivworking_capital,
             ivcash_loan, ivinsurance, ivcommercial_purchase,
-            ivhome, ivincome_simulator, ivScan, ivgenerate_leads,
+            ivhome, ivincome_simulator, ivScan, ivgenerate_leads,ivShareData,txtexplorerba,
             ivprofile;
 
 
@@ -189,7 +189,7 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
         ivincome_simulator = (TextView) view.findViewById(R.id.ivincome_simulator);
         ivScan = (TextView) view.findViewById(R.id.ivScan);
         ivgenerate_leads = (TextView) view.findViewById(R.id.ivgenerate_leads);
-
+        ivShareData= (TextView) view.findViewById(R.id.ivShareData);
         ivprofile  = (TextView) view.findViewById(R.id.ivprofile);
 
 //
@@ -217,6 +217,8 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
         ivgenerate_leads.setOnClickListener(this);
 
         ivprofile.setOnClickListener(this);
+        ivShareData.setOnClickListener(this);
+        txtexplorerba.setOnClickListener(this);
 //        textview = (TextView) view.findViewById(R.id.brokername);
 //        //   textview.setSelected(true);
 //        //  textview.setEllipsize(TextUtils.TruncateAt.MARQUEE);
@@ -400,10 +402,16 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
                  startActivity(new Intent(getActivity(), IncomeSimulatorActivity.class));
                 break;
             case R.id.ivScan:
-                openCamera();
+                //openCamera();
                 break;
             case R.id.ivShareData:
                 startActivity(new Intent(getActivity(), ShareMessageActivity.class));
+                break;
+            case R.id.txtexplorerba:
+                startActivity(new Intent(getActivity(), CommonWebviewActivity.class)
+                        .putExtra("URL", "https://www.rupeeboss.com/rba-partner?BrokerId="+brokerId+"&FBAId=0&client_source=RBA&lead_id=")
+                        .putExtra("NAME", "Explore RBA")
+                        .putExtra("TITLE", "Explore RBA"));
                 break;
 
         }
