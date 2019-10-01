@@ -48,7 +48,7 @@
                 android:hint="Pan Number"
                 android:maxLines="1"
                 android:padding="15dp"
-                android:text="JATIN1111G"
+                android:text=""
                 android:textColorHint="@color/white"
 
                 />
@@ -84,7 +84,7 @@
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:padding="15dp"
-                android:text="Rb0ss"
+                android:text=""
                 android:textColorHint="@color/white" />
 
 

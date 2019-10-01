@@ -343,7 +343,7 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
 //                if (mPendingRunnable != null) {
 //                    mHandler.post(mPendingRunnable);
 //                }
-
+                break;
             case R.id.ivcar_loan:
                 // https://www.rupeeboss.com/rbl-pl?BrokerId=36886&FBAId=0&client_source=RBA&lead_id=
                 startActivity(new Intent(getActivity(), CommonWebviewActivity.class)

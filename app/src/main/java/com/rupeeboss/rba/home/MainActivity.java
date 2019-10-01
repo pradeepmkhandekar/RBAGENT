@@ -35,6 +35,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.rupeeboss.rba.AddLead.AddLeadActivity;
 import com.rupeeboss.rba.BaseActivity;
 import com.rupeeboss.rba.DocumentUpload.DocumentUpload;
 import com.rupeeboss.rba.R;
@@ -419,8 +420,9 @@ public class MainActivity extends BaseActivity implements IResponseSubcriber, Vi
                         break;
 
                     case R.id.nav_addLead:
-                        navItemIndex = 5;
-                        CURRENT_TAG = TAG_ADDLEAD;
+//                        navItemIndex = 5;
+//                        CURRENT_TAG = TAG_ADDLEAD;
+                        startActivity(new Intent(MainActivity.this, AddLeadActivity.class));
                         break;
                     case R.id.nav_MyLead:
                         startActivity(new Intent(MainActivity.this, MyLeadActivity.class));
