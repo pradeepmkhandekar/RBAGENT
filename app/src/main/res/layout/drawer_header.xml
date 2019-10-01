@@ -15,8 +15,8 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_gravity="center"
-        android:padding="50dp"
-        android:src="@drawable/rb_lg" />
+        android:padding="40dp"
+        android:src="@drawable/white_logo_rb" />
 <!--    <LinearLayout-->
 <!--        android:layout_width="0dp"-->
 <!--        android:layout_height="wrap_content"-->
