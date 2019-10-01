@@ -38,7 +38,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:layout_marginLeft="4dp"
-                    android:layout_marginRight="22dp"
+                    android:layout_marginRight="0dp"
                     android:layout_marginTop="5dp"
                     app:cardCornerRadius="4dp"
                     app:cardElevation="2dp"
@@ -61,13 +61,7 @@
                             android:src="@drawable/rb_lg" />
 
 
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:layout_width="26dp"
-                            android:layout_height="26dp"
-                            android:src="@drawable/ic_notifications"
-                            android:layout_alignParentRight="true"
-                            android:layout_gravity="right"
-                            android:tint="@color/gray" />
+
 
 
                     </RelativeLayout>

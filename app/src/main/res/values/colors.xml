@@ -29,6 +29,7 @@
     <color name="lightGrey">#E0E0E0</color>
     <color name="button_background">#FA774D</color>
     <color name="buttonBackground">#EE5E35</color>
+    <color name="holo_red_dark">#ffcc0000</color>
     <!--32547D-->
 
     <color name="back_button_color">#5a5a5a</color>
