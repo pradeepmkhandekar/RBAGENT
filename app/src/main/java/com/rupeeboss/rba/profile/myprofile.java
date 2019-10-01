@@ -3,7 +3,6 @@ package com.rupeeboss.rba.profile;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.media.ExifInterface;
@@ -12,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,32 +29,40 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.rupeeboss.rba.BaseActivity;
 import com.rupeeboss.rba.R;
+import com.rupeeboss.rba.changepassword.ChangePasswordActivity;
 import com.rupeeboss.rba.core.APIResponse;
 import com.rupeeboss.rba.core.IResponseSubcriber;
+import com.rupeeboss.rba.core.controller.login.LoginController;
 import com.rupeeboss.rba.core.facade.LoginFacade;
+import com.rupeeboss.rba.core.response.ProfileResponse;
+import com.rupeeboss.rba.notification.NotificationActivity;
 import com.rupeeboss.rba.utility.CircleTransform;
 import com.rupeeboss.rba.utility.Constants;
 import com.rupeeboss.rba.utility.Utility;
+import com.rupeeboss.rba.utility.imagecropper.CropHelper;
+import com.rupeeboss.rba.webviews.document.DocumentWebViewActivity;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
+
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 
+
 public class myprofile extends BaseActivity implements View.OnClickListener, IResponseSubcriber, BaseActivity.PopUpListener {
 
     private static final int CAMERA_REQUEST = 1888;
     private static final int SELECT_PICTURE = 1800;
-    SharedPreferences sharedPreferences;
-    SharedPreferences.Editor editor;
+
 
     LoginFacade loginFacade;
     String brokerId, empCode;
 
     TextView txtProfileName;
     ImageView ivUser;
+    Bitmap bitmapPhoto;
     LinearLayout ll_Login, ll_Notification, ll_Password, ll_Documents, ll_Club, ll_RewardPoint;
 
     private String PHOTO_File = "Photograph";
@@ -64,6 +72,7 @@ public class myprofile extends BaseActivity implements View.OnClickListener, IRe
     private Uri cropImageUri;
     InputStream inputStream;
     ExifInterface ei;
+
 
     String[] perms = {
             "android.permission.CAMERA",
@@ -85,15 +94,14 @@ public class myprofile extends BaseActivity implements View.OnClickListener, IRe
         loginFacade = new LoginFacade(this);
         empCode = loginFacade.getUser().getEmpCode();
 
-        sharedPreferences = getSharedPreferences("CALLER_AGENT", MODE_PRIVATE);
-        editor = sharedPreferences.edit();
-        editor.putString(Utility.CALL_STATUS_FOLLOWUP, "NO");
-        editor.commit();
-
 
         initialize();
 
         setListener();
+
+        setUserName();
+
+        getProfilePic();
     }
 
     private void setListener() {
@@ -122,6 +130,15 @@ public class myprofile extends BaseActivity implements View.OnClickListener, IRe
 
         ll_Club = findViewById(R.id.ll_Club);
         ll_RewardPoint = findViewById(R.id.ll_RewardPoint);
+    }
+
+    private void setUserName() {
+        if (loginFacade.getUser().getUName().equals("")) {
+            txtProfileName.setText(loginFacade.getUser().getBrokerName());
+        } else {
+            txtProfileName.setText(loginFacade.getUser().getUName());
+        }
+
     }
 
     // region permission
@@ -339,33 +356,9 @@ public class myprofile extends BaseActivity implements View.OnClickListener, IRe
                     Bitmap mphoto = null;
                     try {
                         mphoto = MediaStore.Images.Media.getBitmap(this.getContentResolver(), cropImageUri);
+                        bitmapPhoto = mphoto;
 
-                        ivUser.setPadding(0, 0, 0, 0);
-                        if (mphoto != null) {
-                            Glide.with(myprofile.this)
-                                   .load(bitmapToByte(mphoto))
-                                   .asBitmap()
-                                    .diskCacheStrategy(DiskCacheStrategy.NONE)
-                                    .placeholder(R.drawable.circle_placeholder)
-                                    .skipMemoryCache(true)
-                                    .override(100, 100)
-                                    .transform(new CircleTransform(myprofile.this)) // applying the image transformer
-                                    .into(ivUser);
-
-
-                        } else {
-                            Glide.with(myprofile.this)
-                                   .load(bitmapToByte(mphoto))
-                                   .asBitmap()
-                                    .diskCacheStrategy(DiskCacheStrategy.NONE)
-                                    .placeholder(R.drawable.circle_placeholder)
-                                    .skipMemoryCache(true)
-                                    .override(100, 100)
-                                    .transform(new CircleTransform(myprofile.this)) // applying the image transformer
-                                    .into(ivUser);
-                        }
-
-
+                        updateProfilePic(mphoto);
 
 
                     } catch (Exception e) {
@@ -396,10 +389,70 @@ public class myprofile extends BaseActivity implements View.OnClickListener, IRe
 
     }
 
-    private void setDocumentUpload(Bitmap bitmap) {
+    private void setDocumentUpload(Bitmap mphoto) {
+
+        ivUser.setPadding(0, 0, 0, 0);
+        if (mphoto != null) {
+            Glide.with(myprofile.this)
+                    .load(bitmapToByte(mphoto))
+                    .asBitmap()
+                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .placeholder(R.drawable.circle_placeholder)
+                    .skipMemoryCache(true)
+                    .override(100, 100)
+                    .transform(new CircleTransform(myprofile.this)) // applying the image transformer
+                    .into(ivUser);
 
 
+        } else {
+            ivUser.setImageDrawable(getResources().getDrawable(R.drawable.profile));
+            ivUser.setBackground(getResources().getDrawable(R.drawable.circle_placeholder));
+        }
 
+
+    }
+
+    private void getProfilePic() {
+
+        try {
+            String imageProfile = new LoginFacade(myprofile.this).getUserProfile();
+
+            if (!imageProfile.equals("")) {
+                //Bitmap photo = Utility.convertBase64ToBitmap(imageProfile);
+                Glide.with(this)
+                        .load(imageProfile)
+                        .crossFade()
+                        .diskCacheStrategy(DiskCacheStrategy.NONE)
+                        .placeholder(R.drawable.circle_placeholder)
+                        .skipMemoryCache(true)
+                        .override(100, 100)
+                        .transform(new CircleTransform(myprofile.this)) // applying the image transformer
+                        .into(ivUser);
+
+
+            }
+//            else {
+//                ivUser.setImageDrawable(getResources().getDrawable(R.drawable.profile));
+//                ivUser.setBackground(getResources().getDrawable(R.drawable.circle_placeholder));
+//            }
+
+
+        } catch (Exception ex) {
+
+            ivUser.setImageDrawable(getResources().getDrawable(R.drawable.profile));
+            ivUser.setBackground(getResources().getDrawable(R.drawable.circle_placeholder));
+        }
+    }
+
+    private void updateProfilePic(Bitmap bitmap) {
+
+        showDialog();
+        String base64String = Utility.convertBitmapToBase64(bitmap);
+
+        new LoginController(this).uploadProfilePicture(new LoginFacade(myprofile.this).getPanNumber(), base64String, this);
+        Log.d("Base64", base64String);
+
+        CropHelper.clearCacheDir();
     }
 
     @Override
@@ -410,6 +463,17 @@ public class myprofile extends BaseActivity implements View.OnClickListener, IRe
             case R.id.ivUser:
                 galleryCamPopUp();
                 break;
+            case R.id.ll_Notification:
+                startActivity(new Intent(myprofile.this, NotificationActivity.class));
+                break;
+            case R.id.ll_Password:
+                startActivity(new Intent(myprofile.this, ChangePasswordActivity.class));
+                break;
+            case R.id.ll_Documents:
+                startActivity(new Intent(myprofile.this, DocumentWebViewActivity.class));
+                break;
+
+
         }
 
     }
@@ -417,6 +481,16 @@ public class myprofile extends BaseActivity implements View.OnClickListener, IRe
     @Override
     public void OnSuccess(APIResponse response, String message) throws InterruptedException {
 
+        dismissDialog();
+        if (response instanceof ProfileResponse) {
+            if (response.getStatus_Id() == 0) {
+
+                if (((ProfileResponse) response).getProfilePic() != null) {
+                    setDocumentUpload(bitmapPhoto);
+                }
+            }
+
+        }
     }
 
     @Override
