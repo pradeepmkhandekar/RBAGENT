@@ -325,7 +325,7 @@
 
 
         <TextView
-            android:drawableTop="@drawable/home_loan"
+            android:drawableTop="@drawable/home_ic"
             android:gravity="center_horizontal|center_vertical"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

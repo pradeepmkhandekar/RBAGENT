@@ -16,16 +16,7 @@ repositories {
 
 
 android {
-//    signingConfigs {
-//
-//        // for SHA File
-//        config {
-//            storeFile file('D:\\SignedApk\\Rbagent\\rba.jks')
-//            storePassword 'rbagent'
-//            keyAlias = 'rba'
-//            keyPassword 'rbagent'
-//        }
-//    }
+
     compileSdkVersion 28
     buildToolsVersion '26.0.3'
     defaultConfig {

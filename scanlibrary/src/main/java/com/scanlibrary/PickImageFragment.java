@@ -7,7 +7,6 @@ import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -15,8 +14,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-
-import androidx.core.content.FileProvider;
 
 import java.io.File;
 import java.io.IOException;
@@ -57,18 +54,6 @@ public class PickImageFragment extends Fragment {
         galleryButton.setOnClickListener(new GalleryClickListener());
         if (isIntentPreferenceSet()) {
             handleIntentPreference();
-        } else {
-            getActivity().finish();
-        }
-    }
-
-    private void clearTempImages() {
-        try {
-            File tempFolder = new File(ScanConstants.IMAGE_PATH);
-            for (File f : tempFolder.listFiles())
-                f.delete();
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 
@@ -109,34 +94,26 @@ public class PickImageFragment extends Fragment {
     public void openMediaContent() {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.addCategory(Intent.CATEGORY_OPENABLE);
-        intent.setType("image/*");
+        intent.setType("*/*");
         startActivityForResult(intent, ScanConstants.PICKFILE_REQUEST_CODE);
     }
 
     public void openCamera() {
         Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
         File file = createImageFile();
-        boolean isDirectoryCreated = file.getParentFile().mkdirs();
-        Log.d("", "openCamera: isDirectoryCreated: " + isDirectoryCreated);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            Uri tempFileUri = FileProvider.getUriForFile(getActivity().getApplicationContext(),
-                    "com.scanlibrary.provider", // As defined in Manifest
-                    file);
-            cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, tempFileUri);
-        } else {
-            Uri tempFileUri = Uri.fromFile(file);
-            cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, tempFileUri);
+        file.getParentFile().mkdirs();
+        fileUri = Uri.fromFile(file);
+        if (file != null) {
+            cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
+            startActivityForResult(cameraIntent, ScanConstants.START_CAMERA_REQUEST_CODE);
         }
-        startActivityForResult(cameraIntent, ScanConstants.START_CAMERA_REQUEST_CODE);
     }
 
     private File createImageFile() {
-        clearTempImages();
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new
                 Date());
         File file = new File(ScanConstants.IMAGE_PATH, "IMG_" + timeStamp +
                 ".jpg");
-        fileUri = Uri.fromFile(file);
         return file;
     }
 
@@ -155,11 +132,10 @@ public class PickImageFragment extends Fragment {
                         bitmap = getBitmap(data.getData());
                         break;
                 }
-            } catch (Exception e) {
+            } catch (Exception e
+                    ) {
                 e.printStackTrace();
             }
-        } else {
-            getActivity().finish();
         }
         if (bitmap != null) {
             postImagePick(bitmap);
