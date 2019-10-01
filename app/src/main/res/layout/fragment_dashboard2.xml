@@ -239,7 +239,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:id="@+id/ivinsurance"
-                android:text="Insurance"
+                android:text="Credit Score"
                 android:textAppearance="@style/TextViewStyle.VerySmall"
                 android:textColor="@color/dashboard_fontcolor3" />
 

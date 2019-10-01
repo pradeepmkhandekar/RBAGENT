@@ -379,7 +379,13 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
 
             case R.id.ivinsurance:
 
-                startActivity(new Intent(getActivity(), GeneralInsuranceType.class));
+              //  startActivity(new Intent(getActivity(), GeneralInsuranceType.class));
+
+                https://www.rupeeboss.com/rectifycredit?fbaid=1976&type=finmart&loan_id=30189
+                startActivity(new Intent(getActivity(), CommonWebviewActivity.class)
+                        .putExtra("URL", "https://www.rupeeboss.com/rectifycredit?loan_id="+brokerId+"&fbaid=0&type=RBA")
+                        .putExtra("NAME", "RECTIFY CREDIT")
+                        .putExtra("TITLE", "RECTIFY CREDIT"));
                 break;
 
             case R.id.ivcommercial_purchase:
