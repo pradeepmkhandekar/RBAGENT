@@ -191,7 +191,7 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
         ivgenerate_leads = (TextView) view.findViewById(R.id.ivgenerate_leads);
         ivShareData= (TextView) view.findViewById(R.id.ivShareData);
         ivprofile  = (TextView) view.findViewById(R.id.ivprofile);
-
+        txtexplorerba= (TextView) view.findViewById(R.id.txtexplorerba);
 //
         ivcontact_us.setOnClickListener(this);
         ivmy_business.setOnClickListener(this);
@@ -362,11 +362,11 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
                 break;
 
             case R.id.ivworking_capital:
-//                startActivity(new Intent(getActivity(), CommonWebviewActivity.class)
-//                        .putExtra("URL", "https://www.rupeeboss.com/working-capital?BrokerId="+brokerId+"&FBAId=0&client_source=RBA&lead_id=")
-//                        .putExtra("NAME", "WORKING CAPITAL")
-//                        .putExtra("TITLE", "WORKING CAPITAL"));
-                startActivity(new Intent(getActivity(), NewbusinessApplicaionActivity.class));
+                startActivity(new Intent(getActivity(), CommonWebviewActivity.class)
+                        .putExtra("URL", "https://www.rupeeboss.com/working-capital?BrokerId="+brokerId+"&FBAId=0&client_source=RBA&lead_id=")
+                        .putExtra("NAME", "WORKING CAPITAL")
+                        .putExtra("TITLE", "WORKING CAPITAL"));
+               // startActivity(new Intent(getActivity(), NewbusinessApplicaionActivity.class));
                 break;
 
             case R.id.ivcash_loan:
@@ -402,7 +402,7 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
                  startActivity(new Intent(getActivity(), IncomeSimulatorActivity.class));
                 break;
             case R.id.ivScan:
-                //openCamera();
+                openCamera();
                 break;
             case R.id.ivShareData:
                 startActivity(new Intent(getActivity(), ShareMessageActivity.class));

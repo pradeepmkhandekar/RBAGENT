@@ -866,7 +866,7 @@
         </activity>
         <activity
             android:name=".loan_fm.businessloan.city_selecton_businessloan_Activity"
-            android:label="Loan Against Property"
+            android:label="Business Loan"
             android:parentActivityName=".loan_fm.businessloan.NewbusinessApplicaionActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
@@ -877,7 +877,7 @@
         </activity>
         <activity
             android:name=".loan_fm.businessloan.bank_selection_businessloanActivity"
-            android:label="Loan Against Property"
+            android:label="Business Loan"
             android:parentActivityName=".loan_fm.businessloan.city_selecton_businessloan_Activity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
@@ -888,7 +888,7 @@
         </activity>
         <activity
             android:name=".loan_fm.businessloan.NewbusinessApplicaionActivity"
-            android:label="Loan Against Property"
+            android:label="Business Loan"
             android:parentActivityName=".home.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
