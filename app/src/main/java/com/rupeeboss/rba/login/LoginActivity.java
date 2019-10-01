@@ -138,8 +138,8 @@ public class LoginActivity extends BaseActivity implements IResponseSubcriber, V
 
                 if(currentAccessToken == null)
                 {
+                   //"User Logged Out
 
-                    Toast.makeText(LoginActivity.this,"User Logged Out",Toast.LENGTH_SHORT).show();
                 }else {
                     loadUserProfile(currentAccessToken);
                     LoginManager.getInstance().logOut();   // for logout for facebook After getting login
@@ -163,16 +163,13 @@ public class LoginActivity extends BaseActivity implements IResponseSubcriber, V
             public void onCompleted(JSONObject object, GraphResponse response) {
 
                 try {
-                    String first_name = object.getString("first_name");
-                    String last_name = object.getString("last_name");
+//                    String first_name = object.getString("first_name");
+//                    String last_name = object.getString("last_name");
+//                    String id = object.getString("id");
+
+
                     String email = object.getString("email");
-                    String id = object.getString("id");
-
-                    Toast.makeText(LoginActivity.this,first_name +" " + last_name + " emailID "+ email,Toast.LENGTH_LONG).show();
-
-
                     //email ="kumaranchal788@gmail.com";
-                    showProgressDialog();
                     new LoginController(LoginActivity.this).login(email, "", deviceId, "", "Y", LoginActivity.this);
 
 
