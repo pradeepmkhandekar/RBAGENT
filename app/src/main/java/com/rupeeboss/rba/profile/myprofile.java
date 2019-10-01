@@ -416,7 +416,7 @@ public class myprofile extends BaseActivity implements View.OnClickListener, IRe
     private void setDocumentUpload(String urlProfile) {
 
         ivUser.setPadding(0, 0, 0, 0);
-        if (urlProfile.equalsIgnoreCase("")) {
+        if (!urlProfile.equalsIgnoreCase("")) {
             Glide.with(myprofile.this)
                     .load(urlProfile)
                     .diskCacheStrategy(DiskCacheStrategy.NONE)
@@ -428,6 +428,7 @@ public class myprofile extends BaseActivity implements View.OnClickListener, IRe
 
 
         } else {
+            ivUser.setPadding(6, 6, 6, 6);
             ivUser.setImageDrawable(getResources().getDrawable(R.drawable.profile));
             ivUser.setBackground(getResources().getDrawable(R.drawable.circle_placeholder));
         }

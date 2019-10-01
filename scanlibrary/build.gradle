@@ -12,6 +12,7 @@ android {
         ndk
                 {
                     moduleName "Scanner"
+                  //  abiFilters 'armeabi-v7a'   // added Rahul
                 }
     }
     sourceSets.main
