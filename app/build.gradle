@@ -23,8 +23,8 @@ android {
         applicationId "com.rupeeboss.rba"
         minSdkVersion 18
         targetSdkVersion 26
-        versionCode 39
-        versionName "1.0.3.9"
+        versionCode 40
+        versionName "1.0.4.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
     }

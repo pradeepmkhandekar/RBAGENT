@@ -43,7 +43,7 @@
         <item
             android:id="@+id/nav_addLead"
             android:icon="@drawable/add_lead"
-            android:title="ADD LEAD" />
+            android:title="CAPTURE LEADS" />
         <item
             android:id="@+id/nav_mylist"
             android:icon="@drawable/my_list"
