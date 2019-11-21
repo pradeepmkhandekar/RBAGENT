@@ -22,9 +22,9 @@ android {
     defaultConfig {
         applicationId "com.rupeeboss.rba"
         minSdkVersion 18
-        targetSdkVersion 26
-        versionCode 40
-        versionName "1.0.4.0"
+        targetSdkVersion 28
+        versionCode 41
+        versionName "1.0.4.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
     }
@@ -81,6 +81,6 @@ dependencies {
 
 
     androidTestImplementation 'junit:junit:4.12'
-    implementation project(':scanlibrary')
+
 }
 apply plugin: 'com.google.gms.google-services'

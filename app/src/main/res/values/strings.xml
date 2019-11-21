@@ -112,5 +112,6 @@
     <string name="title_activity_search">Search</string>
 
     <string name="title_activity_myprofile">Profile</string>
-
+    <string name="title_activity_sales_detail">Sales Material</string>
+    <string name="title_activity_sales_share">Sales Material</string>
 </resources>

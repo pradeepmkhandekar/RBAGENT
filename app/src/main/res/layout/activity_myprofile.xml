@@ -29,17 +29,6 @@
             android:gravity="center"
             >
 
-            <ImageView
-                android:id="@+id/ivUser"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginTop="30dp"
-               android:layout_centerHorizontal="true"
-                android:background="@drawable/circle_placeholder"
-                android:padding="6dp"
-                android:adjustViewBounds="true"
-                android:src="@drawable/profile"
-                android:transitionName="profileTransition" />
 
 
             <TextView
@@ -57,6 +46,17 @@
                 android:textStyle="bold"
                 />
 
+            <ImageView
+                android:id="@+id/ivUser"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="30dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/circle_placeholder"
+                android:padding="6dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/profile"
+                android:transitionName="profileTransition" />
 
             <TextView
                 android:id="@+id/txtProfileName"

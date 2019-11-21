@@ -28,13 +28,11 @@ public class LoginEntity {
     private List<StatusEntity> status;
     private boolean canShareLnk;
 
-    public int getSsid() {
-        return ssid;
-    }
+    private String Contact_No;
 
-    public void setSsid(int ssid) {
-        this.ssid = ssid;
-    }
+    private String Designation;
+    private String Email_Id;
+
 
     /**
      * Assignee : []
@@ -47,6 +45,39 @@ public class LoginEntity {
 
     private int ssid;
 
+
+
+    public String getContact_No() {
+        return Contact_No;
+    }
+
+    public void setContact_No(String contact_No) {
+        Contact_No = contact_No;
+    }
+
+    public String getDesignation() {
+        return Designation;
+    }
+
+    public void setDesignation(String designation) {
+        Designation = designation;
+    }
+
+    public String getEmail_Id() {
+        return Email_Id;
+    }
+
+    public void setEmail_Id(String email_Id) {
+        Email_Id = email_Id;
+    }
+
+    public int getSsid() {
+        return ssid;
+    }
+
+    public void setSsid(int ssid) {
+        this.ssid = ssid;
+    }
 
     public boolean isCanShareLnk() {
         return canShareLnk;

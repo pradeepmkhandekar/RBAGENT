@@ -34,7 +34,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Document Type"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/colorPrimary" />
 
                     <EditText
                         android:id="@+id/et_doctype"
@@ -59,7 +59,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Upload Image Document"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/colorPrimary" />
 
                     <ImageView
                         android:id="@+id/imagefromcamera"

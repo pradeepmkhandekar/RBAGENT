@@ -358,7 +358,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/ivScan"
-            android:text="Scan"
+            android:text="Sales \nMaterial"
             android:textAppearance="@style/TextViewStyle.VerySmall"
             android:textColor="@color/dashboard_fontcolor3" />
 

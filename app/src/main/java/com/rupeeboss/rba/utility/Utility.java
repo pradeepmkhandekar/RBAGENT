@@ -87,7 +87,7 @@ public class Utility {
     public static String PUSH_BROADCAST_ACTION = "Rbagent_Push_BroadCast_Action";
     public static String PUSH_NOTIFY = "notifyFlag";
     public static String PUSH_LOGIN_PAGE = "pushloginPage";
-
+    public static String DOC_DATA = "docData";
 
     /*public static String[] perms = {"android.permission.WRITE_CALL_LOG",
             "android.permission.CALL_PHONE",

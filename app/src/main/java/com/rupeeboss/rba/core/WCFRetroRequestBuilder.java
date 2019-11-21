@@ -15,7 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public abstract class WCFRetroRequestBuilder {
 
     // production url
- //   protected String LOAN_URL = "http://beta.services.rupeeboss.com/LoginDtls.svc/";
+     // protected String LOAN_URL = "http://beta.services.rupeeboss.com/LoginDtls.svc/";
       protected String LOAN_URL = "http://services.rupeeboss.com/LoginDtls.svc/";
 
 

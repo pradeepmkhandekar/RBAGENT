@@ -907,6 +907,24 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
 
+        <activity
+            android:name=".salesmaterial.SalesDetailActivity"
+            android:label="@string/title_activity_sales_detail"
+            android:parentActivityName=".home.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateAlwaysHidden|stateHidden">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.rupeeboss.rba.home.MainActivity" />
+        </activity>
+        <activity
+            android:name=".salesmaterial.SalesShareActivity"
+            android:label="@string/title_activity_sales_share"
+            android:parentActivityName=".salesmaterial.SalesDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+
         <meta-data
             android:name="DATABASE"
             android:value="rba.db" />

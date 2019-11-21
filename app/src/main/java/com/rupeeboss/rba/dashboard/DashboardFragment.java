@@ -32,6 +32,7 @@ import com.rupeeboss.rba.loan_fm.new_personalloan.NewPersonalApplicaionActivity;
 import com.rupeeboss.rba.loan_fm.newlaploan.NewLAPApplicaionActivity;
 import com.rupeeboss.rba.mybuisness.BuisinessActivity;
 import com.rupeeboss.rba.profile.myprofile;
+import com.rupeeboss.rba.salesmaterial.SalesDetailActivity;
 import com.rupeeboss.rba.sharemessage.ShareMessageActivity;
 import com.rupeeboss.rba.utility.Utility;
 import com.rupeeboss.rba.webviews.balancetransfer.BalanceTransferActivity;
@@ -39,8 +40,7 @@ import com.rupeeboss.rba.webviews.commonwebview.CommonWebviewActivity;
 import com.rupeeboss.rba.webviews.creditcard.CreditCardApplyActivity;
 import com.rupeeboss.rba.webviews.generalInsurance.GeneralInsuranceType;
 import com.rupeeboss.rba.webviews.workingCapital.WorkingCapitalActivity;
-import com.scanlibrary.ScanActivity;
-import com.scanlibrary.ScanConstants;
+
 
 
 import java.io.IOException;
@@ -408,7 +408,9 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
                  startActivity(new Intent(getActivity(), IncomeSimulatorActivity.class));
                 break;
             case R.id.ivScan:
-                openCamera();
+                startActivity(new Intent(getActivity(), SalesDetailActivity.class));
+
+               //openCamera();
                 break;
             case R.id.ivShareData:
                 startActivity(new Intent(getActivity(), ShareMessageActivity.class));
@@ -423,19 +425,14 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
         }
     }
 
-    public void openCamera() {
-        int preference = ScanConstants.OPEN_CAMERA;
-        Intent intent = new Intent(getActivity(), ScanActivity.class);
-        intent.putExtra(ScanConstants.OPEN_INTENT_PREFERENCE, preference);
-        startActivityForResult(intent, REQUEST_CODE);
-    }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-            Uri uri = data.getExtras().getParcelable(ScanConstants.SCANNED_RESULT);
+            Uri uri = data.getExtras().getParcelable("");
             Bitmap bitmap = null;
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), uri);

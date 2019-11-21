@@ -32,7 +32,7 @@
 
                 <EditText
                     android:id="@+id/et_lead_name"
-                    style="@style/JEditText"
+                    style="@style/JEditTextnew"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
@@ -45,7 +45,7 @@
 
                 <EditText
                     android:id="@+id/et_lead_email"
-                    style="@style/JEditText"
+                    style="@style/JEditTextnew"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress" />
@@ -59,7 +59,7 @@
 
                 <EditText
                     android:id="@+id/et_lead_mobile"
-                    style="@style/JEditText"
+                    style="@style/JEditTextnew"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number"
@@ -106,7 +106,7 @@
 
                 <EditText
                     android:id="@+id/et_lead_loan_amount"
-                    style="@style/JEditText"
+                    style="@style/JEditTextnew"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number" />
@@ -120,7 +120,7 @@
 
                 <EditText
                     android:id="@+id/et_lead_monthly_income"
-                    style="@style/JEditText"
+                    style="@style/JEditTextnew"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:digits="0123456789"
@@ -152,7 +152,7 @@
 
                 <EditText
                     android:id="@+id/et_lead_date"
-                    style="@style/JEditText"
+                    style="@style/JEditTextnew"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:focusable="false">
@@ -187,7 +187,7 @@
 
                 <EditText
                     android:id="@+id/etRemark"
-                    style="@style/JEditText"
+                    style="@style/JEditTextnew"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -231,7 +231,7 @@
 
                 <EditText
                     android:id="@+id/etExpctDisbsDate"
-                    style="@style/JEditText"
+                    style="@style/JEditTextnew"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </LinearLayout>
