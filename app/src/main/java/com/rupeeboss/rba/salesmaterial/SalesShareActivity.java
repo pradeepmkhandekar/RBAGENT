@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import com.bumptech.glide.Glide;
 import com.rupeeboss.rba.BaseActivity;
 import com.rupeeboss.rba.R;
+import com.rupeeboss.rba.utility.CustomImageView;
 import com.rupeeboss.rba.utility.TouchImageView;
 import com.rupeeboss.rba.utility.Utility;
 import com.rupeeboss.rba.core.model.DocsEntity;
@@ -21,7 +22,7 @@ import java.io.FileInputStream;
 public class SalesShareActivity extends BaseActivity {
 
     DocsEntity docsEntity;
-    TouchImageView ivProduct;
+    CustomImageView ivProduct;
     Bitmap combinedImage;
     Bitmap salesPhoto;
     LoginFacade facade;
@@ -38,7 +39,7 @@ public class SalesShareActivity extends BaseActivity {
     }
 
     private void initialize() {
-        ivProduct = (TouchImageView) findViewById(R.id.ivProduct);
+        ivProduct = (CustomImageView) findViewById(R.id.ivProduct);
 
         if (getIntent().hasExtra(Utility.DOC_DATA)) {
             docsEntity = getIntent().getExtras().getParcelable(Utility.DOC_DATA);

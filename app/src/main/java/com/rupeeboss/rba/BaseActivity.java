@@ -172,7 +172,7 @@ public class BaseActivity extends AppCompatActivity {
 
     public Bitmap createBitmap(Bitmap pospPhoto, String pospName, String pospMob, String pospDesg, String pospEmail) {
 
-        pospPhoto = Bitmap.createScaledBitmap(pospPhoto, height + 190, height - 100, false);
+       // pospPhoto = Bitmap.createScaledBitmap(pospPhoto, height + -20, height - 20, false);
 
         Bitmap textBitmap = Bitmap.createBitmap(2000, height, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(textBitmap);
