@@ -12,7 +12,6 @@
     </array>
 
 
-
     <string name="app_name">RBA</string>
     <string name="copyright_content">Powered by Rupeeboss</string>
 
@@ -114,4 +113,40 @@
     <string name="title_activity_myprofile">Profile</string>
     <string name="title_activity_sales_detail">Sales Material</string>
     <string name="title_activity_sales_share">Sales Material</string>
+
+    <string-array name="quicklead_product">
+        <item>Product</item>
+        <item>Credit Card</item>
+        <item>Personal Loan</item>
+        <item>Business Loan</item>
+        <item>Home Loan</item>
+        <item>LAP</item>
+        <item>Home Loan BT</item>
+        <item>Lap BT</item>
+        <item>Car Loan</item>
+        <item>Car Refinance</item>
+        <item>Working Capital</item>
+        <item>Term Loan</item>
+        <item>LRD</item>
+        <item>Merchant Business</item>
+
+    </string-array>
+
+
+    <string-array name="quicklead_Company_Type">
+        <item>Company Type</item>
+        <item>Proprietorship</item>
+        <item>Partnership</item>
+        <item>PVT Ltd</item>
+        <item>Limited</item>
+        <item>Individual</item>
+        <item>Govt Entity</item>
+    </string-array>
+    <string-array name="quicklead_Profile">
+        <item>Profile</item>
+        <item>Salaried</item>
+        <item>Self Employed</item>
+        <item>Self Employed Professional</item>
+    </string-array>
+    <string name="title_activity_quicklead">QuickleadActivity</string>
 </resources>

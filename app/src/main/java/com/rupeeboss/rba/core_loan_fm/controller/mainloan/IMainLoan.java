@@ -1,4 +1,6 @@
 package com.rupeeboss.rba.core_loan_fm.controller.mainloan;
+
+import com.rupeeboss.rba.core.IResponseSubcriber;
 import com.rupeeboss.rba.core_loan_fm.IResponseSubcriberFM;
 
 import com.rupeeboss.rba.core_loan_fm.requestentity.BankSaveRequest;
@@ -30,4 +32,7 @@ public interface IMainLoan {
     void getdelete_balancerequest(String BalanceTransferId, IResponseSubcriberFM iResponseSubcriber);
 
     void getLoanApplication(int count, String type, String fbaid, IResponseSubcriberFM iResponseSubcriber);
+
+
+    void getCityState(String PinCode, IResponseSubcriber iResponseSubcriber);
 }

@@ -3,22 +3,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.rupeeboss.rba">
 
+    <uses-permission android:name="android.permission.CAPTURE_AUDIO_OUTPUT" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:allowBackup="true"
         android:appComponentFactory="AnyStrings"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:supportsRtl="true"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:appComponentFactory">
-
-
+        <activity
+            android:name=".rbaddlead.QuickleadActivity"
+            android:label="Quick Leads"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".home.MainActivity" />
+        </activity>
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
-
         <activity
             android:name=".AddLead.AddLeadActivity"
             android:label="Capture Leads"
@@ -897,16 +914,16 @@
             android:name=".notification.NotificationActivity"
             android:label="@string/title_activity_notification"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"><meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.rupeeboss.rba.home.MainActivity" />
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.home.MainActivity" />
         </activity>
         <activity
             android:name=".search.SearchActivity"
             android:label="@string/title_activity_search"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
-
         <activity
             android:name=".salesmaterial.SalesDetailActivity"
             android:label="@string/title_activity_sales_detail"
@@ -914,9 +931,9 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateAlwaysHidden|stateHidden">
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.rupeeboss.rba.home.MainActivity" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rupeeboss.rba.home.MainActivity" />
         </activity>
         <activity
             android:name=".salesmaterial.SalesShareActivity"
@@ -928,7 +945,6 @@
         <meta-data
             android:name="DATABASE"
             android:value="rba.db" />
-
         <meta-data
             android:name="VERSION"
             android:value="1" />
@@ -944,18 +960,15 @@
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="ff50cb469899caa478ce1ed3dfae87725fbc2fc8" />
-
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-
         <meta-data
             android:name="DATABASE"
             android:value="rba.db" />
         <meta-data
             android:name="VERSION"
             android:value="1" />
-
         <meta-data
             android:name="QUERY_LOG"
             android:value="true" />
@@ -990,7 +1003,6 @@
                 <action android:name="com.android.vending.INSTALL_REFERRER" />
             </intent-filter>
         </receiver>
-
         <receiver
             android:name=".referrar.InstallReferrerReceiver"
             android:exported="true">
@@ -1013,20 +1025,5 @@
             </intent-filter>
         </service>
     </application>
-
-    <uses-permission android:name="android.permission.CAPTURE_AUDIO_OUTPUT" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> -->
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-
-    <uses-permission android:name="android.permission.CAMERA" />
-
 
 </manifest>

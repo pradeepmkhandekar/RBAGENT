@@ -5,11 +5,15 @@ import android.content.Context;
 import com.rupeeboss.rba.core_loan_fm.IResponseSubcriber;
 import com.rupeeboss.rba.core_loan_fm.requestbuilder.MasterRequestBuilder;
 import com.rupeeboss.rba.core_loan_fm.response.CityResponse;
+import com.rupeeboss.rba.core_loan_fm.response.quickresponse;
 
+
+import org.json.JSONObject;
 
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
+import java.util.HashMap;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -57,6 +61,45 @@ public class MasterController implements IMaster {
                     iResponseSubcriber.OnFailure(new RuntimeException("Unexpected server response"));
                 } else {
                     iResponseSubcriber.OnFailure(new RuntimeException(t.getMessage()));
+                }
+            }
+        });
+    }
+
+    @Override
+    public void getquicklead(JSONObject obj,final IResponseSubcriber iResponseSubcriberx) {
+        String url = "http://bankapi.rupeeboss.com/BankAPIService.svc/createOtherLoanLeadReq";
+
+        HashMap<String, String> body = new HashMap<>();
+        body.put("fbaid", "");
+
+
+        masterloanNetworkService.getNCD(url,body).enqueue(new Callback<quickresponse>() {
+            @Override
+            public void onResponse(Call<quickresponse> call, Response<quickresponse> response) {
+                if (response.body() != null) {
+
+                    //callback of data
+                    iResponseSubcriberx.OnSuccess(response.body(), "");
+
+                } else {
+                    //failure
+                    iResponseSubcriberx.OnFailure(new RuntimeException("Enable to reach server, Try again later"));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<quickresponse> call, Throwable t) {
+                if (t instanceof ConnectException) {
+                    iResponseSubcriberx.OnFailure(t);
+                } else if (t instanceof SocketTimeoutException) {
+                    iResponseSubcriberx.OnFailure(new RuntimeException("Check your internet connection"));
+                } else if (t instanceof UnknownHostException) {
+                    iResponseSubcriberx.OnFailure(new RuntimeException("Check your internet connection"));
+                } else if (t instanceof NumberFormatException) {
+                    iResponseSubcriberx.OnFailure(new RuntimeException("Unexpected server response"));
+                } else {
+                    iResponseSubcriberx.OnFailure(new RuntimeException(t.getMessage()));
                 }
             }
         });

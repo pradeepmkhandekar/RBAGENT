@@ -1,5 +1,6 @@
 package com.rupeeboss.rba.core_loan_fm.requestbuilder;
 
+import com.rupeeboss.rba.core.response.PincodeResponse;
 import com.rupeeboss.rba.core_loan_fm.FinmartRetroRequestBuilder;
 import com.rupeeboss.rba.core_loan_fm.requestentity.BankSaveRequest;
 import com.rupeeboss.rba.core_loan_fm.response.BankForNodeResponse;
@@ -62,6 +63,10 @@ public class LoanMainRequestBuilder extends FinmartRetroRequestBuilder {
         @Headers("token:1234567890")
         @POST("/api/delete-balance-transfer")
         Call<FmSaveQuoteBLResponse> getdelete_balancerequest(@Body HashMap<String, String> body);
+
+        @Headers("token:" + token)
+        @POST("/api/get-city-and-state")
+        Call<PincodeResponse> getCityStateCityPincode(@Body HashMap<String, String> body);
 
     }
 

@@ -95,6 +95,11 @@ public class BaseActivity extends AppCompatActivity {
             return false;
         }
     }
+    public static boolean isValidPanValue(EditText editText) {
+        String panNo = "[A-Z]{5}[0-9]{4}[A-Z]{1}";
+        String panNoAlter = editText.getText().toString().toUpperCase();
+        return !(panNoAlter.isEmpty() || !panNoAlter.matches(panNo));
+    }
     protected void cancelDialog() {
         if (dialog != null) {
             if (dialog.isShowing()) {
@@ -462,4 +467,25 @@ public class BaseActivity extends AppCompatActivity {
 
         return null;
     }
+
+
+    protected void showDialogQuicklead(String msg) {
+        if (dialog == null)
+            dialog = ProgressDialog.show(this, "", msg, true);
+        else {
+            if (!dialog.isShowing())
+                dialog = ProgressDialog.show(this, "", msg, true);
+        }
+    }
+
+    public static boolean isValideEmailID(EditText editText) {
+        String emailEntered = editText.getText().toString().trim();
+        return !(emailEntered.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(emailEntered).matches());
+    }
+    public static boolean isValidePhoneNumber(EditText editText) {
+        String phoneNumberPattern = "^(?:(?:\\+|0{0,2})91(\\s*[\\-]\\s*)?|[0]?)?[789]\\d{9}$";
+        String phoneNumberEntered = editText.getText().toString().trim();
+        return !(phoneNumberEntered.isEmpty() || !phoneNumberEntered.matches(phoneNumberPattern));
+    }
+
 }

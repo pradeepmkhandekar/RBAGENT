@@ -32,6 +32,7 @@ import com.rupeeboss.rba.loan_fm.new_personalloan.NewPersonalApplicaionActivity;
 import com.rupeeboss.rba.loan_fm.newlaploan.NewLAPApplicaionActivity;
 import com.rupeeboss.rba.mybuisness.BuisinessActivity;
 import com.rupeeboss.rba.profile.myprofile;
+import com.rupeeboss.rba.rbaddlead.QuickleadActivity;
 import com.rupeeboss.rba.salesmaterial.SalesDetailActivity;
 import com.rupeeboss.rba.sharemessage.ShareMessageActivity;
 import com.rupeeboss.rba.utility.Utility;
@@ -255,10 +256,13 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
 
                         /*String url = "https://yesbankbot.buildquickbots.com/chat/rupeeboss_uat/staff/?userid=" + loginFacade.getUser().getEmpCode() +
                                 "&usertype=RBA&vkey=8da76ddb-49cb-4c84-b14e-b72d951e2495";*/
-                startActivity(new Intent(getActivity(), CommonWebviewActivity.class)
-                        .putExtra("URL", url)
-                        .putExtra("NAME", "YES BANK BOT")
-                        .putExtra("TITLE", "YES BANK BOT"));
+
+                com.rupeeboss.rba.loan_fm.Utility.loadWebViewUrlInBrowser(getActivity(),url);
+//
+//                startActivity(new Intent(getActivity(), CommonWebviewActivity.class)
+//                        .putExtra("URL", url)
+//                        .putExtra("NAME", "YES BANK BOT")
+//                        .putExtra("TITLE", "YES BANK BOT"));
                 break;
             case R.id.ivmsme:
                 startActivity(new Intent(getActivity(), NewbusinessApplicaionActivity.class));
@@ -381,11 +385,15 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
 
               //  startActivity(new Intent(getActivity(), GeneralInsuranceType.class));
 
-                https://www.rupeeboss.com/rectifycredit?fbaid=1976&type=finmart&loan_id=30189
-                startActivity(new Intent(getActivity(), CommonWebviewActivity.class)
-                        .putExtra("URL", "https://www.rupeeboss.com/rectifycredit?loan_id="+brokerId+"&fbaid=0&type=RBA")
-                        .putExtra("NAME", "RECTIFY CREDIT")
-                        .putExtra("TITLE", "RECTIFY CREDIT"));
+//                https://www.rupeeboss.com/rectifycredit?fbaid=1976&type=finmart&loan_id=30189
+//                startActivity(new Intent(getActivity(), CommonWebviewActivity.class)
+//                      //  .putExtra("URL", "https://www.rupeeboss.com/rectifycredit?loan_id="+brokerId+"&fbaid=0&type=RBA")
+//                        .putExtra("NAME", "Equifax Finmart")
+//                        .putExtra("TITLE", "Equifax Finmart"));
+
+
+                String url12 ="http://www.rupeeboss.com/equifax-finmart?loan_id="+brokerId+"&fbaid="+brokerId+"&client_source=RBA";
+                com.rupeeboss.rba.loan_fm.Utility.loadWebViewUrlInBrowser(getActivity(),url12);
                 break;
 
             case R.id.ivcommercial_purchase:
@@ -393,7 +401,7 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
                 break;
             case R.id.ivgenerate_leads:
 
-                startActivity(new Intent(getActivity(), AddLeadActivity.class));
+                startActivity(new Intent(getActivity(), QuickleadActivity.class));
 //                Fragment fragment = null;
 //                        fragment = new AddLeadFragment();
 //                        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();

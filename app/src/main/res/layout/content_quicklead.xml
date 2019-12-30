@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_lead_capture"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".rbaddlead.QuickleadActivity"
+    tools:showIn="@layout/activity_quicklead">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <androidx.cardview.widget.CardView
+                style="@style/CardStyle.Home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="2dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TableRow
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_marginTop="4dp"
+                            android:gravity="center">
+
+
+                            <EditText
+                                android:id="@+id/etFirstName"
+                                android:hint="First Name"
+                                android:inputType="text"
+                                android:maxLines="1"
+                                style="@style/Style.edittext"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+
+                                />
+
+                            <EditText
+
+                                android:id="@+id/etLastName"
+                                android:hint="Last Name"
+                                style="@style/Style.edittext"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:maxLines="1"
+                                android:inputType="textEmailAddress" />
+
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_marginTop="4dp"
+                            android:gravity="center">
+
+                            <EditText
+
+                                android:id="@+id/etMobile_Quick"
+                                style="@style/Style.edittext"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:inputType="number"
+                                android:maxLength="10"
+                                android:maxLines="1"
+                                android:hint="Mobile Number"/>
+
+
+                            <EditText
+
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:id="@+id/etEmail"
+                                style="@style/Style.edittext"
+                                android:inputType="textEmailAddress"
+                                android:maxLines="1"
+                                android:hint="Email ID"/>
+
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_marginTop="4dp"
+                            android:gravity="center">
+
+
+
+                            <EditText
+                                android:id="@+id/etdob"
+                                style="@style/Style.edittext"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:focusable="false"
+                                android:hint="DOB"/>
+
+                            <EditText
+                                android:id="@+id/etStatus"
+                                android:hint="Status"
+                                android:enabled="false"
+                                style="@style/Style.edittext"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+
+
+                                android:text="Status - New"
+                                android:maxLines="1" />
+
+
+
+
+
+                        </TableRow>
+                        <TableRow
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_marginTop="4dp"
+                            android:gravity="center">
+
+
+                            <EditText
+                                android:id="@+id/etFollowupDate"
+                                style="@style/Style.edittext"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:focusable="false"
+                                android:hint="Follow up Date"/>
+
+
+                            <EditText
+
+                                android:id="@+id/etPAN"
+                                style="@style/Style.edittext"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:hint="PAN"
+                                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+                                android:inputType="textCapCharacters"
+                                android:maxLength="10"
+                                android:maxLines="1" />
+
+
+
+
+                        </TableRow>
+
+
+                        <TableRow
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_marginTop="4dp"
+                            android:gravity="center">
+
+                            <Spinner
+                                android:id="@+id/spProduct"
+                                style="@style/SpinnerStyle.Underlined"
+
+                                android:layout_width="0dp"
+                                android:layout_height="40dp"
+                                android:layout_weight="1"
+                                android:entries="@array/quicklead_product"
+                                android:gravity="center" />
+
+
+                            <EditText
+
+                                android:id="@+id/etLoanAmount"
+                                android:hint="Loan Amount"
+                                style="@style/Style.edittext"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:inputType="number"
+                                android:gravity="top"
+                                android:maxLength="9"
+                                android:maxLines="1"
+                                android:layout_marginBottom="4dp"/>
+
+
+
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_marginTop="4dp"
+                            android:gravity="center"
+                            >
+
+
+
+                            <EditText
+
+                                android:layout_marginTop="4dp"
+                                android:id="@+id/etCompanyName"
+                                android:hint="Company Name"
+                                style="@style/Style.edittext"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:inputType="text"
+                                android:maxLines="1" />
+
+
+
+
+                            <Spinner
+                                android:id="@+id/spCompanyType"
+                                style="@style/SpinnerStyle.Underlined"
+                                android:layout_width="0dp"
+                                android:layout_height="40dp"
+                                android:layout_weight="1"
+                                android:entries="@array/quicklead_Company_Type"
+                                android:gravity="center" />
+
+
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_marginTop="4dp"
+                            android:gravity="center">
+
+
+                            <Spinner
+                                android:id="@+id/spprofile"
+                                style="@style/SpinnerStyle.Underlined"
+
+                                android:layout_width="0dp"
+                                android:layout_height="40dp"
+                                android:layout_weight="1"
+                                android:entries="@array/quicklead_Profile"
+                                android:gravity="center"
+
+                                />
+
+                        </TableRow>
+
+                        <TableRow
+                            android:id="@+id/tbl_monthly"
+                            android:visibility="gone"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_marginTop="4dp"
+                            android:gravity="center">
+
+
+                            <EditText
+                                android:id="@+id/etMonthlyIncomeITR"
+                                style="@style/Style.edittext"
+                                android:inputType="number"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:maxLength="9"
+                                android:hint="Monthly Income ITR"
+                                android:maxLines="1" />
+
+                        </TableRow>
+
+                        <TableRow
+                            android:id="@+id/tbl_yearly"
+                            android:visibility="gone"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_marginTop="4dp"
+                            android:gravity="center">
+
+                            <EditText
+                                android:id="@+id/etyealyIncomeITR"
+                                style="@style/Style.edittext"
+                                android:inputType="number"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:maxLength="9"
+                                android:hint="Yealy Income ITR"
+                                android:maxLines="1" />
+
+                        </TableRow>
+                        <TableRow
+
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_marginTop="4dp"
+                            android:gravity="center">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+
+                                <EditText
+                                    android:id="@+id/etPincode"
+                                    android:hint="Pincode"
+                                    style="@style/Style.edittext"
+                                    android:inputType="number"
+                                    android:digits="0123456789"
+                                    android:maxLength="6"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"/>
+
+
+                                <EditText
+                                    android:hint="City"
+                                    android:id="@+id/etCity"
+                                    style="@style/Style.edittext"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:enabled="false" />
+
+                            </LinearLayout>
+                        </TableRow>
+                        <TableRow
+
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_marginTop="4dp"
+                            android:gravity="center">
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+
+                                <EditText
+                                    android:id="@+id/etState"
+                                    style="@style/Style.edittext"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:hint="State"
+                                    android:enabled="false" />
+
+                            </LinearLayout>
+
+                        </TableRow>
+                        <TableRow
+
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_marginTop="4dp"
+                            android:gravity="center">
+
+
+
+                            <EditText
+
+                                android:hint="Remark"
+                                android:id="@+id/etRemark"
+                                style="@style/Style.edittext"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="top"
+                                android:inputType="textMultiLine"
+                                android:maxLines="3" />
+
+
+
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp">
+
+                            <Button
+                                android:id="@+id/btnSubmit"
+                                android:background="@drawable/bg3"
+                                android:textColor="@android:color/white"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="SUBMIT" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="4dp">
+
+                        </TableRow>
+                    </TableLayout>
+
+
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+            <WebView
+                android:id="@+id/webView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+</LinearLayout>

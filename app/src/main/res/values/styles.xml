@@ -3,8 +3,8 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-<!--        <item name="colorPrimary">@android:color/transparent</item>-->
-<!--        <item name="colorPrimaryDark">@android:color/transparent</item>-->
+        <!--        <item name="colorPrimary">@android:color/transparent</item>-->
+        <!--        <item name="colorPrimaryDark">@android:color/transparent</item>-->
 
         <!--actionbar color-->
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -102,6 +102,7 @@
         <item name="android:textColor">@color/white</item>
 
     </style>
+
     <style name="JEditTextnew" parent="@android:style/Widget.EditText">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -110,6 +111,7 @@
         <item name="android:textColor">@color/header_dark_text</item>
 
     </style>
+
     <style name="JEditTextdisplay" parent="@android:style/Widget.EditText">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -118,6 +120,7 @@
         <item name="android:textColor">@color/colorPrimary</item>
 
     </style>
+
     <style name="styleScrollbar">
         <item name="android:scrollbarAlwaysDrawVerticalTrack">true</item>
         <item name="android:scrollbarStyle">outsideOverlay</item>
@@ -228,4 +231,26 @@
         <item name="android:windowEnterAnimation">@anim/slide_left</item>
         <item name="android:windowExitAnimation">@anim/slide_right</item>
     </style>
+    <!-- Card Styles -->
+    <style name="CardStyle" parent="CardView">
+        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
+        <item name="cardElevation">@dimen/card_elevation</item>
+    </style>
+
+    <style name="CardStyle.Home" parent="CardStyle">
+        <item name="contentPaddingBottom">@dimen/view_spacing_small</item>
+        <item name="contentPaddingLeft">@dimen/view_spacing_small</item>
+        <item name="contentPaddingRight">@dimen/view_spacing_small</item>
+        <item name="contentPaddingTop">@dimen/view_spacing_small</item>
+        <item name="android:layout_marginBottom">@dimen/view_spacing_small</item>
+        <item name="android:layout_marginLeft">@dimen/view_spacing_small</item>
+        <item name="android:layout_marginRight">@dimen/view_spacing_small</item>
+        <item name="android:layout_marginTop">@dimen/view_spacing_small</item>
+    </style>
+
+    <style name="SpinnerStyle.Underlined" parent="Widget.AppCompat.Spinner.Underlined">
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingBottom">0dp</item>
+    </style>
+
 </resources>
