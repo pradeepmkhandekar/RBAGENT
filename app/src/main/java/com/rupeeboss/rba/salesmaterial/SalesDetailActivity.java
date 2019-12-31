@@ -82,6 +82,7 @@ public class SalesDetailActivity extends BaseActivity {
         docEntities.add(new DocsEntity(R.drawable.pl_bt));
         docEntities.add(new DocsEntity(R.drawable.rectify_credit));
         docEntities.add(new DocsEntity(R.drawable.unsecured_business_loan));
+        docEntities.add(new DocsEntity(R.drawable.rbanewyear));
 
         return docEntities;
     }

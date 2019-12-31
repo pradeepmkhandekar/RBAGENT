@@ -24,7 +24,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
-        tools:replace="android:appComponentFactory">
+        tools:replace="android:appComponentFactory"
+        android:hardwareAccelerated="false"
+        android:largeHeap="true">
         <activity
             android:name=".rbaddlead.QuickleadActivity"
             android:label="Quick Leads"
