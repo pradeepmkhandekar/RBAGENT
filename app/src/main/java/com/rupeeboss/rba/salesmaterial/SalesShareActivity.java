@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import com.bumptech.glide.Glide;
 import com.rupeeboss.rba.BaseActivity;
 import com.rupeeboss.rba.R;
+import com.rupeeboss.rba.core.model.FestivalCompaignEntity;
 import com.rupeeboss.rba.utility.CustomImageView;
 import com.rupeeboss.rba.utility.TouchImageView;
 import com.rupeeboss.rba.utility.Utility;
@@ -18,14 +19,16 @@ import com.rupeeboss.rba.core.model.DocsEntity;
 import com.rupeeboss.rba.core.facade.LoginFacade;
 
 import java.io.FileInputStream;
+import java.net.URL;
 
 public class SalesShareActivity extends BaseActivity {
 
     DocsEntity docsEntity;
-    CustomImageView ivProduct;
+    TouchImageView ivProduct;
     Bitmap combinedImage;
     Bitmap salesPhoto;
     LoginFacade facade;
+    FestivalCompaignEntity festivalCompaignEntity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,10 +42,10 @@ public class SalesShareActivity extends BaseActivity {
     }
 
     private void initialize() {
-        ivProduct = (CustomImageView) findViewById(R.id.ivProduct);
+        ivProduct = (TouchImageView) findViewById(R.id.ivProduct);
 
         if (getIntent().hasExtra(Utility.DOC_DATA)) {
-            docsEntity = getIntent().getExtras().getParcelable(Utility.DOC_DATA);
+            festivalCompaignEntity = getIntent().getExtras().getParcelable(Utility.DOC_DATA);
         }
     }
 
@@ -69,14 +72,31 @@ public class SalesShareActivity extends BaseActivity {
     }
 
 
+
     public void showShareProduct() {
         if (combinedImage != null)
-            new  datashareListBitmap(SalesShareActivity.this, combinedImage, "RupeeBoss", "").execute();
-//        //new shareImageNormal(docsEntity.getImage_path(), "Finmart", "Look what I found on Finmart!").execute();
+        {
+            String desc = "";
+            String QueryBaseUrl= "";
+            if(festivalCompaignEntity.getBaseurl() != null) {
+                if (!festivalCompaignEntity.getBaseurl().isEmpty()) {
+                   String brokerid = String.valueOf(new LoginFacade(SalesShareActivity.this).getUser().getBrokerId());
+                    QueryBaseUrl = festivalCompaignEntity.getBaseurl() + "empcode=&brokerid="+brokerid+"&client_source=rbcaller";
+                    desc = festivalCompaignEntity.getDescription() + "\n" + QueryBaseUrl;
+                } else {
+                    desc = festivalCompaignEntity.getDescription();
+                }
+
+            }else {
+                desc = festivalCompaignEntity.getDescription();
+            }
+            new datashareListBitmap(SalesShareActivity.this, combinedImage, festivalCompaignEntity.getTitle(), desc).execute();
+        }
+
+        //new shareImageNormal(docsEntity.getImage_path(), "Finmart", "Look what I found on Finmart!").execute();
 
 
     }
-
 
     public class createBitmapFromURLNew extends AsyncTask<Void, Void, Bitmap> {
 
@@ -92,17 +112,22 @@ public class SalesShareActivity extends BaseActivity {
                     try {
                         combinedImage = BitmapFactory.decodeStream(new FileInputStream(getImageFromStorage("rbaSalesMaterialDetails")));
 
-                        salesPhoto =   BitmapFactory.decodeResource(getResources(), docsEntity.getImage_path());
 
-                        if (combinedImage != null && salesPhoto != null) {
-                            combinedImage = combineImages(salesPhoto, combinedImage);
-                            //ivProduct.setImageBitmap(combinedImage);
-                        }
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
 
+            try {
+                URL salePhotoUrl  = new URL(festivalCompaignEntity.getImagelink());
+                salesPhoto =   BitmapFactory.decodeStream( salePhotoUrl.openConnection().getInputStream());
 
+                if (combinedImage != null && salesPhoto != null) {
+                    combinedImage = combineImages(salesPhoto, combinedImage);
+                    //ivProduct.setImageBitmap(combinedImage);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
 
             return combinedImage;
@@ -113,7 +138,7 @@ public class SalesShareActivity extends BaseActivity {
             cancelDialog();
             if (result == null) {
                 Glide.with(SalesShareActivity.this)
-                        .load(docsEntity.getImage_path())
+                        .load(festivalCompaignEntity.getImagelink())
                         .asBitmap()
                         .placeholder(getResources().getDrawable(R.drawable.rupeeboss_logo))
                         .into(ivProduct);

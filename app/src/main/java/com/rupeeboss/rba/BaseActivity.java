@@ -47,9 +47,9 @@ public class BaseActivity extends AppCompatActivity {
     private static final CharSequence LOADING = "Loading...";
     PopUpListener popUpListener;
 
-    int height = 400;
-    int textSize = 70;
-    int textMargin = 15;
+    int height = 200;
+    int textSize = 25;
+    int textMargin = 10;
     int startHeight = (height - (4 * textSize) - (3 * textMargin)) / 2;
 
     @Override
@@ -191,11 +191,13 @@ public class BaseActivity extends AppCompatActivity {
         paintBold.setColor(Color.BLACK);
         paintBold.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
         paintBold.setTextSize(textSize + 1);
-        startHeight += 20;
-        canvas.drawText("" + pospName, height + 250, startHeight + textMargin, paintBold);
-        canvas.drawText("" + pospMob, height + 250, startHeight + 1 * textSize + 2 * textMargin, paint);
-        canvas.drawText("" + pospDesg, height + 250, startHeight + 2 * textSize + 3 * textMargin, paint);
-        canvas.drawText("" + pospEmail, height + 250, startHeight + 3 * textSize + 4 * textMargin, paint);
+        startHeight += 10;
+        int xtowidth= 10;
+      //  canvas.drawText("" + pospName, height + 250, startHeight + textMargin, paintBold);
+        canvas.drawText("" + pospName, xtowidth + 20, startHeight + textMargin, paintBold);
+        canvas.drawText("" + pospMob, xtowidth + 20, startHeight + 1 * textSize + 2 * textMargin, paint);
+        canvas.drawText("" + pospEmail, xtowidth + 20, startHeight + 2 * textSize + 3 * textMargin, paint);
+        canvas.drawText("" + pospDesg, xtowidth + 20, startHeight + 3 * textSize + 4 * textMargin, paint);
         //canvas.drawText("" + pospName + "\n" + pospDesg + "\n" + pospMob + "\n" + pospEmail, 10, 10, paint);
 
 
@@ -206,7 +208,7 @@ public class BaseActivity extends AppCompatActivity {
         Canvas comboImage = new Canvas(cs);
 
         comboImage.drawBitmap(textBitmap, 0f, 0f, null);
-        comboImage.drawBitmap(pospPhoto, 0f, 15f, null);
+       // comboImage.drawBitmap(pospPhoto, 400f, 15f, null);
 
 
         return cs;
@@ -278,7 +280,7 @@ public class BaseActivity extends AppCompatActivity {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             cancelDialog();
-            datashareList(context, file, "RupeeBoss", "");
+            datashareList(context, file, prdSubject, prdDetail);
         }
 
 

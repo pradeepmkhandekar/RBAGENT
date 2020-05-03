@@ -15,6 +15,7 @@ import com.bumptech.glide.request.target.SimpleTarget;
 import com.rupeeboss.rba.R;
 
 import com.rupeeboss.rba.core.model.DocsEntity;
+import com.rupeeboss.rba.core.model.FestivalCompaignEntity;
 import com.rupeeboss.rba.utility.CustomImageView;
 
 import java.util.List;
@@ -28,11 +29,11 @@ public class SalesDocAdapter extends RecyclerView.Adapter<SalesDocAdapter.SalesD
 
 
     Context mContex;
-    List<DocsEntity> docLst;
+    List<FestivalCompaignEntity> lstShareMessageEntities;
 
-    public SalesDocAdapter(Context mContex, List<DocsEntity> docLst) {
+    public SalesDocAdapter(Context mContex, List<FestivalCompaignEntity> lstShareMessageEntities) {
         this.mContex = mContex;
-        this.docLst = docLst;
+        this.lstShareMessageEntities = lstShareMessageEntities;
     }
 
 
@@ -63,16 +64,16 @@ public class SalesDocAdapter extends RecyclerView.Adapter<SalesDocAdapter.SalesD
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.lyParent) {
-            ((SalesDetailActivity) mContex).redirectToApplyMain((DocsEntity) v.getTag(R.id.lyParent));
+            ((SalesDetailActivity) mContex).redirectToApplyMain((FestivalCompaignEntity) v.getTag(R.id.lyParent));
         }
     }
 
     @Override
     public void onBindViewHolder(final SalesDocAdapter.SalesDocItem holder, int position) {
-
-        final DocsEntity docsEntity = docLst.get(position);
-        holder.lyParent.setTag(R.id.lyParent, docsEntity);
-        holder.lyParent.setOnClickListener(SalesDocAdapter.this);
+        final FestivalCompaignEntity lstShareMessageEntity = lstShareMessageEntities.get(position);
+        // final DocsEntity docsEntity = docLst.get(position);
+        holder.lyParent.setTag(R.id.lyParent, lstShareMessageEntity);
+        //     holder.lyParent.setOnClickListener(SalesDocAdapter.this);
 
         SimpleTarget target = new SimpleTarget<Bitmap>(300,300) {
             @Override
@@ -89,17 +90,18 @@ public class SalesDocAdapter extends RecyclerView.Adapter<SalesDocAdapter.SalesD
                 holder.lyParent.setOnClickListener(null);
             }
         };
-
-        Glide.with(mContex)
-                .load(docsEntity.getImage_path())
-                .asBitmap()
-                .into(holder.ivProduct);
+        if (lstShareMessageEntity.getImagelink() != null) {
+            Glide.with(mContex)
+                    .load(lstShareMessageEntity.getImagelink())
+                    .asBitmap()
+                    .into(target);
+        }
 
 
     }
 
     @Override
     public int getItemCount() {
-        return docLst.size();
+        return lstShareMessageEntities.size();
     }
 }

@@ -19,13 +19,18 @@
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </com.google.android.material.appbar.AppBarLayout>
-
-    <com.rupeeboss.rba.utility.CustomImageView
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:orientation="vertical">
+    <com.rupeeboss.rba.utility.TouchImageView
         android:id="@+id/ivProduct"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
-        android:scaleType="centerInside" />
+        android:src="@drawable/rb_lg"
 
+        android:scaleType="fitCenter" />
 
+    </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
