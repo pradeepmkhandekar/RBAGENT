@@ -10,7 +10,7 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 
-import com.crashlytics.android.Crashlytics;
+//import com.crashlytics.android.Crashlytics;
 import com.orm.SugarContext;
 import com.rupeeboss.rba.BaseActivity;
 import com.rupeeboss.rba.R;
@@ -23,7 +23,7 @@ import com.rupeeboss.rba.login.LoginActivity;
 import com.rupeeboss.rba.utility.Constants;
 import com.rupeeboss.rba.utility.Utility;
 
-import io.fabric.sdk.android.Fabric;
+//import io.fabric.sdk.android.Fabric;
 
 public class SplashScreenActivity extends BaseActivity {
     private static final String TAG = "SplashScreenActivity";
@@ -34,7 +34,7 @@ public class SplashScreenActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Fabric.with(this, new Crashlytics());
+       // Fabric.with(this, new Crashlytics());
         loginFacade = new LoginFacade(this);
         // TODO: Move this to where you establish a user session
         logUser();
@@ -88,11 +88,11 @@ public class SplashScreenActivity extends BaseActivity {
         // You can call any combination of these three methods
 
 
-        if (loginFacade.getUser() != null) {
-            Crashlytics.setUserIdentifier(loginFacade.getDeviceId());
-            Crashlytics.setUserEmail(loginFacade.getPanNumber());
-            Crashlytics.setUserName(loginFacade.getUser().getUName());
-        }
+//        if (loginFacade.getUser() != null) {
+//            Crashlytics.setUserIdentifier(loginFacade.getDeviceId());
+//            Crashlytics.setUserEmail(loginFacade.getPanNumber());
+//            Crashlytics.setUserName(loginFacade.getUser().getUName());
+//        }
 
     }
 
