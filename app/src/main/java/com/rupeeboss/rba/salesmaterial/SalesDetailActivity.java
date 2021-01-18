@@ -19,6 +19,8 @@ import com.google.gson.Gson;
 import com.rupeeboss.rba.BaseActivity;
 import com.rupeeboss.rba.R;
 import com.rupeeboss.rba.core.APIResponse;
+import com.rupeeboss.rba.core.IResponseSubcriber;
+import com.rupeeboss.rba.core.controller.dynamic.DynamicController;
 import com.rupeeboss.rba.core.model.FestivalCompaignEntity;
 import com.rupeeboss.rba.core.response.FestivalCampaignResponse;
 import com.rupeeboss.rba.utility.Utility;
@@ -45,7 +47,8 @@ import org.json.JSONObject;
 
 import javax.net.ssl.HttpsURLConnection;
 
-public class SalesDetailActivity extends BaseActivity {
+public class SalesDetailActivity extends BaseActivity implements IResponseSubcriber {
+
 
     SharedPreferences sharedPreferences;
     String empCode;
@@ -68,6 +71,7 @@ public class SalesDetailActivity extends BaseActivity {
         facade = new LoginFacade(this);
         sharedPreferences = this.getSharedPreferences("CALLER_AGENT", MODE_PRIVATE);
         empCode = sharedPreferences.getString(Utility.EMPLOYEE_ID, "0");
+        setOtherDetails();       // added jan 2021
 //        docAdapter = new SalesDocAdapter(SalesDetailActivity.this,  getDocList());
 //
 //        rvProduct.setAdapter(docAdapter);
@@ -82,7 +86,13 @@ public class SalesDetailActivity extends BaseActivity {
 //        Bitmap pospDetails = createBitmap(bitmap, rbaNAme,  rbaMobNo,rbaDesg,rbaEmail);
 //        saveImageToStorage(pospDetails, "rbaSalesMaterialDetails");
 
-        new SendRequest().execute();
+      ///  new SendRequest().execute();
+
+        showDialog();
+        new createBitmapFromURLPosp().execute();
+
+        new DynamicController().getSalesMaterial(this);
+
     }
 
 
@@ -147,6 +157,27 @@ public class SalesDetailActivity extends BaseActivity {
      //    bitmap = ((BitmapDrawable)rbaPhoto).getBitmap();
     }
 
+    @Override
+    public void OnSuccess(APIResponse response, String message) throws InterruptedException {
+
+        cancelDialog();
+
+        if (response instanceof FestivalCampaignResponse) {
+
+            List<FestivalCompaignEntity> mLoanList = ((FestivalCampaignResponse) response).getMasterData().getLoan();
+
+            docAdapter = new SalesDocAdapter(SalesDetailActivity.this, mLoanList);
+
+            rvProduct.setAdapter(docAdapter);
+        }
+    }
+
+    @Override
+    public void OnFailure(Throwable t) {
+
+        cancelDialog();
+
+    }
 
 
     public class createBitmapFromURLPosp extends AsyncTask<Void, Void, Bitmap> {
@@ -196,127 +227,130 @@ public class SalesDetailActivity extends BaseActivity {
             // bitmap_image = result;
         }
     }
-    public class SendRequest extends AsyncTask<String, Void, String> {
 
-        protected void onPreExecute(){}
-
-        protected String doInBackground(String... arg0) {
-
-            try{
-
-                URL url = new URL("http://qa.mgfm.in/api/getrbcaller_salesmaterial");
-
-                JSONObject postDataParams = new JSONObject();
-
-                //   postDataParams.put("Source","Finmart");
-                //    postDataParams.put("LoanId","38054");
-                postDataParams.put("brokerid","" );//+ facade.getLoginResponse().getResult().getEmpCode());
-                // postDataParams.put("uid", ""+facade.getLoginResponse().getResult().getUID());
-                // postDataParams.put("pageno", 1);
-
-                Log.e("params",postDataParams.toString());
-
-                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-
-                //  String userCredentials = "token:1234567890";
-                // String basicAuth = "Basic " + new String(Base64.getEncoder().encode(userCredentials.getBytes()));
-                //   String basicAuth = "Basic " + new String(Base64.getEncoder().encode(userCredentials.getBytes()));
-
-
-                conn.setReadTimeout(15000 /* milliseconds */);
-                conn.setConnectTimeout(15000 /* milliseconds */);
-
-                conn.setRequestProperty ("token",  "1234567890");
-
-                conn.setRequestMethod("POST");
-                conn.setDoInput(true);
-                conn.setDoOutput(true);
-
-                OutputStream os = conn.getOutputStream();
-                BufferedWriter writer = new BufferedWriter(
-                        new OutputStreamWriter(os, "UTF-8"));
-                writer.write(getPostDataString(postDataParams));
-
-                writer.flush();
-                writer.close();
-                os.close();
-
-                int responseCode=conn.getResponseCode();
-
-                if (responseCode == HttpsURLConnection.HTTP_OK) {
-
-                    BufferedReader in=new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                    StringBuffer sb = new StringBuffer("");
-                    String line="";
-
-                    while((line = in.readLine()) != null) {
-
-                        sb.append(line);
-                        break;
-                    }
-
-                    in.close();
-                    return sb.toString();
-
-                }
-                else {
-                    return new String("false : "+responseCode);
-                }
-            }
-            catch(Exception e){
-                return new String("Exception: " + e.getMessage());
-            }
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-//            Toast.makeText(getApplicationContext(), result,
-//                    Toast.LENGTH_LONG).show();
-
-            Gson obgson = new Gson();
-            FestivalCampaignResponse cl= obgson.fromJson(result, FestivalCampaignResponse.class);
-            if(cl.getStatusNo()== 0) {
-
-                List<FestivalCompaignEntity> MasterData   = cl.getMasterData();
-//                List<DocsEntity> docEntities = new ArrayList<DocsEntity>();
+    //region SendRequest commneted (Old Request)
+ //   public class SendRequest extends AsyncTask<String, Void, String> {
 //
-//                for(int i=0; i < cl.getMasterData().size()-1; i++)
-//                {
-//                    docEntities.add();
-//                    docEntities.add(new DocsEntity(cl.getMasterData().get(i).getImagelink()));
+//        protected void onPreExecute(){}
+//
+//        protected String doInBackground(String... arg0) {
+//
+//            try{
+//
+//                URL url = new URL("http://qa.mgfm.in/api/getrbcaller_salesmaterial");
+//
+//                JSONObject postDataParams = new JSONObject();
+//
+//                //   postDataParams.put("Source","Finmart");
+//                //    postDataParams.put("LoanId","38054");
+//                postDataParams.put("brokerid","" );//+ facade.getLoginResponse().getResult().getEmpCode());
+//                // postDataParams.put("uid", ""+facade.getLoginResponse().getResult().getUID());
+//                // postDataParams.put("pageno", 1);
+//
+//                Log.e("params",postDataParams.toString());
+//
+//                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+//
+//                //  String userCredentials = "token:1234567890";
+//                // String basicAuth = "Basic " + new String(Base64.getEncoder().encode(userCredentials.getBytes()));
+//                //   String basicAuth = "Basic " + new String(Base64.getEncoder().encode(userCredentials.getBytes()));
+//
+//
+//                conn.setReadTimeout(15000 /* milliseconds */);
+//                conn.setConnectTimeout(15000 /* milliseconds */);
+//
+//                conn.setRequestProperty ("token",  "1234567890");
+//
+//                conn.setRequestMethod("POST");
+//                conn.setDoInput(true);
+//                conn.setDoOutput(true);
+//
+//                OutputStream os = conn.getOutputStream();
+//                BufferedWriter writer = new BufferedWriter(
+//                        new OutputStreamWriter(os, "UTF-8"));
+//                writer.write(getPostDataString(postDataParams));
+//
+//                writer.flush();
+//                writer.close();
+//                os.close();
+//
+//                int responseCode=conn.getResponseCode();
+//
+//                if (responseCode == HttpsURLConnection.HTTP_OK) {
+//
+//                    BufferedReader in=new BufferedReader(new InputStreamReader(conn.getInputStream()));
+//                    StringBuffer sb = new StringBuffer("");
+//                    String line="";
+//
+//                    while((line = in.readLine()) != null) {
+//
+//                        sb.append(line);
+//                        break;
+//                    }
+//
+//                    in.close();
+//                    return sb.toString();
+//
 //                }
+//                else {
+//                    return new String("false : "+responseCode);
+//                }
+//            }
+//            catch(Exception e){
+//                return new String("Exception: " + e.getMessage());
+//            }
+//        }
 //
-//                docEntities.add(new DocsEntity(R.drawable.hlbt));
-                docAdapter = new SalesDocAdapter(SalesDetailActivity.this,  cl.getMasterData());
-
-                rvProduct.setAdapter(docAdapter);
-
-                //     motorurl = bean.getFourWheelerUrl();
-
-                try {
-                    setOtherDetails();
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-                Bitmap pospDetails = createBitmap(null, rbaNAme,  rbaMobNo,rbaEmail,rbaDesg);
-                saveImageToStorage(pospDetails, "rbaSalesMaterialDetails");
-
-            }else
-            {
-                Toast.makeText(getApplicationContext(), cl.getMessage(),Toast.LENGTH_LONG).show();
-            }
-//            JSONArray arr = null;
-//                arr = new JSONArray(result);
+//        @Override
+//        protected void onPostExecute(String result) {
+////            Toast.makeText(getApplicationContext(), result,
+////                    Toast.LENGTH_LONG).show();
 //
-//            JSONObject jObj = null;
-//                jObj = arr.getJSONObject(0);
+//            Gson obgson = new Gson();
+//            FestivalCampaignResponse cl= obgson.fromJson(result, FestivalCampaignResponse.class);
+//            if(cl.getStatusNo()== 0) {
 //
-//               String MasterData = jObj.getString("MasterData");
+////                List<FestivalCompaignEntity> MasterData   = cl.getMasterData();
+////                List<DocsEntity> docEntities = new ArrayList<DocsEntity>();
+////
+////                for(int i=0; i < cl.getMasterData().size()-1; i++)
+////                {
+////                    docEntities.add();
+////                    docEntities.add(new DocsEntity(cl.getMasterData().get(i).getImagelink()));
+////                }
+////
+////                docEntities.add(new DocsEntity(R.drawable.hlbt));
+//                docAdapter = new SalesDocAdapter(SalesDetailActivity.this,  cl.getMasterData());
 //
-
-
-        }
-    }
+//                rvProduct.setAdapter(docAdapter);
+//
+//                //     motorurl = bean.getFourWheelerUrl();
+//
+//                try {
+//                    setOtherDetails();
+//                } catch (Exception ex) {
+//                    ex.printStackTrace();
+//                }
+//                Bitmap pospDetails = createBitmap(null, rbaNAme,  rbaMobNo,rbaEmail,rbaDesg);
+//                saveImageToStorage(pospDetails, "rbaSalesMaterialDetails");
+//
+//            }else
+//            {
+//                Toast.makeText(getApplicationContext(), cl.getMessage(),Toast.LENGTH_LONG).show();
+//            }
+////            JSONArray arr = null;
+////                arr = new JSONArray(result);
+////
+////            JSONObject jObj = null;
+////                jObj = arr.getJSONObject(0);
+////
+////               String MasterData = jObj.getString("MasterData");
+////
+//
+//
+//        }
+//    }
+    //endregion
 
     public String getPostDataString(JSONObject params) throws Exception {
 

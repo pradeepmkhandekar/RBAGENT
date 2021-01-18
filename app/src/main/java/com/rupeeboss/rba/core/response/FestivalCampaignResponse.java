@@ -8,23 +8,41 @@ import java.util.List;
 public class FestivalCampaignResponse extends APIResponse {
 
 
-    private List<FestivalCompaignEntity> MasterData;
+    private MasterData MasterData;
 
-    public List<FestivalCompaignEntity> getMasterData() {
+    private String Message;
+    private String Status;
+    private Long StatusNo;
+
+    public MasterData getMasterData() {
         return MasterData;
     }
 
-    public void setMasterData(List<FestivalCompaignEntity> MasterData) {
-        this.MasterData = MasterData;
+    public void setMasterData(MasterData masterData) {
+        MasterData = masterData;
     }
 
-    public int getStatusNo() {
+    public String getMessage() {
+        return Message;
+    }
+
+    public void setMessage(String message) {
+        Message = message;
+    }
+
+    public String getStatus() {
+        return Status;
+    }
+
+    public void setStatus(String status) {
+        Status = status;
+    }
+
+    public Long getStatusNo() {
         return StatusNo;
     }
 
-    public void setStatusNo(int statusNo) {
+    public void setStatusNo(Long statusNo) {
         StatusNo = statusNo;
     }
-
-    public int StatusNo;
 }
