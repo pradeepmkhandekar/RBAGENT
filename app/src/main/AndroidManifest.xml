@@ -26,6 +26,7 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:appComponentFactory"
         android:hardwareAccelerated="false"
+        android:requestLegacyExternalStorage="true"
         android:largeHeap="true">
         <activity
             android:name=".rbaddlead.QuickleadActivity"

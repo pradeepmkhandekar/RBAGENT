@@ -92,7 +92,8 @@ public class LoginActivity extends BaseActivity implements IResponseSubcriber, V
             "android.permission.READ_PHONE_STATE",
             "android.permission.RECORD_AUDIO",
             "android.permission.WRITE_EXTERNAL_STORAGE",
-            "android.permission.ACCESS_FINE_LOCATION"
+            "android.permission.ACCESS_FINE_LOCATION",
+            "android.permission.READ_EXTERNAL_STORAGE",
     }; //"android.permission.ACCESS_COARSE_LOCATION",
 
 
@@ -375,6 +376,7 @@ public class LoginActivity extends BaseActivity implements IResponseSubcriber, V
         int recordAudio = ContextCompat.checkSelfPermission(getApplicationContext(), perms[2]);
         int writeExternal = ContextCompat.checkSelfPermission(getApplicationContext(), perms[3]);
         int fineLocation = ContextCompat.checkSelfPermission(getApplicationContext(), perms[4]);
+        int readExternal = ContextCompat.checkSelfPermission(getApplicationContext(), perms[5]);
         //int fineLocation = ContextCompat.checkSelfPermission(getApplicationContext(), perms[7]);
         return accessCamera == PackageManager.PERMISSION_GRANTED
 
@@ -382,7 +384,8 @@ public class LoginActivity extends BaseActivity implements IResponseSubcriber, V
                 && recordAudio == PackageManager.PERMISSION_GRANTED
                 && writeExternal == PackageManager.PERMISSION_GRANTED
 
-                && fineLocation == PackageManager.PERMISSION_GRANTED;
+                && fineLocation == PackageManager.PERMISSION_GRANTED
+                && readExternal == PackageManager.PERMISSION_GRANTED;
 
 
     }

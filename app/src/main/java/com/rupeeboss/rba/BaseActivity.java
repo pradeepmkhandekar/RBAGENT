@@ -111,7 +111,7 @@ public class BaseActivity extends AppCompatActivity {
 
 
     public void showDialog() {
-        dialog = ProgressDialog.show(this, "Loading...", LOADING, false);
+        dialog = ProgressDialog.show(this, "", LOADING, false);
     }
 
     public void openPopUp(final View view, String title, String desc, String positiveButtonName, boolean isCancelable) {
