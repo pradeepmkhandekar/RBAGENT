@@ -55,6 +55,7 @@ import ss.com.bannerslider.views.BannerSlider;
 
 /**
  * A simple {@link Fragment} subclass.
+ * update 18 jan
  */
 public class DashboardFragment extends BaseFragment implements View.OnClickListener {
 
