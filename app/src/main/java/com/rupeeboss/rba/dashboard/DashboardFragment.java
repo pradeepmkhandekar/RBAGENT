@@ -425,7 +425,7 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
                 break;
             case R.id.txtexplorerba:
                 startActivity(new Intent(getActivity(), CommonWebviewActivity.class)
-                        .putExtra("URL", "https://www.rupeeboss.com/rba-partner?BrokerId="+brokerId+"&FBAId=0&client_source=RBA&lead_id=")
+                        .putExtra("URL", "https://www.rupeeboss.com/rb-partner?BrokerId="+brokerId+"&FBAId=0&client_source=RBA&lead_id=")
                         .putExtra("NAME", "Explore RBA")
                         .putExtra("TITLE", "Explore RBA"));
                 break;
