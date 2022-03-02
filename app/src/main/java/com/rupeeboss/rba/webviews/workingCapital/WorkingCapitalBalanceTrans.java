@@ -58,7 +58,7 @@ public class WorkingCapitalBalanceTrans extends AppCompatActivity {
         MyWebViewClient webViewClient = new MyWebViewClient();
         webView.setWebViewClient(webViewClient);
         webView.getSettings().setBuiltInZoomControls(true);
-        url = "http://www.rupeeboss.com/balance-transfer/working-capital";
+        url = "https://www.rupeeboss.com/balance-transfer/working-capital";
         Log.d("WORKING_CAPITAL", url);
         webView.loadUrl(url);
 

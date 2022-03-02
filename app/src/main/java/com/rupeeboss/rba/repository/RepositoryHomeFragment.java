@@ -39,13 +39,13 @@ public class RepositoryHomeFragment extends BaseFragment implements View.OnClick
         switch (v.getId()) {
             case R.id.llUserManual:
                 startActivity(new Intent(getActivity(), RepositoryWebViewActivity.class)
-                        .putExtra("URL", "http://rupeeboss.org/HTMLPAGES/rba.pdf")
+                        .putExtra("URL", "http://erp.rupeeboss.com/rba.pdf")
                         .putExtra("NAME", "RBA_MANUAL")
                         .putExtra("TITLE", "USER MANUAL"));
                 break;
             case R.id.llAgreement:
                 startActivity(new Intent(getActivity(), RepositoryWebViewActivity.class)
-                        .putExtra("URL", "http://49.50.95.141:97/hTMLPAGES/Franchise_Agreement.pdf")
+                        .putExtra("URL", "http://erp.rupeeboss.com/Franchise_Agreement.pdf")
                         .putExtra("NAME", "RBA_AGREEMENT")
                         .putExtra("TITLE", "FRANCHISE AGREEMENT"));
                 break;

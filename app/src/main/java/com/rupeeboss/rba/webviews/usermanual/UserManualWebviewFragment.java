@@ -51,7 +51,7 @@ public class UserManualWebviewFragment extends BaseFragment {
         webView.setWebViewClient(webViewClient);
         webView.getSettings().setBuiltInZoomControls(true);
         //  url = url + "?qoutid=" + quoteId + "&bankid=" + bankId + "&productid=9" + "&brokerid=" + loginEntity.getBrokerId() + "&empcode=" + loginEntity.getEmpCode();
-        url = "http://rupeeboss.org/HTMLPAGES/rba.pdf";
+        url = "http://erp.rupeeboss.com/rba.pdf";
 
         Log.d("DOCUMENT_URL", url);
         webView.loadUrl("http://drive.google.com/viewerng/viewer?embedded=true&url=" + url);

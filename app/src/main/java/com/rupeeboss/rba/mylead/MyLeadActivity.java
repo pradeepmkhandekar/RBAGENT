@@ -7,7 +7,7 @@ import android.media.MediaRecorder;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.core.app.ActivityCompat;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
@@ -22,14 +22,13 @@ import com.rupeeboss.rba.R;
 import com.rupeeboss.rba.core.APIResponse;
 import com.rupeeboss.rba.core.IResponseSubcriber;
 import com.rupeeboss.rba.core.controller.smslead.SmsLead;
-import com.rupeeboss.rba.core.database.AudioRecorderFacade;
+
 import com.rupeeboss.rba.core.facade.LoginFacade;
 import com.rupeeboss.rba.core.model.AudioEntity;
 import com.rupeeboss.rba.core.model.LeadDetailsEntity;
 import com.rupeeboss.rba.core.model.MyLeadResult;
 import com.rupeeboss.rba.core.request.requestentity.MyLeadRequestEntity;
 import com.rupeeboss.rba.core.response.MyLeadResponse;
-import com.rupeeboss.rba.rbdialerpad.AudioRecorder;
 import com.rupeeboss.rba.rbfeedback.FeedBackActivity;
 import com.rupeeboss.rba.utility.Utility;
 
@@ -45,13 +44,12 @@ public class MyLeadActivity extends BaseActivity implements IResponseSubcriber, 
 
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
-    //AudioRecorder audioRecorder;
 
     TelephonyManager telephonyManager;
     PhoneStateListener callStateListener;
     AudioEntity pkAudioEntity;
 
-    AudioRecorder audioRecorder;
+
     String mbNumber;
     String custName;
     TelephonyManager manager_follow;
@@ -221,16 +219,7 @@ public class MyLeadActivity extends BaseActivity implements IResponseSubcriber, 
                 }
                 if (state == TelephonyManager.CALL_STATE_OFFHOOK) {
                     Log.d("DialerActivity_New", "call running");
-                    try {
-                        if (audioRecorder == null)
-                            audioRecorder = new AudioRecorder();
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-                            audioRecorder.startRecording(mbNumber, MediaRecorder.AudioSource.MIC, MyLeadActivity.this);
-                        else
-                            audioRecorder.startRecording(mbNumber, MediaRecorder.AudioSource.VOICE_CALL, MyLeadActivity.this);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+
                 }
 
                 if (state == TelephonyManager.CALL_STATE_IDLE) {
@@ -239,14 +228,7 @@ public class MyLeadActivity extends BaseActivity implements IResponseSubcriber, 
                         telephonyManager.listen(callStateListener, PhoneStateListener.LISTEN_NONE);
                         Log.d("DialerActivity_New", "unregistered broadcst receiver");
                         editor.putString(Utility.CALL_STATUS_FOLLOWUP, "NO");
-                        try {
-                            if (audioRecorder != null) {
-                                audioRecorder.stopRecording();
-                                pkAudioEntity = saveRecordingToDb(audioRecorder.getFilePath(), loginFacade.getUser().getEmpCode(), mbNumber, leadId);
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+
                         startActivity(new Intent(MyLeadActivity.this, FeedBackActivity.class)
                                 .putExtra("PHONE_DIAL_NUMBER", mbNumber)
                                 .putExtra("LEAD_ID", leadId)
@@ -280,19 +262,7 @@ public class MyLeadActivity extends BaseActivity implements IResponseSubcriber, 
 
     private AudioEntity saveRecordingToDb(String filePath, String empCode, String mbNumber, int leadId) {
         AudioEntity audioEntity = new AudioEntity();
-        try {
 
-            audioEntity.setFile_name(filePath);
-            audioEntity.setUser_id(empCode);
-            audioEntity.setUploaded(false);
-            audioEntity.setMobile(mbNumber);
-            audioEntity.setCreatedDate();
-            audioEntity.setLead_id(leadId);
-            new AudioRecorderFacade(this).insertAudioRecord(audioEntity);
-            return audioEntity;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         return null;
     }
 

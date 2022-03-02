@@ -4,6 +4,8 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 
 import android.content.ComponentName;
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.LabeledIntent;
@@ -16,11 +18,14 @@ import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
 import android.os.Environment;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -32,8 +37,10 @@ import com.rupeeboss.rba.utility.Utility;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -239,6 +246,7 @@ public class BaseActivity extends AppCompatActivity {
         File file;
 
         @Override
+
         protected void onPreExecute() {
 
             super.onPreExecute();
@@ -280,13 +288,13 @@ public class BaseActivity extends AppCompatActivity {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             cancelDialog();
-            datashareList(context, file, prdSubject, prdDetail);
+          //  datashareList(context, file, prdSubject, prdDetail);
         }
 
 
     }
 
-    public void datashareList(Context context, File file, String prdSubject, String prdDetail) {
+    public void datashareListOLD(Context context, File file, String prdSubject, String prdDetail) {
 
 
         try {
@@ -428,6 +436,96 @@ public class BaseActivity extends AppCompatActivity {
 
     }
 
+    public void datashareList(Context context, Bitmap bitmap, String prdSubject, String prdDetail)  {
+
+
+
+        OutputStream fos = null;
+        Uri screenshotUri = null;
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q){
+
+
+
+
+            try{
+
+                ContentResolver resolver = getContentResolver();
+                ContentValues contentValues = new ContentValues();
+                contentValues.put(MediaStore.Images.Media.DISPLAY_NAME,Utility.getNewFileName("RBA_product"));
+                contentValues.put(MediaStore.Images.Media.MIME_TYPE,"image/jpg");
+                contentValues.put(MediaStore.Images.Media.RELATIVE_PATH,Utility.getImageDirectoryPath());
+
+
+                screenshotUri = resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,contentValues);
+
+
+                fos = resolver.openOutputStream(Objects.requireNonNull(screenshotUri));
+
+
+            }catch (Exception ex){
+
+            }
+
+
+
+
+        }else{
+
+            File file = null;
+
+            try{
+                File imagesDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString() + File.separator + "RBA");
+
+
+                if (!imagesDir.exists()){
+                    imagesDir.mkdir();
+                }
+
+                //  File imagesDir  = getAppSpecificAlbumStorageDir(PermissionActivity.this, Environment.DIRECTORY_PICTURES,"DemoLatest1");
+
+                file = new File(imagesDir, "RBA_product" + ".jpg");
+                fos = new FileOutputStream(file);
+
+                screenshotUri = FileProvider.getUriForFile(BaseActivity.this,
+                        getString(R.string.file_provider_authority),
+                        file);
+
+
+            }catch (Exception ex){
+
+
+                Log.d("PATH_ERROR" , ex.getLocalizedMessage().toString());
+            }
+        }
+
+        try {
+            bitmap.compress(Bitmap.CompressFormat.JPEG,90,fos);
+            fos.close();
+
+            openNativeShare(screenshotUri,prdSubject,prdDetail);
+
+        }catch (Exception ex){
+
+        }
+
+    }
+
+
+    private void  openNativeShare( Uri screenshotUri, String prdSubject, String prdDetail) {
+
+        Intent shareIntent = new Intent();
+        shareIntent.setAction(Intent.ACTION_SEND);
+        shareIntent.putExtra(Intent.EXTRA_TEXT, prdDetail);
+
+        shareIntent.setType("image/*");
+        shareIntent.putExtra(Intent.EXTRA_SUBJECT, prdSubject);
+        shareIntent.putExtra(Intent.EXTRA_TEXT, prdDetail);
+        shareIntent.putExtra(Intent.EXTRA_STREAM, screenshotUri);
+        shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        shareIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+
+        startActivity(Intent.createChooser(shareIntent, "Share Via"));
+    }
 
     public Bitmap combineImages(Bitmap first, Bitmap second) { // can add a 3rd parameter 'String loc' if you want to save the new image - left some code to do that at the bottom
         Bitmap cs = null;

@@ -43,7 +43,7 @@ public class CarLoanActivity extends AppCompatActivity {
         webView.getSettings().setBuiltInZoomControls(true);
         product = getIntent().getIntExtra("product",0);
         brokerid =getIntent().getIntExtra("brokerid",0);
-        url = "http://www.rupeeboss.com/car-loan";
+        url = "https://www.rupeeboss.com/car-loan";
         Log.d("CAR_LOAN_URL", url);
         webView.loadUrl(url);
     }

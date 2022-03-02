@@ -42,7 +42,7 @@ public class businessLoanActivity extends AppCompatActivity {
         webView.getSettings().setBuiltInZoomControls(true);
 //        product = getIntent().getIntExtra("product",0);
 //        brokerid =getIntent().getIntExtra("brokerid",0);
-        url = "http://www.rupeeboss.com/business-loan";
+        url = "https://www.rupeeboss.com/business-loan";
         Log.d("BUSINESS_LOAN_URL", url);
         webView.loadUrl(url);
     }

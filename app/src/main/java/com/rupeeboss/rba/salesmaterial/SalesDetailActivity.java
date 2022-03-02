@@ -29,6 +29,7 @@ import com.rupeeboss.rba.core.facade.LoginFacade;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -58,7 +59,7 @@ public class SalesDetailActivity extends BaseActivity implements IResponseSubcri
     String rbaNAme, rbaDesg , rbaEmail, rbaMobNo = "";
     Drawable rbaPhoto;
     LoginFacade facade;
-
+    byte[] byteRBAArray = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -134,7 +135,9 @@ public class SalesDetailActivity extends BaseActivity implements IResponseSubcri
 
         Intent intent = new Intent(this, SalesShareActivity.class);
         intent.putExtra(Utility.DOC_DATA, festivalCompaignEntity);
+        intent.putExtra("RBA_IMAGE", byteRBAArray);
 
+      //  Bitmap pospDetails = createBitmap(result, rbaNAme,  rbaMobNo,rbaEmail, rbaDesg);
         startActivity(intent);
     }
 
@@ -222,7 +225,12 @@ public class SalesDetailActivity extends BaseActivity implements IResponseSubcri
         protected void onPostExecute(Bitmap result) {
             if (result != null) {
                 Bitmap pospDetails = createBitmap(result, rbaNAme,  rbaMobNo,rbaEmail, rbaDesg);
-                saveImageToStorage(pospDetails, "rbaSalesMaterialDetails");
+
+                ByteArrayOutputStream bStream = new ByteArrayOutputStream();
+                pospDetails.compress(Bitmap.CompressFormat.PNG, 100, bStream);
+                byte[] byteArray = bStream.toByteArray();
+                byteRBAArray=byteArray;
+               // saveImageToStorage(pospDetails, "rbaSalesMaterialDetails");
             }
             // bitmap_image = result;
         }

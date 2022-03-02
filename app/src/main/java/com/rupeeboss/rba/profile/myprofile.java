@@ -150,7 +150,7 @@ public class myprofile extends BaseActivity implements View.OnClickListener, IRe
         int READ_EXTERNAL = ActivityCompat.checkSelfPermission(getApplicationContext(), perms[2]);
 
         return camera == PackageManager.PERMISSION_GRANTED
-                && WRITE_EXTERNAL == PackageManager.PERMISSION_GRANTED
+              //  && WRITE_EXTERNAL == PackageManager.PERMISSION_GRANTED
                 && READ_EXTERNAL == PackageManager.PERMISSION_GRANTED;
     }
 
@@ -161,7 +161,7 @@ public class myprofile extends BaseActivity implements View.OnClickListener, IRe
         boolean write_external = ActivityCompat.shouldShowRequestPermissionRationale(myprofile.this, perms[1]);
         boolean read_external = ActivityCompat.shouldShowRequestPermissionRationale(myprofile.this, perms[2]);
 
-        return camera || write_external || read_external;
+        return camera || read_external;
     }
 
     private void requestPermission() {
@@ -200,7 +200,7 @@ public class myprofile extends BaseActivity implements View.OnClickListener, IRe
 
     private void galleryCamPopUp() {
 
-        if (!checkPermission()) {
+     /*   if (!checkPermission()) {
 
             if (checkRationalePermission()) {
                 //Show Information about why you need the permission
@@ -215,7 +215,9 @@ public class myprofile extends BaseActivity implements View.OnClickListener, IRe
 
 
             }
-        } else {
+        } else
+            */
+            {
 
             showCamerGalleryPopUp();
         }

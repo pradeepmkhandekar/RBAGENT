@@ -19,9 +19,9 @@ import com.rupeeboss.rba.BaseActivity;
 import com.rupeeboss.rba.R;
 import com.rupeeboss.rba.core.APIResponse;
 import com.rupeeboss.rba.core.IResponseSubcriber;
-import com.rupeeboss.rba.core.controller.audio.AudioController;
+
 import com.rupeeboss.rba.core.controller.leadcapture.LeadCapture;
-import com.rupeeboss.rba.core.database.AudioRecorderFacade;
+
 import com.rupeeboss.rba.core.facade.LoginFacade;
 import com.rupeeboss.rba.core.model.AssigneeEntity;
 import com.rupeeboss.rba.core.model.AudioEntity;
@@ -87,7 +87,7 @@ public class RbAddLeadActivity extends BaseActivity implements View.OnClickListe
             radioGroup.setVisibility(View.VISIBLE);
         }
         etMobile.setText(mobileNumber);
-        uploadRecording();
+
 
         if (getIntent().hasExtra(Constants.HL_REQUEST)) {
             homeLoanRequest = getIntent().getParcelableExtra(Constants.HL_REQUEST);
@@ -326,17 +326,7 @@ public class RbAddLeadActivity extends BaseActivity implements View.OnClickListe
             }
             Snackbar.make(etRemark, response.getMessage(), Snackbar.LENGTH_SHORT).show();
         } else if (response instanceof AudioRecordResponse) {
-            if (response.getStatusId() == 0) {
-                try {
 
-                    if (((AudioRecordResponse) response).getLocaldb_id().matches("" + audioEntity.getId())) {
-                        boolean isDbrecordDeleted = new AudioRecorderFacade(this).deleteAudioRecord(audioEntity);
-                        boolean isDeleted = Utility.deleteAudioFile(audioEntity.getFile_name());
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
         }
     }
 
@@ -346,18 +336,5 @@ public class RbAddLeadActivity extends BaseActivity implements View.OnClickListe
         Snackbar.make(etRemark, t.getMessage(), Snackbar.LENGTH_SHORT).show();
     }
 
-    private void uploadRecording() {
-        //upload audio to server
-        try {
-            List<AudioEntity> audioEntities = new AudioRecorderFacade(RbAddLeadActivity.this).getAllAudioRecord();
-            if (Utility.checkInternetStatus(RbAddLeadActivity.this)) {
-                for (AudioEntity audioEntity : audioEntities) {
-                    this.audioEntity = audioEntity;
-                    new AudioController(this).uploadAudioRecord(this.audioEntity, this);
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+
 }

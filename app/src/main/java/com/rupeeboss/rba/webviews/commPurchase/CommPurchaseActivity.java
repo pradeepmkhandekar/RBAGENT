@@ -42,7 +42,7 @@ public class CommPurchaseActivity extends AppCompatActivity {
         webView.getSettings().setBuiltInZoomControls(true);
 //        product = getIntent().getIntExtra("product",0);
 //        brokerid =getIntent().getIntExtra("brokerid",0);
-        url = "http://www.rupeeboss.com/loan-against-property?commercial";
+        url = "https://www.rupeeboss.com/loan-against-property?commercial";
         Log.d("LOANAGAINSTPROPERTY_URL", url);
         webView.loadUrl(url);
 

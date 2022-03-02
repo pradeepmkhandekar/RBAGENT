@@ -1,12 +1,24 @@
 package com.rupeeboss.rba.adapter;
 
 import android.content.ComponentName;
+import android.content.ContentResolver;
+import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.LabeledIntent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+
+import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,12 +26,18 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.rupeeboss.rba.BaseActivity;
 import com.rupeeboss.rba.R;
 import com.rupeeboss.rba.core.model.LstShareMessageEntity;
 import com.rupeeboss.rba.sharemessage.LeadSmsActivity;
+import com.rupeeboss.rba.utility.Utility;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by IN-RB on 02-02-2017.
@@ -103,7 +121,7 @@ public class ShareMessageAdapter extends RecyclerView.Adapter<ShareMessageAdapte
         return lstShareMessageEntities.size();
     }
 
-    private void datashareList(String Title, String Bodymsg, String link) {
+    private void datashareList1(String Title, String Bodymsg, String link) {
 
 
         String Deeplink;
@@ -221,4 +239,36 @@ public class ShareMessageAdapter extends RecyclerView.Adapter<ShareMessageAdapte
 
 
     }
+
+
+    public void datashareList( String prdSubject,String Bodymsg, String link) {
+
+
+        String Deeplink;
+
+        Deeplink = Bodymsg + "\n" + link;
+        if(prdSubject.isEmpty()){
+            prdSubject ="RBA";
+        }
+
+        String prdDetail = Deeplink;
+
+        Intent shareIntent = new Intent();
+        shareIntent.setAction(Intent.ACTION_SEND);
+        shareIntent.putExtra(Intent.EXTRA_TEXT, prdDetail);
+
+        shareIntent.setType("text/plain");
+        shareIntent.putExtra(Intent.EXTRA_SUBJECT, prdSubject);
+        shareIntent.putExtra(Intent.EXTRA_TEXT, prdDetail);
+        shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        shareIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+
+        mContext.startActivity(Intent.createChooser(shareIntent, "Share Via"));
+
+
+
+    }
+
+
+
 }

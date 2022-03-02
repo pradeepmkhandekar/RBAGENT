@@ -44,7 +44,7 @@ public class WorkingCapitalActivity extends AppCompatActivity {
         MyWebViewClient webViewClient = new MyWebViewClient();
         webView.setWebViewClient(webViewClient);
         webView.getSettings().setBuiltInZoomControls(true);
-        url = "http://www.rupeeboss.com/sme-working-capital";
+        url = "https://www.rupeeboss.com/sme-working-capital";
         Log.d("WORKING_CAPITAL", url);
         webView.loadUrl(url);
     }

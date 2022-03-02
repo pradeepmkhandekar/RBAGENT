@@ -57,7 +57,7 @@ public class AgreementWebViewFragment extends Fragment {
         webView.setWebViewClient(webViewClient);
         webView.getSettings().setBuiltInZoomControls(true);
         //  url = url + "?qoutid=" + quoteId + "&bankid=" + bankId + "&productid=9" + "&brokerid=" + loginEntity.getBrokerId() + "&empcode=" + loginEntity.getEmpCode();
-        url = "http://49.50.95.141:97/hTMLPAGES/Franchise_Agreement.pdf";
+        url = "http://erp.rupeeboss.com/Franchise_Agreement.pdf";
 
         Log.d("DOCUMENT_URL", url);
         webView.loadUrl("http://drive.google.com/viewerng/viewer?embedded=true&url=" + url);

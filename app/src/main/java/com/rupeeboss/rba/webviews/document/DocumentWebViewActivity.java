@@ -75,7 +75,7 @@ public class DocumentWebViewActivity extends BaseActivity implements View.OnClic
         MyWebViewClient webViewClient = new MyWebViewClient();
         webView.setWebViewClient(webViewClient);
         webView.getSettings().setBuiltInZoomControls(true);
-        url = "http://www.rupeeboss.com/document/Required_Document.html";
+        url = "https://www.rupeeboss.com/document/Required_Document.html";
         Log.d("DOCUMENT_URL", url);
         webView.loadUrl(url);
     }
@@ -109,7 +109,7 @@ public class DocumentWebViewActivity extends BaseActivity implements View.OnClic
         switch (item.getItemId()) {
             case R.id.btnMenuShare:
                 // About option clicked.
-                datashareList("Document Checklist", "Document Checklist", "http://www.rupeeboss.com/document/Required_Document.html");
+                datashareList("Document Checklist", "Document Checklist", "https://www.rupeeboss.com/document/Required_Document.html");
                 break;
 
             case android.R.id.home:
@@ -120,7 +120,7 @@ public class DocumentWebViewActivity extends BaseActivity implements View.OnClic
         return true;
     }
 
-    private void datashareList(String Title, String Bodymsg, String link) {
+    private void datashareList1(String Title, String Bodymsg, String link) {
 
 
         String Deeplink;
@@ -238,33 +238,61 @@ public class DocumentWebViewActivity extends BaseActivity implements View.OnClic
 
 
     }
+    public void datashareList( String prdSubject,String Bodymsg, String link) {
+
+
+        String Deeplink;
+
+        Deeplink = Bodymsg + "\n" + link;
+        if(prdSubject.isEmpty()){
+            prdSubject ="RBA";
+        }
+
+        String prdDetail = Deeplink;
+
+        Intent shareIntent = new Intent();
+        shareIntent.setAction(Intent.ACTION_SEND);
+        shareIntent.putExtra(Intent.EXTRA_TEXT, prdDetail);
+
+        shareIntent.setType("text/plain");
+        shareIntent.putExtra(Intent.EXTRA_SUBJECT, prdSubject);
+        shareIntent.putExtra(Intent.EXTRA_TEXT, prdDetail);
+        shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        shareIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+
+        startActivity(Intent.createChooser(shareIntent, "Share Via"));
+
+
+
+    }
+
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnBussLoan:
-                datashareList("Business Loan", "Required Documents- Business Loan", "http://www.rupeeboss.com/document/business-loan.html");
-                webView.loadUrl("http://www.rupeeboss.com/document/business-loan.html");
+                datashareList("Business Loan", "Required Documents- Business Loan", "https://www.rupeeboss.com/document/business-loan.html");
+                webView.loadUrl("https://www.rupeeboss.com/document/business-loan.html");
                 break;
             case R.id.btnCreeditCard:
-                datashareList("Credit Card", "Required Documents- Credit Card", "http://www.rupeeboss.com/document/credit-card.html");
-                webView.loadUrl("http://www.rupeeboss.com/document/credit-card.html");
+                datashareList("Credit Card", "Required Documents- Credit Card", "https://www.rupeeboss.com/document/credit-card.html");
+                webView.loadUrl("https://www.rupeeboss.com/document/credit-card.html");
                 break;
             case R.id.btnHomeLoan:
-                datashareList("Home Loan", "Required Documents- Home Loan", "http://www.rupeeboss.com/document/home-loan.html");
-                webView.loadUrl("http://www.rupeeboss.com/document/home-loan.html");
+                datashareList("Home Loan", "Required Documents- Home Loan", "https://www.rupeeboss.com/document/home-loan.html");
+                webView.loadUrl("https://www.rupeeboss.com/document/home-loan.html");
                 break;
             case R.id.btnPersonalLoan:
-                datashareList("Personal Loan", "Required Documents- Personal Loan", "http://www.rupeeboss.com/document/personal-loan.html");
-                webView.loadUrl("http://www.rupeeboss.com/document/personal-loan.html");
+                datashareList("Personal Loan", "Required Documents- Personal Loan", "https://www.rupeeboss.com/document/personal-loan.html");
+                webView.loadUrl("https://www.rupeeboss.com/document/personal-loan.html");
                 break;
             case R.id.btnLap:
-                datashareList("Loan Against Property", "Required Documents- Loan Against Property", "http://www.rupeeboss.com/document/lap.html");
-                webView.loadUrl("http://www.rupeeboss.com/document/lap.html");
+                datashareList("Loan Against Property", "Required Documents- Loan Against Property", "https://www.rupeeboss.com/document/lap.html");
+                webView.loadUrl("https://www.rupeeboss.com/document/lap.html");
                 break;
             case R.id.btnAll:
-                datashareList(" Loan", "Required Documents-  Loan", "http://www.rupeeboss.com/document/Required_Document.html");
-                webView.loadUrl("http://www.rupeeboss.com/document/Required_Document.html");
+                datashareList(" Loan", "Required Documents-  Loan", "https://www.rupeeboss.com/document/Required_Document.html");
+                webView.loadUrl("https://www.rupeeboss.com/document/Required_Document.html");
                 break;
 
         }

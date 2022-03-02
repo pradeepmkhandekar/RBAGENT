@@ -3,17 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.rupeeboss.rba">
 
-    <uses-permission android:name="android.permission.CAPTURE_AUDIO_OUTPUT" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> -->
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28" tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
 
     <application
         android:allowBackup="true"
@@ -99,16 +95,6 @@
                 android:value=".home.MainActivity" />
         </activity>
         <activity
-            android:name=".calling.CallingActivity"
-            android:label="Calling"
-            android:parentActivityName=".home.MainActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".home.MainActivity" />
-        </activity>
-        <activity
             android:name=".loan.LoanMenuActivity"
             android:label="Loan"
             android:parentActivityName=".home.MainActivity"
@@ -169,36 +155,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".quotes.QuoteActivity" />
         </activity>
-        <activity
-            android:name=".rbdialerpad.RbDialerPadActivity"
-            android:label="@string/title_activity_rb_dialer_pad"
-            android:parentActivityName=".home.MainActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".home.MainActivity" />
-        </activity>
-        <activity
-            android:name=".rbaddlead.RbAddLeadActivity"
-            android:label="@string/title_activity_rb_add_lead"
-            android:parentActivityName=".rbdialerpad.RbDialerPadActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".rbdialerpad.RbDialerPadActivity" />
-        </activity>
-        <activity
-            android:name=".rbfeedback.FeedBackActivity"
-            android:label="@string/title_activity_feed_back"
-            android:parentActivityName=".rbdialerpad.RbDialerPadActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".rbdialerpad.RbDialerPadActivity" />
-        </activity>
+
         <activity
             android:name=".sharemessage.ShareMessageActivity"
             android:label="@string/title_activity_share_message"
@@ -219,28 +176,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".loan.LoanActivity" />
         </activity>
-        <activity
-            android:name=".personalloan.PersonalLoanActivity"
-            android:label="@string/title_activity_personal_loan"
-            android:parentActivityName=".personalloan.LoanPersonalActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
-        <activity
-            android:name=".personalloan.LoanPersonalActivity"
-            android:label="@string/title_activity_personal_loan"
-            android:parentActivityName=".personalloan.PersonalLoanMenuActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
-        <activity
-            android:name=".calling.followup.FollowUpActivity"
-            android:label="Follow Up"
-            android:parentActivityName=".calling.CallingActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="calling.CallingActivity" />
-        </activity>
+
         <activity
             android:name=".calling.followup.FollowUpHistoryActivity"
             android:parentActivityName=".calling.followup.FollowUpActivity"
@@ -250,20 +186,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".calling.followup.FollowUpActivity" />
         </activity>
-        <activity
-            android:name=".calling.history.HistoryActivity"
-            android:parentActivityName=".calling.CallingActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
-        <activity
-            android:name=".contact.ContactActivity"
-            android:parentActivityName=".home.MainActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".calling.CallingActivity" />
-        </activity>
+
+
         <activity
             android:name=".login.NewRegistration"
             android:label="New Registration"
@@ -776,17 +700,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.rupeeboss.rba.home.MainActivity" />
         </activity>
-        <activity
-            android:name=".loan_fm.new_personalloan.city_selecton_personalloan_Activity"
-            android:label="Personal Loan"
-            android:parentActivityName=".loan_fm.new_personalloan.NewPersonalApplicaionActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"
-            android:windowSoftInputMode="stateAlwaysHidden|stateHidden">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.rupeeboss.rba.loan_fm.new_personalloan.NewPersonalApplicaionActivity" />
-        </activity>
+
         <activity
             android:name=".loan_fm.new_personalloan.bank_selection_personalloanActivity"
             android:label="Personal Loan"
@@ -798,17 +712,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.rupeeboss.rba.loan_fm.new_personalloan.city_selecton_personalloan_Activity" />
         </activity>
-        <activity
-            android:name=".loan_fm.new_personalloan.NewPersonalApplicaionActivity"
-            android:label="@string/title_activity_personal_loan_apply"
-            android:parentActivityName=".home.MainActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"
-            android:windowSoftInputMode="stateAlwaysHidden|stateHidden">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.rupeeboss.rba.home.MainActivity" />
-        </activity>
+
         <activity
             android:name=".loan_fm.new_HomeLoan.city_selecton_homeloan_Activity"
             android:label="Home Loan"
@@ -875,17 +779,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.rupeeboss.rba.home.MainActivity" />
         </activity>
-        <activity
-            android:name=".loan_fm.businessloan.city_selecton_businessloan_Activity"
-            android:label="Business Loan"
-            android:parentActivityName=".loan_fm.businessloan.NewbusinessApplicaionActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"
-            android:windowSoftInputMode="stateAlwaysHidden|stateHidden">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.rupeeboss.rba.loan_fm.businessloan.NewbusinessApplicaionActivity" />
-        </activity>
+
         <activity
             android:name=".loan_fm.businessloan.bank_selection_businessloanActivity"
             android:label="Business Loan"

@@ -6,7 +6,7 @@ import android.app.Fragment;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import com.google.android.material.snackbar.Snackbar;
-import androidx.appcompat.app.AppCompatActivity;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,9 +22,9 @@ import com.rupeeboss.rba.BaseFragment;
 import com.rupeeboss.rba.R;
 import com.rupeeboss.rba.core.APIResponse;
 import com.rupeeboss.rba.core.IResponseSubcriber;
-import com.rupeeboss.rba.core.controller.audio.AudioController;
+
 import com.rupeeboss.rba.core.controller.leadcapture.LeadCapture;
-import com.rupeeboss.rba.core.database.AudioRecorderFacade;
+
 import com.rupeeboss.rba.core.facade.LoginFacade;
 import com.rupeeboss.rba.core.model.AssigneeEntity;
 import com.rupeeboss.rba.core.model.AudioEntity;
@@ -81,7 +81,7 @@ public class AddLeadFragment extends BaseFragment implements IResponseSubcriber,
         etExpctDisbsDate.setText(simpleDateFormat.format(calendar.getTime()));
         mobileNumber = getActivity().getIntent().getStringExtra("PHONE_DIAL_NUMBER");
         etMobile.setText(mobileNumber);
-        uploadRecording();
+
 
         return view;
     }
@@ -289,19 +289,6 @@ public class AddLeadFragment extends BaseFragment implements IResponseSubcriber,
         Snackbar.make(etRemark, t.getMessage(), Snackbar.LENGTH_SHORT).show();
     }
 
-    private void uploadRecording() {
-        //upload audio to server
-        try {
-            List<AudioEntity> audioEntities = new AudioRecorderFacade(getActivity()).getAllAudioRecord();
-            if (Utility.checkInternetStatus(getActivity())) {
-                for (AudioEntity audioEntity : audioEntities) {
-                    this.audioEntity = audioEntity;
-                    new AudioController(getActivity()).uploadAudioRecord(this.audioEntity, this);
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+
 
 }

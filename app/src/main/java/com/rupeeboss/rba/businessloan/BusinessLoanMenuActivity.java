@@ -49,7 +49,7 @@ public class BusinessLoanMenuActivity extends BaseActivity implements View.OnCli
         switch (v.getId()) {
             case R.id.llTribebl:
                 startActivity(new Intent(this, BusinessLoanWebviewActivity.class)
-                        .putExtra("URL", "http://www.rupeeboss.com/tribe")
+                        .putExtra("URL", "https://www.rupeeboss.com/tribe")
                         .putExtra("NAME", "RBA_MANUAL")
                         .putExtra("TITLE", "TRIBE Business Loan"));
                 break;
@@ -61,19 +61,19 @@ public class BusinessLoanMenuActivity extends BaseActivity implements View.OnCli
                 break;
             case R.id.llEdelweissbl:
                 startActivity(new Intent(this, BusinessLoanWebviewActivity.class)
-                        .putExtra("URL", "http://www.rupeeboss.com/edelweiss")
+                        .putExtra("URL", "https://www.rupeeboss.com/edelweiss")
                         .putExtra("NAME", "RBA_MANUAL")
                         .putExtra("TITLE", "Edelweiss Business Loan"));
                 break;
             case R.id.lllendingkartbl:
                 startActivity(new Intent(this, BusinessLoanWebviewActivity.class)
-                        .putExtra("URL", "http://www.rupeeboss.com/lendingkart")
+                        .putExtra("URL", "https://www.rupeeboss.com/lendingkart")
                         .putExtra("NAME", "RBA_MANUAL")
                         .putExtra("TITLE", "Lendingkart Business Loan"));
                 break;
             case R.id.lltatabl:
                 startActivity(new Intent(this, BusinessLoanWebviewActivity.class)
-                        .putExtra("URL", "http://www.rupeeboss.com/tata-capital-business-loan")
+                        .putExtra("URL", "https://www.rupeeboss.com/tata-capital-business-loan")
                         .putExtra("NAME", "RBA_MANUAL")
                         .putExtra("TITLE", "TATA Business Loan"));
                 break;
@@ -86,7 +86,7 @@ public class BusinessLoanMenuActivity extends BaseActivity implements View.OnCli
                 break;
             case R.id.llhdfcBusinessLoan:
                 startActivity(new Intent(this, BusinessLoanWebviewActivity.class)
-                        .putExtra("URL", "http://www.rupeeboss.com/hdfc-business-loan")
+                        .putExtra("URL", "https://www.rupeeboss.com/hdfc-business-loan")
                         .putExtra("NAME", "RBA_MANUAL")
                         .putExtra("TITLE", "HDFC Business Loan"));
                 break;

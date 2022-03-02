@@ -464,7 +464,12 @@ public class MainActivity extends BaseActivity implements IResponseSubcriber, Vi
                                 .putExtra("NAME", "YES BANK BOT")
                                 .putExtra("TITLE", "YES BANK BOT"));
                         break;
-
+                    case R.id.nav_Privacy:
+                        startActivity(new Intent(MainActivity.this, CommonWebviewActivity.class)
+                                .putExtra("URL", "https://www.rupeeboss.com/privacy-policy-page")
+                                .putExtra("NAME", "Privacy-Policy")
+                                .putExtra("TITLE", "Privacy-Policy"));
+                        break;
                     case R.id.nav_logout:
                         finish();
 

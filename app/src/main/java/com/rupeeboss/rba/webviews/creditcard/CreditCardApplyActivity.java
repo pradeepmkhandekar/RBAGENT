@@ -43,7 +43,7 @@ public class CreditCardApplyActivity extends BaseActivity {
         MyWebViewClient webViewClient = new MyWebViewClient();
         webView.setWebViewClient(webViewClient);
         webView.getSettings().setBuiltInZoomControls(true);
-        url = "http://www.rupeeboss.com/credit-card";
+        url = "https://www.rupeeboss.com/credit-card";
         /*try {
 
             url = "http://www.rupeeboss.com/credit-card?referrer="

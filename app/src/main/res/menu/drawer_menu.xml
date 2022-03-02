@@ -102,7 +102,11 @@
             android:icon="@drawable/message_icon"
             android:title="CONTACT US"
             android:visible="false"/>
-
+        <item
+            android:id="@+id/nav_Privacy"
+            android:icon="@drawable/my_list"
+            android:title="PRIVACY-POLICY"
+            android:visible="true"/>
 
         <item
             android:id="@+id/nav_logout"

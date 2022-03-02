@@ -9,7 +9,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.location.LocationManager;
+
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
@@ -76,7 +76,7 @@ public class Utility {
     public static String startTime = "10:00:00";
     public static String endTime = "18:00:00";
     public static long TIME_INTERVAL = 1800000;//30 Min
-    //  public static LocationTracker locationTracker;
+
 
 
     public static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 123;
@@ -89,16 +89,7 @@ public class Utility {
     public static String PUSH_LOGIN_PAGE = "pushloginPage";
     public static String DOC_DATA = "docData";
 
-    /*public static String[] perms = {"android.permission.WRITE_CALL_LOG",
-            "android.permission.CALL_PHONE",
-            "android.permission.READ_PHONE_STATE",
-            "android.permission.RECORD_AUDIO",F
-            "android.permission.WRITE_EXTERNAL_STORAGE",
-            "android.permission.ACCESS_FINE_LOCATION",
-            "android.permission.READ_CONTACTS",
-            "android.permission.SEND_SMS",
-            "android.permission.READ_SMS"}; //"android.permission.ACCESS_COARSE_LOCATION",
-*/
+
     public static String getCurrentMobileDateTime() {
         SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy_HHmmss");
         String currentDateandTime = sdf.format(new Date());
@@ -257,17 +248,7 @@ public class Utility {
         return false;
     }
 
-    public static boolean checkGpsStatus(Context context) {
-        PackageManager pm = context.getPackageManager();
-        LocationManager manager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-        boolean hasGps = pm.hasSystemFeature(PackageManager.FEATURE_LOCATION_GPS);
-        boolean gps_enabled = false;
-        if (hasGps) {
-            gps_enabled = manager.isProviderEnabled(LocationManager.GPS_PROVIDER);
-        }
 
-        return gps_enabled;
-    }
 
     public static String getMobileDateTime() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -384,5 +365,19 @@ public class Utility {
         }
         return file;
     }
+
+    public static String getNewFileName(String name)  {
+        String timeStamp  =new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        return name + timeStamp + ".jpg";
+    }
+    public static String getPdfFileName(String name)  {
+        String timeStamp  =new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        return name + timeStamp + ".pdf";
+    }
+
+    public static String  getImageDirectoryPath() {
+        return Environment.DIRECTORY_PICTURES + File.separator + "RBAGENT";
+    }
+
 
 }

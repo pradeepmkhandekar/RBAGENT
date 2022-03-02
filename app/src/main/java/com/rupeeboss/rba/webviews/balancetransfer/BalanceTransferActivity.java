@@ -53,7 +53,7 @@ public class BalanceTransferActivity extends AppCompatActivity {
         webView.getSettings().setBuiltInZoomControls(true);
         product = getIntent().getIntExtra("product",0);
         brokerid =getIntent().getIntExtra("brokerid",0);
-        url = "http://www.rupeeboss.com/balance-transfer?product="+product+"&brokerid="+brokerid
+        url = "https://www.rupeeboss.com/balance-transfer?product="+product+"&brokerid="+brokerid
                 +"&empcode="+new LoginFacade(this).getUser().getEmpCode()+"&app=1";
         Log.d("BALANCE_TRANSFER_URL", url);
         webView.loadUrl(url);

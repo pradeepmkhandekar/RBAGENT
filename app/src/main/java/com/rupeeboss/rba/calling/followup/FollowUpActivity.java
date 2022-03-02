@@ -3,7 +3,7 @@ package com.rupeeboss.rba.calling.followup;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.MediaRecorder;
+
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -21,12 +21,11 @@ import com.rupeeboss.rba.R;
 import com.rupeeboss.rba.core.APIResponse;
 import com.rupeeboss.rba.core.IResponseSubcriber;
 import com.rupeeboss.rba.core.controller.followup.FollowUp;
-import com.rupeeboss.rba.core.database.AudioRecorderFacade;
+
 import com.rupeeboss.rba.core.facade.LoginFacade;
 import com.rupeeboss.rba.core.model.AudioEntity;
 import com.rupeeboss.rba.core.model.FollowUpEntity;
 import com.rupeeboss.rba.core.response.FollowUpResponse;
-import com.rupeeboss.rba.rbdialerpad.AudioRecorder;
 import com.rupeeboss.rba.rbfeedback.FeedBackActivity;
 import com.rupeeboss.rba.utility.Utility;
 
@@ -36,12 +35,12 @@ public class FollowUpActivity extends BaseActivity implements IResponseSubcriber
 
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
-    //AudioRecorder audioRecorder;
+
 
     TelephonyManager telephonyManager;
     PhoneStateListener callStateListener;
     AudioEntity pkAudioEntity;
-    AudioRecorder audioRecorder;
+
     RecyclerView recyclerFollowup;
     FollowUpAdapter mAdapter;
     String mbNumber;
@@ -102,16 +101,7 @@ public class FollowUpActivity extends BaseActivity implements IResponseSubcriber
                 }
                 if (state == TelephonyManager.CALL_STATE_OFFHOOK) {
                     Log.d("DialerActivity_New", "call running");
-                    try {
-                        if (audioRecorder == null)
-                            audioRecorder = new AudioRecorder();
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-                            audioRecorder.startRecording(mbNumber, MediaRecorder.AudioSource.MIC, FollowUpActivity.this);
-                        else
-                            audioRecorder.startRecording(mbNumber, MediaRecorder.AudioSource.VOICE_CALL, FollowUpActivity.this);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+
                 }
 
                 if (state == TelephonyManager.CALL_STATE_IDLE) {
@@ -120,14 +110,7 @@ public class FollowUpActivity extends BaseActivity implements IResponseSubcriber
                         telephonyManager.listen(callStateListener, PhoneStateListener.LISTEN_NONE);
                         Log.d("DialerActivity_New", "unregistered broadcst receiver");
                         editor.putString(Utility.CALL_STATUS_FOLLOWUP, "NO");
-                        try {
-                            if (audioRecorder != null) {
-                                audioRecorder.stopRecording();
-                                pkAudioEntity = saveRecordingToDb(audioRecorder.getFilePath(), loginFacade.getUser().getEmpCode(), mbNumber, leadId);
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+
                         startActivity(new Intent(FollowUpActivity.this, FeedBackActivity.class)
                                 .putExtra("PHONE_DIAL_NUMBER", mbNumber)
                                 .putExtra("LEAD_ID", leadId)
@@ -174,14 +157,7 @@ public class FollowUpActivity extends BaseActivity implements IResponseSubcriber
         AudioEntity audioEntity = new AudioEntity();
         try {
 
-            audioEntity.setFile_name(filePath);
-            audioEntity.setUser_id(empCode);
-            audioEntity.setUploaded(false);
-            audioEntity.setMobile(mbNumber);
-            audioEntity.setCreatedDate();
-            audioEntity.setLead_id(leadId);
-            new AudioRecorderFacade(this).insertAudioRecord(audioEntity);
-            return audioEntity;
+
         } catch (Exception e) {
             e.printStackTrace();
         }

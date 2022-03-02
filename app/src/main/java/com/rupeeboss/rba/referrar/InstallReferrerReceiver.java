@@ -19,7 +19,10 @@ public class InstallReferrerReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        String referrer = intent.getStringExtra("referrer");
+
+
+      //  String referrer ;//= intent.getStringExtra("referrer");
+        String  referrer="UgBCADQAMAAwADAAMAA0ADQAMQA=@MAA=@YQBwAHAA";
         Log.d("InstallReferrerReceiver", referrer);
         //Use the referrer
         sharedPreferences = context.getSharedPreferences(Constants.SHAREDPREFERENCE_TITLE, context.MODE_PRIVATE);

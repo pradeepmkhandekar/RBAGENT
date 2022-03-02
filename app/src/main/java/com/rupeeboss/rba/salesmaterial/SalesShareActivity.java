@@ -29,6 +29,7 @@ public class SalesShareActivity extends BaseActivity {
     Bitmap salesPhoto;
     LoginFacade facade;
     FestivalCompaignEntity festivalCompaignEntity;
+    Bitmap POSPBitmap = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +47,8 @@ public class SalesShareActivity extends BaseActivity {
 
         if (getIntent().hasExtra(Utility.DOC_DATA)) {
             festivalCompaignEntity = getIntent().getExtras().getParcelable(Utility.DOC_DATA);
+            byte[] bytePOSPArray = getIntent().getByteArrayExtra("RBA_IMAGE");
+            POSPBitmap = BitmapFactory.decodeByteArray(bytePOSPArray, 0, bytePOSPArray.length);
         }
     }
 
@@ -90,7 +93,9 @@ public class SalesShareActivity extends BaseActivity {
             }else {
                 desc = festivalCompaignEntity.getDescription();
             }
-            new datashareListBitmap(SalesShareActivity.this, combinedImage, festivalCompaignEntity.getTitle(), desc).execute();
+           // new datashareListBitmap(SalesShareActivity.this, combinedImage, festivalCompaignEntity.getTitle(), desc).execute();
+
+            datashareList(SalesShareActivity.this, combinedImage, festivalCompaignEntity.getTitle(), desc);
         }
 
         //new shareImageNormal(docsEntity.getImage_path(), "Finmart", "Look what I found on Finmart!").execute();
@@ -110,8 +115,8 @@ public class SalesShareActivity extends BaseActivity {
 
 
                     try {
-                        combinedImage = BitmapFactory.decodeStream(new FileInputStream(getImageFromStorage("rbaSalesMaterialDetails")));
-
+                       //combinedImage = BitmapFactory.decodeStream(new FileInputStream(getImageFromStorage("rbaSalesMaterialDetails")));
+                        combinedImage = POSPBitmap;
 
                     } catch (Exception e) {
                         e.printStackTrace();

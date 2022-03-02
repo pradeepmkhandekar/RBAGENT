@@ -89,12 +89,9 @@ public class LoginActivity extends BaseActivity implements IResponseSubcriber, V
 
     String[] perms = {
             "android.permission.CAMERA",
-            "android.permission.READ_PHONE_STATE",
-            "android.permission.RECORD_AUDIO",
             "android.permission.WRITE_EXTERNAL_STORAGE",
-            "android.permission.ACCESS_FINE_LOCATION",
             "android.permission.READ_EXTERNAL_STORAGE",
-    }; //"android.permission.ACCESS_COARSE_LOCATION",
+    };
 
 
     @Override
@@ -371,20 +368,13 @@ public class LoginActivity extends BaseActivity implements IResponseSubcriber, V
     private boolean checkPermission() {
 
         int accessCamera = ContextCompat.checkSelfPermission(getApplicationContext(), perms[0]);
+        int writeExternal = ContextCompat.checkSelfPermission(getApplicationContext(), perms[1]);
+        int readExternal = ContextCompat.checkSelfPermission(getApplicationContext(), perms[2]);
 
-        int readPhonestate = ContextCompat.checkSelfPermission(getApplicationContext(), perms[1]);
-        int recordAudio = ContextCompat.checkSelfPermission(getApplicationContext(), perms[2]);
-        int writeExternal = ContextCompat.checkSelfPermission(getApplicationContext(), perms[3]);
-        int fineLocation = ContextCompat.checkSelfPermission(getApplicationContext(), perms[4]);
-        int readExternal = ContextCompat.checkSelfPermission(getApplicationContext(), perms[5]);
-        //int fineLocation = ContextCompat.checkSelfPermission(getApplicationContext(), perms[7]);
         return accessCamera == PackageManager.PERMISSION_GRANTED
 
-                && readPhonestate == PackageManager.PERMISSION_GRANTED
-                && recordAudio == PackageManager.PERMISSION_GRANTED
                 && writeExternal == PackageManager.PERMISSION_GRANTED
 
-                && fineLocation == PackageManager.PERMISSION_GRANTED
                 && readExternal == PackageManager.PERMISSION_GRANTED;
 
 

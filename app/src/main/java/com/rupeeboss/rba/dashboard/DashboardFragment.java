@@ -18,30 +18,23 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.rupeeboss.rba.AddLead.AddLeadActivity;
+
 import com.rupeeboss.rba.BaseFragment;
 import com.rupeeboss.rba.R;
-import com.rupeeboss.rba.contact.ContactActivity;
+
 import com.rupeeboss.rba.contactus.ContactUsActivity;
 import com.rupeeboss.rba.core.facade.LoginFacade;
 import com.rupeeboss.rba.fragment.AddLeadFragment;
 import com.rupeeboss.rba.incomeSimulator.IncomeSimulatorActivity;
-import com.rupeeboss.rba.loan_fm.businessloan.NewbusinessApplicaionActivity;
-import com.rupeeboss.rba.loan_fm.new_HomeLoan.NewHomeApplicaionActivity;
-import com.rupeeboss.rba.loan_fm.new_personalloan.NewPersonalApplicaionActivity;
-import com.rupeeboss.rba.loan_fm.newlaploan.NewLAPApplicaionActivity;
+
 import com.rupeeboss.rba.mybuisness.BuisinessActivity;
 import com.rupeeboss.rba.profile.myprofile;
 import com.rupeeboss.rba.rbaddlead.QuickleadActivity;
 import com.rupeeboss.rba.salesmaterial.SalesDetailActivity;
 import com.rupeeboss.rba.sharemessage.ShareMessageActivity;
 import com.rupeeboss.rba.utility.Utility;
-import com.rupeeboss.rba.webviews.balancetransfer.BalanceTransferActivity;
-import com.rupeeboss.rba.webviews.commonwebview.CommonWebviewActivity;
-import com.rupeeboss.rba.webviews.creditcard.CreditCardApplyActivity;
-import com.rupeeboss.rba.webviews.generalInsurance.GeneralInsuranceType;
-import com.rupeeboss.rba.webviews.workingCapital.WorkingCapitalActivity;
 
+import com.rupeeboss.rba.webviews.commonwebview.CommonWebviewActivity;
 
 
 import java.io.IOException;
@@ -102,19 +95,7 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
         banners.add(new DrawableBanner(R.drawable.kotak_home_loan_banner));
         bannerSlider.setBanners(banners);
         setListener();
-        /*GlideDrawableImageViewTarget imageViewTarget = new GlideDrawableImageViewTarget(imgRoboPlay);
-        Glide.with(this).load(R.raw.robo)
-                .dontTransform()
-                .dontAnimate()
-                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-                .into(imageViewTarget);*/
 
-//        GlideDrawableImageViewTarget imageViewTargetCalling = new GlideDrawableImageViewTarget(imgCalling);
-//        Glide.with(this).load(R.raw.calling)
-//                .dontTransform()
-//                .dontAnimate()
-//                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-//                .into(imageViewTargetCalling);
 
         return view;
     }
@@ -126,37 +107,37 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
                 switch (position) {
                     case 0://rbl_banner
                         startActivity(new Intent(getActivity(), CommonWebviewActivity.class)
-                                .putExtra("URL", "http://www.rupeeboss.com/rbl-personal-loan?BrokerId="+brokerId+"&FBAId=0&client_source=RBA&lead_id=")
+                                .putExtra("URL", "https://www.rupeeboss.com/rbl-personal-loan?BrokerId="+brokerId+"&FBAId=0&client_source=RBA&lead_id=")
                                 .putExtra("NAME", "RBL PERSONAL LOAN")
                                 .putExtra("TITLE", "RBL PERSONAL LOAN"));
                         break;
                     case 1://kotak_banner
                         startActivity(new Intent(getActivity(), CommonWebviewActivity.class)
-                                .putExtra("URL", "http://www.rupeeboss.com/kotak-personal-loan?BrokerId="+brokerId+"&FBAId=0&client_source=RBA&lead_id=")
+                                .putExtra("URL", "https://www.rupeeboss.com/kotak-personal-loan?BrokerId="+brokerId+"&FBAId=0&client_source=RBA&lead_id=")
                                 .putExtra("NAME", "KOTAK PERSONAL LOAN")
                                 .putExtra("TITLE", "KOTAK PERSONAL LOAN"));
                         break;
                     case 2://iifl_banner
                         startActivity(new Intent(getActivity(), CommonWebviewActivity.class)
-                                .putExtra("URL", "http://www.rupeeboss.com/apply-iifl-loan?BrokerId="+brokerId+"&FBAId=0&client_source=RBA&lead_id=")
+                                .putExtra("URL", "https://www.rupeeboss.com/apply-iifl-loan?BrokerId="+brokerId+"&FBAId=0&client_source=RBA&lead_id=")
                                 .putExtra("NAME", "IIFL PERSONAL LOAN")
                                 .putExtra("TITLE", "IIFL PERSONAL LOAN"));
                         break;
                     case 3://hdfc_personal_loan_banner
                         startActivity(new Intent(getActivity(), CommonWebviewActivity.class)
-                                .putExtra("URL", "http://www.rupeeboss.com/hdfc-personal-loan?BrokerId="+brokerId+"&FBAId=0&client_source=RBA&lead_id=")
+                                .putExtra("URL", "https://www.rupeeboss.com/hdfc-personal-loan?BrokerId="+brokerId+"&FBAId=0&client_source=RBA&lead_id=")
                                 .putExtra("NAME", "HDFC PERSONAL LOAN")
                                 .putExtra("TITLE", "HDFC PERSONAL LOAN"));
                         break;
                     case 4://hdfc_business_loan
                         startActivity(new Intent(getActivity(), CommonWebviewActivity.class)
-                                .putExtra("URL", "http://www.rupeeboss.com/hdfc-business-loan?BrokerId="+brokerId+"&FBAId=0&client_source=RBA&lead_id=")
+                                .putExtra("URL", "https://www.rupeeboss.com/hdfc-business-loan?BrokerId="+brokerId+"&FBAId=0&client_source=RBA&lead_id=")
                                 .putExtra("NAME", "HDFC BUSINESS LOAN")
                                 .putExtra("TITLE", "HDFC BUSINESS LOAN"));
                         break;
                     case 5://kotak_home_loan_banner
                         startActivity(new Intent(getActivity(), CommonWebviewActivity.class)
-                                .putExtra("URL", "http://www.rupeeboss.com/kotak-home-loan?BrokerId="+brokerId+"&FBAId=0&client_source=RBA&lead_id=")
+                                .putExtra("URL", "https://www.rupeeboss.com/kotak-home-loan?BrokerId="+brokerId+"&FBAId=0&client_source=RBA&lead_id=")
                                 .putExtra("NAME", "KOTAK HOME LOAN")
                                 .putExtra("TITLE", "KOTAK HOME LOAN"));
                         break;
@@ -266,51 +247,53 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
 //                        .putExtra("TITLE", "YES BANK BOT"));
                 break;
             case R.id.ivmsme:
-                startActivity(new Intent(getActivity(), NewbusinessApplicaionActivity.class));
-//                if (ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.WRITE_CALL_LOG)
-//                        + ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE)
-//                        + ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_PHONE_STATE)
-//                        + ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.RECORD_AUDIO)
-//                        + ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE)
-//                        + ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
-//                        + ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_CONTACTS)
-//                        != PackageManager.PERMISSION_GRANTED) {
-//                    //  requestPermissions(new String[] {android.Manifest.permission.READ_CONTACTS}, Utility.MY_PERMISSIONS_REQUEST_READ_CONTACTS);
-//                    requestPermissions(new String[]{android.Manifest.permission.WRITE_CALL_LOG,
-//                            android.Manifest.permission.CALL_PHONE,
-//                            android.Manifest.permission.READ_PHONE_STATE,
-//                            android.Manifest.permission.RECORD_AUDIO,
-//                            android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
-//                            android.Manifest.permission.ACCESS_FINE_LOCATION,
-//                            android.Manifest.permission.READ_CONTACTS,
-//                    }, Utility.REQUEST_CODE_ASK_PERMISSIONS_ALL);
-//                } else {
+               // startActivity(new Intent(getActivity(), NewbusinessApplicaionActivity.class));
 
-               //     startActivity(new Intent(getActivity(), ContactActivity.class));
-               // }
+
+                startActivity(new Intent(getActivity(), CommonWebviewActivity.class)
+                        .putExtra("URL", "https://www.rupeeboss.com/finmart-business-loan-new?BrokerId="+brokerId+"&FBAId=0&client_source=RBA&lead_id=")
+                        .putExtra("NAME", "Business Loan")
+                        .putExtra("TITLE", "Business Loan"));
 
                 break;
             case R.id.ivcredit_card:
-//                startActivity(new Intent(getActivity(), CommonWebviewActivity.class)
-//                        .putExtra("URL", "http://www.rupeeboss.com/rbl-personal-loan")
-//                        .putExtra("NAME", "RBL PERSONAL LOAN")
-//                        .putExtra("TITLE", "RBL PERSONAL LOAN"));
-              startActivity(new Intent(getActivity(), CreditCardApplyActivity.class));
+//
+        //                https://www.rupeeboss.com/finmart-credit-card-loan-new?BrokerId=30189&client_source=finmart
+
+                startActivity(new Intent(getActivity(), CommonWebviewActivity.class)
+                        .putExtra("URL", "https://www.rupeeboss.com/finmart-credit-card-loan-new?BrokerId="+brokerId+"&FBAId=0&client_source=RBA&lead_id=")
+                        .putExtra("NAME", "Credit Card")
+                        .putExtra("TITLE", "Credit Card"));
+
+
+             // startActivity(new Intent(getActivity(), CreditCardApplyActivity.class));
                 //   Toast.makeText(getActivity(), "Coming soon...", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.ivpersonal_loan:
+        //
 
-                startActivity(new Intent(getActivity(), NewPersonalApplicaionActivity.class));
+                startActivity(new Intent(getActivity(), CommonWebviewActivity.class)
+                        .putExtra("URL", "https://www.rupeeboss.com/finmart-personal-loan-new?BrokerId="+brokerId+"&FBAId=0&client_source=RBA&lead_id=")
+                        .putExtra("NAME", "Personal Loan")
+                        .putExtra("TITLE", "Personal Loan"));
+
+
                 // Toast.makeText(getActivity(), "Coming soon...", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.ivhome_loan:
 
                 // Toast.makeText(getActivity(), "Coming soon...", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getActivity(), NewHomeApplicaionActivity.class));
+                startActivity(new Intent(getActivity(), CommonWebviewActivity.class)
+                        .putExtra("URL", "https://www.rupeeboss.com/finmart-home-loan-new?BrokerId="+brokerId+"&FBAId=0&client_source=RBA&lead_id=")
+                        .putExtra("NAME", "Home Loan")
+                        .putExtra("TITLE", "Home Loan"));
                 break;
             case R.id.ivloan_against_property:
-
-               startActivity(new Intent(getActivity(), NewLAPApplicaionActivity.class));
+//https://www.rupeeboss.com/finmart-property-loan?BrokerId=30189&client_source=finmart
+                startActivity(new Intent(getActivity(), CommonWebviewActivity.class)
+                        .putExtra("URL", "https://www.rupeeboss.com/finmart-property-loan?BrokerId="+brokerId+"&FBAId=0&client_source=RBA&lead_id=")
+                        .putExtra("NAME", "Loan Against Property")
+                        .putExtra("TITLE", "Loan Against Property"));
                 break;
 
             case R.id.ivbalance_transfer:
@@ -321,33 +304,7 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
                         .putExtra("URL", "https://www.rupeeboss.com/switch?BrokerId="+brokerId+"&FBAId=0&client_source=RBA&lead_id=")
                         .putExtra("NAME", "Balance Transfer")
                         .putExtra("TITLE", "Balance Transfer"));
-             //   startActivity(new Intent(getActivity(), ShareMessageActivity.class));
-                /*Fragment fragment = null;
-                fragment = new ShareMessageFragment();
-                // getActivity().getActionBar().setTitle("Share Text");
-                //(MainActivity.class)getActivity().getActionBar().setTitle("Share Text");
-                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
-                        android.R.anim.fade_out);
-                fragmentTransaction.replace(R.id.frame, fragment, "Share Text");
-                fragmentTransaction.commitAllowingStateLoss();
-*/
-//                Runnable mPendingRunnable = new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        // update the main content by replacing fragments
-//                        Fragment fragment = null;
-//                        fragment = new ShareMessageFragment();
-//                        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-//                        fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
-//                                android.R.anim.fade_out);
-//                        fragmentTransaction.replace(R.id.frame, fragment, "Share Text");
-//                        fragmentTransaction.commitAllowingStateLoss();
-//                    }
-//                };
-//                if (mPendingRunnable != null) {
-//                    mHandler.post(mPendingRunnable);
-//                }
+
                 break;
             case R.id.ivcar_loan:
                 // https://www.rupeeboss.com/rbl-pl?BrokerId=36886&FBAId=0&client_source=RBA&lead_id=
@@ -398,7 +355,12 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
                 break;
 
             case R.id.ivcommercial_purchase:
-                startActivity(new Intent(getActivity(), NewLAPApplicaionActivity.class));
+              //  startActivity(new Intent(getActivity(), NewLAPApplicaionActivity.class));
+
+                startActivity(new Intent(getActivity(), CommonWebviewActivity.class)
+                        .putExtra("URL", "https://www.rupeeboss.com/finmart-property-loan?BrokerId="+brokerId+"&FBAId=0&client_source=RBA&lead_id=")
+                        .putExtra("NAME", "Loan Against Property")
+                        .putExtra("TITLE", "Loan Against Property"));
                 break;
             case R.id.ivgenerate_leads:
 
@@ -457,27 +419,7 @@ public class DashboardFragment extends BaseFragment implements View.OnClickListe
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {
             case Utility.REQUEST_CODE_ASK_PERMISSIONS_ALL:
-                if (grantResults.length > 0) {
 
-                    boolean writeLog = grantResults[0] == PackageManager.PERMISSION_GRANTED;
-                    boolean callPhone = grantResults[1] == PackageManager.PERMISSION_GRANTED;
-                    boolean phoneState = grantResults[2] == PackageManager.PERMISSION_GRANTED;
-                    boolean recordAudio = grantResults[3] == PackageManager.PERMISSION_GRANTED;
-                    boolean writeExternal = grantResults[4] == PackageManager.PERMISSION_GRANTED;
-                    boolean accessFine = grantResults[5] == PackageManager.PERMISSION_GRANTED;
-                    boolean readContact = grantResults[6] == PackageManager.PERMISSION_GRANTED;
-//                    boolean sendSms = grantResults[7] == PackageManager.PERMISSION_GRANTED;
-//                    boolean readSms = grantResults[8] == PackageManager.PERMISSION_GRANTED;
-
-//                    if (writeLog && callPhone && phoneState && recordAudio && writeExternal && accessFine && readContact && sendSms && readSms) {
-//                        startActivity(new Intent(getActivity(), ContactActivity.class));
-                    if (writeLog && callPhone && phoneState && recordAudio && writeExternal && accessFine && readContact) {
-                        startActivity(new Intent(getActivity(), ContactActivity.class));
-
-                    } else {
-
-                    }
-                }
                 break;
         }
     }

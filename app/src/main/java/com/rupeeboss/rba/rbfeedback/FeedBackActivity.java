@@ -22,9 +22,9 @@ import com.rupeeboss.rba.BaseActivity;
 import com.rupeeboss.rba.R;
 import com.rupeeboss.rba.core.APIResponse;
 import com.rupeeboss.rba.core.IResponseSubcriber;
-import com.rupeeboss.rba.core.controller.audio.AudioController;
+
 import com.rupeeboss.rba.core.controller.feedback.FeedBack;
-import com.rupeeboss.rba.core.database.AudioRecorderFacade;
+
 import com.rupeeboss.rba.core.facade.LoginFacade;
 import com.rupeeboss.rba.core.managecalllog.ManageCallLog;
 import com.rupeeboss.rba.core.model.AssigneeEntity;
@@ -117,26 +117,12 @@ public class FeedBackActivity extends BaseActivity implements View.OnClickListen
                 ManageCallLog manageCallLog = new ManageCallLog();
                 manageCallLog.deleteNumberFromCallLog(FeedBackActivity.this, mobileNumber);
             }
-            //uploadGPSLog();
-            uploadRecording();
+
         }
     }
 
 
-    private void uploadRecording() {
-        //upload audio to server
-        try {
-            List<AudioEntity> audioEntities = new AudioRecorderFacade(FeedBackActivity.this).getAllAudioRecord();
-            if (Utility.checkInternetStatus(FeedBackActivity.this)) {
-                for (AudioEntity audioEntity : audioEntities) {
-                    this.audioEntity = audioEntity;
-                    new AudioController(this).uploadAudioRecord(this.audioEntity, this);
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+
 
     private void loadSpinner() {
 
@@ -318,19 +304,7 @@ public class FeedBackActivity extends BaseActivity implements View.OnClickListen
                 Snackbar.make(etRemark, response.getMsg(), Snackbar.LENGTH_SHORT).show();
             }
         } else if (response instanceof AudioRecordResponse) {
-            if (response.getStatus_Id() == 0) {
-                try {
 
-                    if (((AudioRecordResponse) response).getLocaldb_id().matches("" + audioEntity.getId())) {
-                        boolean isDbrecordDeleted = new AudioRecorderFacade(this).deleteAudioRecord(audioEntity);
-                        boolean isDeleted = Utility.deleteAudioFile(audioEntity.getFile_name());
-
-                        Log.d("AUDIO_DELETED", "" + isDeleted);
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
         }
         //
 
