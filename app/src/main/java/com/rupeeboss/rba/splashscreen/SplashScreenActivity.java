@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.RemoteException;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -22,7 +24,9 @@ import com.rupeeboss.rba.loan_fm.LoanCityFacade;
 import com.rupeeboss.rba.login.LoginActivity;
 import com.rupeeboss.rba.utility.Constants;
 import com.rupeeboss.rba.utility.Utility;
-
+import com.android.installreferrer.api.InstallReferrerClient;
+import com.android.installreferrer.api.InstallReferrerStateListener;
+import com.android.installreferrer.api.ReferrerDetails;
 //import io.fabric.sdk.android.Fabric;
 
 public class SplashScreenActivity extends BaseActivity {
@@ -30,7 +34,12 @@ public class SplashScreenActivity extends BaseActivity {
     private final int SPLASH_DISPLAY_LENGTH = 2000;
     LoginFacade loginFacade;
 
+    // variable for install referer client.
+    InstallReferrerClient referrerClient;
+    private TextView refrerTV;
 
+    // creating an empty string for our referer.
+    String refrer = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +51,72 @@ public class SplashScreenActivity extends BaseActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splashscreen);
+
+        refrerTV = findViewById(R.id.idTVRefrer);
+
+        // on below line we are building our install referrer client and building it.
+        referrerClient = InstallReferrerClient.newBuilder(this).build();
+
+        // on below line we are starting its connection.
+        referrerClient.startConnection(new InstallReferrerStateListener() {
+            @Override
+            public void onInstallReferrerSetupFinished(int responseCode) {
+                // this method is called when install referer setup is finished.
+                switch (responseCode) {
+                    // we are using switch case to check the response.
+                    case InstallReferrerClient.InstallReferrerResponse.OK:
+                        // this case is called when the status is OK and
+                        ReferrerDetails response = null;
+                        try {
+                            // on below line we are getting referrer details
+                            // by calling get install referrer.
+                            response = referrerClient.getInstallReferrer();
+
+                            // on below line we are getting referrer url.
+                            String referrerUrl = response.getInstallReferrer();
+
+                            // on below line we are getting referrer click time.
+                            long referrerClickTime = response.getReferrerClickTimestampSeconds();
+
+                            // on below line we are getting app install time
+                            long appInstallTime = response.getInstallBeginTimestampSeconds();
+
+                            // on below line we are getting our time when
+                            // user has used our apps instant experience.
+                            boolean instantExperienceLaunched = response.getGooglePlayInstantParam();
+
+                            // on below line we are getting our
+                            // apps install referrer.
+                            refrer = response.getInstallReferrer();
+
+                            // on below line we are setting all detail to our text view.
+                            refrerTV.setText("Referrer is : \n" + referrerUrl + "\n" + "Referrer Click Time is : " + referrerClickTime + "\nApp Install Time : " + appInstallTime);
+                        } catch (RemoteException e) {
+                            // handling error case.
+                            e.printStackTrace();
+                        }
+                        break;
+                    case InstallReferrerClient.InstallReferrerResponse.FEATURE_NOT_SUPPORTED:
+                        // API not available on the current Play Store app.
+                        Toast.makeText(SplashScreenActivity.this, "Feature not supported..", Toast.LENGTH_SHORT).show();
+                        break;
+                    case InstallReferrerClient.InstallReferrerResponse.SERVICE_UNAVAILABLE:
+                        // Connection couldn't be established.
+                        Toast.makeText(SplashScreenActivity.this, "Fail to establish connection", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+
+            @Override
+            public void onInstallReferrerServiceDisconnected() {
+                // Try to restart the connection on the next request to
+                // Google Play by calling the startConnection() method.
+                Toast.makeText(SplashScreenActivity.this, "Service disconnected..", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
 
         SharedPreferences sharedPreferences = getSharedPreferences(Constants.SHAREDPREFERENCE_TITLE, MODE_PRIVATE);
 
